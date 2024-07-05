@@ -1,0 +1,9 @@
+@mixin dynamic-label-styles($bgColor, $textColor) {
+  color: $textColor;
+  background: $bgColor;
+}
+
+@mixin dynamic-input-styles($bgColor, $borderColor, $borderWidth) {
+  border: $borderWidth solid $borderColor;
+  background: $bgColor;
+}

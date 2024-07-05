@@ -2,7 +2,17 @@ $mainFontSize: 10px;
 $mainFontFamily: 'Inter';
 $titleFontFamily: 'Glametrix';
 
-$fontWeightLight: 300;
-$fontWeightRegular: 400;
-$fontWeightMedium: 500;
-$fontWeightBold: 700;
+$fontWeights: (
+  'light': 300,
+  'regular': 400,
+  'medium': 500,
+  'bold': 700,
+);
+
+$fontSizeRegular: 1.6rem;
+$fontSizeSubtitle: 1.4rem;
+
+$paddingLabel: 0.2rem 0.8rem;
+$lineHeightLabel: 2rem;
+$letterSpacing: 0.05em;
+$transitionDuration: 0.115s;

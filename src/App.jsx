@@ -7,9 +7,7 @@ export default function App() {
         <Route path='/' exact>
           Hello world
         </Route>
-        <Route>
-          Not found
-        </Route>
+        <Route>Not found</Route>
       </Switch>
     </main>
   );

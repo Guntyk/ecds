@@ -1,0 +1,28 @@
+$color-scheme-map: (
+  'Light': (
+    labelColor: $lavender2,
+    labelBg: $bodyBackground,
+    labelFocusBg: $bodyBackground,
+    labelFocusColor: $darkLime,
+    inputBg: none,
+    inputBorder: $lavenderLight,
+    inputFilledBorder: $lavenderLight,
+    inputColor: $lavender2,
+    inputFocusBg: none,
+    inputBorderFocus: $lime,
+    inputBorderInvalid: $pink,
+  ),
+  'Dark': (
+    labelColor: $lavender,
+    labelBg: $darkBlue,
+    labelFocusBg: $darkBlue,
+    labelFocusColor: $darkLime,
+    inputBg: $gray,
+    inputBorder: transparent,
+    inputFilledBorder: $lavender2,
+    inputColor: $white,
+    inputFocusBg: none,
+    inputBorderFocus: $lime,
+    inputBorderInvalid: $pink,
+  ),
+);

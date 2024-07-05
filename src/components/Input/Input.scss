@@ -1,0 +1,72 @@
+@import './color-scheme.scss';
+
+.inputWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  position: relative;
+  -webkit-tap-highlight-color: transparent;
+
+  @each $theme, $colors in $color-scheme-map {
+    &#{$theme} {
+      &.inputWrapperFilled {
+        .input {
+          @include dynamic-input-styles(map-get($colors, inputFocusBg), map-get($colors, inputFilledBorder), 0.1rem);
+
+          & ~ .label {
+            @include dynamic-label-styles(map-get($colors, labelBg), map-get($colors, labelColor));
+          }
+        }
+      }
+
+      .label {
+        @include dynamic-label-styles(none, map-get($colors, labelColor));
+      }
+
+      .input {
+        @include dynamic-input-styles(map-get($colors, inputBg), map-get($colors, inputBorder), 0.05rem);
+        color: map-get($colors, inputColor);
+
+        &:focus {
+          @include dynamic-input-styles(map-get($colors, inputFocusBg), map-get($colors, inputBorderFocus), 0.05rem);
+
+          & ~ .label {
+            @include dynamic-label-styles(map-get($colors, labelFocusBg), map-get($colors, labelFocusColor));
+          }
+        }
+      }
+
+      &.inputWrapperInvalid .input {
+        border: 0.1rem solid map-get($colors, inputBorderInvalid);
+      }
+    }
+  }
+
+  .input:focus ~ .label,
+  &Filled .label {
+    @extend %label-active;
+  }
+}
+
+.input {
+  @extend %input;
+}
+
+.label {
+  @extend %label;
+}
+
+.errorMessage {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin: 0.8rem 0 0 1.6rem;
+  color: $pink;
+  font-size: $fontSizeSubtitle;
+  line-height: 1.8rem;
+  letter-spacing: $letterSpacing;
+
+  img {
+    user-select: none;
+  }
+}

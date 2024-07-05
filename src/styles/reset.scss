@@ -157,3 +157,7 @@ input {
   border-radius: 0;
   font-size: inherit;
 }
+
+input:focus {
+  outline: none;
+}
