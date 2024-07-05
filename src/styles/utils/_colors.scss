@@ -1,0 +1,8 @@
+$hue: 210;
+
+$bodyBackground: hsl($hue, 20%, 96%);
+
+$error: hsl(calc($hue - 210), 100%, 39%);
+$gray: hsl(calc($hue - 210), 0%, 70%);
+$black: hsl(calc($hue - 210), 0%, 5%);
+$white: hsl(calc($hue - 210), 0%, 100%);
