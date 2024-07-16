@@ -1,27 +1,27 @@
 $hue: 236;
 
-$bodyBackground: hsl(calc($hue - 26), 20%, 96%); // #F3F5F7
+$background1: hsl(calc($hue - 26), 20%, 96%); // #F3F5F7
+$background2: hsl($hue, 28%, 89%); // #DADBEA
+$background3: hsl(calc($hue - 1), 38%, 13%); // #14162D
+$background3_2: hsl($hue, 39%, 21%); // #21244B
 
-$lime: hsl(calc($hue - 162), 79%, 53%); // #BAE629
-$darkLime: hsl(calc($hue - 160), 71%, 44%); // #96C121
+$primary1: hsl($hue, 39%, 42%); // #424895
+$primary2: hsl(calc($hue - 160), 71%, 44%); // #96C121
+$primary3: hsl(calc($hue + 94), 100%, 45%); // #E50074
 
-$darkWhite: hsl($hue, 28%, 89%); // #DADBEA
+$secondary1: hsl($hue, 38%, 25%); // #282B59
+$secondary2: hsl($hue, 28%, 71%); // #A1A4CA
+$secondary3: hsl($hue, 28%, 60%); // #7B7FB5
+$secondary4: hsl(calc($hue - 162), 79%, 53%); // #BAE629
 
-$pink: hsl(calc($hue + 94), 100%, 45%); // #E50074
+$text1: hsl(calc($hue + 4), 36%, 4%); // #07070F
+$text2: hsl(calc($hue - 236), 0%, 100%); // #FFFFFF
 
 $lavenderDark: hsl(calc($hue - 1), 28%, 54%); // #686DAA
 $lavender: hsl($hue, 28%, 65%); // #8E91BF
-$lavender2: hsl($hue, 28%, 60%); // #7B7FB5
-$lavenderLight: hsl($hue, 28%, 71%); // #A1A4CA
-$lavenderLight2: hsl($hue, 45%, 79%); // #B2B5E2
-
-$purpleDark: hsl($hue, 38%, 25%); // #282B59
-$purple: hsl($hue, 39%, 42%); // #424895
-
-$darkBlue: hsl(calc($hue - 1), 38%, 13%); // #14162D
-$darkBlue2: hsl($hue, 39%, 21%); // #21244B
-
 $gray: hsl(calc($hue - 1), 21%, 21%); // #2A2C41
-$black: hsl(calc($hue + 4), 36%, 4%); // #07070F
 
-$white: hsl(calc($hue - 236), 0%, 100%); // #FFFFFF
+$gradient1: linear-gradient(90.5deg, $lavenderDark 0%, $lavender 100%);
+$gradient2: linear-gradient(90.5deg, $primary2 0%, $secondary4 100%);
+$gradient3: linear-gradient(90deg, $secondary1 0%, $primary1 100%);
+$gradient4: linear-gradient(90deg, $secondary2 0%, $lavender 100%);

@@ -4,11 +4,11 @@ $arrowsGap: 0.8rem;
   padding: 2.4rem;
   width: auto;
   border-radius: $borderRadius;
-  background: $darkWhite;
+  background: $background2;
   font-size: $fontSizeRegular;
   line-height: 2.4rem;
   letter-spacing: 0.02em;
-  border: 0.05rem solid $white;
+  border: 0.05rem solid $text2;
 }
 
 .header {
@@ -41,12 +41,12 @@ $arrowsGap: 0.8rem;
       height: 1rem;
       -webkit-mask: url(assets/icons/angle-down-purple.svg) no-repeat center;
       mask: url(assets/icons/angle-down-purple.svg) no-repeat center;
-      background: $purple;
+      background: $primary1;
       transition: 0.4s;
     }
 
     &:hover .arrow {
-      background: $darkLime;
+      background: $primary2;
       translate: 0 calc($arrowsGap / 2);
       &:last-child {
         translate: 0 calc($arrowsGap / 2 * -1);
@@ -94,7 +94,7 @@ $arrowsGap: 0.8rem;
     line-height: 2.664rem;
     letter-spacing: 0.02em;
     text-align: left;
-    border-bottom: 0.05rem solid $lavenderLight;
+    border-bottom: 0.05rem solid $secondary2;
   }
 
   td {
