@@ -7,3 +7,31 @@
   border: $borderWidth solid $borderColor;
   background: $bgColor;
 }
+
+@mixin headlineText($size, $weight) {
+  font-family: $headlineFont;
+  font-size: map-get($fontSizes, $size);
+  font-weight: map-get($fontWeights, $weight);
+  line-height: map-get($lineHeights, $size);
+}
+
+@mixin bodyText($size, $weight) {
+  font-size: map-get($fontSizes, $size);
+  font-weight: map-get($fontWeights, $weight);
+  line-height: map-get($lineHeights, $size);
+  letter-spacing: 2%;
+}
+
+@mixin buttonText($size, $weight, $spacing) {
+  font-size: map-get($fontSizes, $size);
+  font-weight: map-get($fontWeights, $weight);
+  line-height: map-get($lineHeights, $size);
+  letter-spacing: $spacing;
+}
+
+@mixin fieldText($size) {
+  font-size: map-get($fontSizes, $size);
+  font-weight: map-get($fontWeights, 'regular');
+  line-height: map-get($lineHeights, $size);
+  letter-spacing: 5%;
+}

@@ -1,35 +1,35 @@
 @font-face {
-  font-family: $mainFontFamily;
+  font-family: $bodyFont;
   src: url('assets/fonts/Inter-Light.ttf');
   font-weight: map-get($fontWeights, 'light');
 }
 
 @font-face {
-  font-family: $mainFontFamily;
+  font-family: $bodyFont;
   src: url('assets/fonts/Inter-Regular.ttf');
   font-weight: map-get($fontWeights, 'regular');
 }
 
 @font-face {
-  font-family: $mainFontFamily;
+  font-family: $bodyFont;
   src: url('assets/fonts/Inter-Medium.ttf');
   font-weight: map-get($fontWeights, 'medium');
 }
 
 @font-face {
-  font-family: $titleFontFamily;
+  font-family: $headlineFont;
   src: url('assets/fonts/Glametrix-Light.otf');
   font-weight: map-get($fontWeights, 'light');
 }
 
 @font-face {
-  font-family: $titleFontFamily;
+  font-family: $headlineFont;
   src: url('assets/fonts/Glametrix.otf');
   font-weight: map-get($fontWeights, 'regular');
 }
 
 @font-face {
-  font-family: $titleFontFamily;
+  font-family: $headlineFont;
   src: url('assets/fonts/Glametrix-Bold.otf');
   font-weight: map-get($fontWeights, 'bold');
 }

@@ -1,6 +1,6 @@
 $mainFontSize: 10px;
-$mainFontFamily: 'Inter';
-$titleFontFamily: 'Glametrix';
+$bodyFont: 'Inter';
+$headlineFont: 'Glametrix';
 
 $fontWeights: (
   'light': 300,
@@ -19,3 +19,39 @@ $paddingLabel: 0.2rem 0.8rem;
 $lineHeightLabel: 2rem;
 $letterSpacing: 0.05em;
 $transitionDuration: 0.115s;
+
+$fontSizes: (
+  'h1': 9.6rem,
+  'h2': 7.2rem,
+  'h3': 4.8rem,
+  'h4': 3.2rem,
+  'logoText': 3.2rem,
+  'body1': 2.4rem,
+  'body2': 2rem,
+  'body3': 1.8rem,
+  'body4': 1.6rem,
+  'button': 1.6rem,
+  'buttonActive': 1.8rem,
+  'buttonSmall': 1.4rem,
+  'fieldPlaceholder': 1.6rem,
+  'fieldTitle': 1.4rem,
+  'fieldDescription': 1.4rem,
+);
+
+$lineHeights: (
+  'h1': 7.2rem,
+  'h2': 5.6rem,
+  'h3': 4rem,
+  'h4': 3.2rem,
+  'logoText': 3.2rem,
+  'body1': 3.2rem,
+  'body2': 2.8rem,
+  'body3': 2.4rem,
+  'body4': 2.4rem,
+  'button': 2.4rem,
+  'buttonActive': 2.4rem,
+  'buttonSmall': 1.6rem,
+  'fieldPlaceholder': 2.4rem,
+  'fieldTitle': 2rem,
+  'fieldDescription': 1.8rem,
+);

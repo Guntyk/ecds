@@ -30,3 +30,91 @@
   background: none;
   transition: border $transitionDuration, background $transitionDuration;
 }
+
+%h1 {
+  @include headlineText(h1, bold);
+}
+
+%h2 {
+  @include headlineText(h2, bold);
+}
+
+%h3 {
+  @include headlineText(h3, regular);
+}
+
+%h4 {
+  @include headlineText(h4, regular);
+}
+
+%logoText {
+  @include headlineText(logoText, bold);
+}
+
+%body1Light {
+  @include bodyText(body1, light);
+}
+
+%body1Regular {
+  @include bodyText(body1, regular);
+}
+
+%body1Medium {
+  @include bodyText(body1, medium);
+}
+
+%body2Light {
+  @include bodyText(body2, light);
+}
+
+%body2Regular {
+  @include bodyText(body2, regular);
+}
+
+%body2Medium {
+  @include bodyText(body2, medium);
+}
+
+%body3Regular {
+  @include bodyText(body3, regular);
+}
+
+%body3Medium {
+  @include bodyText(body3, medium);
+}
+
+%body4Light {
+  @include bodyText(body4, light);
+}
+
+%body4Regular {
+  @include bodyText(body4, regular);
+}
+
+%body4Medium {
+  @include bodyText(body4, medium);
+}
+
+%button {
+  @include buttonText(button, medium, 5%);
+}
+
+%buttonActive {
+  @include buttonText(buttonActive, medium, 5%);
+}
+
+%buttonSmall {
+  @include buttonText(buttonSmall, regular, 2%);
+}
+
+%fieldPlaceholder {
+  @include fieldText(fieldPlaceholder);
+}
+
+%fieldTitle {
+  @include fieldText(fieldTitle);
+}
+
+%fieldDescription {
+  @include fieldText(fieldDescription);
+}

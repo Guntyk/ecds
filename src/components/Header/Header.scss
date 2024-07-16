@@ -16,7 +16,7 @@
   display: flex;
   align-items: center;
   gap: 1rem;
-  font-family: $titleFontFamily;
+  font-family: $headlineFont;
   font-size: 3.2rem;
   font-weight: map-get($fontWeights, 'bold');
   line-height: 3.2rem;
