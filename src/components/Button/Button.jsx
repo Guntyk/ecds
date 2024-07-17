@@ -1,22 +1,24 @@
 import cn from 'classnames';
 import styles from 'components/Button/Button.scss';
 
-export const Button = ({ buttonContent, className, type, active, wideStyle, lightStyle, textStyle, ...props }) => {
+export const Button = ({ buttonContent, className, type, iconData, lightStyle, textStyle, ...props }) => {
   const buttonClasses = cn(
     styles.btn,
     {
-      [styles.active]: active,
-      [styles.btnDefault]: !wideStyle && !lightStyle && !textStyle,
-      [styles.btnWide]: wideStyle,
+      [styles.btnDefault]: !lightStyle && !textStyle,
       [styles.btnLight]: lightStyle,
       [styles.btnText]: textStyle,
     },
     className
   );
 
+  const { alt, src, side } = iconData || {};
+
   return (
-    <button className={buttonClasses} type={type || 'button'} {...(active && { tabIndex: -1 })} {...props}>
+    <button className={buttonClasses} type={type || 'button'} {...props}>
+      {side === 'left' && <img src={src} alt={alt} className={styles.icon} />}
       {buttonContent}
+      {side === 'right' && <img src={src} alt={alt} className={styles.icon} />}
     </button>
   );
 };

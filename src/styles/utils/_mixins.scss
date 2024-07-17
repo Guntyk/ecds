@@ -27,6 +27,7 @@
   font-weight: map-get($fontWeights, $weight);
   line-height: map-get($lineHeights, $size);
   letter-spacing: $spacing;
+  text-transform: uppercase;
 }
 
 @mixin fieldText($size) {

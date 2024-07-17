@@ -7,8 +7,16 @@
   width: 100%;
   padding-top: 2.4rem;
 
+  button {
+    color: $text1;
+  }
+
   &Dark {
     color: $text2;
+
+    button {
+      color: $text2;
+    }
   }
 }
 
@@ -27,7 +35,9 @@
   align-items: center;
   gap: 2.4rem;
 
-  &Link {
+  &Link,
+  button {
     padding: 0.8rem;
+    text-transform: none;
   }
 }
