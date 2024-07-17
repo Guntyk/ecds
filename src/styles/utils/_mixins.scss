@@ -19,7 +19,7 @@
   font-size: map-get($fontSizes, $size);
   font-weight: map-get($fontWeights, $weight);
   line-height: map-get($lineHeights, $size);
-  letter-spacing: 2%;
+  letter-spacing: 0.02em;
 }
 
 @mixin buttonText($size, $weight, $spacing) {
@@ -33,5 +33,5 @@
   font-size: map-get($fontSizes, $size);
   font-weight: map-get($fontWeights, 'regular');
   line-height: map-get($lineHeights, $size);
-  letter-spacing: 5%;
+  letter-spacing: $letterSpacing;
 }

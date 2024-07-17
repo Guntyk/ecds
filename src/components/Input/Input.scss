@@ -44,27 +44,29 @@
 
   .input:focus ~ .label,
   &Filled .label {
+    @extend %fieldTitle;
     @extend %label-active;
   }
 }
 
 .input {
+  @extend %fieldPlaceholder;
   @extend %input;
 }
 
 .label {
+  @extend %fieldPlaceholder;
   @extend %label;
 }
 
 .errorMessage {
+  @extend %fieldDescription;
+
   display: flex;
   align-items: center;
   gap: 0.8rem;
   margin: 0.8rem 0 0 1.6rem;
   color: $primary3;
-  font-size: $fontSizeSubtitle;
-  line-height: 1.8rem;
-  letter-spacing: $letterSpacing;
 
   img {
     user-select: none;

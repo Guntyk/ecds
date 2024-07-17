@@ -13,23 +13,19 @@
 }
 
 .logo {
+  @extend %logoText;
+
   display: flex;
   align-items: center;
   gap: 1rem;
-  font-family: $headlineFont;
-  font-size: 3.2rem;
-  font-weight: map-get($fontWeights, 'bold');
-  line-height: 3.2rem;
 }
 
 .navigation {
+  @extend %button;
+
   display: flex;
   align-items: center;
   gap: 2.4rem;
-  font-size: $fontSizeRegular;
-  font-weight: map-get($fontWeights, 'medium');
-  line-height: 2.4rem;
-  letter-spacing: 0.05em;
 
   &Link {
     padding: 0.8rem;

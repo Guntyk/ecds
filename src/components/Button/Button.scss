@@ -1,24 +1,17 @@
 .btn {
-  font-size: $fontSizeRegular;
+  @extend %button;
   border-radius: $borderRadius;
-
-  &Default,
-  &Wide {
-    line-height: 2.4rem;
-  }
 
   &Default {
     width: 20.5rem;
     padding: 1.6rem 0;
     color: $text2;
-    font-weight: map-get($fontWeights, 'medium');
-    letter-spacing: 0.05em;
     text-transform: uppercase;
     background: $primary3;
 
     &:hover,
     &:focus {
-      font-size: 1.8rem;
+      @extend %buttonActive;
     }
   }
 
@@ -67,6 +60,6 @@
     padding: 0.8rem;
     font-weight: map-get($fontWeights, 'medium');
     line-height: 2.2rem;
-    letter-spacing: 0.05em;
+    letter-spacing: $letterSpacing;
   }
 }

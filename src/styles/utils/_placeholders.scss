@@ -2,10 +2,6 @@
   position: absolute;
   top: 2.8rem;
   left: 1.6rem;
-  font-size: $fontSizeRegular;
-  font-weight: map-get($fontWeights, 'regular');
-  line-height: 2.4rem;
-  letter-spacing: $letterSpacing;
   pointer-events: none;
   user-select: none;
   transform: translateY(-50%);
@@ -16,16 +12,10 @@
   padding: $paddingLabel;
   top: 0;
   left: 0.8rem;
-  font-size: $fontSizeRegular;
-  line-height: $lineHeightLabel;
-  letter-spacing: $letterSpacing;
 }
 
 %input {
   padding: 1.5rem;
-  font-size: $fontSizeRegular;
-  line-height: 2.4rem;
-  letter-spacing: $letterSpacing;
   border-radius: $borderRadius;
   background: none;
   transition: border $transitionDuration, background $transitionDuration;
@@ -96,15 +86,15 @@
 }
 
 %button {
-  @include buttonText(button, medium, 5%);
+  @include buttonText(button, medium, $letterSpacing);
 }
 
 %buttonActive {
-  @include buttonText(buttonActive, medium, 5%);
+  @include buttonText(buttonActive, medium, $letterSpacing);
 }
 
 %buttonSmall {
-  @include buttonText(buttonSmall, regular, 2%);
+  @include buttonText(buttonSmall, regular, 0.02em);
 }
 
 %fieldPlaceholder {

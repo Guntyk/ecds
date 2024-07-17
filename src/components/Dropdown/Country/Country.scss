@@ -1,12 +1,11 @@
 $arrowsGap: 0.8rem;
 
 .container {
+  @extend %body4Regular;
+
   padding: 2.4rem;
-  width: auto;
   border-radius: $borderRadius;
   background: $background2;
-  font-size: $fontSizeRegular;
-  line-height: 2.4rem;
   letter-spacing: 0.02em;
   border: 0.05rem solid $text2;
 }
