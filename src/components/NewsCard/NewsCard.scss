@@ -1,0 +1,52 @@
+.card {
+  display: flex;
+  height: 28.4rem;
+  overflow: hidden;
+  border-radius: $borderRadius;
+  border: 0.05rem solid $background2;
+  background: $text2;
+}
+
+.cover {
+  width: 28.2rem;
+  user-select: none;
+  -webkit-user-drag: none;
+  object-fit: cover;
+}
+
+.info {
+  @extend %body3Regular;
+
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  width: 100%;
+  gap: 1.6rem;
+  padding: 3.2rem;
+  padding-left: 4.8rem;
+}
+
+.title {
+  @extend %h3;
+
+  font-weight: map-get($fontWeights, 'bold');
+  letter-spacing: 0;
+}
+
+.description {
+  max-width: 58.8rem;
+  flex-grow: 1;
+}
+
+.additionalInfo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.date {
+  @extend %body4Regular;
+
+  text-transform: uppercase;
+}
