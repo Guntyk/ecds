@@ -1,0 +1,48 @@
+.block {
+  padding: 12rem 0;
+  background: $background2;
+}
+
+.dances {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.card {
+  @extend %body4Medium;
+
+  display: flex;
+  flex-direction: column;
+  width: 23.2rem;
+  color: $primary1;
+  text-transform: uppercase;
+  letter-spacing: $letterSpacing;
+  text-align: center;
+  overflow: hidden;
+  background: $text2;
+  border: 0.05rem solid $background1;
+  border-radius: $borderRadius;
+  cursor: pointer;
+  transition: 0.5s;
+
+  .cover {
+    height: 29.6rem;
+    object-fit: cover;
+    user-select: none;
+    -webkit-user-drag: none;
+  }
+
+  &:hover {
+    @extend %body3Medium;
+
+    width: 28rem;
+    color: $primary3;
+    letter-spacing: $letterSpacing;
+  }
+}
+
+.name {
+  padding: 4rem 0;
+}
