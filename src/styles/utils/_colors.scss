@@ -20,6 +20,7 @@ $text2: hsl(calc($hue - 236), 0%, 100%); // #FFFFFF
 $lavenderDark: hsl(calc($hue - 1), 28%, 54%); // #686DAA
 $lavender: hsl($hue, 28%, 65%); // #8E91BF
 $gray: hsl(calc($hue - 1), 21%, 21%); // #2A2C41
+$lightGray: hsl($hue, 29%, 88%); // #D9DAEA
 
 $gradient1: linear-gradient(90.5deg, $lavenderDark 0%, $lavender 100%);
 $gradient2: linear-gradient(90.5deg, $primary2 0%, $secondary4 100%);
