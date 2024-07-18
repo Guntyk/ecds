@@ -1,11 +1,11 @@
 import cn from 'classnames';
 import styles from 'components/Button/Button.scss';
 
-export const Button = ({ buttonContent, className, type, iconData, lightStyle, textStyle, ...props }) => {
+export const Button = ({ buttonContent, className, type, iconData, lightStyle, textStyle, headerStyle, ...props }) => {
   const buttonClasses = cn(
     styles.btn,
     {
-      [styles.btnDefault]: !lightStyle && !textStyle,
+      [styles.btnDefault]: !lightStyle && !textStyle && !headerStyle,
       [styles.btnLight]: lightStyle,
       [styles.btnText]: textStyle,
     },

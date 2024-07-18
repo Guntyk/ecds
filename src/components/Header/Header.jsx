@@ -30,7 +30,7 @@ export const Header = () => {
               </li>
             ))}
             <li>
-              <Button buttonContent='Menu' textStyle />
+              <Button buttonContent='Menu' headerStyle />
             </li>
           </ul>
         </nav>

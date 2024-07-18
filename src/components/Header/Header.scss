@@ -14,8 +14,15 @@
   &Dark {
     color: $text2;
 
-    button {
-      color: $text2;
+    .navigation {
+      &Link,
+      button {
+        color: $text2;
+
+        &:hover {
+          color: $secondary4;
+        }
+      }
     }
   }
 }
@@ -29,15 +36,24 @@
 }
 
 .navigation {
-  @extend %button;
-
   display: flex;
   align-items: center;
   gap: 2.4rem;
 
   &Link,
   button {
+    @extend %button;
+
     padding: 0.8rem;
+    line-height: 2.2rem;
     text-transform: none;
+    transition: 0.2s;
+
+    &:hover {
+      @extend %buttonActive;
+      padding-inline: 0.5rem;
+      color: $primary1;
+      text-transform: none;
+    }
   }
 }
