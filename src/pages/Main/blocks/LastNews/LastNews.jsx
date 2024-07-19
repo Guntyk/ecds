@@ -20,7 +20,7 @@ export const LastNews = () => {
   return (
     <section className={styles.block}>
       <Container>
-        <h2 className={styles.title}>Latest news</h2>
+        <h2 className={styles.title}>Latest News</h2>
         <div className={styles.navigationWrapper}>
           <Button
             id='btnPrev'
