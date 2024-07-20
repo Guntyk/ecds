@@ -1,5 +1,6 @@
 import { Switch, Route } from 'react-router-dom';
 import { pathnames } from 'constants/pathnames';
+import { NotFound } from 'components/NotFound';
 import { Header } from 'components/Header';
 
 export default function App() {
@@ -12,7 +13,9 @@ export default function App() {
         <Route path={homePage} exact>
           Hello world
         </Route>
-        <Route>Not found</Route>
+        <Route>
+          <NotFound />
+        </Route>
       </Switch>
     </>
   );

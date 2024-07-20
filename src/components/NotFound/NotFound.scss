@@ -1,0 +1,26 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.title {
+  @extend %h1;
+
+  font-size: 20rem;
+  line-height: 0.6;
+}
+
+.text {
+  @extend %body1Regular;
+}
+
+.buttonsWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.2rem;
+  margin-top: 2.4rem;
+}
