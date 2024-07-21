@@ -1,6 +1,6 @@
 import { Switch, Route } from 'react-router-dom';
 import { pathnames } from 'constants/pathnames';
-import { NotFound } from 'components/NotFound';
+import { NotFound } from 'pages/NotFound';
 import { Header } from 'components/Header';
 import { Footer } from 'components/Footer';
 

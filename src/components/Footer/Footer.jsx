@@ -81,7 +81,7 @@ export const Footer = () => {
                 ))}
               </ul>
             </div>
-            <p className={styles.credits}>© 2024 European Confederation of Dance Sports </p>
+            <p className={styles.credits}>© 2024 European Confederation of Dance Sports</p>
           </div>
         </div>
       </Container>
