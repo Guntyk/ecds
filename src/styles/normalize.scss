@@ -13,3 +13,10 @@ body {
   font-weight: map-get($fontWeights, 'regular');
   box-sizing: border-box;
 }
+
+textarea {
+  font-family: inherit;
+  resize: vertical;
+  min-height: 5.6rem;
+  height: 5.6rem;
+}

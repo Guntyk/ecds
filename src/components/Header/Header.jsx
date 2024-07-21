@@ -7,30 +7,34 @@ import logo from 'assets/icons/logos/ecds.svg';
 import styles from 'components/Header/Header.scss';
 
 export const Header = () => {
-  const { homePage, aboutUsPage } = pathnames;
   const { pathname } = useLocation();
-  const darkHeaderPages = [homePage];
 
-  const navigationLinks = [{ id: 1, name: 'About us', pathname: aboutUsPage }];
+  const { mainPage, managementPage, documentsPage, contactsPage, logosPage } = pathnames;
+  const aboutUsPages = [managementPage, documentsPage, contactsPage, logosPage];
+  const darkHeaderPages = [mainPage];
+
+  const handleAboutUsLinkClick = (e) => {
+    if (aboutUsPages.includes(pathname)) {
+      e.preventDefault();
+    }
+  };
 
   return (
     <Container>
       <header className={cn(styles.header, { [styles.headerDark]: darkHeaderPages.includes(pathname) })}>
-        <Link to={homePage} className={styles.logo}>
+        <Link to={mainPage} className={styles.logo}>
           <img src={logo} alt='European Confederation of Dance Sports logo' />
           European Confederation of Dance Sports
         </Link>
         <nav>
           <ul className={styles.navigation}>
-            {navigationLinks.map(({ id, name, pathname }) => (
-              <li key={id}>
-                <NavLink className={styles.navigationLink} to={pathname}>
-                  {name}
-                </NavLink>
-              </li>
-            ))}
             <li>
-              <Button buttonContent='Menu' headerStyle />
+              <NavLink className={styles.navigationLink} to={managementPage} onClick={handleAboutUsLinkClick}>
+                About us
+              </NavLink>
+            </li>
+            <li>
+              <Button className={styles.navigationLink} buttonContent='Menu' headerStyle />
             </li>
           </ul>
         </nav>

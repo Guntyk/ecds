@@ -3,6 +3,7 @@ import alert from 'assets/icons/alert.svg';
 import styles from 'components/Input/Input.scss';
 
 export const Input = ({
+  wrapperClassName,
   inputClassName,
   labelClassName,
   setInputValue,
@@ -18,7 +19,7 @@ export const Input = ({
   ...props
 }) => {
   const Tag = textarea ? 'textarea' : 'input';
-  const inputWrapperClassNames = cn(styles.inputWrapper, {
+  const inputWrapperClassNames = cn(styles.inputWrapper, wrapperClassName, {
     [styles.inputWrapperInvalid]: error,
     [styles.inputWrapperFilled]: inputValue,
     [styles.inputWrapperLight]: !darkStyle,

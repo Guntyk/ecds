@@ -19,7 +19,8 @@
         }
       }
 
-      .label {
+      .label,
+      .input::placeholder {
         @include dynamic-label-styles(none, map-get($colors, labelColor));
       }
 

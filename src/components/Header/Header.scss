@@ -8,16 +8,11 @@
   padding-top: 2.4rem;
   z-index: 1;
 
-  button {
-    color: $text1;
-  }
-
   &Dark {
     color: $text2;
 
     .navigation {
-      &Link,
-      button {
+      &Link {
         color: $text2;
 
         &:hover {
@@ -41,8 +36,7 @@
   align-items: center;
   gap: 2.4rem;
 
-  &Link,
-  button {
+  &Link {
     @extend %button;
 
     padding: 0.8rem;
