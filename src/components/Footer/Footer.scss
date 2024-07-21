@@ -17,7 +17,7 @@
 .navigation {
   display: flex;
   flex-direction: column;
-  gap: 0.8rem;
+  gap: $gapExtraSmall;
   color: $background1;
 
   &Section {
@@ -93,7 +93,7 @@
 .socialsWrapper,
 .socials {
   display: flex;
-  gap: 1.6rem;
+  gap: $gapMedium;
 
   li {
     height: 2.4rem;

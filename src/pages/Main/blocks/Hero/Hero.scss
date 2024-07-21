@@ -6,14 +6,14 @@
 .wrapper {
   display: flex;
   justify-content: space-between;
-  gap: 2.4rem;
+  gap: $gapLarge;
   width: 100%;
 }
 
 .titleWrapper {
   display: flex;
   flex-direction: column;
-  gap: 2.4rem;
+  gap: $gapLarge;
   margin-top: 32.8rem;
 }
 
@@ -31,7 +31,7 @@
 .navigation {
   display: flex;
   align-items: center;
-  gap: 1.6rem;
+  gap: $gapMedium;
   margin: 0 auto;
   margin-top: 1.6rem;
   padding: 0.4rem 0.8rem;
@@ -47,7 +47,7 @@
 .pagination {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: $gapSmall;
 }
 
 .bullet {

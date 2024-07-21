@@ -1,5 +1,3 @@
-$arrowsGap: 0.8rem;
-
 .container {
   @extend %body4Regular;
 
@@ -45,9 +43,9 @@ $arrowsGap: 0.8rem;
 
     &:hover .arrow {
       background: $primary2;
-      translate: 0 calc($arrowsGap / 2);
+      translate: 0 calc($gapExtraSmall / 2);
       &:last-child {
-        translate: 0 calc($arrowsGap / 2 * -1);
+        translate: 0 calc($gapExtraSmall / 2 * -1);
       }
     }
 
@@ -55,16 +53,16 @@ $arrowsGap: 0.8rem;
       rotate: 180deg;
 
       .arrow {
-        translate: 0 calc($arrowsGap / 2 * -1);
+        translate: 0 calc($gapExtraSmall / 2 * -1);
         &:last-child {
-          translate: 0 calc($arrowsGap / 2);
+          translate: 0 calc($gapExtraSmall / 2);
         }
       }
 
       &:hover .arrow {
-        translate: 0 calc($arrowsGap / 2);
+        translate: 0 calc($gapExtraSmall / 2);
         &:last-child {
-          translate: 0 calc($arrowsGap / 2 * -1);
+          translate: 0 calc($gapExtraSmall / 2 * -1);
         }
       }
     }

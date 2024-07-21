@@ -2,7 +2,7 @@
   @extend %button;
   display: flex;
   align-items: center;
-  gap: 0.8rem;
+  gap: $gapExtraSmall;
   position: relative;
   overflow: hidden;
   border-radius: $borderRadius;

@@ -28,13 +28,13 @@
 
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: $gapSmall;
 }
 
 .navigation {
   display: flex;
   align-items: center;
-  gap: 2.4rem;
+  gap: $gapLarge;
 
   &Link {
     @extend %button;
