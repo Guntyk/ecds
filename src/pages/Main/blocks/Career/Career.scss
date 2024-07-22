@@ -1,0 +1,20 @@
+.block {
+  padding-block: 10rem 90.8rem;
+  background: url(assets/images/career-scheme.jpg) no-repeat center / contain;
+}
+
+.title,
+.subtitle {
+  display: inline-block;
+}
+
+.title {
+  @extend %h2;
+}
+
+.subtitle {
+  @extend %body2Regular;
+
+  margin-left: 2.4rem;
+  text-transform: capitalize;
+}
