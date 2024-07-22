@@ -1,5 +1,9 @@
 import styles from 'components/Container/Container.scss';
 
-export const Container = ({ children }) => {
-  return <div className={styles.container}>{children}</div>;
+export const Container = ({ children, maxWidth }) => {
+  return (
+    <div className={styles.container} {...(maxWidth ? { style: { maxWidth } } : {})}>
+      {children}
+    </div>
+  );
 };
