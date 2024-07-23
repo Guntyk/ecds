@@ -10,17 +10,13 @@ export const Calendar = () => (
         <h2 className={styles.title}>Calendar</h2>
         <p className={styles.subtitle}>Of competition</p>
       </div>
-      <ul className={styles.events}>
+      <div className={styles.events}>
         {mockedEvents.length > 0 ? (
-          mockedEvents.map((event) => (
-            <li>
-              <EventCard event={event} />
-            </li>
-          ))
+          mockedEvents.map((event) => <EventCard event={event} />)
         ) : (
           <p className={styles.text}>There is no events yet</p>
         )}
-      </ul>
+      </div>
     </section>
   </Container>
 );

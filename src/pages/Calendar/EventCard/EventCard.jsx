@@ -2,14 +2,18 @@ import { Button } from 'components/Button';
 import arrowRight from 'assets/icons/arrow-right-purple.svg';
 import calendarIcon from 'assets/icons/calendar.svg';
 import markerIcon from 'assets/icons/marker.svg';
-import styles from 'components/EventCard/EventCard.scss';
+import styles from 'pages/Calendar/EventCard/EventCard.scss';
 
 export const EventCard = ({ event: { type, title, description, organization, organizer, date, town, cover } }) => {
   const buttonIcon = { alt: 'arrow right', src: arrowRight, side: 'right' };
 
   return (
     <article className={styles.card}>
-      <img className={styles.cover} src={cover.src} alt={cover.alt} />
+      <img
+        src={cover?.src || 'https://placehold.co/282x390'}
+        alt={cover?.alt || 'cover placeholder'}
+        className={styles.cover}
+      />
       <section className={styles.info}>
         <span className={styles.type}>{type}</span>
         <h3 className={styles.title}>{title}</h3>

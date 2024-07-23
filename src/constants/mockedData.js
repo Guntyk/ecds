@@ -71,7 +71,6 @@ export const mockedEvents = [
     organizer: 'Name Surname',
     date: '2024-06-15',
     town: 'Tallinn, Estonia',
-    cover: { src: coverPlaceholder, alt: 'placeholder' },
   },
   {
     id: 2,
@@ -82,7 +81,6 @@ export const mockedEvents = [
     organizer: 'Name Surname',
     date: '2024-04-01',
     town: 'Kyiv, Ukraine',
-    cover: { src: coverPlaceholder, alt: 'placeholder' },
   },
   {
     id: 3,
@@ -94,6 +92,5 @@ export const mockedEvents = [
     organizer: 'Name Surname',
     date: '2024-05-29',
     town: 'Athens, Greece',
-    cover: { src: coverPlaceholder, alt: 'placeholder' },
   },
 ];
