@@ -7,7 +7,7 @@ import israelFlag from 'assets/icons/flags/israel.svg';
 import latviaFlag from 'assets/icons/flags/latvia.svg';
 import moldovaFlag from 'assets/icons/flags/moldova.svg';
 
-export const countriesData = [
+export const organizationsData = [
   {
     id: 1,
     flag: ukraineFlag,

@@ -1,8 +1,10 @@
 import cn from 'classnames';
 import { useState } from 'react';
-import styles from 'components/Dropdown/Country/Country.scss';
+import styles from 'components/Dropdown/Organization/Organization.scss';
 
-export const CountryDropdown = ({ country: { flag, name, organization, manager, website, email, phone } }) => {
+export const OrganizationDropdown = ({
+  organization: { flag, name, organization, manager, website, email, phone },
+}) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleDropdown = () => {

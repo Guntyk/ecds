@@ -1,0 +1,27 @@
+.block {
+  padding-block: 10rem 12rem;
+}
+
+.title {
+  @extend %h2;
+
+  text-transform: capitalize;
+}
+
+.subtitle {
+  @extend %body2Regular;
+
+  margin-block: 1.6rem 4.8rem;
+  text-transform: capitalize;
+}
+
+.organizationsList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $gapLarge;
+}
+
+.organization {
+  flex-grow: 1;
+  max-width: 38.4rem;
+}
