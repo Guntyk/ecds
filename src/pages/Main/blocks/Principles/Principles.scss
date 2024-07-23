@@ -1,0 +1,381 @@
+@mixin circle($bg, $height) {
+  background: $bg;
+  height: $height;
+}
+
+@mixin animation($name, $delay) {
+  animation: #{$name} 2s ease-in-out infinite;
+  animation-delay: $delay;
+}
+
+@mixin hover-anim($selector, $child, $anim, $height, $translate: null) {
+  &:hover #{$selector} #{$child} {
+    @include animation($anim, 0.5s);
+    height: $height;
+    @if $translate {
+      translate: $translate;
+    }
+  }
+}
+
+.block {
+  padding-block: 10rem 12rem;
+}
+
+.title {
+  @extend %h2;
+  margin-bottom: 2.4rem;
+}
+
+.principlesList {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  column-gap: 4.8rem;
+  row-gap: 2.4rem;
+  max-height: 58.5rem;
+  width: 100%;
+}
+
+.principle {
+  max-width: 56.7rem;
+  &:not(:nth-child(3)) {
+    margin-top: 6.4rem;
+  }
+
+  &Title {
+    @extend %h3;
+    font-weight: map-get($fontWeights, 'medium');
+  }
+}
+
+.circles {
+  display: flex;
+  gap: 0.8rem;
+  width: 7.6rem;
+  height: 2.4rem;
+  margin-bottom: 3.2rem;
+
+  .circle {
+    aspect-ratio: 1/1;
+    background: $primary2;
+    border-radius: 50%;
+    transition: 0.4s;
+  }
+
+  &.pink {
+    align-items: center;
+
+    .circle {
+      &:nth-child(1) {
+        background: #b7005d;
+        height: 2.4rem;
+      }
+      &:nth-child(2) {
+        background: #a00051;
+        height: 2rem;
+      }
+      &:nth-child(3) {
+        background: #890046;
+        height: 1.6rem;
+      }
+    }
+
+    &:hover .circle {
+      &:nth-child(1) {
+        animation: pink-child-1 2s ease-in-out infinite;
+        animation-delay: 0.5s;
+        height: 2rem;
+      }
+      &:nth-child(2) {
+        animation: pink-child-2 2s ease-in-out infinite;
+        animation-delay: 0.5s;
+        height: 1.6rem;
+      }
+      &:nth-child(3) {
+        animation: pink-child-3 2s ease-in-out infinite;
+        animation-delay: 0.5s;
+        height: 2rem;
+      }
+    }
+  }
+
+  &.blue {
+    .circle {
+      &:nth-child(1) {
+        background: #353a77;
+        height: 1.6rem;
+      }
+      &:nth-child(2) {
+        background: #2e3268;
+        height: 2.4rem;
+      }
+      &:nth-child(3) {
+        background: #282b59;
+        height: 2rem;
+      }
+    }
+
+    &:hover .circle {
+      &:nth-child(1) {
+        animation: blue-child-1 2s ease-in-out infinite;
+        animation-delay: 0.5s;
+        translate: 0 0.8rem;
+        background: #2e3268;
+      }
+      &:nth-child(2) {
+        animation: blue-child-2 2s ease-in-out infinite;
+        animation-delay: 0.5s;
+        translate: -0.8rem 0;
+        background: #353a77;
+        height: 1.6rem;
+      }
+      &:nth-child(3) {
+        animation: blue-child-3 2s ease-in-out infinite;
+        animation-delay: 0.5s;
+        height: 2.4rem;
+      }
+    }
+  }
+
+  &.lavender {
+    align-items: end;
+
+    .circle {
+      &:nth-child(1) {
+        background: #686daa;
+        height: 1.6rem;
+      }
+      &:nth-child(2) {
+        background: #7b7fb5;
+        height: 2rem;
+      }
+      &:nth-child(3) {
+        background: #8e91bf;
+        height: 2.4rem;
+        z-index: -1;
+      }
+    }
+
+    &:hover .circle {
+      &:nth-child(1) {
+        animation: lavender-child-1 2s ease-in-out infinite;
+        animation-delay: 0.5s;
+        translate: 3.8rem -0.4rem;
+      }
+      &:nth-child(2) {
+        animation: lavender-child-2 2s ease-in-out infinite;
+        animation-delay: 0.5s;
+        translate: -2.4rem -0.15rem;
+        background: #8e91bf;
+      }
+      &:nth-child(3) {
+        animation: lavender-child-3 2s ease-in-out infinite;
+        animation-delay: 0.5s;
+        background: #7b7fb5;
+      }
+    }
+  }
+
+  &.green {
+    align-items: center;
+
+    .circle {
+      &:nth-child(1) {
+        background: #789a1a;
+        height: 2rem;
+      }
+      &:nth-child(2) {
+        background: #698717;
+        height: 1.6rem;
+      }
+      &:nth-child(3) {
+        background: #5a7414;
+        height: 2.4rem;
+      }
+    }
+
+    &:hover .circle {
+      &:nth-child(1) {
+        animation: green-child-1 2s ease-in-out infinite;
+        animation-delay: 0.5s;
+        background: #698717;
+        translate: 0 -0.2rem;
+      }
+      &:nth-child(2) {
+        animation: green-child-2 2s ease-in-out infinite;
+        animation-delay: 0.5s;
+        translate: 2.4rem 0;
+        background: #789a1a;
+        height: 2.4rem;
+      }
+      &:nth-child(3) {
+        animation: green-child-3 2s ease-in-out infinite;
+        animation-delay: 0.5s;
+        translate: -4rem 0.4rem;
+        height: 1.6rem;
+      }
+    }
+  }
+}
+
+.text {
+  @extend %body2Regular;
+
+  &Main {
+    margin-block: 1.6rem 0.8rem;
+  }
+}
+
+@keyframes pink-child-1 {
+  0%,
+  100% {
+    background: #b7005d;
+    height: 2rem;
+  }
+  50% {
+    background: #890046;
+    height: 1.6rem;
+  }
+}
+
+@keyframes pink-child-2 {
+  0%,
+  100% {
+    height: 1.6rem;
+  }
+  50% {
+    height: 0.8rem;
+    margin: 0 0.6rem;
+  }
+}
+
+@keyframes pink-child-3 {
+  0%,
+  100% {
+    background: #890046;
+    height: 2rem;
+  }
+  50% {
+    background: #b7005d;
+    height: 2.4rem;
+  }
+}
+
+@keyframes blue-child-1 {
+  0%,
+  100% {
+    translate: 0 0.8rem;
+    height: 1.6rem;
+  }
+  50% {
+    translate: 0.6rem 0;
+    height: 2.4rem;
+  }
+}
+
+@keyframes blue-child-2 {
+  0%,
+  100% {
+    translate: -0.8rem 0;
+    background: #353a77;
+    height: 1.6rem;
+  }
+  50% {
+    translate: 0.2rem 1.6rem;
+    background: #282b59;
+    height: 0.8rem;
+  }
+}
+
+@keyframes blue-child-3 {
+  0%,
+  100% {
+    background: #282b59;
+    height: 2.4rem;
+  }
+  50% {
+    translate: 0 0.8rem;
+    background: #353a77;
+    height: 1.6rem;
+  }
+}
+
+@keyframes lavender-child-1 {
+  0%,
+  100% {
+    translate: 3.8rem -0.4rem;
+    height: 1.6rem;
+  }
+  50% {
+    translate: 0 -0.4rem;
+    height: 2rem;
+  }
+  100% {
+    z-index: 1;
+  }
+}
+
+@keyframes lavender-child-2 {
+  0%,
+  100% {
+    translate: -2.4rem -0.15rem;
+    background: #8e91bf;
+    height: 2rem;
+  }
+  50% {
+    translate: 0 0;
+    background: #7b7fb5;
+    height: 2.4rem;
+  }
+}
+
+@keyframes lavender-child-3 {
+  0%,
+  100% {
+    background: #7b7fb5;
+    height: 2.4rem;
+  }
+  50% {
+    translate: 0 -0.8rem;
+    background: #8e91bf;
+    height: 1.6rem;
+  }
+}
+
+@keyframes green-child-1 {
+  0%,
+  100% {
+    background: #698717;
+    translate: 0 -0.2rem;
+  }
+  50% {
+    background: #5a7414;
+    translate: 0 0;
+    height: 2.4rem;
+  }
+}
+
+@keyframes green-child-2 {
+  0%,
+  100% {
+    translate: 2.4rem 0;
+    height: 2.4rem;
+  }
+  50% {
+    translate: 2.4rem 0.2rem;
+    height: 2rem;
+  }
+}
+
+@keyframes green-child-3 {
+  0%,
+  100% {
+    translate: -4rem 0.4rem;
+    background: #5a7414;
+  }
+  50% {
+    translate: -2rem -0.4rem;
+    background: #698717;
+  }
+}
