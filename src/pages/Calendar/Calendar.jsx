@@ -1,6 +1,6 @@
 import { mockedEvents } from 'constants/mockedData';
 import { Container } from 'components/Container';
-import EventCard from 'components/EventCard/EventCard';
+import { EventCard } from 'pages/Calendar/EventCard';
 import styles from 'pages/Calendar/Calendar.scss';
 
 export const Calendar = () => (

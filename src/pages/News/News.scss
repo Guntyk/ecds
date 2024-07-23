@@ -1,0 +1,21 @@
+.news {
+  padding-block: 12.8rem 12rem;
+  min-height: 80vh;
+}
+
+.title {
+  @extend %h2;
+
+  margin-bottom: 4rem;
+  text-transform: capitalize;
+}
+
+.text {
+  @extend %body3Regular;
+}
+
+.newsList {
+  display: flex;
+  flex-direction: column;
+  gap: $gapLarge;
+}

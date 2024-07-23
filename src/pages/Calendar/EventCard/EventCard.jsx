@@ -4,7 +4,7 @@ import calendarIcon from 'assets/icons/calendar.svg';
 import markerIcon from 'assets/icons/marker.svg';
 import styles from 'components/EventCard/EventCard.scss';
 
-export default function EventCard({ event: { type, title, description, organization, organizer, date, town, cover } }) {
+export const EventCard = ({ event: { type, title, description, organization, organizer, date, town, cover } }) => {
   const buttonIcon = { alt: 'arrow right', src: arrowRight, side: 'right' };
 
   return (
@@ -40,4 +40,4 @@ export default function EventCard({ event: { type, title, description, organizat
       </section>
     </article>
   );
-}
+};
