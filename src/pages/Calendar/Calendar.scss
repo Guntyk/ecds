@@ -1,0 +1,34 @@
+.calendar {
+  padding-block: 12.8rem 12rem;
+  min-height: 80vh;
+}
+
+.titleWrapper {
+  margin-bottom: 4rem;
+}
+
+.title,
+.subtitle {
+  display: inline-block;
+}
+
+.title {
+  @extend %h2;
+}
+
+.subtitle {
+  @extend %body3Regular;
+
+  margin-left: 1.6rem;
+  text-transform: uppercase;
+}
+
+.text {
+  @extend %body3Regular;
+}
+
+.events {
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
+}

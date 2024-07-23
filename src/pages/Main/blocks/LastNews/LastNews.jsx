@@ -2,7 +2,7 @@ import { Scrollbar, Navigation } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperCore from 'swiper';
 import { convertDateFormat } from 'helpers/convertDate';
-import { mockedNews } from 'constants/mockedNews';
+import { mockedNews } from 'constants/mockedData';
 import { Container } from 'components/Container';
 import { Button } from 'components/Button';
 import coverPlaceholder from 'assets/images/cover-placeholder.jpg';
