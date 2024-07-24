@@ -1,10 +1,11 @@
 import { Switch, Route, useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
 import { pathnames } from 'constants/pathnames';
-import { NotFound } from 'pages/NotFound';
 import { Header } from 'components/Header';
 import { Footer } from 'components/Footer';
+import { NewsInfo } from 'pages/News/NewsInfo';
 import { Calendar } from 'pages/Calendar';
+import { NotFound } from 'pages/NotFound';
 import { News } from 'pages/News';
 import { Main } from 'pages/Main';
 
@@ -28,6 +29,9 @@ export default function App() {
         </Route>
         <Route path={newsPage} exact>
           <News />
+        </Route>
+        <Route path={`${newsPage}/:id`} exact>
+          <NewsInfo />
         </Route>
         <Route>
           <NotFound />

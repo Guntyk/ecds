@@ -9,7 +9,7 @@ export const News = () => (
       <h2 className={styles.title}>All news</h2>
       <div className={styles.newsList}>
         {mockedNews.length > 0 ? (
-          mockedNews.map((news) => <NewsCard news={news} />)
+          mockedNews.map((news) => <NewsCard news={news} key={news.id} />)
         ) : (
           <p className={styles.text}>There is no news yet</p>
         )}

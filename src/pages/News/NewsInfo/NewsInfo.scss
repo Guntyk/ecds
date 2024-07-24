@@ -1,0 +1,54 @@
+.block {
+  padding-block: 12.8rem 12rem;
+  min-height: 80vh;
+}
+
+.navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 4.8rem;
+}
+
+.news {
+  display: flex;
+  justify-content: space-between;
+  gap: 4.8rem;
+}
+
+.media {
+  display: flex;
+  flex-direction: column;
+  gap: $gapLarge;
+  min-width: 48.6rem;
+
+  .image {
+    border-radius: 1.4rem;
+  }
+}
+
+.date {
+  @extend %body4Regular;
+
+  text-transform: uppercase;
+  line-height: 1.6rem;
+}
+
+.title {
+  @extend %h2;
+
+  margin: 1.6rem 0;
+  font-size: 6.4rem;
+}
+
+.description {
+  @extend %body1Regular;
+
+  letter-spacing: 0;
+}
+
+.text {
+  @extend %body2Regular;
+
+  margin-top: 8rem;
+}

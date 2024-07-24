@@ -17,7 +17,7 @@ export const Menu = ({ isOpen, setIsOpen }) => {
       <ul className={styles.links}>
         {menuLinks.map(({ id, name, link }) => (
           <li key={id}>
-            <NavLink className={styles.link} to={link}>
+            <NavLink className={styles.link} to={link} onClick={() => setIsOpen(false)}>
               {name}
               <img src={arrow} alt='arrow right' />
             </NavLink>

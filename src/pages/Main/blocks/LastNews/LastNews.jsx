@@ -1,5 +1,6 @@
 import { Scrollbar, Navigation } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { useHistory } from 'react-router-dom';
 import SwiperCore from 'swiper';
 import { convertDateFormat } from 'helpers/convertDate';
 import { mockedNews } from 'constants/mockedData';
@@ -18,6 +19,7 @@ SwiperCore.use([Navigation, Scrollbar]);
 
 export const LastNews = () => {
   const { newsPage } = pathnames;
+  const { push } = useHistory();
 
   return (
     <section className={styles.block}>
@@ -45,7 +47,7 @@ export const LastNews = () => {
             navigation={{ nextEl: '#btnNext', prevEl: '#btnPrev' }}
           >
             {mockedNews.map(({ id, title, publicationDate, cover }) => (
-              <SwiperSlide className={styles.newsCard} key={id}>
+              <SwiperSlide className={styles.newsCard} onClick={() => push(`${newsPage}/${id}`)} key={id}>
                 <img
                   className={styles.cover}
                   src={cover?.src || 'https://placehold.co/282'}
