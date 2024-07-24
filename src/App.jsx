@@ -6,11 +6,12 @@ import { Footer } from 'components/Footer';
 import { NewsInfo } from 'pages/News/NewsInfo';
 import { Calendar } from 'pages/Calendar';
 import { NotFound } from 'pages/NotFound';
+import { AboutUs } from 'pages/AboutUs';
 import { News } from 'pages/News';
 import { Main } from 'pages/Main';
 
 export default function App() {
-  const { mainPage, calendarPage, newsPage } = pathnames;
+  const { mainPage, calendarPage, newsPage, managementPage, documentsPage, contactsPage, logosPage } = pathnames;
   const { pathname } = useLocation();
 
   useEffect(() => {
@@ -33,6 +34,11 @@ export default function App() {
         <Route path={`${newsPage}/:id`} exact>
           <NewsInfo />
         </Route>
+        {[managementPage, documentsPage, contactsPage, logosPage].map((path, index) => (
+          <Route path={path} key={index} exact>
+            <AboutUs />
+          </Route>
+        ))}
         <Route>
           <NotFound />
         </Route>

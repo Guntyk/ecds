@@ -1,12 +1,14 @@
+import { Link, useLocation } from 'react-router-dom';
 import cn from 'classnames';
-import { Link } from 'react-router-dom';
 import { pathnames } from 'constants/pathnames';
 import { socials } from 'constants/socials';
+import { ContactUs } from 'components/Footer/ContactUs';
 import { Container } from 'components/Container';
 import logo from 'assets/icons/logos/ecds-extended.svg';
 import styles from 'components/Footer/Footer.scss';
 
 export const Footer = () => {
+  const { pathname } = useLocation();
   const {
     mainPage,
     calendarPage,
@@ -36,55 +38,58 @@ export const Footer = () => {
   ];
 
   return (
-    <footer className={styles.footer}>
-      <Container>
-        <div className={styles.wrapper}>
-          <div className={styles.navigation}>
-            <div className={cn(styles.navigationSection, styles.menu)}>
-              <span className={styles.sectionTitle}>Menu</span>
-              <ul className={styles.navigationLinks}>
-                {menuLinks.map(({ id, title, link }) => (
-                  <li className={styles.item} key={id}>
-                    <Link to={link} className={styles.itemLink}>
-                      {title}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
+    <>
+      {(pathname === mainPage || pathname === contactsPage) && <ContactUs />}
+      <footer className={styles.footer}>
+        <Container>
+          <div className={styles.wrapper}>
+            <div className={styles.navigation}>
+              <div className={cn(styles.navigationSection, styles.menu)}>
+                <span className={styles.sectionTitle}>Menu</span>
+                <ul className={styles.navigationLinks}>
+                  {menuLinks.map(({ id, title, link }) => (
+                    <li className={styles.item} key={id}>
+                      <Link to={link} className={styles.itemLink}>
+                        {title}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div className={cn(styles.navigationSection, styles.aboutUs)}>
+                <span className={styles.sectionTitle}>About us</span>
+                <ul className={styles.navigationLinks}>
+                  {aboutUsLinks.map(({ id, title, link }) => (
+                    <li className={styles.item} key={id}>
+                      <Link to={link} className={styles.itemLink}>
+                        {title}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
-            <div className={cn(styles.navigationSection, styles.aboutUs)}>
-              <span className={styles.sectionTitle}>About us</span>
-              <ul className={styles.navigationLinks}>
-                {aboutUsLinks.map(({ id, title, link }) => (
-                  <li className={styles.item} key={id}>
-                    <Link to={link} className={styles.itemLink}>
-                      {title}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
+            <div className={styles.creditsWrapper}>
+              <Link to={mainPage}>
+                <img src={logo} alt='ecds logo' />
+              </Link>
+              <div className={styles.socialsWrapper}>
+                Follow us on
+                <ul className={styles.socials}>
+                  {socials.map(({ id, name, link, icon }) => (
+                    <li key={id}>
+                      <a href={link} target='_blank' rel='noreferrer noopener'>
+                        <img src={icon} alt={name} />
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <p className={styles.credits}>© 2024 European Confederation of Dance Sports</p>
             </div>
           </div>
-          <div className={styles.creditsWrapper}>
-            <Link to={mainPage}>
-              <img src={logo} alt='ecds logo' />
-            </Link>
-            <div className={styles.socialsWrapper}>
-              Follow us on
-              <ul className={styles.socials}>
-                {socials.map(({ id, name, link, icon }) => (
-                  <li key={id}>
-                    <a href={link} target='_blank' rel='noreferrer noopener'>
-                      <img src={icon} alt={name} />
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <p className={styles.credits}>© 2024 European Confederation of Dance Sports</p>
-          </div>
-        </div>
-      </Container>
-    </footer>
+        </Container>
+      </footer>
+    </>
   );
 };

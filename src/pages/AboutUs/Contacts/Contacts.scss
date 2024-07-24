@@ -1,0 +1,82 @@
+.card {
+  padding: 3.2rem;
+  background: $text2;
+  border: 0.05rem solid $background2;
+  border-radius: 1.4rem;
+}
+
+.title {
+  @extend %h4;
+
+  font-size: 4rem;
+  font-weight: map-get($fontWeights, 'medium');
+  margin-bottom: 0.8rem;
+}
+
+.subtitle {
+  @extend %body4Light;
+}
+
+.line {
+  margin: 3.2rem 0;
+  height: 0.15rem;
+  background: $background2;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: $gapLarge;
+  width: min-content;
+  max-height: 28rem;
+
+  &Section {
+    display: flex;
+    flex-direction: column;
+    gap: $gapExtraSmall;
+
+    &:nth-child(-n + 2) {
+      width: 25rem;
+    }
+  }
+}
+
+.sectionTitle {
+  @extend %body2Light;
+
+  color: $primary2;
+  line-height: 2.4rem;
+  margin-bottom: 0.8rem;
+}
+
+.address,
+.contact,
+.bankDetails,
+.email {
+  @extend %body4Medium;
+}
+
+.contact,
+.email {
+  color: $primary1;
+}
+
+.bankDetails {
+  table {
+    border-collapse: separate;
+    border-spacing: 1.6rem 0.8rem;
+    translate: -1.6rem -0.8rem;
+  }
+
+  td:first-child {
+    white-space: nowrap;
+    font-weight: map-get($fontWeights, 'light');
+    letter-spacing: 0;
+  }
+}
+
+.email {
+  margin-top: -1.6rem;
+}

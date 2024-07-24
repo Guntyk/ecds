@@ -2,12 +2,12 @@ import { useState } from 'react';
 import { Container } from 'components/Container';
 import { Button } from 'components/Button';
 import { Input } from 'components/Input';
-import styles from 'pages/Main/blocks/ContactUs/ContactUs.scss';
+import styles from 'components/Footer/ContactUs/ContactUs.scss';
 
 export const ContactUs = () => {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
   const [comment, setComment] = useState('');
+  const [email, setEmail] = useState('');
+  const [name, setName] = useState('');
 
   return (
     <section className={styles.block}>

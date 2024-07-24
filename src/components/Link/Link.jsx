@@ -3,11 +3,13 @@ import cn from 'classnames';
 import arrowIcon from 'assets/icons/arrow-right-purple.svg';
 import styles from 'components/Link/Link.scss';
 
-export const Link = ({ className, text, path, external, arrowRight, arrowLeft }) => {
+export const Link = ({ className, text, path, external, arrowRight, arrowLeft, active, buttonStyle }) => {
   const linkClass = cn(styles.link, className, {
     [styles.external]: external,
     [styles.toLeft]: arrowLeft,
     [styles.toRight]: arrowRight,
+    [styles.button]: buttonStyle,
+    [styles.active]: active,
   });
 
   return external ? (

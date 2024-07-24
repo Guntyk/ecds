@@ -1,0 +1,24 @@
+.page {
+  padding-block: 12.8rem 6.4rem;
+  min-height: 73.5rem;
+
+  &Content {
+    display: flex;
+    gap: $gapLarge;
+  }
+}
+
+.navigation ul {
+  display: flex;
+  flex-direction: column;
+  gap: $gapMedium;
+}
+
+.title {
+  @extend %h2;
+  margin-bottom: 4rem;
+}
+
+.content {
+  flex-grow: 1;
+}

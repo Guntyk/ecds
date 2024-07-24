@@ -31,7 +31,7 @@
     }
   }
 
-  &:hover:not(.external) {
+  &:hover:not(.external, .button) {
     @extend %buttonActive;
     color: $primary3;
     padding: 0 0.6rem;
@@ -45,6 +45,32 @@
       .arrow {
         translate: 150% -50%;
       }
+    }
+  }
+
+  &.button {
+    @extend %body2Light;
+
+    padding: 0.8rem 0;
+    width: 28.2rem;
+    max-height: 4rem;
+    color: $text1;
+    line-height: 2.4rem;
+    background: $background2;
+    border-radius: $borderRadius;
+    border: 0.05rem solid $text2;
+    letter-spacing: 0;
+    text-transform: none;
+    text-align: center;
+
+    &:hover {
+      font-weight: map-get($fontWeights, 'regular');
+      border: 0.1rem solid $primary2;
+    }
+
+    &.active {
+      font-weight: map-get($fontWeights, 'regular');
+      background: $secondary4;
     }
   }
 }
