@@ -32,6 +32,7 @@ export const Hero = () => {
           </div>
           <div className={styles.sliderWrapper}>
             <Swiper
+              className={styles.bannersSlider}
               loop={true}
               autoplay={{
                 delay: 3000,

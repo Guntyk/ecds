@@ -1,0 +1,70 @@
+.menu {
+  position: absolute;
+  top: 2.4rem;
+  right: 0;
+  padding: 1.6rem 1.6rem 4rem 4rem;
+  width: 44rem;
+  opacity: 0;
+  user-select: none;
+  pointer-events: none;
+  border-radius: 1.4rem;
+  border: 0.1rem solid $text2;
+  background: $background2;
+  transition: 0.5s;
+  z-index: 1;
+
+  &Open {
+    pointer-events: all;
+    user-select: unset;
+    opacity: 1;
+  }
+}
+
+.header {
+  @extend %body3Medium;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: $primary1;
+  line-height: 2.2rem;
+  margin-bottom: 4.4rem;
+}
+
+.links {
+  @extend %h3;
+
+  display: flex;
+  flex-direction: column;
+  gap: 3.2rem;
+  padding-right: 2.4rem;
+  color: $text1;
+  font-weight: map-get($fontWeights, 'medium');
+}
+
+.link {
+  display: block;
+  position: relative;
+  width: 100%;
+  transition: 0.3s;
+
+  img {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    opacity: 0;
+    user-select: none;
+    pointer-events: none;
+    translate: -200% -50%;
+    transition: 0.3s;
+  }
+
+  &:hover {
+    color: $primary1;
+
+    img {
+      opacity: 1;
+      translate: 0 -50%;
+    }
+  }
+}

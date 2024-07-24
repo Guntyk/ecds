@@ -1,12 +1,15 @@
-import cn from 'classnames';
 import { Link, NavLink, useLocation } from 'react-router-dom';
+import { useState } from 'react';
+import cn from 'classnames';
 import { pathnames } from 'constants/pathnames';
 import { Container } from 'components/Container';
 import { Button } from 'components/Button';
+import { Menu } from 'components/Menu';
 import logo from 'assets/icons/logos/ecds.svg';
 import styles from 'components/Header/Header.scss';
 
 export const Header = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { pathname } = useLocation();
 
   const { mainPage, managementPage, documentsPage, contactsPage, logosPage } = pathnames;
@@ -34,10 +37,16 @@ export const Header = () => {
               </NavLink>
             </li>
             <li>
-              <Button className={styles.navigationLink} buttonContent='Menu' headerStyle />
+              <Button
+                className={styles.navigationLink}
+                buttonContent='Menu'
+                onClick={() => setIsMenuOpen(true)}
+                headerStyle
+              />
             </li>
           </ul>
         </nav>
+        <Menu isOpen={isMenuOpen} setIsOpen={setIsMenuOpen} />
       </header>
     </Container>
   );
