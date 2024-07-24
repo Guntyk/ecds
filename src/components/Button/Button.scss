@@ -61,21 +61,6 @@
       border: 0.175rem solid $primary2;
     }
   }
-
-  &Text {
-    color: $primary1;
-    transition: 0.4s;
-
-    &:hover {
-      @extend %buttonActive;
-      color: $primary3;
-      translate: 17% 0;
-
-      .icon {
-        transform: translateX(150%);
-      }
-    }
-  }
 }
 
 .icon {

@@ -1,5 +1,5 @@
 .block {
-  padding-block: 10rem 8.8rem;
+  padding-block: 10rem 14.4rem;
   background: $background2;
 }
 
@@ -89,6 +89,7 @@
 }
 
 .moreBtn {
+  position: absolute;
+  right: 0;
   margin-top: 3.2rem;
-  margin-left: auto;
 }

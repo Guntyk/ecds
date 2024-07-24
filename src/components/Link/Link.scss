@@ -1,0 +1,50 @@
+.link {
+  @extend %button;
+
+  display: inline-block;
+  position: relative;
+  color: $primary1;
+  overflow: hidden;
+  transition: 0.3s;
+
+  .arrow {
+    position: absolute;
+    top: 50%;
+    transition: 0.3s;
+    translate: 0 -50%;
+  }
+
+  &.toLeft {
+    padding-left: 2.3rem;
+
+    .arrow {
+      left: 0;
+      rotate: 180deg;
+    }
+  }
+
+  &.toRight {
+    padding-right: 2.3rem;
+
+    .arrow {
+      right: 0;
+    }
+  }
+
+  &:hover:not(.external) {
+    @extend %buttonActive;
+    color: $primary3;
+    padding: 0 0.6rem;
+
+    &.toLeft {
+      .arrow {
+        translate: -150% -50%;
+      }
+    }
+    &.toRight {
+      .arrow {
+        translate: 150% -50%;
+      }
+    }
+  }
+}

@@ -3,10 +3,10 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperCore from 'swiper';
 import { convertDateFormat } from 'helpers/convertDate';
 import { mockedNews } from 'constants/mockedData';
+import { pathnames } from 'constants/pathnames';
 import { Container } from 'components/Container';
 import { Button } from 'components/Button';
-import coverPlaceholder from 'assets/images/cover-placeholder.jpg';
-import arrowRightPurple from 'assets/icons/arrow-right-purple.svg';
+import { Link } from 'components/Link';
 import arrowRight from 'assets/icons/arrow-right-background3_2.svg';
 import arrowLeft from 'assets/icons/arrow-left-background3_2.svg';
 import 'swiper/css/navigation';
@@ -17,6 +17,8 @@ import styles from 'pages/Main/blocks/LastNews/LastNews.scss';
 SwiperCore.use([Navigation, Scrollbar]);
 
 export const LastNews = () => {
+  const { newsPage } = pathnames;
+
   return (
     <section className={styles.block}>
       <Container>
@@ -56,12 +58,7 @@ export const LastNews = () => {
             <div id='scrollbar' className={styles.scrollbar} />
           </Swiper>
         </div>
-        <Button
-          className={styles.moreBtn}
-          buttonContent='See all news'
-          iconData={{ alt: 'arrow right', src: arrowRightPurple, side: 'right' }}
-          textStyle
-        />
+        <Link className={styles.moreBtn} text='See all news' path={newsPage} arrowRight />
       </Container>
     </section>
   );
