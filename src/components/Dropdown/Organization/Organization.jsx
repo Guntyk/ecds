@@ -24,32 +24,34 @@ export const OrganizationDropdown = ({
       <div className={cn(styles.content, { [styles.open]: isOpen })}>
         <table className={styles.infoTable}>
           <caption>{organization}</caption>
-          <tr>
-            <td>manager</td>
-            <td>{manager}</td>
-          </tr>
-          {website && (
+          <tbody>
             <tr>
-              <td>website</td>
+              <td>manager</td>
+              <td>{manager}</td>
+            </tr>
+            {website && (
+              <tr>
+                <td>website</td>
+                <td>
+                  <a href={`https://${website}`} rel='noopener noreferrer' target='_blank'>
+                    {website}
+                  </a>
+                </td>
+              </tr>
+            )}
+            <tr>
+              <td>e-mail</td>
               <td>
-                <a href={`https://${website}`} rel='noopener noreferrer' target='_blank'>
-                  {website}
-                </a>
+                <a href={`mailto: ${email}`}>{email}</a>
               </td>
             </tr>
-          )}
-          <tr>
-            <td>e-mail</td>
-            <td>
-              <a href={`mailto: ${email}`}>{email}</a>
-            </td>
-          </tr>
-          <tr>
-            <td>phone</td>
-            <td>
-              <a href={`tel:${phone}`}>{phone}</a>
-            </td>
-          </tr>
+            <tr>
+              <td>phone</td>
+              <td>
+                <a href={`tel:${phone}`}>{phone}</a>
+              </td>
+            </tr>
+          </tbody>
         </table>
       </div>
     </div>

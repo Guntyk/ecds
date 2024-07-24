@@ -10,7 +10,7 @@ export const Organizations = () => (
       <p className={styles.subtitle}>that are part of the European Confederation of Dance Sports</p>
       <ul className={styles.organizationsList}>
         {organizationsData.map((organization) => (
-          <li className={styles.organization}>
+          <li className={styles.organization} key={organization.id}>
             <OrganizationDropdown organization={organization} />
           </li>
         ))}

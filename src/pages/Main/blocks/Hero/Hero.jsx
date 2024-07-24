@@ -41,8 +41,8 @@ export const Hero = () => {
               pagination={pagination}
               navigation={{ nextEl: '#next', prevEl: '#prev' }}
             >
-              {mockedAds.map((Component) => (
-                <SwiperSlide>
+              {mockedAds.map((Component, index) => (
+                <SwiperSlide key={index}>
                   <Component />
                 </SwiperSlide>
               ))}

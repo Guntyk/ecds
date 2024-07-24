@@ -9,8 +9,8 @@ export const Partners = () => {
       <section className={styles.block}>
         <h2 className={styles.title}>Our Sponsors & Partners</h2>
         <ul className={styles.partners}>
-          {Array.from({ length: 8 }).map(() => (
-            <li className={styles.partner}>
+          {Array.from({ length: 8 }).map((_, index) => (
+            <li className={styles.partner} key={index}>
               <img src={ddb} alt='ddb platform' />
               <a className={styles.moreBtn} href='https://google.com' target='_blank'>
                 More about

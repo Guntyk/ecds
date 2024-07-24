@@ -46,7 +46,7 @@ export const LastNews = () => {
               <SwiperSlide className={styles.newsCard} key={id}>
                 <img
                   className={styles.cover}
-                  src={cover?.src || coverPlaceholder}
+                  src={cover?.src || 'https://placehold.co/282'}
                   alt={cover?.alt || 'cover placeholder'}
                 />
                 <p className={styles.publicationDate}>{convertDateFormat(publicationDate)}</p>
