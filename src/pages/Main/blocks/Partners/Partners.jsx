@@ -8,7 +8,7 @@ export const Partners = () => {
   return (
     <Container>
       <section className={styles.block}>
-        <h2 className={styles.title}>Our Sponsors & Partners</h2>
+        <h2 className={styles.title}>Our sponsors & partners</h2>
         <ul className={styles.partners}>
           {Array.from({ length: 8 }).map((_, index) => (
             <li className={styles.partner} key={index}>

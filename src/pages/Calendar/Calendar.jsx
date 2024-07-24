@@ -12,7 +12,7 @@ export const Calendar = () => (
       </div>
       <div className={styles.events}>
         {mockedEvents.length > 0 ? (
-          mockedEvents.map((event) => <EventCard event={event} />)
+          mockedEvents.map((event) => <EventCard event={event} key={event.id} />)
         ) : (
           <p className={styles.text}>There is no events yet</p>
         )}

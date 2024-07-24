@@ -16,14 +16,16 @@ export const EventCard = ({ event: { id, type, title, description, organization,
       <h3 className={styles.title}>{title}</h3>
       <p className={styles.description}>{description}</p>
       <table className={styles.organizationInfo}>
-        <tr>
-          <td>Organization</td>
-          <td>{organization}</td>
-        </tr>
-        <tr>
-          <td>Organizer</td>
-          <td>{organizer}</td>
-        </tr>
+        <tbody>
+          <tr>
+            <td>Organization</td>
+            <td>{organization}</td>
+          </tr>
+          <tr>
+            <td>Organizer</td>
+            <td>{organizer}</td>
+          </tr>
+        </tbody>
       </table>
       <div className={styles.wrapper}>
         <div className={styles.additionalInfo}>

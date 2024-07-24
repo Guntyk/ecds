@@ -35,7 +35,7 @@ export const Platform = () => {
             </p>
             <div className={styles.title}>
               <img src={arrowRight} alt='white arrow to the right' />
-              <h3 className={styles.h3}>Already Joined</h3>
+              <h3 className={styles.h3}>Already joined</h3>
             </div>
           </div>
         </Container>

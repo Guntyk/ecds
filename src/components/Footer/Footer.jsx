@@ -37,6 +37,8 @@ export const Footer = () => {
     { id: 4, title: 'Logos', link: logosPage },
   ];
 
+  const currentYear = new Date().getFullYear();
+
   return (
     <>
       {(pathname === mainPage || pathname === contactsPage) && <ContactUs />}
@@ -85,7 +87,7 @@ export const Footer = () => {
                   ))}
                 </ul>
               </div>
-              <p className={styles.credits}>© 2024 European Confederation of Dance Sports</p>
+              <p className={styles.credits}>© {currentYear} European Confederation of Dance Sports</p>
             </div>
           </div>
         </Container>

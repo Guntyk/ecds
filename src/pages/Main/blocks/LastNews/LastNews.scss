@@ -5,6 +5,8 @@
 
 .title {
   @extend %h2;
+
+  text-transform: capitalize;
 }
 
 .navigationWrapper {
@@ -72,6 +74,7 @@
   max-width: 23.5rem;
   height: 8.8rem;
   line-height: 2.4rem;
+  text-transform: capitalize;
   transition: 0.4s;
 }
 
