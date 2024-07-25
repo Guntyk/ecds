@@ -4,6 +4,7 @@ import SwiperCore from 'swiper';
 import { mockedAds } from 'constants/mockedAds';
 import { Container } from 'components/Container';
 import { Button } from 'components/Button';
+import { Arrow } from 'components/Arrow';
 import 'swiper/css/effect-fade';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
@@ -57,14 +58,5 @@ export const Hero = () => {
         </div>
       </Container>
     </section>
-  );
-};
-
-const Arrow = ({ id }) => {
-  return (
-    <div id={id} className={styles.arrow}>
-      <span />
-      <span />
-    </div>
   );
 };

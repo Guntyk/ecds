@@ -1,5 +1,6 @@
-import cn from 'classnames';
 import { useState } from 'react';
+import cn from 'classnames';
+import { Arrow } from 'components/Arrow';
 import styles from 'components/Dropdown/Organization/Organization.scss';
 
 export const OrganizationDropdown = ({
@@ -16,10 +17,7 @@ export const OrganizationDropdown = ({
       <div className={styles.header} onClick={toggleDropdown}>
         <img src={flag} alt={name} className={styles.flagIcon} />
         <span className={styles.name}>{name}</span>
-        <div className={cn(styles.arrowIcon, { [styles.open]: isOpen })}>
-          <span className={styles.arrow} />
-          <span className={styles.arrow} />
-        </div>
+        <Arrow className={styles.dropdownArrow} isOpen={isOpen} expandStyle />
       </div>
       <div className={cn(styles.content, { [styles.open]: isOpen })}>
         <table className={styles.infoTable}>
