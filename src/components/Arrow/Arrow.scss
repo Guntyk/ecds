@@ -82,3 +82,52 @@
     }
   }
 }
+
+.arrowWrapper.logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  height: 3.2rem;
+  width: 3.2rem;
+  transition: 0s;
+
+  .arrow {
+    position: absolute;
+    width: 1.8rem;
+    height: 1rem;
+    mask: url(assets/icons/angle-down-purple.svg) no-repeat center;
+    background: $primary1;
+    transition: 0.4s;
+  }
+
+  &:hover .arrow {
+    background: $primary2;
+    translate: 0 calc($gapExtraSmall / 2);
+    &:last-child {
+      translate: 0 calc($gapExtraSmall / 2 * -1);
+    }
+  }
+
+  &.open {
+    rotate: 180deg;
+
+    .arrow {
+      translate: calc($gapExtraSmall / 2) 0;
+      rotate: 90deg;
+      &:last-child {
+        translate: calc($gapExtraSmall / 2 * -1) 0;
+        rotate: -90deg;
+      }
+    }
+
+    &:hover .arrow {
+      translate: 0 calc($gapExtraSmall / 2);
+      rotate: 0deg;
+      &:last-child {
+        translate: 0 calc($gapExtraSmall / 2 * -1);
+        rotate: 0deg;
+      }
+    }
+  }
+}

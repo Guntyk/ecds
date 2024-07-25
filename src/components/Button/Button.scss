@@ -21,31 +21,6 @@
     }
   }
 
-  //! &Wide {
-  //   width: 28.2rem;
-  //   height: 4rem;
-  //   padding: 0.8rem 0;
-  //   color: $text1;
-  //   font-size: 2rem;
-  //   font-weight: map-get($fontWeights, 'light');
-  //   border: 0.05rem solid $text2;
-  //   background: $background2;
-  //   transition: 0.1s;
-
-  //   &:hover,
-  //   &:focus {
-  //     font-weight: map-get($fontWeights, 'regular');
-  //     border: 0.1rem solid $primary2;
-  //   }
-
-  //   &.active {
-  //     font-weight: map-get($fontWeights, 'regular');
-  //     pointer-events: none;
-  //     border: none;
-  //     background: $secondary4;
-  //   }
-  // }
-
   &Light {
     padding: 0.8rem 1.6rem;
     color: $background3_2;
@@ -61,8 +36,4 @@
       border: 0.175rem solid $primary2;
     }
   }
-}
-
-.icon {
-  transition: 0.4s;
 }

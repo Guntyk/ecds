@@ -1,0 +1,9 @@
+.dropdownsWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.text {
+  @extend %body3Regular;
+}

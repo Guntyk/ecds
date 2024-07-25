@@ -4,6 +4,7 @@ import { pathnames } from 'constants/pathnames';
 import { Container } from 'components/Container';
 import { Link } from 'components/Link';
 import { Contacts } from 'pages/AboutUs/Contacts';
+import { Logos } from 'pages/AboutUs/Logos';
 import styles from 'pages/AboutUs/AboutUs.scss';
 
 export const AboutUs = () => {
@@ -19,7 +20,7 @@ export const AboutUs = () => {
       case contactsPage:
         return <Contacts />;
       case logosPage:
-        return 'Logos';
+        return <Logos />;
       default:
         return <Redirect to='/not-found' />;
     }
