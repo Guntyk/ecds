@@ -3,6 +3,7 @@ import { aboutUsLinks } from 'constants/aboutUsLinks';
 import { pathnames } from 'constants/pathnames';
 import { Container } from 'components/Container';
 import { Link } from 'components/Link';
+import { Documents } from 'pages/AboutUs/Documents';
 import { Contacts } from 'pages/AboutUs/Contacts';
 import { Logos } from 'pages/AboutUs/Logos';
 import styles from 'pages/AboutUs/AboutUs.scss';
@@ -16,7 +17,7 @@ export const AboutUs = () => {
       case managementPage:
         return 'Management';
       case documentsPage:
-        return 'Documents';
+        return <Documents />;
       case contactsPage:
         return <Contacts />;
       case logosPage:

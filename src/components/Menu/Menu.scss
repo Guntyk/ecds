@@ -7,7 +7,7 @@
   opacity: 0;
   user-select: none;
   pointer-events: none;
-  border-radius: 1.4rem;
+  border-radius: $borderRadiusLarge;
   border: 0.1rem solid $text2;
   background: $background2;
   transition: 0.5s;

@@ -19,7 +19,7 @@
 .newsList {
   padding: 3.2rem;
   background: $secondary3;
-  border-radius: $borderRadius;
+  border-radius: $borderRadiusLarge;
 }
 
 .newsCard {
@@ -54,7 +54,7 @@
 .cover {
   height: 24.2rem;
   object-fit: cover;
-  border-radius: 1.2rem;
+  border-radius: $borderRadius;
   transition: 0.4s;
 }
 
@@ -82,12 +82,12 @@
   margin-top: 2.4rem;
   height: 1.4rem;
   background: $lavender;
-  border-radius: 1rem;
+  border-radius: $borderRadiusSmall;
 
   .thumb {
     height: 100%;
     background: $text2;
-    border-radius: 1rem;
+    border-radius: $borderRadiusSmall;
   }
 }
 

@@ -2,6 +2,7 @@ import { useState } from 'react';
 import cn from 'classnames';
 import { Arrow } from 'components/Arrow';
 import { Link } from 'components/Link';
+import dropdownStyles from 'components/Dropdown/Dropdown.scss';
 import styles from 'components/Dropdown/Logo/Logo.scss';
 
 export const LogoDropdown = ({ logo: { name, paths, alt } }) => {
@@ -12,13 +13,13 @@ export const LogoDropdown = ({ logo: { name, paths, alt } }) => {
   };
 
   return (
-    <div className={styles.dropdown}>
-      <div className={cn(styles.dropdownBtn, { [styles.open]: isOpen })}>
+    <div className={dropdownStyles.dropdown}>
+      <div className={cn(dropdownStyles.dropdownBtn, { [dropdownStyles.open]: isOpen })}>
         <span>{name}</span>
         <Arrow isOpen={isOpen} logoStyle onClick={toggleDropdown} />
       </div>
-      <div className={cn(styles.content, { [styles.open]: isOpen })}>
-        <ul className={styles.contentInner}>
+      <div className={cn(dropdownStyles.content, { [dropdownStyles.open]: isOpen })}>
+        <ul className={dropdownStyles.contentInner}>
           <li className={styles.logo}>
             <div className={styles.logoWrapper}>
               <img src={paths?.svg || paths?.png || paths?.jpg} alt={alt} />

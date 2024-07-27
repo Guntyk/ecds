@@ -40,7 +40,7 @@
   margin-top: 1.6rem;
   padding: 0.4rem 0.8rem;
   width: min-content;
-  border-radius: $borderRadius;
+  border-radius: $borderRadiusLarge;
   transition: 0.3s;
 
   &:hover {
@@ -59,7 +59,7 @@
   width: 1rem;
   height: 1rem;
   background: $background2;
-  border-radius: 1rem;
+  border-radius: $borderRadiusSmall;
   transition: 0.4s;
 
   &Active {

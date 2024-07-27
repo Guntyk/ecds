@@ -1,0 +1,46 @@
+.dropdownBtn {
+  padding-right: 2.4rem;
+
+  &.open {
+    padding-bottom: 1.6rem;
+
+    .arrow {
+      opacity: 0;
+      pointer-events: none;
+      user-select: none;
+    }
+  }
+
+  .arrow {
+    transition: 0.2s;
+  }
+}
+
+.contentInner {
+  padding-right: 2.4rem;
+}
+
+.text {
+  @extend %body4Regular;
+}
+
+.buttonsWrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  margin-top: 2.4rem;
+}
+
+.openBtn {
+  @extend %body4Medium;
+
+  padding: 0.8rem 1.6rem;
+  color: $background3_2;
+  text-transform: none;
+  border: 0.175rem solid $secondary2;
+  border-radius: $borderRadius;
+
+  &:hover {
+    border: 0.175rem solid $primary2;
+  }
+}

@@ -10,14 +10,19 @@ export const Menu = ({ isOpen, setIsOpen }) => {
     <nav className={cn(styles.menu, { [styles.menuOpen]: isOpen })}>
       <div className={styles.header}>
         <span>Menu</span>
-        <button className={styles.closeBtn} onClick={() => setIsOpen(false)}>
+        <button className={styles.closeBtn} onClick={() => setIsOpen(false)} {...(!isOpen ? { tabIndex: -1 } : {})}>
           <img src={cross} alt='cross' />
         </button>
       </div>
       <ul className={styles.links}>
         {menuLinks.map(({ id, name, link }) => (
           <li key={id}>
-            <NavLink className={styles.link} to={link} onClick={() => setIsOpen(false)}>
+            <NavLink
+              className={styles.link}
+              to={link}
+              onClick={() => setIsOpen(false)}
+              {...(!isOpen ? { tabIndex: -1 } : {})}
+            >
               {name}
               <img src={arrow} alt='arrow right' />
             </NavLink>
