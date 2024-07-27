@@ -9,4 +9,9 @@ export const pathnames = {
   documentsPage: '/documents',
   contactsPage: '/contacts',
   logosPage: '/logos',
+  ballroomDancePage: '/ballroom-dance',
+  streetDancePage: '/street-dance',
+  caribbeanDancePage: '/caribbean-dance',
+  lindyHopPage: '/lindy-hop',
+  rockNRollPage: '/rock-n-roll',
 };
