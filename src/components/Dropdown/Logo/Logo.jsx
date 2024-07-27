@@ -27,7 +27,7 @@ export const LogoDropdown = ({ logo: { name, images } }) => {
               </div>
               <div className={styles.buttonsWrapper}>
                 {Object.entries(paths).map(([key, value]) => (
-                  <Link text={`Download in ${key}`} path={value} download />
+                  <Link text={`Download in ${key}`} path={value} download key={key} />
                 ))}
               </div>
             </li>
