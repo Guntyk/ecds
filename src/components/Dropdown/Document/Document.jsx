@@ -23,7 +23,7 @@ export const DocumentDropdown = ({ document: { title, description, path } }) => 
         <div className={cn(dropdownStyles.contentInner, styles.contentInner)}>
           <p className={styles.text}>{description}</p>
           <div className={styles.buttonsWrapper}>
-            <Link className={styles.openBtn} text='Open in PDF' path={path} external />
+            <Link className={styles.openBtn} content='Open in PDF' path={path} external />
             <Arrow isOpen={true} onClick={() => setIsOpen(false)} expandStyle />
           </div>
         </div>

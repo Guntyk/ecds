@@ -1,0 +1,102 @@
+.cardWrapper {
+  width: calc(100% / 3 - 1.6rem);
+  min-height: 49rem;
+}
+
+.card {
+  display: flex;
+  position: static;
+  padding: 2.4rem;
+  padding-bottom: 3.2rem;
+  background: $text2;
+  border: 0.05rem solid $background2;
+  border-radius: $borderRadiusLarge;
+
+  &Inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.6rem;
+
+    &.addMargin {
+      margin-bottom: 6.6rem;
+    }
+  }
+
+  &.open {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    z-index: 1;
+
+    .photo {
+      border-radius: $borderRadius;
+      background: #ecedf4;
+    }
+
+    .cross {
+      rotate: 90deg;
+    }
+  }
+}
+
+.photo {
+  width: 23.4rem;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+  object-fit: cover;
+  user-select: none;
+  pointer-events: none;
+  transition: 0.3s;
+}
+
+.name {
+  @extend %h3;
+
+  font-size: 4rem;
+  font-weight: map-get($fontWeights, 'bold');
+  text-align: center;
+}
+
+.role {
+  @extend %body4Regular;
+  text-transform: uppercase;
+}
+
+.moreBtn {
+  margin-top: 0.8rem;
+  gap: 0;
+  text-transform: none;
+}
+
+.biography {
+  @extend %body4Regular;
+
+  margin-inline: 2.4rem 1.6rem;
+  max-height: 434px;
+  overflow-x: hidden;
+}
+
+.socials {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+
+  .social {
+    height: 4rem;
+    aspect-ratio: 1/1;
+    background: $primary1;
+    transition: 0.2s;
+
+    &.facebook {
+      mask: url(assets/icons/socials/facebook-raw.svg);
+    }
+    &.instagram {
+      mask: url(assets/icons/socials/instagram-raw.svg);
+    }
+
+    &:hover {
+      background: $primary3;
+    }
+  }
+}

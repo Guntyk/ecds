@@ -3,6 +3,7 @@ import { aboutUsLinks } from 'constants/aboutUsLinks';
 import { pathnames } from 'constants/pathnames';
 import { Container } from 'components/Container';
 import { Link } from 'components/Link';
+import { Management } from 'pages/AboutUs/Management';
 import { Documents } from 'pages/AboutUs/Documents';
 import { Contacts } from 'pages/AboutUs/Contacts';
 import { Logos } from 'pages/AboutUs/Logos';
@@ -15,7 +16,7 @@ export const AboutUs = () => {
   const renderPage = () => {
     switch (pathname) {
       case managementPage:
-        return 'Management';
+        return <Management />;
       case documentsPage:
         return <Documents />;
       case contactsPage:
@@ -37,7 +38,7 @@ export const AboutUs = () => {
               <ul>
                 {aboutUsLinks.map(({ id, title, path }) => (
                   <li key={id}>
-                    <Link text={title} path={path} active={pathname === path} buttonStyle />
+                    <Link content={title} path={path} active={pathname === path} buttonStyle />
                   </li>
                 ))}
               </ul>

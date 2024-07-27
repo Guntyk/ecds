@@ -38,7 +38,7 @@ export const EventCard = ({ event: { id, type, title, description, organization,
             {town}
           </span>
         </div>
-        <Link text='Read more' path={`/events/${id}`} arrowRight />
+        <Link content='Read more' path={`/events/${id}`} arrowRight />
       </div>
     </section>
   </article>

@@ -18,7 +18,7 @@ export const NewsCard = ({ news: { id, title, description, publicationDate, cove
         <p className={styles.description}>{description}</p>
         <div className={styles.additionalInfo}>
           <span className={styles.date}>{convertDateFormat(publicationDate)}</span>
-          <Link text='Read more' path={`${newsPage}/${id}`} arrowRight />
+          <Link content='Read more' path={`${newsPage}/${id}`} arrowRight />
         </div>
       </section>
     </article>

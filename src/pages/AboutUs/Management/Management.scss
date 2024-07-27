@@ -1,0 +1,12 @@
+.management {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2.4rem;
+  position: relative;
+}
+
+.error {
+  @extend %body4Regular;
+
+  color: $primary3;
+}

@@ -13,7 +13,7 @@ export const Partners = () => {
           {Array.from({ length: 8 }).map((_, index) => (
             <li className={styles.partner} key={index}>
               <img src={ddb} alt='ddb platform' />
-              <Link className={styles.moreBtn} text='More about' path='https://google.com' external />
+              <Link className={styles.moreBtn} content='More about' path='https://google.com' external />
             </li>
           ))}
         </ul>

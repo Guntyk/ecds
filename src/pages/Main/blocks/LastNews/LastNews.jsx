@@ -60,7 +60,7 @@ export const LastNews = () => {
             <div id='scrollbar' className={styles.scrollbar} />
           </Swiper>
         </div>
-        <Link className={styles.moreBtn} text='See all news' path={newsPage} arrowRight />
+        <Link className={styles.moreBtn} content='See all news' path={newsPage} arrowRight />
       </Container>
     </section>
   );

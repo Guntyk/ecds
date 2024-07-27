@@ -33,7 +33,7 @@ export const NewsInfo = () => {
       {currentNews ? (
         <div className={styles.block}>
           <nav className={styles.navigation}>
-            <Link text='All news' path={newsPage} arrowLeft />
+            <Link content='All news' path={newsPage} arrowLeft />
             {nextNewsIndex && <Link text='Next' path={`${newsPage}/${mockedNews[nextNewsIndex].id}`} arrowRight />}
           </nav>
           <article className={styles.news}>
