@@ -5,7 +5,7 @@ import { Link } from 'components/Link';
 import dropdownStyles from 'components/Dropdown/Dropdown.scss';
 import styles from 'components/Dropdown/Logo/Logo.scss';
 
-export const LogoDropdown = ({ logo: { name, paths, alt } }) => {
+export const LogoDropdown = ({ logo: { name, images } }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleDropdown = () => {
@@ -20,16 +20,18 @@ export const LogoDropdown = ({ logo: { name, paths, alt } }) => {
       </div>
       <div className={cn(dropdownStyles.content, { [dropdownStyles.open]: isOpen })}>
         <ul className={dropdownStyles.contentInner}>
-          <li className={styles.logo}>
-            <div className={styles.logoWrapper}>
-              <img src={paths?.svg || paths?.png || paths?.jpg} alt={alt} />
-            </div>
-            <div className={styles.buttonsWrapper}>
-              {Object.entries(paths).map(([key, value]) => (
-                <Link text={`Download in ${key}`} path={value} download />
-              ))}
-            </div>
-          </li>
+          {images.map(({ id, paths, alt }) => (
+            <li className={styles.logo} key={id}>
+              <div className={styles.logoWrapper}>
+                <img src={paths?.svg || paths?.png || paths?.jpg} alt={alt} />
+              </div>
+              <div className={styles.buttonsWrapper}>
+                {Object.entries(paths).map(([key, value]) => (
+                  <Link text={`Download in ${key}`} path={value} download />
+                ))}
+              </div>
+            </li>
+          ))}
         </ul>
       </div>
     </div>
