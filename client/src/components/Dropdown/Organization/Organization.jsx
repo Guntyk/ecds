@@ -3,9 +3,7 @@ import cn from 'classnames';
 import { Arrow } from 'components/Arrow';
 import styles from 'components/Dropdown/Organization/Organization.scss';
 
-export const OrganizationDropdown = ({
-  organization: { flag, name, organization, manager, website, email, phone },
-}) => {
+export const OrganizationDropdown = ({ organization: { flag, country, name, manager, website, email, phone } }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleDropdown = () => {
@@ -15,13 +13,13 @@ export const OrganizationDropdown = ({
   return (
     <div className={styles.container}>
       <div className={styles.header} onClick={toggleDropdown}>
-        <img src={flag} alt={name} className={styles.flagIcon} />
-        <span className={styles.name}>{name}</span>
+        <img src={flag} alt={country} className={styles.flagIcon} />
+        <span className={styles.name}>{country}</span>
         <Arrow className={styles.dropdownArrow} isOpen={isOpen} expandStyle />
       </div>
       <div className={cn(styles.content, { [styles.open]: isOpen })}>
         <table className={styles.infoTable}>
-          <caption>{organization}</caption>
+          <caption>{name}</caption>
           <tbody>
             <tr>
               <td>manager</td>
