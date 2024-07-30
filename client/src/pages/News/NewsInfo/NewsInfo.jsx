@@ -1,11 +1,12 @@
+import { BlocksRenderer } from '@strapi/blocks-react-renderer';
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { convertDateFormat } from 'helpers/convertDate';
+import { mockedNews } from 'constants/mockedData';
 import { pathnames } from 'constants/pathnames';
 import { Container } from 'components/Container';
 import { Link } from 'components/Link';
 import styles from 'pages/News/NewsInfo/NewsInfo.scss';
-import { mockedNews } from 'constants/mockedData';
 
 export const NewsInfo = () => {
   const [nextNewsIndex, setNextNewsIndex] = useState(null);
@@ -26,7 +27,7 @@ export const NewsInfo = () => {
     }
   }, [id]);
 
-  const { title, cover, publicationDate, description, text } = currentNews || {};
+  const { title, cover, publicationDate, description, content } = currentNews || {};
 
   return (
     <Container>
@@ -46,7 +47,9 @@ export const NewsInfo = () => {
               <p className={styles.date}>{convertDateFormat(publicationDate)}</p>
               <h1 className={styles.title}>{title}</h1>
               {description && <h2 className={styles.description}>{description}</h2>}
-              <p className={styles.text}>{text}</p>
+              <div className={styles.content}>
+                <BlocksRenderer content={content} />
+              </div>
             </section>
           </article>
         </div>
