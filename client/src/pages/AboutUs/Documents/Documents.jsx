@@ -1,6 +1,6 @@
+import { useState } from 'react';
 import { DocumentDropdown } from 'components/Dropdown/Document';
 import styles from 'pages/AboutUs/Documents/Documents.scss';
-import { useState } from 'react';
 
 export const Documents = () => {
   const [documents, setDocuments] = useState([]);

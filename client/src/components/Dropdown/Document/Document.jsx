@@ -1,3 +1,4 @@
+import { BlocksRenderer } from '@strapi/blocks-react-renderer';
 import { useState } from 'react';
 import cn from 'classnames';
 import { Arrow } from 'components/Arrow';
@@ -5,7 +6,7 @@ import { Link } from 'components/Link';
 import dropdownStyles from 'components/Dropdown/Dropdown.scss';
 import styles from 'components/Dropdown/Document/Document.scss';
 
-export const DocumentDropdown = ({ document: { title, description, path } }) => {
+export const DocumentDropdown = ({ document: { title, description, file } }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -21,9 +22,16 @@ export const DocumentDropdown = ({ document: { title, description, path } }) => 
       </div>
       <div className={cn(dropdownStyles.content, { [dropdownStyles.open]: isOpen })}>
         <div className={cn(dropdownStyles.contentInner, styles.contentInner)}>
-          <p className={styles.text}>{description}</p>
+          <div className={styles.text}>
+            <BlocksRenderer content={description} />
+          </div>
           <div className={styles.buttonsWrapper}>
-            <Link className={styles.openBtn} content='Open in PDF' path={path} external />
+            <Link
+              className={styles.openBtn}
+              content='Open in PDF'
+              path={`${process.env.REACT_APP_BASE_API_URL}${file?.url}`}
+              external
+            />
             <Arrow isOpen={true} onClick={() => setIsOpen(false)} expandStyle />
           </div>
         </div>
