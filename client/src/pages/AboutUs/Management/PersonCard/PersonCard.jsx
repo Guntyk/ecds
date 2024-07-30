@@ -1,3 +1,5 @@
+import { BlocksRenderer } from '@strapi/blocks-react-renderer';
+import { SocialLinks } from 'social-links';
 import { useState } from 'react';
 import cn from 'classnames';
 import { Button } from 'components/Button';
@@ -8,6 +10,7 @@ import styles from 'pages/AboutUs/Management/PersonCard/PersonCard.scss';
 
 export const PersonCard = ({ person: { name, surname, role, socials, biography, photo } }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const socialLinks = new SocialLinks();
 
   return (
     <div className={cn(styles.cardWrapper, { [styles.open]: isOpen })}>
@@ -15,8 +18,8 @@ export const PersonCard = ({ person: { name, surname, role, socials, biography, 
         <div className={cn(styles.cardInner, { [styles.addMargin]: !socials && isOpen })}>
           <img
             className={styles.photo}
-            src={photo?.src || 'https://placehold.co/234'}
-            alt={photo?.alt || 'photo placeholder'}
+            src={`${process.env.REACT_APP_BASE_API_URL}${photo?.url}` || 'https://placehold.co/234'}
+            alt={photo?.alternativeText || 'photo placeholder'}
           />
           <p className={styles.name}>
             {name}
@@ -26,9 +29,9 @@ export const PersonCard = ({ person: { name, surname, role, socials, biography, 
           <p className={styles.role}>{role}</p>
           {socials && isOpen && (
             <ul className={styles.socials}>
-              {Object.entries(socials).map(([key, value]) => (
-                <li key={key}>
-                  <Link className={cn(styles.social, styles[key])} path={value} external />
+              {socials.map(({ id, url }) => (
+                <li key={id}>
+                  <Link className={cn(styles.social, styles[socialLinks.detectProfile(url)])} path={url} external />
                 </li>
               ))}
             </ul>
@@ -45,7 +48,9 @@ export const PersonCard = ({ person: { name, surname, role, socials, biography, 
         </div>
         {isOpen && (
           <>
-            <p className={styles.biography}>{biography}</p>
+            <div className={styles.biography}>
+              <BlocksRenderer content={biography} />
+            </div>
             <Arrow className={styles.cross} isOpen={true} onClick={() => setIsOpen(false)} logoStyle />
           </>
         )}

@@ -72,6 +72,9 @@
 .biography {
   @extend %body4Regular;
 
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
   margin-inline: 2.4rem 1.6rem;
   max-height: 434px;
   overflow-x: hidden;
