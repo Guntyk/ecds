@@ -3,24 +3,14 @@ import cn from 'classnames';
 import arrowIcon from 'assets/icons/arrow-right-purple.svg';
 import styles from 'components/Link/Link.scss';
 
-export const Link = ({ className, content, path, external, arrowRight, arrowLeft, active, buttonStyle, download }) => {
+export const Link = ({ className, content, path, external, arrowRight, arrowLeft, active, buttonStyle }) => {
   const linkClass = cn(styles.link, className, {
     [styles.external]: external,
     [styles.toLeft]: arrowLeft,
     [styles.toRight]: arrowRight,
     [styles.button]: buttonStyle,
     [styles.active]: active,
-    [styles.download]: download,
   });
-
-  if (download) {
-    return (
-      <a className={linkClass} href={path} download>
-        <span className={styles.downloadIcon} />
-        {content}
-      </a>
-    );
-  }
 
   return external ? (
     <a className={linkClass} href={path} target='_blank' rel='noopener noreferrer'>
