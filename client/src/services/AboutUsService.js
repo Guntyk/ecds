@@ -22,4 +22,20 @@ export default class AboutUsService {
 
     return { result: data, error: null };
   }
+
+  static async getLogos() {
+    const query = qs.stringify({
+      populate: {
+        logos: { populate: { images: { fields: ['alternativeText', 'name', 'ext', 'url', 'placeholder'] } } },
+      },
+    });
+
+    const [error, data] = await backendApi.get(`/logos?${query}`);
+
+    if (error) {
+      return { result: null, error: APIErrorsHandlingUtils.handleErrors(error) };
+    }
+
+    return { result: data, error: null };
+  }
 }

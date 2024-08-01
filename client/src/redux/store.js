@@ -1,9 +1,9 @@
 import { configureStore } from '@reduxjs/toolkit';
-import aboutUsReducer from './features/aboutUsSlice';
+import managementReducer from './features/managementSlice';
 
 export const store = configureStore({
   reducer: {
-    aboutUs: aboutUsReducer,
+    management: managementReducer,
   },
   devTools: process.env.NODE_ENV !== 'production',
   middleware: (getDefaultMiddleware) =>
