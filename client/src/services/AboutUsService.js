@@ -8,7 +8,7 @@ export default class AboutUsService {
       fields: ['id', 'name', 'surname', 'role', 'biography'],
       populate: {
         photo: {
-          fields: ['alternativeText', 'url'],
+          fields: ['alternativeText', 'placeholder', 'url'],
         },
         socials: true,
       },

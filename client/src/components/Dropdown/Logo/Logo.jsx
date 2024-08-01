@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import cn from 'classnames';
+import { ImageComponent } from 'components/Image';
 import { Button } from 'components/Button';
 import { Arrow } from 'components/Arrow';
 import dropdownStyles from 'components/Dropdown/Dropdown.scss';
@@ -7,9 +8,6 @@ import styles from 'components/Dropdown/Logo/Logo.scss';
 
 export const LogoDropdown = ({ logo: { name, logos } }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const query = {
-    populate: { logos: { populate: { images: { fields: ['alternativeText', 'name', 'ext', 'url'] } } } },
-  };
 
   const handleDownload = (url, desiredFileName) => {
     const filename = desiredFileName || url.substring(url.lastIndexOf('/') + 1).split('?')[0];
@@ -46,9 +44,13 @@ export const LogoDropdown = ({ logo: { name, logos } }) => {
 
             return (
               <li className={styles.logo} key={id}>
-                <div className={styles.logoWrapper}>
-                  <img src={`${process.env.REACT_APP_BASE_API_URL}${img?.url}`} alt={img?.alternativeText} />
-                </div>
+                <ImageComponent
+                  className={styles.logoWrapper}
+                  placeholder={img?.placeholder}
+                  src={`${process.env.REACT_APP_BASE_API_URL}${img?.url}`}
+                  alt={img?.alternativeText}
+                  fit='contain'
+                />
                 <div className={styles.buttonsWrapper}>
                   {images.map(({ id, name, ext, url }) => (
                     <Button

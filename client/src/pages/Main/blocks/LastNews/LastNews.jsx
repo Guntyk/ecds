@@ -5,6 +5,7 @@ import SwiperCore from 'swiper';
 import { convertDateFormat } from 'helpers/convertDate';
 import { mockedNews } from 'constants/mockedData';
 import { pathnames } from 'constants/pathnames';
+import { ImageComponent } from 'components/Image';
 import { Container } from 'components/Container';
 import { Button } from 'components/Button';
 import { Link } from 'components/Link';
@@ -48,10 +49,11 @@ export const LastNews = () => {
           >
             {mockedNews.map(({ id, title, publicationDate, cover }) => (
               <SwiperSlide className={styles.newsCard} onClick={() => push(`${newsPage}/${id}`)} key={id}>
-                <img
+                <ImageComponent
                   className={styles.cover}
                   src={cover?.src || 'https://placehold.co/282'}
                   alt={cover?.alt || 'cover placeholder'}
+                  placeholder={cover?.placeholder}
                 />
                 <p className={styles.publicationDate}>{convertDateFormat(publicationDate)}</p>
                 <p className={styles.newsTitle}>{title}</p>

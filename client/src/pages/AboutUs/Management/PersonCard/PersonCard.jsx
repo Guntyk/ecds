@@ -2,6 +2,7 @@ import { BlocksRenderer } from '@strapi/blocks-react-renderer';
 import { SocialLinks } from 'social-links';
 import { useState } from 'react';
 import cn from 'classnames';
+import { ImageComponent } from 'components/Image';
 import { Button } from 'components/Button';
 import { Arrow } from 'components/Arrow';
 import { Link } from 'components/Link';
@@ -16,10 +17,11 @@ export const PersonCard = ({ person: { name, surname, role, socials, biography, 
     <div className={cn(styles.cardWrapper, { [styles.open]: isOpen })}>
       <div className={cn(styles.card, { [styles.open]: isOpen })}>
         <div className={cn(styles.cardInner, { [styles.addMargin]: !socials && isOpen })}>
-          <img
+          <ImageComponent
             className={styles.photo}
             src={`${process.env.REACT_APP_BASE_API_URL}${photo?.url}` || 'https://placehold.co/234'}
             alt={photo?.alternativeText || 'photo placeholder'}
+            placeholder={photo?.placeholder}
           />
           <p className={styles.name}>
             {name}

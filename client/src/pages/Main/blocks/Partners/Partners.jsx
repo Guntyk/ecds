@@ -1,8 +1,9 @@
+import { ImageComponent } from 'components/Image';
 import { Container } from 'components/Container';
 import { Button } from 'components/Button';
+import { Link } from 'components/Link';
 import ddb from 'assets/icons/logos/ddb.png';
 import styles from 'pages/Main/blocks/Partners/Partners.scss';
-import { Link } from 'components/Link';
 
 export const Partners = () => {
   return (
@@ -12,7 +13,7 @@ export const Partners = () => {
         <ul className={styles.partners}>
           {Array.from({ length: 8 }).map((_, index) => (
             <li className={styles.partner} key={index}>
-              <img src={ddb} alt='ddb platform' />
+              <ImageComponent src={ddb} alt='ddb platform' />
               <Link className={styles.moreBtn} content='More about' path='https://google.com' external />
             </li>
           ))}
