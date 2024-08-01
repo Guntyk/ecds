@@ -1,23 +1,31 @@
-import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import * as logosActions from '../../../redux/features/logosSlice';
 import { LogoDropdown } from 'components/Dropdown/Logo';
+import { ErrorMessage } from 'components/ErrorMessage';
 import styles from 'pages/AboutUs/Logos/Logos.scss';
-import * as qs from 'qs';
 
 export const Logos = () => {
-  const [logos, setLogos] = useState([]);
-  const query = {
-    populate: { logos: { populate: { images: { fields: ['alternativeText', 'name', 'ext', 'url', 'placeholder'] } } } },
-  };
+  const isLogosRequestLoading = useSelector((state) => state.logos.isLoading);
+  const logosRequestError = useSelector((state) => state.logos.error);
+  const logos = useSelector((state) => state.logos.logos);
+  const dispatch = useDispatch();
 
-  console.log(qs.stringify(query));
+  useEffect(() => {
+    if (!logos.length) {
+      dispatch(logosActions.getLogos());
+    }
+  }, []);
 
   return (
-    <div className={styles.dropdownsWrapper}>
+    <div className={styles.logos}>
       {logos.length > 0 ? (
         logos.map((logo) => <LogoDropdown logo={logo} key={logo.id} />)
       ) : (
         <p className={styles.text}>There is no logos available to download yet</p>
       )}
+      {isLogosRequestLoading && <p>Loading...</p>}
+      {logosRequestError && <ErrorMessage error={logosRequestError} />}
     </div>
   );
 };
