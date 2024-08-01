@@ -10,7 +10,7 @@ const initialState = {
 export const getManagement = createAsyncThunk('management/getManagers', async (_, { rejectWithValue }) => {
   const { result, error } = await AboutUsService.getManagement();
 
-  if (result.data) {
+  if (result?.data) {
     return result.data;
   }
 

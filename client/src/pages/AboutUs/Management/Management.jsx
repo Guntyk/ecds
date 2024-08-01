@@ -4,6 +4,7 @@ import * as managementActions from '../../../redux/features/managementSlice';
 import { ErrorMessage } from 'components/ErrorMessage';
 import { PersonCard } from 'pages/AboutUs/Management/PersonCard';
 import styles from 'pages/AboutUs/Management/Management.scss';
+import { apiErrors } from 'constants/apiErrors';
 
 export const Management = () => {
   const isManagementRequestLoading = useSelector((state) => state.management.isLoading);
@@ -19,9 +20,16 @@ export const Management = () => {
 
   return (
     <div className={styles.management}>
-      {management.length > 0 && management.map((person) => <PersonCard person={person} key={person.id} />)}
-      {isManagementRequestLoading && <p>Loading...</p>}
-      {managementRequestError && <ErrorMessage error={managementRequestError} />}
+      {!managementRequestError ? (
+        !isManagementRequestLoading && management.length === 0 ? (
+          <ErrorMessage error={apiErrors.error404Message} />
+        ) : (
+          management.length > 0 && management.map((person) => <PersonCard person={person} key={person.id} />)
+        )
+      ) : (
+        <ErrorMessage error={managementRequestError} />
+      )}
+      {isManagementRequestLoading && <p className={styles.text}>Loading...</p>}
     </div>
   );
 };

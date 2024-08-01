@@ -12,8 +12,6 @@ export const LogoDropdown = ({ logo: { name, logos } }) => {
   const handleDownload = (url, desiredFileName) => {
     const filename = desiredFileName || url.substring(url.lastIndexOf('/') + 1).split('?')[0];
 
-    console.log(filename);
-
     fetch(url)
       .then((response) => response.blob())
       .then((blob) => {

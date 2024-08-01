@@ -19,13 +19,16 @@ export const Logos = () => {
 
   return (
     <div className={styles.logos}>
-      {logos.length > 0 ? (
-        logos.map((logo) => <LogoDropdown logo={logo} key={logo.id} />)
+      {!logosRequestError ? (
+        !isLogosRequestLoading && logos.length === 0 ? (
+          <p className={styles.text}>There is no logos available to download yet</p>
+        ) : (
+          logos.map((logo) => <LogoDropdown logo={logo} key={logo.id} />)
+        )
       ) : (
-        <p className={styles.text}>There is no logos available to download yet</p>
+        <ErrorMessage error={logosRequestError} />
       )}
-      {isLogosRequestLoading && <p>Loading...</p>}
-      {logosRequestError && <ErrorMessage error={logosRequestError} />}
+      {isLogosRequestLoading && <p className={styles.text}>Loading...</p>}
     </div>
   );
 };

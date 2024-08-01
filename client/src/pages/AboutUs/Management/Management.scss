@@ -5,6 +5,10 @@
   position: relative;
 }
 
+.text {
+  @extend %body3Regular;
+}
+
 .error {
   @extend %body4Regular;
 

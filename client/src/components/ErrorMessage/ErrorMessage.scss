@@ -2,7 +2,11 @@
   @extend %body4Medium;
 
   display: flex;
-  align-items: center;
+  align-items: start;
   gap: $gapExtraSmall;
   color: $primary3;
+
+  img {
+    margin-top: 0.25rem;
+  }
 }

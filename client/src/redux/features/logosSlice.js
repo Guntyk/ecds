@@ -10,7 +10,7 @@ const initialState = {
 export const getLogos = createAsyncThunk('logos/getLogos', async (_, { rejectWithValue }) => {
   const { result, error } = await AboutUsService.getLogos();
 
-  if (result.data) {
+  if (result?.data) {
     return result.data;
   }
 
