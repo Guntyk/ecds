@@ -5,7 +5,7 @@ import APIErrorsHandlingUtils from 'utils/APIErrorsHandlingUtils';
 export default class AboutUsService {
   static async getManagement() {
     const query = qs.stringify({
-      fields: ['id', 'name', 'surname', 'role', 'biography'],
+      fields: ['name', 'surname', 'role', 'biography'],
       populate: {
         photo: {
           fields: ['alternativeText', 'placeholder', 'url'],
@@ -31,6 +31,23 @@ export default class AboutUsService {
     });
 
     const [error, data] = await backendApi.get(`/logos?${query}`);
+
+    if (error) {
+      return { result: null, error: APIErrorsHandlingUtils.handleErrors(error) };
+    }
+
+    return { result: data, error: null };
+  }
+
+  static async getDocuments() {
+    const query = qs.stringify({
+      fields: ['title', 'description'],
+      populate: {
+        file: { fields: ['url'] },
+      },
+    });
+
+    const [error, data] = await backendApi.get(`/documents?${query}`);
 
     if (error) {
       return { result: null, error: APIErrorsHandlingUtils.handleErrors(error) };
