@@ -1,0 +1,8 @@
+.errorMessage {
+  @extend %body4Medium;
+
+  display: flex;
+  align-items: center;
+  gap: $gapExtraSmall;
+  color: $primary3;
+}

@@ -29,11 +29,17 @@ export const PersonCard = ({ person: { name, surname, role, socials, biography, 
           <p className={styles.role}>{role}</p>
           {socials && isOpen && (
             <ul className={styles.socials}>
-              {socials.map(({ id, url }) => (
-                <li key={id}>
-                  <Link className={cn(styles.social, styles[socialLinks.detectProfile(url)])} path={url} external />
-                </li>
-              ))}
+              {socials.map(({ id, url }) => {
+                const socialName = socialLinks.detectProfile(url);
+
+                if (socialName) {
+                  return (
+                    <li key={id}>
+                      <Link className={cn(styles.social, styles[socialName])} path={url} external />
+                    </li>
+                  );
+                }
+              })}
             </ul>
           )}
           {!isOpen && (
