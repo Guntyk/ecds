@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_contacts_phones",
+  "info": {
+    "displayName": "phone",
+    "icon": "phone"
+  },
+  "options": {},
+  "attributes": {
+    "phoneNumber": {
+      "type": "biginteger",
+      "required": true,
+      "unique": true,
+      "max": "16"
+    },
+    "countryAcronym": {
+      "type": "string",
+      "minLength": 2,
+      "maxLength": 5,
+      "required": true
+    }
+  }
+}
