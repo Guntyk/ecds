@@ -1,30 +1,43 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
-import * as aboutUsActions from '../../../redux/features/aboutUsSlice';
+import { useQuery } from '@tanstack/react-query';
+import { useState, useEffect } from 'react';
+import SessionStorageUtils from 'utils/SessionStorageUtils';
+import AboutUsService from 'services/AboutUsService';
 import { ErrorMessage } from 'components/ErrorMessage';
 import { PersonCard } from 'pages/AboutUs/Management/PersonCard';
 import styles from 'pages/AboutUs/Management/Management.scss';
 
 export const Management = () => {
-  const isManagementRequestLoading = useSelector((state) => state.aboutUs.isLoading);
-  const managementRequestError = useSelector((state) => state.aboutUs.error);
-  const management = useSelector((state) => state.aboutUs.management);
-  const dispatch = useDispatch();
+  const [management, setManagement] = useState(SessionStorageUtils.getManagement() || []);
+
+  const {
+    data: response,
+    isLoading,
+    refetch,
+  } = useQuery({
+    queryKey: ['management'],
+    queryFn: async () => {
+      const { result, error } = await AboutUsService.getManagement();
+      return { result: result?.data || null, error };
+    },
+    enabled: false,
+  });
 
   useEffect(() => {
     if (!management.length) {
-      dispatch(aboutUsActions.getManagement());
+      refetch().then((res) => {
+        if (res.data?.result) {
+          SessionStorageUtils.setManagement(res.data.result);
+          setManagement(res.data.result);
+        }
+      });
     }
-  }, []);
+  }, [management, refetch]);
 
   return (
     <div className={styles.management}>
-      {isManagementRequestLoading ? (
-        <p>Loading...</p>
-      ) : (
-        management?.length > 0 && management.map((person) => <PersonCard person={person} key={person.id} />)
-      )}
-      {managementRequestError && <ErrorMessage error={managementRequestError} />}
+      {management.length > 0 && management.map((person) => <PersonCard person={person} key={person.id} />)}
+      {isLoading && <p>Loading...</p>}
+      {response?.error && <ErrorMessage error={response.error} />}
     </div>
   );
 };
