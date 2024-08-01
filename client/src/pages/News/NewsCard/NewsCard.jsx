@@ -1,23 +1,26 @@
 import { convertDateFormat } from 'helpers/convertDate';
+import { pathnames } from 'constants/pathnames';
+import { ImageComponent } from 'components/Image';
 import { Link } from 'components/Link';
 import styles from 'pages/News/NewsCard/NewsCard.scss';
-import { pathnames } from 'constants/pathnames';
 
-export const NewsCard = ({ news: { id, title, description, publicationDate, cover } }) => {
+export const NewsCard = ({ news: { id, title, description, publishedAt, media } }) => {
   const { newsPage } = pathnames;
 
   return (
     <article className={styles.card}>
-      <img
-        src={cover?.src || 'https://placehold.co/282'}
-        alt={cover?.alt || 'cover placeholder'}
+      <ImageComponent
+        src={media[0]?.url || 'https://placehold.co/282'}
+        alt={media[0]?.alt || 'cover placeholder'}
+        placeholder={media[0]?.placeholder}
         className={styles.cover}
+        external
       />
       <section className={styles.info}>
         <h3 className={styles.title}>{title}</h3>
         <p className={styles.description}>{description}</p>
         <div className={styles.additionalInfo}>
-          <span className={styles.date}>{convertDateFormat(publicationDate)}</span>
+          <span className={styles.date}>{convertDateFormat(publishedAt)}</span>
           <Link content='Read more' path={`${newsPage}/${id}`} arrowRight />
         </div>
       </section>

@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import cn from 'classnames';
 import styles from 'components/Image/Image.scss';
 
-export const ImageComponent = ({ className, src, placeholder, alt, fit }) => {
+export const ImageComponent = ({ className, src, placeholder, alt, fit, external }) => {
   const [isImageLoaded, setIsImageLoaded] = useState(false);
 
   useEffect(() => {
@@ -10,7 +10,7 @@ export const ImageComponent = ({ className, src, placeholder, alt, fit }) => {
     img.onload = () => {
       setIsImageLoaded(true);
     };
-    img.src = src;
+    img.src = external ? `${process.env.REACT_APP_BASE_API_URL}${src}` : src;
   }, [src]);
 
   return (
@@ -26,7 +26,7 @@ export const ImageComponent = ({ className, src, placeholder, alt, fit }) => {
         <img
           alt={alt}
           className={styles.image}
-          src={src}
+          src={external ? `${process.env.REACT_APP_BASE_API_URL}${src}` : src}
           onLoad={() => setIsImageLoaded(true)}
           style={{ objectFit: fit ?? 'cover' }}
         />

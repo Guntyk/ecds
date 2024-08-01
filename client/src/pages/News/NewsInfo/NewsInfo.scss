@@ -1,6 +1,6 @@
 .block {
   padding-block: 12.8rem 12rem;
-  min-height: 80vh;
+  min-height: 90vh;
 }
 
 .navigation {
@@ -87,4 +87,8 @@
     background: $background2;
     border-radius: $borderRadius;
   }
+}
+
+.text {
+  @extend %body3Regular;
 }
