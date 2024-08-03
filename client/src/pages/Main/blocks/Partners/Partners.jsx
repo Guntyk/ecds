@@ -29,12 +29,12 @@ export const Partners = () => {
     <Container>
       <section className={styles.block} ref={containerRef}>
         <h2 className={styles.title}>Our sponsors & partners</h2>
-        <ul className={styles.partners}>
-          {!error ? (
-            !isLoading && partners.length === 0 ? (
-              <p className={styles.text}>There is no partners yet</p>
-            ) : (
-              partners.map(({ id, website, logo: { alternativeText, url, placeholder } }) => (
+        {!error ? (
+          !isLoading && partners.length === 0 ? (
+            <p className={styles.text}>There is no partners yet</p>
+          ) : (
+            partners.map(({ id, website, logo: { alternativeText, url, placeholder } }) => (
+              <ul className={styles.partners}>
                 <li className={styles.partner} key={id}>
                   <ImageComponent
                     className={styles.partnerLogo}
@@ -46,19 +46,19 @@ export const Partners = () => {
                   />
                   {website && <Link className={styles.moreBtn} content='More about' path={website} external />}
                 </li>
-              ))
-            )
-          ) : (
-            <ErrorMessage error={error} />
-          )}
-          {isLoading && <p className={styles.text}>Loading...</p>}
-        </ul>
+              </ul>
+            ))
+          )
+        ) : (
+          <ErrorMessage error={error} />
+        )}
+        {isLoading && <p className={styles.text}>Loading...</p>}
         <aside className={styles.donate}>
-          <h4 className={styles.text}>
+          <h3 className={styles.text}>
             If you like our idea, support it with money.
             <br />
             Any amount will go to support the dance movement in Europe
-          </h4>
+          </h3>
           <Button buttonContent='Donate' className={styles.donateBtn} />
         </aside>
       </section>

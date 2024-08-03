@@ -50,9 +50,9 @@ export const Hero = () => {
               ))}
             </Swiper>
             <div className={styles.navigation}>
-              <Arrow id='prev' />
+              <Arrow id='prev' title='Previous banner' />
               <div id='pagination' className={styles.pagination}></div>
-              <Arrow id='next' />
+              <Arrow id='next' title='Next banner' />
             </div>
           </div>
         </div>

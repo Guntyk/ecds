@@ -14,9 +14,17 @@ export const ContactUs = () => {
       <Container>
         <h2 className={styles.title}>Contact us</h2>
         <form className={styles.contactForm}>
-          <Input wrapperClassName={styles.input} inputValue={name} setInputValue={setName} labelText='Name' darkStyle />
           <Input
             wrapperClassName={styles.input}
+            name='name'
+            inputValue={name}
+            setInputValue={setName}
+            labelText='Name'
+            darkStyle
+          />
+          <Input
+            wrapperClassName={styles.input}
+            name='email'
             inputValue={email}
             setInputValue={setEmail}
             labelText='e-mail'
@@ -24,6 +32,7 @@ export const ContactUs = () => {
           />
           <Input
             wrapperClassName={styles.input}
+            name='comment'
             inputValue={comment}
             setInputValue={setComment}
             placeholder='Comment'

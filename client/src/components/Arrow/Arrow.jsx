@@ -1,7 +1,7 @@
 import cn from 'classnames';
 import styles from 'components/Arrow/Arrow.scss';
 
-export const Arrow = ({ id, className, isOpen, expandStyle, logoStyle, onClick }) => {
+export const Arrow = ({ id, className, isOpen, expandStyle, logoStyle, onClick, ...props }) => {
   return (
     <button
       id={id}
@@ -12,6 +12,7 @@ export const Arrow = ({ id, className, isOpen, expandStyle, logoStyle, onClick }
         [styles.open]: isOpen,
       })}
       onClick={onClick}
+      {...props}
     >
       <span className={styles.arrow} />
       <span className={styles.arrow} />
