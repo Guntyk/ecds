@@ -2,7 +2,7 @@ import { Scrollbar, Navigation } from 'swiper/modules';
 import { useDispatch, useSelector } from 'react-redux';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { useHistory } from 'react-router-dom';
-import { useEffect, useRef } from 'react';
+import { useEffect } from 'react';
 import SwiperCore from 'swiper';
 import cn from 'classnames';
 import * as newsActions from '../../../../redux/features/newsSlice';
@@ -13,6 +13,7 @@ import { ImageComponent } from 'components/Image';
 import { Container } from 'components/Container';
 import { Button } from 'components/Button';
 import { Link } from 'components/Link';
+import useElementOnScreen from 'hooks/useElementOnScreen';
 import arrowRight from 'assets/icons/arrow-right-background3_2.svg';
 import arrowLeft from 'assets/icons/arrow-left-background3_2.svg';
 import 'swiper/css/navigation';
@@ -27,31 +28,21 @@ export const LastNews = () => {
   const dispatch = useDispatch();
   const { newsPage } = pathnames;
   const { push } = useHistory();
-  const sectionRef = useRef(null);
+
+  const [containerRef, isVisible] = useElementOnScreen({
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.1,
+  });
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting && !news.length) {
-          dispatch(newsActions.getNews());
-        }
-      },
-      { threshold: 0.1 }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
+    if (isVisible && !news.length) {
+      dispatch(newsActions.getNews());
     }
-
-    return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
-      }
-    };
-  }, [dispatch, news.length]);
+  }, [dispatch, isVisible, news.length]);
 
   return (
-    <section className={styles.block} ref={sectionRef}>
+    <section className={styles.block} ref={containerRef}>
       <Container>
         <h2 className={styles.title}>Latest news</h2>
         {news.length > 3 && (

@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect, useRef } from 'react';
+import { useEffect } from 'react';
+import useElementOnScreen from 'hooks/useElementOnScreen';
 import * as organizationsActions from '../../../../redux/features/organizationsSlice';
 import { apiErrors } from 'constants/apiErrors';
 import { OrganizationDropdown } from 'components/Dropdown/Organization';
@@ -9,33 +10,23 @@ import styles from 'pages/Main/blocks/Organizations/Organizations.scss';
 
 export const Organizations = () => {
   const { organizations, error, isLoading } = useSelector((state) => state.organizations);
-  const sectionRef = useRef(null);
   const dispatch = useDispatch();
 
+  const [containerRef, isVisible] = useElementOnScreen({
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.1,
+  });
+
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting && !organizations.length) {
-          dispatch(organizationsActions.getOrganizations());
-        }
-      },
-      { threshold: 0.1 }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
+    if (isVisible && !organizations.length) {
+      dispatch(organizationsActions.getOrganizations());
     }
-
-    return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
-      }
-    };
-  }, [dispatch, organizations.length]);
+  }, [dispatch, isVisible, organizations.length]);
 
   return (
     <Container>
-      <section className={styles.block} ref={sectionRef}>
+      <section className={styles.block} ref={containerRef}>
         <h2 className={styles.title}>National organizations</h2>
         <p className={styles.subtitle}>that are part of the European Confederation of Dance Sports</p>
         {!error ? (
