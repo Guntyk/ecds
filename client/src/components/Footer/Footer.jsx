@@ -1,5 +1,6 @@
 import { Link, useLocation } from 'react-router-dom';
 import cn from 'classnames';
+import { contactUsBlockPages } from 'constants/contactUsBlockPages';
 import { pathnames } from 'constants/pathnames';
 import { socials } from 'constants/socials';
 import { ContactUs } from 'components/Footer/ContactUs';
@@ -41,7 +42,7 @@ export const Footer = () => {
 
   return (
     <>
-      {(pathname === mainPage || pathname === contactsPage) && <ContactUs />}
+      {contactUsBlockPages.includes(pathname) && <ContactUs />}
       <footer className={styles.footer}>
         <Container>
           <div className={styles.wrapper}>

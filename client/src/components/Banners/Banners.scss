@@ -1,0 +1,44 @@
+.sliderWrapper {
+  width: 58.8rem;
+  height: 37.8rem;
+}
+
+.bannersSlider {
+  z-index: 0;
+}
+
+.navigation {
+  display: flex;
+  align-items: center;
+  gap: $gapMedium;
+  margin: 0 auto;
+  margin-top: 1.6rem;
+  padding: 0.4rem 0.8rem;
+  width: min-content;
+  border-radius: $borderRadiusLarge;
+  transition: 0.3s;
+
+  &:hover {
+    background: #dadbea4d;
+  }
+}
+
+.pagination {
+  display: flex;
+  align-items: center;
+  gap: $gapSmall;
+}
+
+.bullet {
+  display: inline-block;
+  width: 1rem;
+  height: 1rem;
+  background: $background2;
+  border-radius: $borderRadiusSmall;
+  transition: 0.4s;
+
+  &Active {
+    width: 1.6rem;
+    background: $primary2;
+  }
+}

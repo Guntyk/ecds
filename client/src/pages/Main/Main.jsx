@@ -8,7 +8,7 @@ import { Career } from 'pages/Main/blocks/Career';
 import { Hero } from 'pages/Main/blocks/Hero';
 
 export const Main = () => (
-  <div>
+  <>
     <Hero />
     <DancesTypes />
     <Organizations />
@@ -17,5 +17,5 @@ export const Main = () => (
     <Principles />
     <LastNews />
     <Partners />
-  </div>
+  </>
 );

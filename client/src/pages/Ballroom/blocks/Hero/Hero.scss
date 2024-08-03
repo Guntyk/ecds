@@ -1,0 +1,18 @@
+.block {
+  padding-block: 12.8rem 27.4rem;
+  background: url(assets/images/ballroom-page-background.webp) no-repeat bottom / contain;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: end;
+  width: 100%;
+}
+
+.bannersNavigation {
+  background: #f3f5f7cc;
+
+  &:hover {
+    background: #f3f5f7cc;
+  }
+}

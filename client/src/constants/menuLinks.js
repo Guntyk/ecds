@@ -1,12 +1,12 @@
 import { pathnames } from './pathnames';
 
-const { newsPage, membersPage, ballroomDancePage, streetDancePage, caribbeanDancePage, lindyHopPage, rockNRollPage } =
+const { newsPage, membersPage, ballroomPage, streetDancePage, caribbeanDancePage, lindyHopPage, rockNRollPage } =
   pathnames;
 
 export const menuLinks = [
   { id: 1, name: 'Members', link: membersPage },
   { id: 2, name: 'All news', link: newsPage },
-  { id: 3, name: 'Ballroom dance', link: ballroomDancePage },
+  { id: 3, name: 'Ballroom dance', link: ballroomPage },
   { id: 4, name: 'Street dance', link: streetDancePage },
   { id: 5, name: 'Lindy hop', link: lindyHopPage },
   { id: 6, name: 'Caribbean dance', link: caribbeanDancePage },
