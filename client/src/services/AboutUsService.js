@@ -55,4 +55,23 @@ export default class AboutUsService {
 
     return { result: data, error: null };
   }
+
+  static async getOrganizations() {
+    const query = qs.stringify({
+      fields: ['name', 'country', 'manager', 'website', 'email', 'phone'],
+      populate: {
+        flag: { fields: ['url'] },
+      },
+    });
+
+    const [error, data] = await backendApi.get(`/organizations?${query}`);
+
+    console.log(data);
+
+    if (error) {
+      return { result: null, error: APIErrorsHandlingUtils.handleErrors(error) };
+    }
+
+    return { result: data, error: null };
+  }
 }

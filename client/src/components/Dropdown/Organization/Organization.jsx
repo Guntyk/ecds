@@ -6,6 +6,8 @@ import styles from 'components/Dropdown/Organization/Organization.scss';
 export const OrganizationDropdown = ({ organization: { flag, country, name, manager, website, email, phone } }) => {
   const [isOpen, setIsOpen] = useState(false);
 
+  const removeProtocol = (url) => url.replace(/^https?:\/\//, '');
+
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
   };
@@ -13,7 +15,7 @@ export const OrganizationDropdown = ({ organization: { flag, country, name, mana
   return (
     <div className={styles.container}>
       <div className={styles.header} onClick={toggleDropdown}>
-        <img src={flag} alt={country} className={styles.flagIcon} />
+        <img src={`${process.env.REACT_APP_BASE_API_URL}${flag.url}`} alt={country} className={styles.flagIcon} />
         <span className={styles.name}>{country}</span>
         <Arrow className={styles.dropdownArrow} isOpen={isOpen} expandStyle />
       </div>
@@ -30,23 +32,27 @@ export const OrganizationDropdown = ({ organization: { flag, country, name, mana
                 <td>website</td>
                 <td>
                   <a href={`https://${website}`} rel='noopener noreferrer' target='_blank'>
-                    {website}
+                    {removeProtocol(website)}
                   </a>
                 </td>
               </tr>
             )}
-            <tr>
-              <td>e-mail</td>
-              <td>
-                <a href={`mailto: ${email}`}>{email}</a>
-              </td>
-            </tr>
-            <tr>
-              <td>phone</td>
-              <td>
-                <a href={`tel:${phone}`}>{phone}</a>
-              </td>
-            </tr>
+            {email && (
+              <tr>
+                <td>e-mail</td>
+                <td>
+                  <a href={`mailto: ${email}`}>{email}</a>
+                </td>
+              </tr>
+            )}
+            {phone && (
+              <tr>
+                <td>phone</td>
+                <td>
+                  <a href={`tel:${phone}`}>{phone}</a>
+                </td>
+              </tr>
+            )}
           </tbody>
         </table>
       </div>
