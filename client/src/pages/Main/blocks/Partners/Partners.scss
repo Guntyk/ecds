@@ -9,11 +9,9 @@
 }
 
 .partners {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(2, 1fr);
-  grid-column-gap: $gapLarge;
-  grid-row-gap: $gapLarge;
+  display: flex;
+  flex-wrap: wrap;
+  gap: $gapLarge;
   margin-block: 4.8rem 2.4rem;
 }
 
@@ -21,8 +19,8 @@
   display: grid;
   place-items: center;
   position: relative;
-  width: 28.2rem;
-  height: 16rem;
+  width: calc(100% / 4 - 1.8rem);
+  padding: 4.7rem;
   background: $text2;
   border-radius: $borderRadiusLarge;
   border: 0.05rem solid $lightGray;
@@ -37,6 +35,11 @@
       opacity: 1;
       pointer-events: all;
     }
+  }
+
+  &Logo {
+    max-width: 18.6rem;
+    max-height: 6.4rem;
   }
 
   .moreBtn {

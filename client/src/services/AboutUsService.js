@@ -72,4 +72,21 @@ export default class AboutUsService {
 
     return { result: data, error: null };
   }
+
+  static async getPartners() {
+    const query = qs.stringify({
+      fields: ['website'],
+      populate: {
+        logo: { fields: ['alternativeText', 'url', 'placeholder'] },
+      },
+    });
+
+    const [error, data] = await backendApi.get(`/partners?${query}`);
+
+    if (error) {
+      return { result: null, error: APIErrorsHandlingUtils.handleErrors(error) };
+    }
+
+    return { result: data, error: null };
+  }
 }

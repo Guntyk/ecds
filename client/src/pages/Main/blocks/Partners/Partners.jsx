@@ -1,22 +1,57 @@
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import useElementOnScreen from 'hooks/useElementOnScreen';
+import * as partnersActions from '../../../../redux/features/partnersSlice';
+import { ErrorMessage } from 'components/ErrorMessage';
 import { ImageComponent } from 'components/Image';
 import { Container } from 'components/Container';
 import { Button } from 'components/Button';
 import { Link } from 'components/Link';
-import ddb from 'assets/icons/logos/ddb.png';
 import styles from 'pages/Main/blocks/Partners/Partners.scss';
 
 export const Partners = () => {
+  const { partners, error, isLoading } = useSelector((state) => state.partners);
+  const dispatch = useDispatch();
+
+  const [containerRef, isVisible] = useElementOnScreen({
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.1,
+  });
+
+  useEffect(() => {
+    if (isVisible && !partners.length) {
+      dispatch(partnersActions.getPartners());
+    }
+  }, [dispatch, isVisible, partners.length]);
+
   return (
     <Container>
-      <section className={styles.block}>
+      <section className={styles.block} ref={containerRef}>
         <h2 className={styles.title}>Our sponsors & partners</h2>
         <ul className={styles.partners}>
-          {Array.from({ length: 8 }).map((_, index) => (
-            <li className={styles.partner} key={index}>
-              <ImageComponent src={ddb} alt='ddb platform' />
-              <Link className={styles.moreBtn} content='More about' path='https://google.com' external />
-            </li>
-          ))}
+          {!error ? (
+            !isLoading && partners.length === 0 ? (
+              <p className={styles.text}>There is no partners yet</p>
+            ) : (
+              partners.map(({ id, website, logo: { alternativeText, url, placeholder } }) => (
+                <li className={styles.partner} key={id}>
+                  <ImageComponent
+                    className={styles.partnerLogo}
+                    src={url}
+                    alt={alternativeText}
+                    placeholder={placeholder}
+                    fit='contain'
+                    external
+                  />
+                  {website && <Link className={styles.moreBtn} content='More about' path={website} external />}
+                </li>
+              ))
+            )
+          ) : (
+            <ErrorMessage error={error} />
+          )}
+          {isLoading && <p className={styles.text}>Loading...</p>}
         </ul>
         <aside className={styles.donate}>
           <h4 className={styles.text}>

@@ -1048,12 +1048,13 @@ export interface ApiPartnerPartner extends Schema.CollectionType {
     singularName: 'partner';
     pluralName: 'partners';
     displayName: 'Partners';
+    description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    url: Attribute.String & Attribute.Unique;
+    website: Attribute.String & Attribute.Unique;
     logo: Attribute.Media<'images'> & Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
