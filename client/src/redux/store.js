@@ -2,6 +2,7 @@ import { configureStore } from '@reduxjs/toolkit';
 import organizationsReducer from './features/organizationsSlice';
 import managementReducer from './features/managementSlice';
 import documentsReducer from './features/documentsSlice';
+import eventsReducer from './features/eventsSlice';
 import logosReducer from './features/logosSlice';
 import newsReducer from './features/newsSlice';
 
@@ -10,6 +11,7 @@ export const store = configureStore({
     organizations: organizationsReducer,
     management: managementReducer,
     documents: documentsReducer,
+    events: eventsReducer,
     logos: logosReducer,
     news: newsReducer,
   },

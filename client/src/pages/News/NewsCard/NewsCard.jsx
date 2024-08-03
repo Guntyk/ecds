@@ -1,4 +1,4 @@
-import { convertDateFormat } from 'helpers/convertDate';
+import { formatDate } from 'helpers/formatDate';
 import { pathnames } from 'constants/pathnames';
 import { ImageComponent } from 'components/Image';
 import { Link } from 'components/Link';
@@ -20,7 +20,7 @@ export const NewsCard = ({ news: { id, title, description, publishedAt, media } 
         <h3 className={styles.title}>{title}</h3>
         <p className={styles.description}>{description}</p>
         <div className={styles.additionalInfo}>
-          <span className={styles.date}>{convertDateFormat(publishedAt)}</span>
+          <span className={styles.date}>{formatDate(publishedAt)}</span>
           <Link content='Read more' path={`${newsPage}/${id}`} arrowRight />
         </div>
       </section>

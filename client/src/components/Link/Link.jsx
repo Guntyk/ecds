@@ -3,8 +3,9 @@ import cn from 'classnames';
 import arrowIcon from 'assets/icons/arrow-right-purple.svg';
 import styles from 'components/Link/Link.scss';
 
-export const Link = ({ className, content, path, external, arrowRight, arrowLeft, active, buttonStyle }) => {
-  const linkClass = cn(styles.link, className, {
+export const Link = ({ className, content, path, external, arrowRight, arrowLeft, active, buttonStyle, noStyle }) => {
+  const linkClass = cn(className, {
+    [styles.link]: !noStyle,
     [styles.external]: external,
     [styles.toLeft]: arrowLeft,
     [styles.toRight]: arrowRight,

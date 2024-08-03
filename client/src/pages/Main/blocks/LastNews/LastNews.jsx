@@ -6,7 +6,7 @@ import { useEffect } from 'react';
 import SwiperCore from 'swiper';
 import cn from 'classnames';
 import * as newsActions from '../../../../redux/features/newsSlice';
-import { convertDateFormat } from 'helpers/convertDate';
+import { formatDate } from 'helpers/formatDate';
 import { pathnames } from 'constants/pathnames';
 import { ErrorMessage } from 'components/ErrorMessage';
 import { ImageComponent } from 'components/Image';
@@ -81,7 +81,7 @@ export const LastNews = () => {
                       placeholder={media[0]?.placeholder}
                       external
                     />
-                    <p className={styles.publicationDate}>{convertDateFormat(publishedAt)}</p>
+                    <p className={styles.publicationDate}>{formatDate(publishedAt)}</p>
                     <p className={styles.newsTitle}>{title}</p>
                   </SwiperSlide>
                 ))}

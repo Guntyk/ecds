@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { useEffect } from 'react';
 import * as newsActions from '../../../redux/features/newsSlice';
-import { convertDateFormat } from 'helpers/convertDate';
+import { formatDate } from 'helpers/formatDate';
 import { ErrorMessage } from 'components/ErrorMessage';
 import { ImageComponent } from 'components/Image';
 import { pathnames } from 'constants/pathnames';
@@ -69,7 +69,7 @@ export const NewsInfo = () => {
             </section>
           )}
           <section>
-            <p className={styles.date}>{convertDateFormat(publishedAt)}</p>
+            <p className={styles.date}>{formatDate(publishedAt)}</p>
             <h1 className={styles.title}>{title}</h1>
             {description && <h2 className={styles.description}>{description}</h2>}
             <div className={styles.content}>

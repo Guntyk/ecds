@@ -66,8 +66,6 @@ export default class AboutUsService {
 
     const [error, data] = await backendApi.get(`/organizations?${query}`);
 
-    console.log(data);
-
     if (error) {
       return { result: null, error: APIErrorsHandlingUtils.handleErrors(error) };
     }
