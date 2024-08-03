@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import AboutUsService from 'services/AboutUsService';
+import AboutUsService from 'services/StaticDataService';
 
 const initialState = {
   logos: [],

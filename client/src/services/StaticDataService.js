@@ -2,7 +2,7 @@ import * as qs from 'qs';
 import { backendApi } from 'api/api';
 import APIErrorsHandlingUtils from 'utils/APIErrorsHandlingUtils';
 
-export default class AboutUsService {
+export default class StaticDataService {
   static async getManagement() {
     const query = qs.stringify({
       fields: ['name', 'surname', 'role', 'biography'],
