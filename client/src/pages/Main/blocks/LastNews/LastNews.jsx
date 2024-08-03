@@ -4,6 +4,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { useHistory } from 'react-router-dom';
 import { useEffect, useRef } from 'react';
 import SwiperCore from 'swiper';
+import cn from 'classnames';
 import * as newsActions from '../../../../redux/features/newsSlice';
 import { convertDateFormat } from 'helpers/convertDate';
 import { pathnames } from 'constants/pathnames';
@@ -73,7 +74,7 @@ export const LastNews = () => {
           !isLoading && news.length === 0 ? (
             <p className={styles.text}>There is no news yet</p>
           ) : (
-            <div className={styles.newsList}>
+            <div className={cn(styles.newsList, { [styles.empty]: news.length === 0 })}>
               <Swiper
                 spaceBetween={24}
                 slidesPerView='auto'

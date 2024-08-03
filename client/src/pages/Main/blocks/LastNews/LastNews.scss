@@ -21,6 +21,10 @@
   padding: 3.2rem;
   background: $secondary3;
   border-radius: $borderRadiusLarge;
+
+  &.empty {
+    display: none;
+  }
 }
 
 .newsCard {
