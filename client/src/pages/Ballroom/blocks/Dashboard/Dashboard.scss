@@ -1,0 +1,134 @@
+.dashboard {
+  padding-block: 12rem;
+  background: $background2;
+}
+
+.blocksWrapper {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  max-height: 57.6rem;
+  column-gap: $gapLarge;
+  row-gap: 4rem;
+}
+
+.block {
+  display: flex;
+  flex-direction: column;
+  padding-inline: 4rem;
+  max-width: 58.8rem;
+  width: 100%;
+  border-radius: $borderRadiusLarge;
+  cursor: pointer;
+
+  &:nth-child(2),
+  &:nth-child(3) {
+    gap: $gapMedium;
+    padding-block: 4rem 3.2rem;
+    background: $gradient2;
+    border: 0.05rem solid $primary2;
+
+    .arrow {
+      background: $secondary1;
+    }
+  }
+
+  &:nth-child(2) {
+    .title {
+      color: $secondary1;
+    }
+    .link {
+      color: $text2;
+      border: 0.05rem solid $text2;
+    }
+  }
+  &:nth-child(3) {
+    .title {
+      color: $primary1;
+    }
+    .link {
+      color: $primary1;
+      background: #dadbea80;
+    }
+  }
+  &:nth-child(4) {
+    .title {
+      color: $secondary4;
+    }
+    .arrow {
+      background: $secondary4;
+    }
+  }
+}
+
+.title {
+  @extend %h2;
+
+  display: block;
+  position: relative;
+  font-weight: map-get($fontWeights, 'regular');
+
+  span {
+    @extend %body3Regular;
+
+    margin-left: 1.6rem;
+    font-family: $bodyFont;
+    color: $secondary4;
+    text-transform: uppercase;
+  }
+
+  .arrow {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    width: 2.6rem;
+    height: 4rem;
+    mask: url(assets/icons/arrow-right-pages-type.svg);
+    background: $text2;
+    translate: 0 -50%;
+  }
+}
+
+.links {
+  display: flex;
+  align-items: center;
+  gap: $gapExtraSmall;
+}
+
+.link {
+  @extend %buttonSmall;
+
+  display: inline-block;
+  padding: 0.8rem 1.6rem;
+  text-transform: none;
+  border-radius: $borderRadius;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+
+  .item {
+    @extend %body3Medium;
+
+    border-bottom-width: 0.05rem;
+    border-bottom-style: solid;
+    text-transform: capitalize;
+
+    &:first-child {
+      padding-top: 0;
+    }
+  }
+
+  &.events {
+    .item {
+      padding-block: 1.55rem;
+      border-bottom-color: $secondary4;
+
+      &:last-child {
+        padding-bottom: 0;
+        border-bottom: none;
+      }
+    }
+  }
+}

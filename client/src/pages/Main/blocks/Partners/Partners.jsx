@@ -50,7 +50,7 @@ export const Partners = () => {
         )}
         {isLoading && <p className={styles.text}>Loading...</p>}
         <aside className={styles.donate}>
-          <h3 className={styles.text}>
+          <h3 className={styles.donateText}>
             If you like our idea, support it with money.
             <br />
             Any amount will go to support the dance movement in Europe

@@ -82,7 +82,7 @@
   border-radius: $borderRadius;
   background: $gradient1;
 
-  .text {
+  &Text {
     @extend %h4;
 
     color: $text2;

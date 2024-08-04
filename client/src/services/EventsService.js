@@ -14,6 +14,7 @@ export default class EventsService {
           fields: ['alternativeText', 'placeholder', 'url'],
         },
       },
+      sort: 'startDate',
     });
 
     const [error, data] = await backendApi.get(`/events?${query}`);

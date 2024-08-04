@@ -1,0 +1,51 @@
+.block {
+  gap: $gapLarge;
+  padding-block: 3.2rem 4rem;
+  color: $text2;
+  background: $gradient1;
+  border: 0.05rem solid $lavenderDark;
+}
+
+.item {
+  padding-block: 1.6rem;
+
+  &:last-child {
+    padding-bottom: 0;
+    border-bottom: none;
+  }
+}
+
+.info {
+  @extend %buttonSmall;
+
+  display: flex;
+  align-items: center;
+  gap: $gapLarge;
+  font-weight: map-get($fontWeights, 'light');
+  letter-spacing: 0.02em;
+  margin-bottom: 0.8rem;
+
+  time,
+  address {
+    display: flex;
+    align-items: center;
+    gap: $gapExtraSmall;
+  }
+
+  .calendarIcon,
+  .markerIcon {
+    width: 1.4rem;
+    height: 1.6rem;
+    background: $text2;
+  }
+  .calendarIcon {
+    mask: url(assets/icons/calendar-small.svg);
+  }
+  .markerIcon {
+    mask: url(assets/icons/marker-small.svg);
+  }
+}
+
+.text {
+  @extend %body3Regular;
+}
