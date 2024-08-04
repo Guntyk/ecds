@@ -1,14 +1,39 @@
-import { mockedAds } from 'constants/mockedAds';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import useElementOnScreen from 'hooks/useElementOnScreen';
+import * as bannersActions from '../../../../redux/features/bannersSlice';
+import { ErrorMessage } from 'components/ErrorMessage';
 import { Container } from 'components/Container';
 import { Banners } from 'components/Banners';
 import styles from 'pages/Ballroom/blocks/Hero/Hero.scss';
 
 export const Hero = () => {
+  const { isLoading, error, banners } = useSelector((state) => state.banners);
+  const dispatch = useDispatch();
+
+  const [containerRef, isVisible] = useElementOnScreen({
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.1,
+  });
+
+  useEffect(() => {
+    if (isVisible && !banners.length) {
+      dispatch(bannersActions.getBanners());
+    }
+  }, [dispatch, isVisible, banners.length]);
+
   return (
     <section className={styles.block}>
       <Container>
-        <div className={styles.wrapper}>
-          <Banners banners={mockedAds} navigationClassName={styles.bannersNavigation} />
+        <div ref={containerRef} className={styles.wrapper}>
+          {!error ? (
+            !isLoading &&
+            banners.length > 0 && <Banners banners={banners} navigationClassName={styles.bannersNavigation} />
+          ) : (
+            <ErrorMessage error={error} />
+          )}
+          {isLoading && <p className={styles.text}>Loading...</p>}
         </div>
       </Container>
     </section>

@@ -3,7 +3,9 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperCore from 'swiper';
 import cn from 'classnames';
 import { sliderSettings } from 'constants/bannersSliderSettings';
+import { ImageComponent } from 'components/Image';
 import { Arrow } from 'components/Arrow';
+import { Link } from 'components/Link';
 import 'swiper/css/effect-fade';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
@@ -15,9 +17,15 @@ SwiperCore.use([EffectFade, Navigation, Pagination, Autoplay]);
 export const Banners = ({ banners, navigationClassName }) => (
   <div className={styles.sliderWrapper}>
     <Swiper className={styles.bannersSlider} {...sliderSettings}>
-      {banners.map((Component, index) => (
-        <SwiperSlide key={index}>
-          <Component />
+      {banners.map(({ id, link, image: { alternativeText, url, placeholder } }) => (
+        <SwiperSlide className={styles.bannerSlide} key={id}>
+          <Link
+            className={styles.banner}
+            content={<ImageComponent alt={alternativeText} src={url} placeholder={placeholder} external />}
+            path={link}
+            external
+            noStyle
+          />
         </SwiperSlide>
       ))}
     </Swiper>

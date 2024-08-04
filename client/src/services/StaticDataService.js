@@ -89,4 +89,21 @@ export default class StaticDataService {
 
     return { result: data, error: null };
   }
+
+  static async getBanners() {
+    const query = qs.stringify({
+      fields: ['link'],
+      populate: {
+        image: { fields: ['alternativeText', 'url', 'placeholder'] },
+      },
+    });
+
+    const [error, data] = await backendApi.get(`/banners?${query}`);
+
+    if (error) {
+      return { result: null, error: APIErrorsHandlingUtils.handleErrors(error) };
+    }
+
+    return { result: data, error: null };
+  }
 }

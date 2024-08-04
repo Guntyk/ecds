@@ -3,6 +3,7 @@ import organizationsReducer from './features/organizationsSlice';
 import managementReducer from './features/managementSlice';
 import documentsReducer from './features/documentsSlice';
 import partnersReducer from './features/partnersSlice';
+import bannersReducer from './features/bannersSlice';
 import eventsReducer from './features/eventsSlice';
 import logosReducer from './features/logosSlice';
 import newsReducer from './features/newsSlice';
@@ -13,6 +14,7 @@ export const store = configureStore({
     management: managementReducer,
     documents: documentsReducer,
     partners: partnersReducer,
+    banners: bannersReducer,
     events: eventsReducer,
     logos: logosReducer,
     news: newsReducer,
