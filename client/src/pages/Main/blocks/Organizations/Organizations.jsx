@@ -12,11 +12,7 @@ export const Organizations = () => {
   const { organizations, error, isLoading } = useSelector((state) => state.organizations);
   const dispatch = useDispatch();
 
-  const [containerRef, isVisible] = useElementOnScreen({
-    root: null,
-    rootMargin: '0px',
-    threshold: 0.1,
-  });
+  const [containerRef, isVisible] = useElementOnScreen();
 
   useEffect(() => {
     if (isVisible && !organizations.length) {

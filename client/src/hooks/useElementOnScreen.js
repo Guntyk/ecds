@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 
-const useElementOnScreen = (options) => {
+const useElementOnScreen = () => {
   const [isVisible, setIsVisible] = useState(false);
   const containerRef = useRef(null);
 
@@ -10,7 +10,11 @@ const useElementOnScreen = (options) => {
   };
 
   useEffect(() => {
-    const observer = new IntersectionObserver(callbackFunction, options);
+    const observer = new IntersectionObserver(callbackFunction, {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.1,
+    });
 
     if (containerRef.current) {
       observer.observe(containerRef.current);
@@ -21,7 +25,7 @@ const useElementOnScreen = (options) => {
         observer.unobserve(containerRef.current);
       }
     };
-  }, [containerRef, options]);
+  }, [containerRef]);
 
   return [containerRef, isVisible];
 };
