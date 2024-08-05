@@ -1,0 +1,111 @@
+.block {
+  padding-block: 10rem 63rem;
+  background: url(assets/images/career-scheme.jpg) no-repeat center / contain, #ebe8ee;
+}
+
+.title,
+.subtitle {
+  display: inline-block;
+}
+
+.title {
+  @extend %h2;
+}
+
+.subtitle {
+  @extend %body2Regular;
+
+  margin-left: 2.4rem;
+  text-transform: capitalize;
+}
+
+.conditions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $gapMedium;
+  margin-top: 3.2rem;
+  max-width: 22rem;
+
+  &Title {
+    @extend %body4Regular;
+
+    color: $primary1;
+    text-transform: uppercase;
+    text-align: center;
+    cursor: default;
+    transition: 0.3s;
+
+    &:hover {
+      color: $primary3;
+      font-weight: map-get($fontWeights, 'medium');
+
+      .arrow {
+        background: $primary3;
+
+        &:first-child {
+          translate: 100% -50%;
+        }
+        &:last-child {
+          translate: -100% -50%;
+        }
+      }
+    }
+  }
+}
+
+.arrowWrapper {
+  position: relative;
+  height: 2.4rem;
+  aspect-ratio: 1/1;
+  rotate: -90deg;
+  margin-top: 0.2rem;
+  cursor: default;
+
+  .arrow {
+    position: absolute;
+    top: 50%;
+    translate: 0 -50%;
+    width: 0.8rem;
+    height: 1.6rem;
+    mask: url(assets/icons/angle-left-light.svg) no-repeat center;
+    background: $primary1;
+    transition: 0.3s;
+
+    &:first-child {
+      left: 0.4rem;
+    }
+    &:last-child {
+      right: 0.4rem;
+    }
+  }
+}
+
+.link {
+  @extend %body4Light;
+
+  display: block;
+  padding-block: 0.7rem;
+  width: 100%;
+  font-size: 2rem;
+  letter-spacing: 0;
+  text-align: center;
+  background: $background2;
+  border: 0.1rem solid $background2;
+  border-radius: $borderRadius;
+  transition: 0.2s;
+
+  &:hover {
+    font-weight: map-get($fontWeights, 'regular');
+
+    &:nth-child(2) {
+      border: 0.1rem solid $primary1;
+    }
+    &:nth-child(3) {
+      border: 0.1rem solid $primary2;
+    }
+    &:nth-child(4) {
+      border: 0.1rem solid $primary3;
+    }
+  }
+}

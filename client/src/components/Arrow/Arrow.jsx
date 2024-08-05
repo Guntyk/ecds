@@ -1,12 +1,22 @@
 import cn from 'classnames';
 import styles from 'components/Arrow/Arrow.scss';
 
-export const Arrow = ({ id, className, isOpen, expandStyle, logoStyle, onClick, ...props }) => {
+export const Arrow = ({
+  id,
+  className,
+  angleClassName,
+  isOpen,
+  expandStyle,
+  logoStyle,
+  onClick,
+  noStyle,
+  ...props
+}) => {
   return (
     <button
       id={id}
       className={cn(styles.arrowWrapper, className, {
-        [styles.default]: !expandStyle && !logoStyle,
+        [styles.default]: !expandStyle && !logoStyle && !noStyle,
         [styles.expand]: expandStyle,
         [styles.logo]: logoStyle,
         [styles.open]: isOpen,
@@ -14,8 +24,8 @@ export const Arrow = ({ id, className, isOpen, expandStyle, logoStyle, onClick, 
       onClick={onClick}
       {...props}
     >
-      <span className={styles.arrow} />
-      <span className={styles.arrow} />
+      <span className={cn(styles.arrow, angleClassName)} />
+      <span className={cn(styles.arrow, angleClassName)} />
     </button>
   );
 };
