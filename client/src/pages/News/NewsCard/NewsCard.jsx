@@ -10,11 +10,11 @@ export const NewsCard = ({ news: { id, title, description, publishedAt, media } 
   return (
     <article className={styles.card}>
       <ImageComponent
-        src={media[0]?.url || 'https://placehold.co/282'}
-        alt={media[0]?.alt || 'cover placeholder'}
-        placeholder={media[0]?.placeholder}
+        src={media?.[0].url || 'https://placehold.co/282'}
+        alt={media?.[0].alt || 'cover placeholder'}
+        placeholder={media?.[0].placeholder}
         className={styles.cover}
-        external
+        external={media}
       />
       <section className={styles.info}>
         <h3 className={styles.title}>{title}</h3>

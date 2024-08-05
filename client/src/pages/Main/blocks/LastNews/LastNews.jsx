@@ -72,13 +72,15 @@ export const LastNews = () => {
                   <SwiperSlide className={styles.newsCard} onClick={() => push(`${newsPage}/${id}`)} key={id}>
                     <ImageComponent
                       className={styles.cover}
-                      src={media[0]?.url || 'https://placehold.co/282'}
-                      alt={media[0]?.alt || 'cover placeholder'}
-                      placeholder={media[0]?.placeholder}
-                      external
+                      src={media?.[0].url || 'https://placehold.co/282'}
+                      alt={media?.[0].alt || 'cover placeholder'}
+                      placeholder={media?.[0].placeholder}
+                      external={media}
                     />
                     <p className={styles.publicationDate}>{formatDate(publishedAt)}</p>
-                    <p className={styles.newsTitle}>{title}</p>
+                    <div className={styles.newsTitleWrapper}>
+                      <p className={styles.newsTitle}>{title}</p>
+                    </div>
                   </SwiperSlide>
                 ))}
                 <div id='scrollbar' className={styles.scrollbar} />
