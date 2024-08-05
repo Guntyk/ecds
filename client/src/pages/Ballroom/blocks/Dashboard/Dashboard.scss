@@ -37,6 +37,15 @@
     color: $secondary4;
     text-transform: uppercase;
   }
+
+  &:hover .arrow {
+    translate: calc(100% + $gapExtraSmall) -50%;
+    opacity: 0;
+
+    &:nth-child(2) {
+      opacity: 1;
+    }
+  }
 }
 
 .arrow {
@@ -46,8 +55,13 @@
   width: 2.6rem;
   height: 4rem;
   mask: url(assets/icons/arrow-right-pages-type.svg);
-  background: $text2;
   translate: 0 -50%;
+  transition: 0.3s;
+
+  &:nth-child(2) {
+    right: calc(2.6rem + $gapExtraSmall);
+    opacity: 0;
+  }
 }
 
 .links {

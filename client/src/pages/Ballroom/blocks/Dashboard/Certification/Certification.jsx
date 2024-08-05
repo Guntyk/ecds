@@ -28,7 +28,9 @@ export const Certification = () => {
         className={cn(dashboardStyles.title, styles.title)}
         onClick={() => push(`${ballroomPage}${certificationPage}`)}
       >
-        Certification <span className={cn(dashboardStyles.arrow, styles.arrow)} />
+        Certification
+        <span className={cn(dashboardStyles.arrow, styles.arrow)} />
+        <span className={cn(dashboardStyles.arrow, styles.arrow)} />
       </h2>
     </div>
   );

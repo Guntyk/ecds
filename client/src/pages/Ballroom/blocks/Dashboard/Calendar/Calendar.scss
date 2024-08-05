@@ -16,6 +16,10 @@
   }
 }
 
+.arrow {
+  background: $text2;
+}
+
 .info {
   @extend %buttonSmall;
 

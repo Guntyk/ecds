@@ -29,7 +29,9 @@ export const News = () => {
   return (
     <div ref={containerRef} className={cn(dashboardStyles.block, styles.block)}>
       <h2 className={cn(dashboardStyles.title, styles.title)} onClick={() => push(newsPage)}>
-        Latest news <span className={cn(dashboardStyles.arrow, styles.arrow)} />
+        Latest news
+        <span className={cn(dashboardStyles.arrow, styles.arrow)} />
+        <span className={cn(dashboardStyles.arrow, styles.arrow)} />
       </h2>
       <ul className={dashboardStyles.list}>
         {!error ? (

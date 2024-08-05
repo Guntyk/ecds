@@ -7,9 +7,9 @@ import * as eventsActions from '../../../../../redux/features/eventsSlice';
 import { formatDate } from 'helpers/formatDate';
 import { pathnames } from 'constants/pathnames';
 import { ErrorMessage } from 'components/ErrorMessage';
+import { Link } from 'components/Link';
 import dashboardStyles from 'pages/Ballroom/blocks/Dashboard/Dashboard.scss';
 import styles from 'pages/Ballroom/blocks/Dashboard/Calendar/Calendar.scss';
-import { Link } from 'components/Link';
 
 export const Calendar = () => {
   const { isLoading, error, events } = useSelector((state) => state.events);
@@ -30,7 +30,9 @@ export const Calendar = () => {
   return (
     <div ref={containerRef} className={cn(dashboardStyles.block, styles.block)}>
       <h2 className={dashboardStyles.title} onClick={() => push(`${ballroomPage}${calendarPage}`)}>
-        Calendar<span>of competition</span> <span className={dashboardStyles.arrow} />
+        Calendar<span>of competition</span>
+        <span className={cn(dashboardStyles.arrow, styles.arrow)} />
+        <span className={cn(dashboardStyles.arrow, styles.arrow)} />
       </h2>
       <ul className={dashboardStyles.list}>
         {!error ? (
