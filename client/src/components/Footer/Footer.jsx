@@ -1,6 +1,7 @@
 import { Link, useLocation } from 'react-router-dom';
 import cn from 'classnames';
 import { contactUsBlockPages } from 'constants/contactUsBlockPages';
+import { aboutUsLinks, menuLinks } from 'constants/links';
 import { pathnames } from 'constants/pathnames';
 import { socials } from 'constants/socials';
 import { ContactUs } from 'components/Footer/ContactUs';
@@ -10,33 +11,7 @@ import styles from 'components/Footer/Footer.scss';
 
 export const Footer = () => {
   const { pathname } = useLocation();
-  const {
-    mainPage,
-    calendarPage,
-    usersPage,
-    certificationPage,
-    newsPage,
-    membersPage,
-    managementPage,
-    documentsPage,
-    contactsPage,
-    logosPage,
-  } = pathnames;
-
-  const menuLinks = [
-    { id: 1, title: 'Calendar', link: calendarPage },
-    { id: 2, title: 'List of active users', link: usersPage },
-    { id: 3, title: 'Certification', link: certificationPage },
-    { id: 4, title: 'All News', link: newsPage },
-    { id: 5, title: 'Members', link: membersPage },
-  ];
-
-  const aboutUsLinks = [
-    { id: 1, title: 'Management', link: managementPage },
-    { id: 2, title: 'Documents', link: documentsPage },
-    { id: 3, title: 'Contacts', link: contactsPage },
-    { id: 4, title: 'Logos', link: logosPage },
-  ];
+  const { mainPage } = pathnames;
 
   const currentYear = new Date().getFullYear();
 
@@ -50,9 +25,9 @@ export const Footer = () => {
               <div className={cn(styles.navigationSection, styles.menu)}>
                 <span className={styles.sectionTitle}>Menu</span>
                 <ul className={styles.navigationLinks}>
-                  {menuLinks.map(({ id, title, link }) => (
+                  {menuLinks.map(({ id, title, path }) => (
                     <li className={styles.item} key={id}>
-                      <Link to={link} className={styles.itemLink}>
+                      <Link to={path} className={styles.itemLink}>
                         {title}
                       </Link>
                     </li>
@@ -62,9 +37,9 @@ export const Footer = () => {
               <div className={cn(styles.navigationSection, styles.aboutUs)}>
                 <span className={styles.sectionTitle}>About us</span>
                 <ul className={styles.navigationLinks}>
-                  {aboutUsLinks.map(({ id, title, link }) => (
+                  {aboutUsLinks.map(({ id, title, path }) => (
                     <li className={styles.item} key={id}>
-                      <Link to={link} className={styles.itemLink}>
+                      <Link to={path} className={styles.itemLink}>
                         {title}
                       </Link>
                     </li>

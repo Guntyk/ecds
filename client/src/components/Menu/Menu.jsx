@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import cn from 'classnames';
-import { menuLinks } from 'constants/menuLinks';
+import { menuLinks } from 'constants/links';
 import arrow from 'assets/icons/arrow-right-menu.svg';
 import cross from 'assets/icons/cross.svg';
 import styles from 'components/Menu/Menu.scss';
@@ -15,15 +15,15 @@ export const Menu = ({ isOpen, setIsOpen }) => {
         </button>
       </div>
       <ul className={styles.links}>
-        {menuLinks.map(({ id, name, link }) => (
+        {menuLinks.map(({ id, title, path }) => (
           <li key={id}>
             <NavLink
               className={styles.link}
-              to={link}
+              to={path}
               onClick={() => setIsOpen(false)}
               {...(!isOpen ? { tabIndex: -1 } : {})}
             >
-              {name}
+              {title}
               <img src={arrow} alt='arrow right' />
             </NavLink>
           </li>

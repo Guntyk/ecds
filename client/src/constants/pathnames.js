@@ -14,4 +14,5 @@ export const pathnames = {
   caribbeanDancePage: '/caribbean-dance',
   lindyHopPage: '/lindy-hop',
   rockNRollPage: '/rock-n-roll',
+  notFoundPage: '/not-found',
 };

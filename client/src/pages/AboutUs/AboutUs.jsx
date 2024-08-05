@@ -1,5 +1,5 @@
 import { useLocation, Redirect } from 'react-router-dom';
-import { aboutUsLinks } from 'constants/aboutUsLinks';
+import { aboutUsLinks } from 'constants/links';
 import { pathnames } from 'constants/pathnames';
 import { Container } from 'components/Container';
 import { Link } from 'components/Link';
@@ -11,7 +11,7 @@ import styles from 'pages/AboutUs/AboutUs.scss';
 
 export const AboutUs = () => {
   const { pathname } = useLocation();
-  const { managementPage, documentsPage, contactsPage, logosPage } = pathnames;
+  const { managementPage, documentsPage, contactsPage, logosPage, notFoundPage } = pathnames;
 
   const renderPage = () => {
     switch (pathname) {
@@ -24,7 +24,7 @@ export const AboutUs = () => {
       case logosPage:
         return <Logos />;
       default:
-        return <Redirect to='/not-found' />;
+        return <Redirect to={notFoundPage} />;
     }
   };
 
