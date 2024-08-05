@@ -14,7 +14,7 @@ export const Users = () => {
     <div className={cn(dashboardStyles.block, styles.block)}>
       <ul className={dashboardStyles.links}>
         {activeUsersCategories.map((category) => (
-          <li>
+          <li key={category}>
             <Link
               className={cn(dashboardStyles.link, styles.link)}
               content={category}

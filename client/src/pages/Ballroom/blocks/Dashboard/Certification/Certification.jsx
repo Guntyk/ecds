@@ -14,7 +14,7 @@ export const Certification = () => {
     <div className={cn(dashboardStyles.block, styles.block)}>
       <ul className={dashboardStyles.links}>
         {certificatedUsersCategories.map((category) => (
-          <li>
+          <li key={category}>
             <Link
               className={cn(dashboardStyles.link, styles.link)}
               content={category}
