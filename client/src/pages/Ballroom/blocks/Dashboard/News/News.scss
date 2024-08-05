@@ -1,0 +1,39 @@
+.block {
+  gap: $gapLarge;
+  padding-block: 3.1rem 3.9rem;
+  color: $text2;
+  background: $gradient1;
+  border: 0.05rem solid $lavenderDark;
+}
+
+.title {
+  color: $secondary4;
+}
+
+.arrow {
+  background: $secondary4;
+}
+
+.item {
+  display: flex;
+  gap: $gapMedium;
+  padding-block: 2.4rem;
+
+  time {
+    @extend %buttonSmall;
+
+    font-weight: map-get($fontWeights, 'light');
+    line-height: 2.8rem;
+    white-space: nowrap;
+  }
+
+  strong {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+}
+
+.text {
+  @extend %body3Regular;
+}

@@ -1,17 +1,18 @@
 .block {
   gap: $gapLarge;
-  padding-block: 3.2rem 4rem;
+  padding-block: 3.1rem 3.9rem;
   color: $text2;
   background: $gradient1;
   border: 0.05rem solid $lavenderDark;
 }
 
 .item {
-  padding-block: 1.6rem;
+  padding-block: 1.55rem;
+  border-color: $secondary4;
 
   &:last-child {
     padding-bottom: 0;
-    border-bottom: none;
+    border-bottom: 0 !important;
   }
 }
 

@@ -19,12 +19,11 @@
   max-width: 58.8rem;
   width: 100%;
   border-radius: $borderRadiusLarge;
-  cursor: pointer;
 
   &:nth-child(2),
   &:nth-child(3) {
     gap: $gapMedium;
-    padding-block: 4rem 3.2rem;
+    padding-block: 3.8rem 3rem;
     background: $gradient2;
     border: 0.05rem solid $primary2;
 
@@ -51,14 +50,6 @@
       background: #dadbea80;
     }
   }
-  &:nth-child(4) {
-    .title {
-      color: $secondary4;
-    }
-    .arrow {
-      background: $secondary4;
-    }
-  }
 }
 
 .title {
@@ -67,6 +58,7 @@
   display: block;
   position: relative;
   font-weight: map-get($fontWeights, 'regular');
+  cursor: pointer;
 
   span {
     @extend %body3Regular;
@@ -76,17 +68,17 @@
     color: $secondary4;
     text-transform: uppercase;
   }
+}
 
-  .arrow {
-    position: absolute;
-    right: 0;
-    top: 50%;
-    width: 2.6rem;
-    height: 4rem;
-    mask: url(assets/icons/arrow-right-pages-type.svg);
-    background: $text2;
-    translate: 0 -50%;
-  }
+.arrow {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  width: 2.6rem;
+  height: 4rem;
+  mask: url(assets/icons/arrow-right-pages-type.svg);
+  background: $text2;
+  translate: 0 -50%;
 }
 
 .links {
@@ -114,21 +106,10 @@
     border-bottom-width: 0.05rem;
     border-bottom-style: solid;
     text-transform: capitalize;
+    cursor: pointer;
 
     &:first-child {
       padding-top: 0;
-    }
-  }
-
-  &.events {
-    .item {
-      padding-block: 1.55rem;
-      border-bottom-color: $secondary4;
-
-      &:last-child {
-        padding-bottom: 0;
-        border-bottom: none;
-      }
     }
   }
 }
