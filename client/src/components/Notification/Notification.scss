@@ -1,0 +1,49 @@
+.notification {
+  display: flex;
+  gap: $gapExtraSmall;
+  padding: 1.6rem;
+  background: $background2;
+  border-radius: $borderRadius;
+  max-width: 38.4rem;
+
+  &.fly {
+    position: fixed;
+    bottom: 3rem;
+    right: 3rem;
+    z-index: 1;
+  }
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: $gapExtraSmall;
+}
+
+.title {
+  @extend %body3Medium;
+}
+
+.text {
+  @extend %body4Light;
+
+  line-height: 140%;
+}
+
+.icon {
+  min-width: 2rem;
+  height: 2.4rem;
+
+  &.success {
+    mask: url(assets/icons/check.svg);
+    background: $primary2;
+  }
+  &.info {
+    mask: url(assets/icons/info.svg);
+    background: $primary1;
+  }
+  &.error {
+    mask: url(assets/icons/alert.svg);
+    background: $primary3;
+  }
+}
