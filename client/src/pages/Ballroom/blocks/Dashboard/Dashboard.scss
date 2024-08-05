@@ -20,7 +20,7 @@
   width: 100%;
   border-radius: $borderRadiusLarge;
 
-  &:nth-child(2),
+  // &:nth-child(2),
   &:nth-child(3) {
     gap: $gapMedium;
     padding-block: 3.8rem 3rem;
@@ -32,15 +32,15 @@
     }
   }
 
-  &:nth-child(2) {
-    .title {
-      color: $secondary1;
-    }
-    .link {
-      color: $text2;
-      border: 0.05rem solid $text2;
-    }
-  }
+  // &:nth-child(2) {
+  //   .title {
+  //     color: $secondary1;
+  //   }
+  //   .link {
+  //     color: $text2;
+  //     border: 0.05rem solid $text2;
+  //   }
+  // }
   &:nth-child(3) {
     .title {
       color: $primary1;
@@ -92,7 +92,7 @@
 
   display: inline-block;
   padding: 0.8rem 1.6rem;
-  text-transform: none;
+  text-transform: capitalize;
   border-radius: $borderRadius;
 }
 
