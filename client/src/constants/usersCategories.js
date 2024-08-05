@@ -1,1 +1,3 @@
-export const usersCategories = ['dancers', 'judges'];
+export const activeUsersCategories = ['dancers', 'judges'];
+
+export const certificatedUsersCategories = ['dancers', 'coaches', 'clubs', 'conditions'];

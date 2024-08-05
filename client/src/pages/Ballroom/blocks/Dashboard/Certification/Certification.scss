@@ -1,0 +1,19 @@
+.block {
+  gap: $gapMedium;
+  padding-block: 3.8rem 3rem;
+  background: $gradient2;
+  border: 0.05rem solid $primary2;
+}
+
+.arrow {
+  background: $primary1;
+}
+
+.title {
+  color: $primary1;
+}
+
+.link {
+  color: $primary1;
+  background: #dadbea80;
+}

@@ -19,37 +19,6 @@
   max-width: 58.8rem;
   width: 100%;
   border-radius: $borderRadiusLarge;
-
-  // &:nth-child(2),
-  &:nth-child(3) {
-    gap: $gapMedium;
-    padding-block: 3.8rem 3rem;
-    background: $gradient2;
-    border: 0.05rem solid $primary2;
-
-    .arrow {
-      background: $secondary1;
-    }
-  }
-
-  // &:nth-child(2) {
-  //   .title {
-  //     color: $secondary1;
-  //   }
-  //   .link {
-  //     color: $text2;
-  //     border: 0.05rem solid $text2;
-  //   }
-  // }
-  &:nth-child(3) {
-    .title {
-      color: $primary1;
-    }
-    .link {
-      color: $primary1;
-      background: #dadbea80;
-    }
-  }
 }
 
 .title {
