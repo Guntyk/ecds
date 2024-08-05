@@ -1,4 +1,4 @@
-import { pathnames } from './pathnames';
+import { pathnames } from 'constants/pathnames';
 
 const {
   newsPage,

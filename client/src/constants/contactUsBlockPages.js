@@ -1,4 +1,4 @@
-const { pathnames } = require('./pathnames');
+import { pathnames } from 'constants/pathnames';
 
 const { mainPage, contactsPage, ballroomPage } = pathnames;
 
