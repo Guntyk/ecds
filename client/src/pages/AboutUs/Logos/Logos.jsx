@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import * as logosActions from '../../../redux/features/logosSlice';
 import { LogoDropdown } from 'components/Dropdown/Logo';
-import { ErrorMessage } from 'components/ErrorMessage';
+import { Notification } from 'components/Notification';
 import styles from 'pages/AboutUs/Logos/Logos.scss';
 
 export const Logos = () => {
@@ -26,7 +26,7 @@ export const Logos = () => {
           logos.map((logo) => <LogoDropdown logo={logo} key={logo.id} />)
         )
       ) : (
-        <ErrorMessage error={logosRequestError} />
+        <Notification text={logosRequestError} type='error' />
       )}
       {isLogosRequestLoading && <p className={styles.text}>Loading...</p>}
     </div>

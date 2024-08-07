@@ -4,7 +4,7 @@ import useElementOnScreen from 'hooks/useElementOnScreen';
 import * as organizationsActions from '../../../../redux/features/organizationsSlice';
 import { apiErrors } from 'constants/apiErrors';
 import { OrganizationDropdown } from 'components/Dropdown/Organization';
-import { ErrorMessage } from 'components/ErrorMessage';
+import { Notification } from 'components/Notification';
 import { Container } from 'components/Container';
 import styles from 'pages/Main/blocks/Organizations/Organizations.scss';
 
@@ -27,7 +27,7 @@ export const Organizations = () => {
         <p className={styles.subtitle}>that are part of the European Confederation of Dance Sports</p>
         {!error ? (
           !isLoading && organizations.length === 0 ? (
-            <ErrorMessage error={apiErrors.error404Message} />
+            <Notification text={apiErrors.error404Message} type='error' />
           ) : (
             <ul className={styles.organizationsList}>
               {organizations.map((organization) => (
@@ -38,7 +38,7 @@ export const Organizations = () => {
             </ul>
           )
         ) : (
-          <ErrorMessage error={error} />
+          <Notification text={error} type='error' />
         )}
         {isLoading && <p>Loading...</p>}
       </section>

@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import { useEffect } from 'react';
 import * as newsActions from '../../../redux/features/newsSlice';
 import { formatDate } from 'helpers/formatDate';
-import { ErrorMessage } from 'components/ErrorMessage';
+import { Notification } from 'components/Notification';
 import { ImageComponent } from 'components/Image';
 import { pathnames } from 'constants/pathnames';
 import { Container } from 'components/Container';
@@ -38,7 +38,7 @@ export const NewsInfo = () => {
     }
 
     if (error) {
-      return <ErrorMessage error={error} />;
+      return <Notification text={error} type='error' />;
     }
 
     if (!news.length) {

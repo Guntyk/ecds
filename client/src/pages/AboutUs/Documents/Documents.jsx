@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import * as documentsActions from '../../../redux/features/documentsSlice';
 import { DocumentDropdown } from 'components/Dropdown/Document';
-import { ErrorMessage } from 'components/ErrorMessage';
+import { Notification } from 'components/Notification';
 import styles from 'pages/AboutUs/Documents/Documents.scss';
 
 export const Documents = () => {
@@ -26,7 +26,7 @@ export const Documents = () => {
           documents.map((document) => <DocumentDropdown document={document} key={document.id} />)
         )
       ) : (
-        <ErrorMessage error={documentsRequestError} />
+        <Notification text={documentsRequestError} type='error' />
       )}
       {isDocumentsRequestLoading && <p className={styles.text}>Loading...</p>}
     </div>

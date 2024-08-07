@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import useElementOnScreen from 'hooks/useElementOnScreen';
 import * as partnersActions from '../../../../redux/features/partnersSlice';
-import { ErrorMessage } from 'components/ErrorMessage';
+import { Notification } from 'components/Notification';
 import { ImageComponent } from 'components/Image';
 import { Container } from 'components/Container';
 import { Button } from 'components/Button';
@@ -46,7 +46,7 @@ export const Partners = () => {
             ))
           )
         ) : (
-          <ErrorMessage error={error} />
+          <Notification className={styles.text} text={error} type='error' />
         )}
         {isLoading && <p className={styles.text}>Loading...</p>}
         <aside className={styles.donate}>

@@ -8,7 +8,7 @@ import cn from 'classnames';
 import * as newsActions from '../../../../redux/features/newsSlice';
 import { formatDate } from 'helpers/formatDate';
 import { pathnames } from 'constants/pathnames';
-import { ErrorMessage } from 'components/ErrorMessage';
+import { Notification } from 'components/Notification';
 import { ImageComponent } from 'components/Image';
 import { Container } from 'components/Container';
 import { Button } from 'components/Button';
@@ -61,37 +61,39 @@ export const LastNews = () => {
           !isLoading && news.length === 0 ? (
             <p className={styles.text}>There is no news yet</p>
           ) : (
-            <div className={cn(styles.newsList, { [styles.empty]: news.length === 0 })}>
-              <Swiper
-                spaceBetween={24}
-                slidesPerView='auto'
-                scrollbar={{ dragClass: styles.thumb, draggable: true, dragSize: 240, el: '#scrollbar' }}
-                navigation={{ nextEl: '#btnNext', prevEl: '#btnPrev' }}
-              >
-                {news.map(({ id, title, publishedAt, media }) => (
-                  <SwiperSlide className={styles.newsCard} onClick={() => push(`${newsPage}/${id}`)} key={id}>
-                    <ImageComponent
-                      className={styles.cover}
-                      src={media?.[0].url || 'https://placehold.co/282'}
-                      alt={media?.[0].alt || 'cover placeholder'}
-                      placeholder={media?.[0].placeholder}
-                      external={media}
-                    />
-                    <p className={styles.publicationDate}>{formatDate(publishedAt)}</p>
-                    <div className={styles.newsTitleWrapper}>
-                      <p className={styles.newsTitle}>{title}</p>
-                    </div>
-                  </SwiperSlide>
-                ))}
-                <div id='scrollbar' className={styles.scrollbar} />
-              </Swiper>
-            </div>
+            <>
+              <div className={cn(styles.newsList, { [styles.empty]: news.length === 0 })}>
+                <Swiper
+                  spaceBetween={24}
+                  slidesPerView='auto'
+                  scrollbar={{ dragClass: styles.thumb, draggable: true, dragSize: 240, el: '#scrollbar' }}
+                  navigation={{ nextEl: '#btnNext', prevEl: '#btnPrev' }}
+                >
+                  {news.map(({ id, title, publishedAt, media }) => (
+                    <SwiperSlide className={styles.newsCard} onClick={() => push(`${newsPage}/${id}`)} key={id}>
+                      <ImageComponent
+                        className={styles.cover}
+                        src={media?.[0].url || 'https://placehold.co/282'}
+                        alt={media?.[0].alt || 'cover placeholder'}
+                        placeholder={media?.[0].placeholder}
+                        external={media}
+                      />
+                      <p className={styles.publicationDate}>{formatDate(publishedAt)}</p>
+                      <div className={styles.newsTitleWrapper}>
+                        <p className={styles.newsTitle}>{title}</p>
+                      </div>
+                    </SwiperSlide>
+                  ))}
+                  <div id='scrollbar' className={styles.scrollbar} />
+                </Swiper>
+              </div>
+              {news.length > 0 && <Link className={styles.moreBtn} content='See all news' path={newsPage} arrowRight />}
+            </>
           )
         ) : (
-          <ErrorMessage error={error} />
+          <Notification text={error} type='error' />
         )}
         {isLoading && <p className={styles.text}>Loading...</p>}
-        <Link className={styles.moreBtn} content='See all news' path={newsPage} arrowRight />
       </Container>
     </section>
   );

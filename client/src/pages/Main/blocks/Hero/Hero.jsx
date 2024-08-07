@@ -6,9 +6,10 @@ import { Container } from 'components/Container';
 import { Banners } from 'components/Banners';
 import { Button } from 'components/Button';
 import styles from 'pages/Main/blocks/Hero/Hero.scss';
+import { Notification } from 'components/Notification';
 
 export const Hero = () => {
-  const { isLoading, banners } = useSelector((state) => state.banners);
+  const { isLoading, error, banners } = useSelector((state) => state.banners);
   const dispatch = useDispatch();
 
   const [containerRef, isVisible] = useElementOnScreen();
@@ -27,7 +28,11 @@ export const Hero = () => {
             <h1 className={styles.title}>Unified Standards for a United Europe</h1>
             <Button buttonContent='Registration' />
           </div>
-          {!isLoading && banners.length > 0 && <Banners banners={banners} />}
+          {!error ? (
+            !isLoading && banners.length > 0 && <Banners banners={banners} />
+          ) : (
+            <Notification className={styles.error} text={error} type='error' />
+          )}
           {isLoading && <p className={styles.text}>Loading...</p>}
         </div>
       </Container>

@@ -6,7 +6,7 @@ import useElementOnScreen from 'hooks/useElementOnScreen';
 import * as eventsActions from '../../../../../redux/features/eventsSlice';
 import { formatDate } from 'helpers/formatDate';
 import { pathnames } from 'constants/pathnames';
-import { ErrorMessage } from 'components/ErrorMessage';
+import { Notification } from 'components/Notification';
 import { Link } from 'components/Link';
 import dashboardStyles from 'pages/Ballroom/blocks/Dashboard/Dashboard.scss';
 import styles from 'pages/Ballroom/blocks/Dashboard/Calendar/Calendar.scss';
@@ -64,7 +64,7 @@ export const Calendar = () => {
             ))
           )
         ) : (
-          <ErrorMessage error={error} />
+          <Notification className={dashboardStyles.error} text={error} type='error' />
         )}
         {isLoading && <p>Loading...</p>}
       </ul>

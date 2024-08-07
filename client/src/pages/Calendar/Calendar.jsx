@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import * as eventsActions from '../../redux/features/eventsSlice';
-import { ErrorMessage } from 'components/ErrorMessage';
+import { Notification } from 'components/Notification';
 import { Container } from 'components/Container';
 import { EventCard } from 'pages/Calendar/EventCard';
 import styles from 'pages/Calendar/Calendar.scss';
@@ -31,7 +31,7 @@ export const Calendar = () => {
               events.map((event) => <EventCard event={event} key={event.id} />)
             )
           ) : (
-            <ErrorMessage error={error} />
+            <Notification className={error} text={error} type='error' />
           )}
           {isLoading && <p className={styles.text}>Loading...</p>}
         </div>

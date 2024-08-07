@@ -6,7 +6,7 @@ import useElementOnScreen from 'hooks/useElementOnScreen';
 import * as newsActions from '../../../../../redux/features/newsSlice';
 import { formatDate } from 'helpers/formatDate';
 import { pathnames } from 'constants/pathnames';
-import { ErrorMessage } from 'components/ErrorMessage';
+import { Notification } from 'components/Notification';
 import dashboardStyles from 'pages/Ballroom/blocks/Dashboard/Dashboard.scss';
 import styles from 'pages/Ballroom/blocks/Dashboard/News/News.scss';
 
@@ -49,7 +49,7 @@ export const News = () => {
             ))
           )
         ) : (
-          <ErrorMessage error={error} />
+          <Notification className={dashboardStyles.error} text={error} type='error' />
         )}
         {isLoading && <p>Loading...</p>}
       </ul>

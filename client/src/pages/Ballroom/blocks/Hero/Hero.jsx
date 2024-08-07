@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import useElementOnScreen from 'hooks/useElementOnScreen';
 import * as bannersActions from '../../../../redux/features/bannersSlice';
-import { ErrorMessage } from 'components/ErrorMessage';
+import { Notification } from 'components/Notification';
 import { Container } from 'components/Container';
 import { Banners } from 'components/Banners';
 import styles from 'pages/Ballroom/blocks/Hero/Hero.scss';
@@ -27,7 +27,7 @@ export const Hero = () => {
             !isLoading &&
             banners.length > 0 && <Banners banners={banners} navigationClassName={styles.bannersNavigation} />
           ) : (
-            <ErrorMessage error={error} />
+            <Notification text={error} type='error' />
           )}
           {isLoading && <p className={styles.text}>Loading...</p>}
         </div>
