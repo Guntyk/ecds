@@ -17,10 +17,10 @@ export const Notification = ({ className, title, text, type, setIsActive, flySty
       <span className={cn(styles.icon, styles[type])} />
       <section className={styles.content}>
         <p className={styles.title}>{renderTitle()}</p>
-        <p className={styles.text}>{text}</p>
+        {text && <p className={styles.text}>{text}</p>}
       </section>
       {setIsActive && (
-        <button className={styles.icon} onClick={() => setIsActive(false)} title='Close notification'>
+        <button className={cn(styles.icon, styles.cross)} onClick={() => setIsActive(false)} title='Close notification'>
           <img src={cross} alt='Cross' />
         </button>
       )}

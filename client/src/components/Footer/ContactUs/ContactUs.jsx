@@ -1,12 +1,15 @@
 import emailjs from '@emailjs/browser';
 import { useState } from 'react';
 import { formConfig, initialState } from 'components/Footer/ContactUs/formConfig';
+import { Notification } from 'components/Notification';
 import { Container } from 'components/Container';
 import { Button } from 'components/Button';
 import { Input } from 'components/Input';
 import styles from 'components/Footer/ContactUs/ContactUs.scss';
 
 export const ContactUs = () => {
+  const [isSuccessNotificationShown, setIsSuccessNotificationShown] = useState(false);
+  const [isEmailRequestLoading, setIsEmailRequestLoading] = useState(false);
   const [formState, setFormState] = useState(initialState);
 
   const onChange = ({ target }) => {
@@ -16,15 +19,22 @@ export const ContactUs = () => {
     setFormState((prevFormState) => ({ ...prevFormState, [name]: value }));
   };
 
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
 
-    emailjs.sendForm(
+    setIsEmailRequestLoading(true);
+    const { status } = await emailjs.sendForm(
       process.env.REACT_APP_EMAIL_SERVICE_ID,
       process.env.REACT_APP_EMAIL_TEMPLATE_ID,
       e.target,
       process.env.REACT_APP_EMAIL_PUBLIC_KEY
     );
+
+    if (status === 200) {
+      setIsSuccessNotificationShown(true);
+      setFormState(initialState);
+    }
+    setIsEmailRequestLoading(false);
   };
 
   return (
@@ -50,6 +60,16 @@ export const ContactUs = () => {
           ))}
           <Button buttonContent='Send' className={styles.sendBtn} type='submit' />
         </form>
+        {isEmailRequestLoading && <p className={styles.text}>Loading...</p>}
+        {isSuccessNotificationShown && (
+          <Notification
+            className={styles.notification}
+            setIsActive={setIsSuccessNotificationShown}
+            title='Your message has been sent'
+            type='success'
+          />
+        )}
+        <hr className={styles.line} />
       </Container>
     </section>
   );
