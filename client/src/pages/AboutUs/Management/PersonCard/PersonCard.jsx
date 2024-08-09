@@ -1,4 +1,6 @@
+import { FreeMode, Scrollbar, Mousewheel } from 'swiper/modules';
 import { BlocksRenderer } from '@strapi/blocks-react-renderer';
+import { Swiper, SwiperSlide } from 'swiper/react';
 import { SocialLinks } from 'social-links';
 import { useState } from 'react';
 import cn from 'classnames';
@@ -7,6 +9,9 @@ import { Button } from 'components/Button';
 import { Arrow } from 'components/Arrow';
 import { Link } from 'components/Link';
 import arrowRight from 'assets/icons/arrow-right-background3_2-read-more.svg';
+import 'swiper/css';
+import 'swiper/css/free-mode';
+import 'swiper/css/scrollbar';
 import styles from 'pages/AboutUs/Management/PersonCard/PersonCard.scss';
 
 export const PersonCard = ({ person: { name, surname, role, socials, biography, photo } }) => {
@@ -56,9 +61,19 @@ export const PersonCard = ({ person: { name, surname, role, socials, biography, 
         </div>
         {isOpen && (
           <>
-            <div className={styles.biography}>
-              <BlocksRenderer content={biography} />
-            </div>
+            <Swiper
+              className={styles.biography}
+              direction={'vertical'}
+              slidesPerView={'auto'}
+              freeMode={true}
+              scrollbar={{ dragClass: styles.thumb, dragSize: 80, verticalClass: styles.scrollbar }}
+              mousewheel={true}
+              modules={[FreeMode, Scrollbar, Mousewheel]}
+            >
+              <SwiperSlide className={styles.text}>
+                <BlocksRenderer content={biography} />
+              </SwiperSlide>
+            </Swiper>
             <Arrow className={styles.cross} isOpen={true} onClick={() => setIsOpen(false)} logoStyle />
           </>
         )}
