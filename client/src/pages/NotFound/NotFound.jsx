@@ -1,20 +1,33 @@
-import { useHistory } from 'react-router-dom';
 import { pathnames } from 'constants/pathnames';
-import { Button } from 'components/Button';
+import { Container } from 'components/Container';
+import { Link } from 'components/Link';
+import arrow from 'assets/icons/arrow-left-white.svg';
 import styles from 'pages/NotFound/NotFound.scss';
 
 export const NotFound = () => {
-  const { goBack, replace } = useHistory();
   const { mainPage } = pathnames;
 
   return (
     <article className={styles.page}>
-      <h1 className={styles.title}>404</h1>
-      <p className={styles.text}>This page does not exist</p>
-      <div className={styles.buttonsWrapper}>
-        <Button buttonContent='Go back' onClick={goBack} lightStyle />
-        <Button buttonContent='Main page' onClick={() => replace(mainPage)} lightStyle />
-      </div>
+      <Container>
+        <div className={styles.wrapper}>
+          <h1 className={styles.title}>Oops...</h1>
+          <p className={styles.subtitle}>Page not found</p>
+          <p className={styles.text}>
+            This Page doesn’t exist or was removed!
+            <br />
+            We suggest you back to home.
+          </p>
+          <Link
+            className={styles.btn}
+            content='back to home'
+            path={mainPage}
+            arrowSrc={arrow}
+            arrowLeft
+            pinkButtonStyle
+          />
+        </div>
+      </Container>
     </article>
   );
 };

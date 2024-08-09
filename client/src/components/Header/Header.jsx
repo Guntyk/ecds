@@ -12,9 +12,18 @@ export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { pathname } = useLocation();
 
-  const { mainPage, managementPage, documentsPage, contactsPage, logosPage } = pathnames;
+  const { mainPage, managementPage, documentsPage, contactsPage, logosPage, ballroomPage, calendarPage, newsPage } =
+    pathnames;
+  const darkHeaderPages = [
+    managementPage,
+    documentsPage,
+    contactsPage,
+    logosPage,
+    ballroomPage,
+    newsPage,
+    calendarPage,
+  ];
   const aboutUsPages = [managementPage, documentsPage, contactsPage, logosPage];
-  const darkHeaderPages = [mainPage];
 
   const handleAboutUsLinkClick = (e) => {
     if (aboutUsPages.includes(pathname)) {
@@ -22,9 +31,11 @@ export const Header = () => {
     }
   };
 
+  const currentPathName = '/' + pathname.split('/')[1];
+
   return (
     <Container>
-      <header className={cn(styles.header, { [styles.headerDark]: darkHeaderPages.includes(pathname) })}>
+      <header className={cn(styles.header, { [styles.headerDark]: darkHeaderPages.includes(currentPathName) })}>
         <Link to={mainPage} className={styles.logo}>
           <img src={logo} alt='European Confederation of Dance Sports logo' />
           European Confederation of Dance Sports

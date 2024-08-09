@@ -73,4 +73,26 @@
       background: $secondary4;
     }
   }
+
+  &.pinkButton {
+    padding: 1.6rem 3.8rem;
+    padding-left: 7rem;
+    color: $text2;
+    background: $primary3;
+    border-radius: $borderRadius;
+
+    .arrow {
+      translate: 3.8rem -50%;
+      rotate: 0deg;
+    }
+
+    &:hover {
+      color: $text2;
+      padding: 1.6rem 4.55rem;
+
+      .arrow {
+        opacity: 0;
+      }
+    }
+  }
 }

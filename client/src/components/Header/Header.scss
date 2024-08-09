@@ -4,19 +4,20 @@
   align-items: center;
   position: absolute;
   top: 0;
+  color: $text2;
   width: 100%;
   padding-top: 2.4rem;
   z-index: 1;
 
   &Dark {
-    color: $text2;
+    color: $text1;
 
     .navigation {
       &Link {
-        color: $text2;
+        color: $text1;
 
         &:hover {
-          color: $secondary4;
+          color: $primary1;
         }
       }
     }
@@ -47,7 +48,7 @@
     &:hover {
       @extend %buttonActive;
       padding-inline: 0.5rem;
-      color: $primary1;
+      color: $secondary4;
       text-transform: none;
     }
   }

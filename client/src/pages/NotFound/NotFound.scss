@@ -1,26 +1,35 @@
 .page {
+  padding-top: 28rem;
+  height: 108rem;
+  background: url(assets/images/404-background.jpg) no-repeat top / cover;
+}
+
+.wrapper {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
+  align-items: start;
+  color: $text2;
 }
 
 .title {
   @extend %h1;
 
-  font-size: 20rem;
-  line-height: 0.6;
+  font-size: 8.8rem;
+}
+
+.subtitle {
+  @extend %body1Medium;
+
+  margin-block: 0.8rem 1.6rem;
+  text-transform: uppercase;
 }
 
 .text {
-  @extend %body1Regular;
+  @extend %body3Medium;
+
+  color: $text1;
 }
 
-.buttonsWrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 1.2rem;
-  margin-top: 2.4rem;
+.btn {
+  margin-top: 3.2rem;
 }
