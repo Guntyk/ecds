@@ -20,6 +20,7 @@ export const ImageComponent = ({ className, src, placeholder, alt, fit, external
           alt={alt}
           className={cn(styles.image, styles.placeholder)}
           src={placeholder}
+          loading='lazy'
           style={{ objectFit: fit ?? 'cover' }}
         />
       ) : (
@@ -28,6 +29,7 @@ export const ImageComponent = ({ className, src, placeholder, alt, fit, external
           className={styles.image}
           src={external ? `${process.env.REACT_APP_BASE_API_URL}${src}` : src}
           onLoad={() => setIsImageLoaded(true)}
+          loading='lazy'
           style={{ objectFit: fit ?? 'cover' }}
         />
       )}

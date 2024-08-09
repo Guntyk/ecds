@@ -37,11 +37,13 @@ export const LastNews = () => {
     }
   }, [dispatch, isVisible, news.length]);
 
+  const lastNews = news.length > 8 ? news.slice(0, 8) : news;
+
   return (
     <section className={styles.block} ref={containerRef}>
       <Container>
         <h2 className={styles.title}>Latest news</h2>
-        {news.length > 3 && (
+        {lastNews.length > 3 && (
           <div className={styles.navigationWrapper}>
             <Button
               id='btnPrev'
@@ -58,7 +60,7 @@ export const LastNews = () => {
           </div>
         )}
         {!error ? (
-          !isLoading && news.length === 0 ? (
+          !isLoading && lastNews.length === 0 ? (
             <p className={styles.text}>There is no news yet</p>
           ) : (
             <>
@@ -69,7 +71,7 @@ export const LastNews = () => {
                   scrollbar={{ dragClass: styles.thumb, draggable: true, dragSize: 240, el: '#scrollbar' }}
                   navigation={{ nextEl: '#btnNext', prevEl: '#btnPrev' }}
                 >
-                  {news.map(({ id, title, publishedAt, media }) => (
+                  {lastNews.map(({ id, title, publishedAt, media }) => (
                     <SwiperSlide className={styles.newsCard} onClick={() => push(`${newsPage}/${id}`)} key={id}>
                       <ImageComponent
                         className={styles.cover}
@@ -87,7 +89,9 @@ export const LastNews = () => {
                   <div id='scrollbar' className={styles.scrollbar} />
                 </Swiper>
               </div>
-              {news.length > 0 && <Link className={styles.moreBtn} content='See all news' path={newsPage} arrowRight />}
+              {lastNews.length > 0 && (
+                <Link className={styles.moreBtn} content='See all news' path={newsPage} arrowRight />
+              )}
             </>
           )
         ) : (

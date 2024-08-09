@@ -12,6 +12,7 @@ const pagination = {
 export const sliderSettings = {
   pagination: pagination,
   navigation: { nextEl: '#next', prevEl: '#prev' },
+  lazyPreloadPrevNext: 1,
   loop: true,
   autoplay: {
     delay: 3000,

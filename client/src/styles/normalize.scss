@@ -12,6 +12,16 @@ body {
   -moz-osx-font-smoothing: grayscale;
   font-weight: map-get($fontWeights, 'regular');
   box-sizing: border-box;
+
+  &::-webkit-scrollbar {
+    width: 1.6rem;
+    border: 0.05rem solid $background2;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: 5rem;
+    background: $background2;
+  }
 }
 
 textarea {

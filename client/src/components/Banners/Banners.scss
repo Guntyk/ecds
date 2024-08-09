@@ -2,6 +2,10 @@
   width: 58.8rem;
   height: 37.8rem;
   z-index: 0;
+
+  &:hover .navigation {
+    background: #dadbea4d;
+  }
 }
 
 .bannersSlider {
@@ -28,10 +32,6 @@
   width: min-content;
   border-radius: $borderRadiusLarge;
   transition: 0.3s;
-
-  &:hover {
-    background: #dadbea4d;
-  }
 }
 
 .pagination {
