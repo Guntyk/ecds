@@ -1,11 +1,11 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import useElementOnScreen from 'hooks/useElementOnScreen';
-import * as bannersActions from '../../../../redux/features/bannersSlice';
+import * as bannersActions from '../../../../../redux/features/bannersSlice';
 import { Notification } from 'components/Notification';
 import { Container } from 'components/Container';
 import { Banners } from 'components/Banners';
-import styles from 'pages/Ballroom/blocks/Hero/Hero.scss';
+import styles from 'pages/Ballroom/Main/blocks/Hero/Hero.scss';
 
 export const Hero = () => {
   const { isLoading, error, banners } = useSelector((state) => state.banners);

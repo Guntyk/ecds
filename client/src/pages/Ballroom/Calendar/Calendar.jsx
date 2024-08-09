@@ -1,10 +1,10 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import * as eventsActions from '../../redux/features/eventsSlice';
+import * as eventsActions from '../../../redux/features/eventsSlice';
 import { Notification } from 'components/Notification';
 import { Container } from 'components/Container';
-import { EventCard } from 'pages/Calendar/EventCard';
-import styles from 'pages/Calendar/Calendar.scss';
+import { EventCard } from 'pages/Ballroom/Calendar/EventCard';
+import styles from 'pages/Ballroom/Calendar/Calendar.scss';
 
 export const Calendar = () => {
   const { isLoading, error, events } = useSelector((state) => state.events);

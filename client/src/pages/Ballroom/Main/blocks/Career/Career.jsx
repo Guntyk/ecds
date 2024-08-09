@@ -2,7 +2,7 @@ import { pathnames } from 'constants/pathnames';
 import { Container } from 'components/Container';
 import { Arrow } from 'components/Arrow';
 import { Link } from 'components/Link';
-import styles from 'pages/Ballroom/blocks/Career/Career.scss';
+import styles from 'pages/Ballroom/Main/blocks/Career/Career.scss';
 
 export const Career = () => {
   const { ballroomPage } = pathnames;

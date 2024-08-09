@@ -1,9 +1,9 @@
 import { v4 as uuidv4 } from 'uuid';
 import { pathnames } from 'constants/pathnames';
+import { NotFound } from 'pages/Services/NotFound';
+import { Calendar } from 'pages/Ballroom/Calendar';
+import { Ballroom } from 'pages/Ballroom/Main';
 import { NewsInfo } from 'pages/News/NewsInfo';
-import { Ballroom } from 'pages/Ballroom';
-import { Calendar } from 'pages/Calendar';
-import { NotFound } from 'pages/NotFound';
 import { AboutUs } from 'pages/AboutUs';
 import { News } from 'pages/News';
 import { Main } from 'pages/Main';

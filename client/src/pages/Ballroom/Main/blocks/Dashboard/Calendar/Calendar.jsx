@@ -3,13 +3,13 @@ import { useHistory } from 'react-router-dom';
 import { useEffect } from 'react';
 import cn from 'classnames';
 import useElementOnScreen from 'hooks/useElementOnScreen';
-import * as eventsActions from '../../../../../redux/features/eventsSlice';
+import * as eventsActions from '../../../../../../redux/features/eventsSlice';
 import { formatDate } from 'helpers/formatDate';
 import { pathnames } from 'constants/pathnames';
 import { Notification } from 'components/Notification';
 import { Link } from 'components/Link';
-import dashboardStyles from 'pages/Ballroom/blocks/Dashboard/Dashboard.scss';
-import styles from 'pages/Ballroom/blocks/Dashboard/Calendar/Calendar.scss';
+import dashboardStyles from 'pages/Ballroom/Main/blocks/Dashboard/Dashboard.scss';
+import styles from 'pages/Ballroom/Main/blocks/Dashboard/Calendar/Calendar.scss';
 
 export const Calendar = () => {
   const { isLoading, error, events } = useSelector((state) => state.events);

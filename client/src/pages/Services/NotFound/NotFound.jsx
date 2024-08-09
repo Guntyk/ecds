@@ -2,7 +2,7 @@ import { pathnames } from 'constants/pathnames';
 import { Container } from 'components/Container';
 import { Link } from 'components/Link';
 import arrow from 'assets/icons/arrow-left-white.svg';
-import styles from 'pages/NotFound/NotFound.scss';
+import styles from 'pages/Services/NotFound/NotFound.scss';
 
 export const NotFound = () => {
   const { mainPage } = pathnames;

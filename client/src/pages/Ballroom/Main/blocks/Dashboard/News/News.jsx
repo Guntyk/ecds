@@ -3,12 +3,12 @@ import { useHistory } from 'react-router-dom';
 import { useEffect } from 'react';
 import cn from 'classnames';
 import useElementOnScreen from 'hooks/useElementOnScreen';
-import * as newsActions from '../../../../../redux/features/newsSlice';
+import * as newsActions from '../../../../../../redux/features/newsSlice';
 import { formatDate } from 'helpers/formatDate';
 import { pathnames } from 'constants/pathnames';
 import { Notification } from 'components/Notification';
-import dashboardStyles from 'pages/Ballroom/blocks/Dashboard/Dashboard.scss';
-import styles from 'pages/Ballroom/blocks/Dashboard/News/News.scss';
+import dashboardStyles from 'pages/Ballroom/Main/blocks/Dashboard/Dashboard.scss';
+import styles from 'pages/Ballroom/Main/blocks/Dashboard/News/News.scss';
 
 export const News = () => {
   const { isLoading, error, news } = useSelector((state) => state.news);

@@ -9,7 +9,7 @@ import { ImageComponent } from 'components/Image';
 import { pathnames } from 'constants/pathnames';
 import { Container } from 'components/Container';
 import { Link } from 'components/Link';
-import { NotFound } from 'pages/NotFound';
+import { NotFound } from 'pages/Services/NotFound';
 import styles from 'pages/News/NewsInfo/NewsInfo.scss';
 
 export const NewsInfo = () => {
