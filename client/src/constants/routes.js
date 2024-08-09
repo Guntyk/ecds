@@ -1,7 +1,7 @@
 import { v4 as uuidv4 } from 'uuid';
 import { pathnames } from 'constants/pathnames';
-import { NotFound } from 'pages/Services/NotFound';
 import { Calendar } from 'pages/Ballroom/Calendar';
+import { Service } from 'pages/Services/Service';
 import { Ballroom } from 'pages/Ballroom/Main';
 import { NewsInfo } from 'pages/News/NewsInfo';
 import { AboutUs } from 'pages/AboutUs';
@@ -22,5 +22,5 @@ export const routes = [
     path,
     component: AboutUs,
   })),
-  { id: uuidv4(), component: NotFound },
+  { id: uuidv4(), component: Service },
 ];

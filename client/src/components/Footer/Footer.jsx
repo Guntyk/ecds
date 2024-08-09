@@ -1,6 +1,6 @@
 import { Link, useLocation } from 'react-router-dom';
 import cn from 'classnames';
-import { contactUsBlockPages } from 'constants/contactUsBlockPages';
+import { contactUsBlockPages } from 'constants/pagesCategories';
 import { aboutUsLinks, menuLinks } from 'constants/links';
 import { pathnames } from 'constants/pathnames';
 import { socials } from 'constants/socials';
