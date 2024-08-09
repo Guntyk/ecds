@@ -1,0 +1,41 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 108rem;
+  background: url(assets/images/backgrounds/try-again.jpg) no-repeat bottom / cover;
+}
+
+.wrapper {
+  margin-top: -10rem;
+}
+
+.title {
+  @extend %h1;
+
+  font-size: 8.8rem;
+  color: $text2;
+  text-transform: capitalize;
+}
+
+.text {
+  @extend %body2Medium;
+
+  margin-block: 1.6rem 4rem;
+  color: $secondary1;
+}
+
+.buttonsWrapper {
+  display: flex;
+  gap: $gapLarge;
+}
+
+.btn {
+  width: 24rem;
+}
+
+.mainPageBtn {
+  color: $primary1;
+  background: $background2;
+}
