@@ -4,12 +4,12 @@ import { useParams } from 'react-router-dom';
 import { useEffect } from 'react';
 import * as newsActions from '../../../redux/features/newsSlice';
 import { formatDate } from 'helpers/formatDate';
-import { Notification } from 'components/Notification';
 import { ImageComponent } from 'components/Image';
 import { pathnames } from 'constants/pathnames';
 import { Container } from 'components/Container';
 import { Link } from 'components/Link';
 import { NotFound } from 'pages/Services/NotFound';
+import { TryAgain } from 'pages/Services/TryAgain';
 import styles from 'pages/News/NewsInfo/NewsInfo.scss';
 
 export const NewsInfo = () => {
@@ -32,13 +32,13 @@ export const NewsInfo = () => {
     return <NotFound />;
   }
 
+  if (error) {
+    return <TryAgain />;
+  }
+
   const renderContent = () => {
     if (isLoading) {
       return <p className={styles.text}>Loading...</p>;
-    }
-
-    if (error) {
-      return <Notification text={error} type='error' />;
     }
 
     if (!news.length) {
