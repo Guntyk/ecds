@@ -3,7 +3,7 @@ import { ImageComponent } from 'components/Image';
 import { Link } from 'components/Link';
 import calendarIcon from 'assets/icons/calendar.svg';
 import markerIcon from 'assets/icons/marker.svg';
-import styles from 'pages/Ballroom/Calendar/EventCard/EventCard.scss';
+import styles from 'pages/Calendar/EventCard/EventCard.scss';
 
 export const EventCard = ({
   event: { id, type, title, description, organization, organizer, startDate, endDate, address, cover },
