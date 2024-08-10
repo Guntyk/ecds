@@ -1,9 +1,9 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import * as eventsActions from '../../../redux/features/eventsSlice';
-import { Notification } from 'components/Notification';
 import { Container } from 'components/Container';
 import { EventCard } from 'pages/Ballroom/Calendar/EventCard';
+import { TryAgain } from 'pages/Services/TryAgain';
 import styles from 'pages/Ballroom/Calendar/Calendar.scss';
 
 export const Calendar = () => {
@@ -16,6 +16,10 @@ export const Calendar = () => {
     }
   }, []);
 
+  if (error) {
+    return <TryAgain />;
+  }
+
   return (
     <Container>
       <section className={styles.calendar}>
@@ -24,14 +28,10 @@ export const Calendar = () => {
           <p className={styles.subtitle}>Of competition</p>
         </div>
         <div className={styles.events}>
-          {!error ? (
-            !isLoading && events.length === 0 ? (
-              <p className={styles.text}>The calendar is temporarily empty</p>
-            ) : (
-              events.map((event) => <EventCard event={event} key={event.id} />)
-            )
+          {!isLoading && events.length === 0 ? (
+            <p className={styles.text}>The calendar is temporarily empty</p>
           ) : (
-            <Notification className={error} text={error} type='error' />
+            events.map((event) => <EventCard event={event} key={event.id} />)
           )}
           {isLoading && <p className={styles.text}>Loading...</p>}
         </div>
