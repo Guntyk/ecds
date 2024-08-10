@@ -6,6 +6,7 @@ import { Notification } from 'components/Notification';
 import { ImageComponent } from 'components/Image';
 import { Container } from 'components/Container';
 import { Button } from 'components/Button';
+import { Loader } from 'components/Loader';
 import { Link } from 'components/Link';
 import styles from 'pages/Main/blocks/Partners/Partners.scss';
 
@@ -48,7 +49,7 @@ export const Partners = () => {
         ) : (
           <Notification className={styles.text} text={error} type='error' />
         )}
-        {isLoading && <p className={styles.text}>Loading...</p>}
+        {isLoading && <Loader className={styles.text} />}
         <aside className={styles.donate}>
           <h3 className={styles.donateText}>
             If you like our idea, support it with money.
