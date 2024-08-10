@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import * as newsActions from '../../redux/features/newsSlice';
 import { Container } from 'components/Container';
+import { Loader } from 'components/Loader';
 import { TryAgain } from 'pages/Services/TryAgain';
 import { NewsCard } from 'pages/News/NewsCard';
 import styles from 'pages/News/News.scss';
@@ -30,7 +31,7 @@ export const News = () => {
           ) : (
             news.map((news) => <NewsCard news={news} key={news.id} />)
           )}
-          {isLoading && <p className={styles.text}>Loading...</p>}
+          {isLoading && <Loader />}
         </div>
       </section>
     </Container>

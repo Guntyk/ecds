@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import * as eventsActions from '../../redux/features/eventsSlice';
 import { Container } from 'components/Container';
+import { Loader } from 'components/Loader';
 import { EventCard } from 'pages/Calendar/EventCard';
 import { TryAgain } from 'pages/Services/TryAgain';
 import styles from 'pages/Calendar/Calendar.scss';
@@ -33,7 +34,7 @@ export const Calendar = () => {
           ) : (
             events.map((event) => <EventCard event={event} key={event.id} />)
           )}
-          {isLoading && <p className={styles.text}>Loading...</p>}
+          {isLoading && <Loader />}
         </div>
       </section>
     </Container>

@@ -4,6 +4,7 @@ import { formConfig, initialState } from 'components/Footer/ContactUs/formConfig
 import { Notification } from 'components/Notification';
 import { Container } from 'components/Container';
 import { Button } from 'components/Button';
+import { Loader } from 'components/Loader';
 import { Input } from 'components/Input';
 import styles from 'components/Footer/ContactUs/ContactUs.scss';
 
@@ -60,7 +61,7 @@ export const ContactUs = () => {
           ))}
           <Button buttonContent='Send' className={styles.sendBtn} type='submit' />
         </form>
-        {isEmailRequestLoading && <p className={styles.text}>Loading...</p>}
+        {isEmailRequestLoading && <Loader />}
         {isSuccessNotificationShown && (
           <Notification
             className={styles.notification}

@@ -7,6 +7,7 @@ import * as newsActions from '../../../../../../redux/features/newsSlice';
 import { formatDate } from 'helpers/formatDate';
 import { pathnames } from 'constants/pathnames';
 import { Notification } from 'components/Notification';
+import { Loader } from 'components/Loader';
 import dashboardStyles from 'pages/Ballroom/Main/blocks/Dashboard/Dashboard.scss';
 import styles from 'pages/Ballroom/Main/blocks/Dashboard/News/News.scss';
 
@@ -51,7 +52,7 @@ export const News = () => {
         ) : (
           <Notification className={dashboardStyles.error} text={error} type='error' />
         )}
-        {isLoading && <p>Loading...</p>}
+        {isLoading && <Loader className={dashboardStyles.loader} />}
       </ul>
     </div>
   );

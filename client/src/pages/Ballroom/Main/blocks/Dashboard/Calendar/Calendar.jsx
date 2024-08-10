@@ -7,6 +7,7 @@ import * as eventsActions from '../../../../../../redux/features/eventsSlice';
 import { formatDate } from 'helpers/formatDate';
 import { pathnames } from 'constants/pathnames';
 import { Notification } from 'components/Notification';
+import { Loader } from 'components/Loader';
 import { Link } from 'components/Link';
 import dashboardStyles from 'pages/Ballroom/Main/blocks/Dashboard/Dashboard.scss';
 import styles from 'pages/Ballroom/Main/blocks/Dashboard/Calendar/Calendar.scss';
@@ -66,7 +67,7 @@ export const Calendar = () => {
         ) : (
           <Notification className={dashboardStyles.error} text={error} type='error' />
         )}
-        {isLoading && <p>Loading...</p>}
+        {isLoading && <Loader className={dashboardStyles.loader} />}
       </ul>
     </div>
   );

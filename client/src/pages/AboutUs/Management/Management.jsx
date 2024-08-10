@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import * as managementActions from '../../../redux/features/managementSlice';
 import { apiErrors } from 'constants/apiErrors';
 import { Notification } from 'components/Notification';
+import { Loader } from 'components/Loader';
 import { PersonCard } from 'pages/AboutUs/Management/PersonCard';
 import styles from 'pages/AboutUs/Management/Management.scss';
 
@@ -29,7 +30,7 @@ export const Management = () => {
       ) : (
         <Notification text={managementRequestError} type='error' />
       )}
-      {isManagementRequestLoading && <p className={styles.text}>Loading...</p>}
+      {isManagementRequestLoading && <Loader />}
     </div>
   );
 };

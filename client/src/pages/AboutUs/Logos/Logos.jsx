@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import * as logosActions from '../../../redux/features/logosSlice';
 import { LogoDropdown } from 'components/Dropdown/Logo';
 import { Notification } from 'components/Notification';
+import { Loader } from 'components/Loader';
 import styles from 'pages/AboutUs/Logos/Logos.scss';
 
 export const Logos = () => {
@@ -28,7 +29,7 @@ export const Logos = () => {
       ) : (
         <Notification text={logosRequestError} type='error' />
       )}
-      {isLogosRequestLoading && <p className={styles.text}>Loading...</p>}
+      {isLogosRequestLoading && <Loader />}
     </div>
   );
 };

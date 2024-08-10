@@ -122,3 +122,7 @@
   right: 0;
   margin-top: 3.2rem;
 }
+
+.loader > div::after {
+  background: $background2;
+}

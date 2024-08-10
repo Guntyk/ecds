@@ -2,11 +2,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import useElementOnScreen from 'hooks/useElementOnScreen';
 import * as bannersActions from '../../../../redux/features/bannersSlice';
+import { Notification } from 'components/Notification';
 import { Container } from 'components/Container';
 import { Banners } from 'components/Banners';
 import { Button } from 'components/Button';
 import styles from 'pages/Main/blocks/Hero/Hero.scss';
-import { Notification } from 'components/Notification';
 
 export const Hero = () => {
   const { isLoading, error, banners } = useSelector((state) => state.banners);
@@ -33,7 +33,6 @@ export const Hero = () => {
           ) : (
             <Notification className={styles.error} text={error} type='error' />
           )}
-          {isLoading && <p className={styles.text}>Loading...</p>}
         </div>
       </Container>
     </section>

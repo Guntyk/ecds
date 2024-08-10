@@ -12,6 +12,7 @@ import { Notification } from 'components/Notification';
 import { ImageComponent } from 'components/Image';
 import { Container } from 'components/Container';
 import { Button } from 'components/Button';
+import { Loader } from 'components/Loader';
 import { Link } from 'components/Link';
 import useElementOnScreen from 'hooks/useElementOnScreen';
 import arrowRight from 'assets/icons/arrow-right-background3_2.svg';
@@ -97,7 +98,7 @@ export const LastNews = () => {
         ) : (
           <Notification text={error} type='error' />
         )}
-        {isLoading && <p className={styles.text}>Loading...</p>}
+        {isLoading && <Loader className={styles.loader} />}
       </Container>
     </section>
   );

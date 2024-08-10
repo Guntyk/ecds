@@ -5,6 +5,7 @@ import * as bannersActions from '../../../../../redux/features/bannersSlice';
 import { Notification } from 'components/Notification';
 import { Container } from 'components/Container';
 import { Banners } from 'components/Banners';
+import { Loader } from 'components/Loader';
 import styles from 'pages/Ballroom/Main/blocks/Hero/Hero.scss';
 
 export const Hero = () => {
@@ -29,7 +30,7 @@ export const Hero = () => {
           ) : (
             <Notification text={error} type='error' />
           )}
-          {isLoading && <p className={styles.text}>Loading...</p>}
+          {isLoading && <Loader className={styles.loader} />}
         </div>
       </Container>
     </section>

@@ -6,6 +6,7 @@ import { apiErrors } from 'constants/apiErrors';
 import { OrganizationDropdown } from 'components/Dropdown/Organization';
 import { Notification } from 'components/Notification';
 import { Container } from 'components/Container';
+import { Loader } from 'components/Loader';
 import styles from 'pages/Main/blocks/Organizations/Organizations.scss';
 
 export const Organizations = () => {
@@ -40,7 +41,7 @@ export const Organizations = () => {
         ) : (
           <Notification text={error} type='error' />
         )}
-        {isLoading && <p>Loading...</p>}
+        {isLoading && <Loader />}
       </section>
     </Container>
   );
