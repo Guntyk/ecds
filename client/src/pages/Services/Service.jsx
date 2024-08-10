@@ -6,7 +6,19 @@ import { NotFound } from 'pages/Services/NotFound';
 export const Service = () => {
   const { pathname } = useLocation();
 
-  const isUnderConstruction = constructionPages.includes(pathname);
+  const isUnderConstruction = (pathname, pages = constructionPages) =>
+    pages.some((page) =>
+      typeof page === 'string'
+        ? pathname === page
+        : typeof page === 'object' &&
+          Object.entries(page).some(
+            ([key, values]) =>
+              pathname.startsWith(key) &&
+              (!pathname.slice(key.length) || isUnderConstruction(pathname.slice(key.length), values))
+          )
+    );
 
-  return isUnderConstruction ? <Construction /> : <NotFound />;
+  const underConstruction = isUnderConstruction(pathname);
+
+  return underConstruction ? <Construction /> : <NotFound />;
 };
