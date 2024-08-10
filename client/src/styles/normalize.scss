@@ -24,6 +24,17 @@ body {
   }
 }
 
+* {
+  &::-moz-selection {
+    color: $text1;
+    background: $secondary2;
+  }
+  &::selection {
+    color: $text1;
+    background: $secondary2;
+  }
+}
+
 textarea {
   font-family: inherit;
   resize: vertical;
