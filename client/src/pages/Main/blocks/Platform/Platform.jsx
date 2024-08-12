@@ -24,7 +24,7 @@ export const Platform = () => {
           <img className={styles.ephanScreen} src={ephanScreen} alt='screenshot of e-phan platform' />
         </Container>
       </div>
-      <div className={styles.statsWrapper}>
+      {/* <div className={styles.statsWrapper}>
         <Container maxWidth={980}>
           <div className={styles.stats}>
             <p className={styles.statisticsValue}>
@@ -39,7 +39,7 @@ export const Platform = () => {
             </div>
           </div>
         </Container>
-      </div>
+      </div> */}
     </section>
   );
 };

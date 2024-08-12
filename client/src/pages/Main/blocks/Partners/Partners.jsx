@@ -50,14 +50,14 @@ export const Partners = () => {
           <Notification className={styles.text} text={error} type='error' />
         )}
         {isLoading && <Loader className={styles.text} />}
-        <aside className={styles.donate}>
+        {/* <aside className={styles.donate}>
           <h3 className={styles.donateText}>
             If you like our idea, support it with money.
             <br />
             Any amount will go to support the dance movement in Europe
           </h3>
           <Button buttonContent='Donate' className={styles.donateBtn} />
-        </aside>
+        </aside> */}
       </section>
     </Container>
   );
