@@ -8,18 +8,16 @@ const {
   certificationPage,
   streetDancePage,
   caribbeanDancePage,
-  lindyHopPage,
-  rockNRollPage,
+  constructionPage,
   membersPage,
 } = pathnames;
 
 export const contactUsBlockPages = [mainPage, contactsPage, ballroomPage];
 
 export const constructionPages = [
+  constructionPage,
   streetDancePage,
   caribbeanDancePage,
-  lindyHopPage,
-  rockNRollPage,
   membersPage,
   { [ballroomPage]: [usersPage, certificationPage] },
 ];

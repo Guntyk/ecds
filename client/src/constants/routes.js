@@ -7,13 +7,11 @@ import { Calendar } from 'pages/Calendar';
 import { AboutUs } from 'pages/AboutUs';
 import { News } from 'pages/News';
 import { Main } from 'pages/Main';
-import { TryAgain } from 'pages/Services/TryAgain';
 
 const { mainPage, ballroomPage, calendarPage, newsPage, managementPage, documentsPage, contactsPage, logosPage } =
   pathnames;
 
 export const routes = [
-  { id: uuidv4(), path: '/a', component: TryAgain },
   { id: uuidv4(), path: mainPage, component: Main },
   { id: uuidv4(), path: ballroomPage, component: Ballroom },
   { id: uuidv4(), path: `${ballroomPage}${calendarPage}`, component: Calendar },

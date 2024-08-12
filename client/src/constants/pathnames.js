@@ -12,7 +12,6 @@ export const pathnames = {
   ballroomPage: '/ballroom-dance',
   streetDancePage: '/street-dance',
   caribbeanDancePage: '/caribbean-dance',
-  lindyHopPage: '/lindy-hop',
-  rockNRollPage: '/rock-n-roll',
+  constructionPage: '/construction',
   notFoundPage: '/not-found',
 };

@@ -6,12 +6,11 @@ const {
   ballroomPage,
   streetDancePage,
   caribbeanDancePage,
-  lindyHopPage,
-  rockNRollPage,
   managementPage,
   documentsPage,
   contactsPage,
   logosPage,
+  constructionPage,
 } = pathnames;
 
 export const menuLinks = [
@@ -19,9 +18,8 @@ export const menuLinks = [
   { id: 2, title: 'All news', path: newsPage },
   { id: 3, title: 'Ballroom dance', path: ballroomPage },
   { id: 4, title: 'Street dance', path: streetDancePage },
-  { id: 5, title: 'Lindy hop', path: lindyHopPage },
-  { id: 6, title: 'Caribbean dance', path: caribbeanDancePage },
-  { id: 7, title: "Rock'N'Roll dance", path: rockNRollPage },
+  { id: 5, title: 'Caribbean dance', path: caribbeanDancePage },
+  { id: 6, title: 'Other styles', path: constructionPage },
 ];
 
 export const aboutUsLinks = [
