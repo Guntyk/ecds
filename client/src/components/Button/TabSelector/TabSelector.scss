@@ -1,0 +1,40 @@
+.toggleButton {
+  display: flex;
+  position: relative;
+  overflow: hidden;
+  border-radius: $borderRadius;
+  border: 0.1rem solid $background2;
+
+  &::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: $background2;
+    z-index: -2;
+  }
+
+  .btn {
+    @extend %body2Light;
+
+    padding-block: 0.8rem;
+    width: calc(100% / var(--tabsLength));
+    line-height: 2.4rem;
+    letter-spacing: 0;
+    text-transform: capitalize;
+
+    &Active {
+      font-weight: map-get($fontWeights, 'regular');
+    }
+  }
+}
+
+.indicator {
+  position: absolute;
+  height: 100%;
+  border-radius: $borderRadius;
+  width: calc(100% / var(--tabsLength));
+  background: $secondary4;
+  transition: 0.3s;
+  z-index: -1;
+}
