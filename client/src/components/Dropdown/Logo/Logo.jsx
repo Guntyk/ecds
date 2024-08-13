@@ -7,12 +7,14 @@ import dropdownStyles from 'components/Dropdown/Dropdown.scss';
 import styles from 'components/Dropdown/Logo/Logo.scss';
 
 export const LogoDropdown = ({ logo: { name, logos } }) => {
+  const [downloadedLogosIds, setDownloadedLogosIds] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
 
-  const handleDownload = (url, desiredFileName) => {
-    const filename = desiredFileName || url.substring(url.lastIndexOf('/') + 1).split('?')[0];
+  const handleDownload = (id, url, desiredFileName) => {
+    const externalUrl = process.env.REACT_APP_BASE_API_URL + url;
+    const filename = desiredFileName || externalUrl.substring(externalUrl.lastIndexOf('/') + 1).split('?')[0];
 
-    fetch(url)
+    fetch(externalUrl)
       .then((response) => response.blob())
       .then((blob) => {
         const a = document.createElement('a');
@@ -22,6 +24,8 @@ export const LogoDropdown = ({ logo: { name, logos } }) => {
         document.body.appendChild(a);
         a.click();
         document.body.removeChild(a);
+
+        setDownloadedLogosIds((prevIds) => [...prevIds, id]);
       })
       .catch((err) => console.error('Error fetching file:', err));
   };
@@ -35,7 +39,7 @@ export const LogoDropdown = ({ logo: { name, logos } }) => {
       <div className={cn(dropdownStyles.content, { [dropdownStyles.open]: isOpen })}>
         <ul className={dropdownStyles.contentInner}>
           {logos.map(({ id, images }) => {
-            const img =
+            const coverImg =
               images.find(({ ext }) => ext === '.svg') ||
               images.find(({ ext }) => ext === '.png') ||
               images.find(({ ext }) => ext === '.jpg');
@@ -44,25 +48,24 @@ export const LogoDropdown = ({ logo: { name, logos } }) => {
               <li className={styles.logo} key={id}>
                 <ImageComponent
                   className={styles.logoWrapper}
-                  placeholder={img?.placeholder}
-                  src={`${process.env.REACT_APP_BASE_API_URL}${img?.url}`}
-                  alt={img?.alternativeText}
+                  placeholder={coverImg?.placeholder}
+                  src={`${process.env.REACT_APP_BASE_API_URL}${coverImg?.url}`}
+                  alt={coverImg?.alternativeText}
                   fit='contain'
                 />
                 <div className={styles.buttonsWrapper}>
                   {images.map(({ id, name, ext, url }) => (
                     <Button
                       className={styles.downloadBtn}
-                      buttonContent={
-                        <>
-                          <span className={styles.downloadIcon} />
-                          Download in {ext.replace('.', '')}
-                        </>
-                      }
-                      onClick={() => handleDownload(process.env.REACT_APP_BASE_API_URL + url, name)}
+                      onClick={() => handleDownload(id, url, name)}
                       key={id}
-                      lightStyle
-                    />
+                      ghostStyle
+                      small
+                      disabled={downloadedLogosIds.includes(id)}
+                    >
+                      <span className={styles.downloadIcon} />
+                      Download in {ext.slice(1)}
+                    </Button>
                   ))}
                 </div>
               </li>

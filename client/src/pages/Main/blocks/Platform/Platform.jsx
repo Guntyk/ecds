@@ -17,7 +17,7 @@ export const Platform = () => {
             Become a part of the European dance community regardless of your skill level, place of residence and
             membership of organizations.*
           </p>
-          <Button buttonContent='Registration' className={styles.registrationBtn} />
+          <Button text='Registration' className={styles.registrationBtn} normalStyle />
           <p className={styles.subtext}>
             * If you are not a member of a national organization, there will be a fee to register on the platform.
           </p>

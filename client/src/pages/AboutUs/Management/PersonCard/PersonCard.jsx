@@ -50,13 +50,9 @@ export const PersonCard = ({ person: { name, surname, role, socials, biography, 
             </ul>
           )}
           {!isOpen && (
-            <Button
-              className={styles.moreBtn}
-              buttonContent='Read more'
-              onClick={() => setIsOpen(true)}
-              iconData={{ alt: 'arrow right', src: arrowRight, side: 'right' }}
-              lightStyle
-            />
+            <Button className={styles.moreBtn} text='Read more' onClick={() => setIsOpen(true)} ghostStyle small>
+              Read more <img src={arrowRight} alt='arrow right' />
+            </Button>
           )}
         </div>
         {isOpen && (
@@ -67,7 +63,7 @@ export const PersonCard = ({ person: { name, surname, role, socials, biography, 
               slidesPerView={'auto'}
               freeMode={true}
               scrollbar={{ dragClass: styles.thumb, dragSize: 80, verticalClass: styles.scrollbar }}
-              mousewheel={true}
+              mousewheel={{ sensitivity: 0.5 }}
               modules={[FreeMode, Scrollbar, Mousewheel]}
             >
               <SwiperSlide className={styles.text}>

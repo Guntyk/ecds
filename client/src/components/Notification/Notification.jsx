@@ -12,6 +12,12 @@ export const Notification = ({ className, title, text, type, setIsActive, flySty
     }
   };
 
+  if (flyStyle) {
+    setTimeout(() => {
+      setIsActive(false);
+    }, 5000);
+  }
+
   return (
     <aside className={cn(styles.notification, className, { [styles.fly]: flyStyle })}>
       <span className={cn(styles.icon, styles[type])} />
@@ -19,7 +25,7 @@ export const Notification = ({ className, title, text, type, setIsActive, flySty
         <p className={styles.title}>{renderTitle()}</p>
         {text && <p className={styles.text}>{text}</p>}
       </section>
-      {setIsActive && (
+      {!flyStyle && setIsActive && (
         <button className={cn(styles.icon, styles.cross)} onClick={() => setIsActive(false)} title='Close notification'>
           <img src={cross} alt='Cross' />
         </button>

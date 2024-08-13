@@ -59,7 +59,7 @@ export const ContactUs = () => {
               required
             />
           ))}
-          <Button buttonContent='Send' className={styles.sendBtn} type='submit' />
+          <Button text='Send' className={styles.sendBtn} type='submit' ghostStyle large />
         </form>
         {isEmailRequestLoading && <Loader />}
         {isSuccessNotificationShown && (

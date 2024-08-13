@@ -6,6 +6,7 @@
 .card {
   display: flex;
   position: static;
+  max-height: 49rem;
   padding: 2.4rem;
   padding-bottom: 3.2rem;
   background: $text2;
@@ -62,13 +63,11 @@
 
 .moreBtn {
   margin-top: 0.8rem;
-  gap: 0;
   text-transform: none;
 }
 
 .biography {
   margin-inline: 2.4rem 1.6rem;
-  height: 434px;
 }
 
 .text {

@@ -28,7 +28,7 @@ export const DocumentDropdown = ({ document: { title, description, file } }) => 
           <div className={styles.buttonsWrapper}>
             <Link
               className={styles.openBtn}
-              content='Open in PDF'
+              content={`Open in ${file?.ext.slice(1).toUpperCase()}`}
               path={`${process.env.REACT_APP_BASE_API_URL}${file?.url}`}
               external
             />

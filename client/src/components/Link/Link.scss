@@ -71,6 +71,7 @@
     &.active {
       font-weight: map-get($fontWeights, 'regular');
       background: $secondary4;
+      pointer-events: none;
     }
   }
 

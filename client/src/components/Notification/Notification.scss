@@ -11,7 +11,19 @@
     position: fixed;
     bottom: 3rem;
     right: 3rem;
+    animation: fade-out 2.1s linear;
+    animation-delay: 3s;
+    -webkit-animation-delay: 3s;
     z-index: 1;
+  }
+}
+
+@keyframes fade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
   }
 }
 

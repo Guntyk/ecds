@@ -43,7 +43,7 @@ export default class StaticDataService {
     const query = qs.stringify({
       fields: ['title', 'description'],
       populate: {
-        file: { fields: ['url'] },
+        file: { fields: ['ext', 'url'] },
       },
     });
 

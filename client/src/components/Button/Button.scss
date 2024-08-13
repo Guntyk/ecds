@@ -1,39 +1,60 @@
 .btn {
   @extend %button;
   display: flex;
+  justify-content: center;
   align-items: center;
   gap: $gapExtraSmall;
   position: relative;
   overflow: hidden;
   border-radius: $borderRadius;
 
-  &Default {
-    justify-content: center;
-    width: 20.5rem;
+  &Normal {
+    width: 24rem;
     padding: 1.6rem 0;
     color: $text2;
-    text-transform: uppercase;
     background: $primary3;
-
-    &:hover,
-    &:focus {
-      @extend %buttonActive;
-    }
   }
 
-  &Light {
-    padding: 0.8rem 1.6rem;
-    color: $background3_2;
+  &Ghost {
+    padding-block: 0.8rem;
+    color: $primary1;
     font-weight: map-get($fontWeights, 'medium');
-    letter-spacing: 0.02em;
-    border: 0.175rem solid $secondary2;
+    letter-spacing: 0.05em;
+    border-width: 0.05rem;
+    border-style: solid;
 
-    img {
-      margin-left: 0.8rem;
+    &.large {
+      padding-block: 1.6rem;
+      min-width: 24rem;
+      color: $primary2;
+      border-color: $background1;
+
+      &:hover {
+        border-color: $secondary4;
+      }
+    }
+
+    &.small {
+      padding-inline: 1.5rem;
+      color: $secondary1;
+      text-transform: none;
+      border-color: $secondary2;
+      border-width: 0.175rem;
+      letter-spacing: 0.02em;
     }
 
     &:hover {
-      border: 0.175rem solid $primary2;
+      border-color: $primary2;
     }
+  }
+
+  &:hover:not(.small),
+  &:focus:not(.small) {
+    @extend %buttonActive;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    pointer-events: none;
   }
 }

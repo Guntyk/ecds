@@ -3,33 +3,31 @@ import styles from 'components/Button/Button.scss';
 
 export const Button = ({
   children,
-  buttonContent,
+  text,
   className,
   type,
-  iconData,
-  lightStyle,
-  textStyle,
-  headerStyle,
+  normalStyle,
+  ghostStyle,
+  filterStyle,
+  large,
+  small,
   noStyle,
   ...props
 }) => {
   const buttonClasses = cn(
-    styles.btn,
     {
-      [styles.btnDefault]: !lightStyle && !textStyle && !headerStyle && !noStyle,
-      [styles.btnLight]: lightStyle,
-      [styles.btnText]: textStyle,
+      [styles.btn]: !noStyle,
+      [styles.btnNormal]: normalStyle,
+      [styles.btnGhost]: ghostStyle,
+      [styles.large]: large,
+      [styles.small]: small,
     },
     className
   );
 
-  const { alt, src, side } = iconData || {};
-
   return (
     <button className={buttonClasses} type={type || 'button'} {...props}>
-      {side === 'left' && <img src={src} alt={alt} className={styles.icon} />}
-      {children ?? buttonContent}
-      {side === 'right' && <img src={src} alt={alt} className={styles.icon} />}
+      {children ?? text}
     </button>
   );
 };

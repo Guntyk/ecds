@@ -56,7 +56,7 @@ export const Partners = () => {
             <br />
             Any amount will go to support the dance movement in Europe
           </h3>
-          <Button buttonContent='Donate' className={styles.donateBtn} />
+          <Button text='Donate' className={styles.donateBtn} normalStyle />
         </aside> */}
       </section>
     </Container>

@@ -15,6 +15,59 @@
   justify-content: space-between;
   align-items: center;
   margin-bottom: 3.2rem;
+
+  .btn {
+    width: 10rem;
+    text-transform: uppercase;
+    transition: 0.3s;
+
+    img {
+      position: absolute;
+      transition: inherit;
+    }
+
+    &.prev {
+      padding-left: 3.8rem;
+
+      img {
+        left: 1.5rem;
+      }
+    }
+
+    &.next {
+      padding-right: 3.8rem;
+
+      img {
+        right: 1.5rem;
+      }
+    }
+
+    &:hover {
+      @extend %buttonActive;
+
+      padding-inline: unset;
+      animation: borderPulsation 3s ease-in-out infinite;
+
+      &.prev img {
+        left: -1.7rem;
+        opacity: 0;
+      }
+
+      &.next img {
+        right: -1.7rem;
+        opacity: 0;
+      }
+    }
+  }
+}
+
+@keyframes borderPulsation {
+  0% {
+    border-width: 0.175rem;
+  }
+  100% {
+    border-width: 0.05rem;
+  }
 }
 
 .newsList {

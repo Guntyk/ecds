@@ -14,10 +14,10 @@ export const TryAgain = () => {
         <h1 className={styles.title}>Try that again</h1>
         <p className={styles.text}>Page could not be loaded. Please try again later.</p>
         <div className={styles.buttonsWrapper}>
-          <Button className={styles.btn} buttonContent='Reload page' onClick={() => window.location.reload()} />
+          <Button className={styles.btn} text='Reload page' onClick={() => window.location.reload()} />
           <Button
             className={cn(styles.btn, styles.mainPageBtn)}
-            buttonContent='Try later'
+            text='Try later'
             onClick={() => push(mainPage)}
           />
         </div>

@@ -44,22 +44,16 @@ export const LastNews = () => {
     <section className={styles.block} ref={containerRef}>
       <Container>
         <h2 className={styles.title}>Latest news</h2>
-        {lastNews.length > 3 && (
-          <div className={styles.navigationWrapper}>
-            <Button
-              id='btnPrev'
-              buttonContent='Prev'
-              iconData={{ alt: 'arrow left', src: arrowLeft, side: 'left' }}
-              lightStyle
-            />
-            <Button
-              id='btnNext'
-              buttonContent='Next'
-              iconData={{ alt: 'arrow right', src: arrowRight, side: 'right' }}
-              lightStyle
-            />
-          </div>
-        )}
+        <div className={styles.navigationWrapper}>
+          <Button className={cn(styles.btn, styles.prev)} id='btnPrev' ghostStyle small>
+            <img src={arrowLeft} alt='arrow left' />
+            Prev
+          </Button>
+          <Button className={cn(styles.btn, styles.next)} id='btnNext' ghostStyle small>
+            Next
+            <img src={arrowRight} alt='arrow right' />
+          </Button>
+        </div>
         {!error ? (
           !isLoading && lastNews.length === 0 ? (
             <p className={styles.text}>There is no news yet</p>
