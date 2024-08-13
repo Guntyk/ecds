@@ -1,10 +1,8 @@
 import { useHistory, useLocation } from 'react-router-dom';
-import { useState } from 'react';
 import cn from 'classnames';
 import styles from 'components/Button/TabSelector/TabSelector.scss';
 
-export const TabSelector = ({ tabs }) => {
-  const [activeTabIndex, setActiveTabIndex] = useState(0);
+export const TabSelector = ({ tabs, activeTabIndex, setActiveTabIndex }) => {
   const { pathname } = useLocation();
   const { push } = useHistory();
 
