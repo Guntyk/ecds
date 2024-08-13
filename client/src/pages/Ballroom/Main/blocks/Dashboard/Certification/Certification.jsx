@@ -1,6 +1,6 @@
 import { useHistory } from 'react-router-dom';
 import cn from 'classnames';
-import { certificatedUsersCategories } from 'constants/usersCategories';
+import { certificatedUsersTypes } from 'constants/usersTypes';
 import { pathnames } from 'constants/pathnames';
 import { Link } from 'components/Link';
 import dashboardStyles from 'pages/Ballroom/Main/blocks/Dashboard/Dashboard.scss';
@@ -13,12 +13,12 @@ export const Certification = () => {
   return (
     <div className={cn(dashboardStyles.block, styles.block)}>
       <ul className={dashboardStyles.links}>
-        {certificatedUsersCategories.map((category) => (
-          <li key={category}>
+        {certificatedUsersTypes.map((type) => (
+          <li key={type}>
             <Link
               className={cn(dashboardStyles.link, styles.link)}
-              content={category}
-              path={`${ballroomPage}${certificationPage}?category=${category}`}
+              content={type}
+              path={`${ballroomPage}${certificationPage}?type=${type}`}
               noStyle
             />
           </li>

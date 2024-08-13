@@ -1,0 +1,28 @@
+.page {
+  padding-block: 12.8rem 12rem;
+  min-height: 100vh;
+
+  &Content {
+    display: flex;
+    gap: $gapLarge;
+  }
+}
+
+.title {
+  @extend %h2;
+  margin-bottom: 4rem;
+}
+
+.navigation {
+  display: flex;
+  flex-direction: column;
+  gap: $gapMedium;
+  min-width: 28.2rem;
+}
+
+.users {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $gapLarge;
+  width: 100%;
+}
