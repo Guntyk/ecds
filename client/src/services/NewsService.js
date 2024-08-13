@@ -11,7 +11,7 @@ export default class NewsService {
           fields: ['alternativeText', 'placeholder', 'url'],
         },
       },
-      sort: 'publishedAt',
+      sort: 'publishedAt:desc',
     });
 
     const [error, data] = await backendApi.get(`/articles?${query}`);
