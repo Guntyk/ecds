@@ -16,7 +16,7 @@
   }
 
   &Ghost {
-    padding-block: 0.8rem;
+    padding-block: 1rem;
     color: $primary1;
     font-weight: map-get($fontWeights, 'medium');
     letter-spacing: 0.05em;
@@ -35,7 +35,7 @@
     }
 
     &.small {
-      padding-inline: 1.5rem;
+      padding: 0.8rem 1.5rem;
       color: $secondary1;
       text-transform: none;
       border-color: $secondary2;
