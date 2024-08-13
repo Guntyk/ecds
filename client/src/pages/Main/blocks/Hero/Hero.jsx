@@ -26,7 +26,7 @@ export const Hero = () => {
         <div ref={containerRef} className={styles.wrapper}>
           <div className={styles.titleWrapper}>
             <h1 className={styles.title}>Unified Standards for a United Europe</h1>
-            <Button text='Registration' normalStyle />
+            <Button text='Registration' onClick={() => window.open(process.env.REACT_APP_EPHAN_URL)} normalStyle />
           </div>
           {!error ? (
             !isLoading && banners.length > 0 && <Banners banners={banners} />
