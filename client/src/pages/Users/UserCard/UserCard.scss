@@ -32,6 +32,7 @@
 .moreBtn {
   @extend %buttonSmall;
 
+  position: relative;
   margin-top: auto;
   border-radius: 0;
   overflow: visible;

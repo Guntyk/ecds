@@ -8,7 +8,7 @@ export const UserCard = ({ user: { name, level, photo } }) => {
       <ImageComponent className={styles.photo} src={photo} />
       <h2 className={styles.name}>{name}</h2>
       <p className={styles.class}>{level} class</p>
-      <Button className={styles.moreBtn} text='More information'>
+      <Button className={styles.moreBtn} text='More information' noStyle>
         More information
         <span className={styles.arrow} />
         <span className={styles.arrow} />
