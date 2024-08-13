@@ -26,7 +26,13 @@ export const Hero = () => {
         <div ref={containerRef} className={styles.wrapper}>
           {!error ? (
             !isLoading &&
-            banners.length > 0 && <Banners banners={banners} navigationClassName={styles.bannersNavigation} />
+            banners.length > 0 && (
+              <Banners
+                banners={banners}
+                sliderClassName={styles.bannersSlider}
+                navigationClassName={styles.bannersNavigation}
+              />
+            )
           ) : (
             <Notification text={error} type='error' />
           )}

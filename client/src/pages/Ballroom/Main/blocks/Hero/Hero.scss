@@ -10,10 +10,12 @@
   width: 100%;
 }
 
-.bannersNavigation {
-  background: #f3f5f7cc;
+.banners {
+  &Slider:hover .bannersNavigation {
+    background: #f3f5f7cc;
+  }
 
-  &:hover {
+  &Navigation {
     background: #f3f5f7cc;
   }
 }
