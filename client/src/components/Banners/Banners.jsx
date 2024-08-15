@@ -31,9 +31,9 @@ export const Banners = ({ banners, sliderClassName, navigationClassName }) => (
     </Swiper>
     {banners.length > 1 && (
       <div className={cn(styles.navigation, navigationClassName)}>
-        <Arrow id='prev' title='Previous banner' />
+        <Arrow className={styles.arrow} id='prev' title='Previous banner' />
         <div id='pagination' className={styles.pagination}></div>
-        <Arrow id='next' title='Next banner' />
+        <Arrow className={styles.arrow} id='next' title='Next banner' />
       </div>
     )}
   </div>

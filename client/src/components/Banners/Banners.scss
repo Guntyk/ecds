@@ -3,8 +3,11 @@
   height: 37.8rem;
   z-index: 0;
 
-  &:hover .navigation {
-    background: #dadbea4d;
+  &:hover,
+  &:has(.banner:focus, .arrow:focus) {
+    .navigation {
+      background: #dadbea4d;
+    }
   }
 }
 
