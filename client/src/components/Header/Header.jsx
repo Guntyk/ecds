@@ -12,8 +12,17 @@ export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { pathname } = useLocation();
 
-  const { mainPage, managementPage, documentsPage, contactsPage, logosPage, ballroomPage, calendarPage, newsPage } =
-    pathnames;
+  const {
+    mainPage,
+    managementPage,
+    documentsPage,
+    contactsPage,
+    logosPage,
+    ballroomPage,
+    calendarPage,
+    newsPage,
+    membersPage,
+  } = pathnames;
   const darkHeaderPages = [
     managementPage,
     documentsPage,
@@ -22,6 +31,7 @@ export const Header = () => {
     ballroomPage,
     newsPage,
     calendarPage,
+    membersPage,
   ];
   const aboutUsPages = [managementPage, documentsPage, contactsPage, logosPage];
 

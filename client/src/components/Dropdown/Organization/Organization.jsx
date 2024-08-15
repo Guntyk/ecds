@@ -3,8 +3,12 @@ import cn from 'classnames';
 import { Arrow } from 'components/Arrow';
 import styles from 'components/Dropdown/Organization/Organization.scss';
 
-export const OrganizationDropdown = ({ organization: { flag, country, name, manager, website, email, phone } }) => {
-  const [isOpen, setIsOpen] = useState(false);
+export const OrganizationDropdown = ({
+  className,
+  organization: { flag, country, name, manager, website, email, phone },
+  opened,
+}) => {
+  const [isOpen, setIsOpen] = useState(opened ? true : false);
 
   const removeProtocol = (url) => url.replace(/^https?:\/\//, '');
 
@@ -13,11 +17,11 @@ export const OrganizationDropdown = ({ organization: { flag, country, name, mana
   };
 
   return (
-    <div className={styles.container}>
-      <div className={styles.header} onClick={toggleDropdown}>
+    <div className={cn(styles.container, className)}>
+      <div className={cn(styles.header, { [styles.opened]: opened })} {...(!opened && { onClick: toggleDropdown })}>
         <img src={`${process.env.REACT_APP_BASE_API_URL}${flag.url}`} alt={country} className={styles.flagIcon} />
         <span className={styles.name}>{country}</span>
-        <Arrow className={styles.dropdownArrow} isOpen={isOpen} expandStyle />
+        {!opened && <Arrow className={styles.dropdownArrow} isOpen={isOpen} expandStyle />}
       </div>
       <div className={cn(styles.content, { [styles.open]: isOpen })}>
         <table className={styles.infoTable}>
