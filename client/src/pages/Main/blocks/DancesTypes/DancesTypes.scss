@@ -48,16 +48,21 @@
 
   &:has(+ *:hover),
   &:has(+ * + *:hover),
-  &:has(+ * + * + *:hover) {
+  &:has(+ * + * + *:hover),
+  &:has(+ *:focus),
+  &:has(+ * + *:focus),
+  &:has(+ * + * + *:focus) {
     width: 27.2rem;
   }
 
-  &:hover {
+  &:hover,
+  &:focus {
     @extend %body3Medium;
 
     width: 33.6rem;
     color: $primary3;
     letter-spacing: $letterSpacing;
+    outline: none;
 
     & + *,
     & + * + *,

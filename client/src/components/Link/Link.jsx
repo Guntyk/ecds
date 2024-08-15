@@ -4,6 +4,7 @@ import arrowIcon from 'assets/icons/arrow-right-purple.svg';
 import styles from 'components/Link/Link.scss';
 
 export const Link = ({
+  children,
   className,
   content,
   path,
@@ -28,12 +29,12 @@ export const Link = ({
 
   return external ? (
     <a className={linkClass} href={path} target='_blank' rel='noopener noreferrer'>
-      {content}
+      {children ?? content}
       {(arrowRight || arrowLeft) && <img className={styles.arrow} src={arrowSrc ?? arrowIcon} alt='arrow right' />}
     </a>
   ) : (
     <RouterLink className={linkClass} to={path}>
-      {content}
+      {children ?? content}
       {(arrowRight || arrowLeft) && <img className={styles.arrow} src={arrowSrc ?? arrowIcon} alt='arrow right' />}
     </RouterLink>
   );
