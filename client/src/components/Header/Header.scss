@@ -16,8 +16,14 @@
       &Link {
         color: $text1;
 
-        &:hover {
+        &:hover,
+        &:focus,
+        &.active {
           color: $primary1;
+        }
+
+        &.active {
+          pointer-events: none;
         }
       }
     }
@@ -45,10 +51,12 @@
     text-transform: none;
     transition: 0.2s;
 
-    &:hover {
+    &:hover,
+    &:focus {
       @extend %buttonActive;
       padding-inline: 0.5rem;
       color: $secondary4;
+      outline: none;
       text-transform: none;
     }
   }
