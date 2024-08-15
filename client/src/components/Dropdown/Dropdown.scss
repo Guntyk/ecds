@@ -1,42 +1,111 @@
 .dropdown {
-  border: 0.05rem solid $background2;
-  border-radius: $borderRadius;
-  background: $text2;
+  display: inline-block;
+  position: relative;
 
-  &Btn {
-    @extend %body2Medium;
+  &Input,
+  &Button {
+    @extend %body4Regular;
 
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 2.4rem 3.2rem;
-    line-height: 3.2rem;
-    transition: 0.5s;
+    color: $secondary3;
+    width: 100%;
+    padding: 1.6rem;
 
     &.open {
-      @extend %body1Medium;
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+    }
 
-      padding-top: 3.2rem;
+    &.filled {
+      color: $text1;
+    }
+
+    &:focus:not(.open) {
+      border: 0.05rem solid $primary1;
+    }
+  }
+
+  &Button {
+    border: 0.05rem solid $secondary2;
+    border-radius: $borderRadius;
+  }
+
+  &List {
+    position: absolute;
+    top: calc(100% - 0.05rem);
+    width: 100%;
+    max-height: 0;
+    padding: 0;
+    opacity: 0;
+    overflow: hidden;
+    background: $background1;
+    border: 0.05rem solid $secondary2;
+    border-top: 0.1rem solid $primary1;
+    border-radius: $borderRadius;
+    transition: 0.4s;
+
+    .thumb {
+      width: 0.8rem;
+      border-radius: 0.4rem;
+      background: $background2;
+    }
+
+    .scrollbar {
+      margin-right: 0.2rem;
+      background: none;
+    }
+
+    &.open {
+      padding: 0.79rem;
+      max-height: 41.2rem;
+      opacity: 1;
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+
+      &.scrollable {
+        padding-right: 1.6rem;
+      }
+    }
+  }
+
+  &Item {
+    @extend %body4Regular;
+
+    width: 100%;
+    padding: 0.8rem;
+    line-height: 2rem;
+    border-radius: $borderRadiusSmall;
+    cursor: pointer;
+    transition: 0.2s;
+    text-align: left;
+
+    &:hover,
+    &:focus,
+    &.selectedItem {
+      background-color: $background2;
+    }
+
+    &.selectedItem {
+      pointer-events: none;
     }
   }
 }
 
-.content {
-  display: grid;
-  grid-template-rows: 0fr;
-  transition: 0.5s ease-in;
+.optionsList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.arrow {
+  width: 1.2rem;
+  height: 2.4rem;
+  mask: url(assets/icons/angle-down-dropdown.svg);
+  background: $secondary3;
 
   &.open {
-    grid-template-rows: 1fr;
-
-    .contentInner {
-      padding-bottom: 3.2rem;
-    }
-  }
-
-  &Inner {
-    padding-inline: 3.2rem;
-    overflow: hidden;
-    transition: 0.5s ease-in;
+    rotate: 180deg;
   }
 }

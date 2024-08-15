@@ -46,7 +46,6 @@ export const ContactUs = () => {
           {formConfig.map(({ name, placeholder, pattern, textarea }) => (
             <Input
               wrapperClassName={styles.input}
-              autoComplete='off'
               name={name}
               inputValue={formState[name]}
               labelText={placeholder}

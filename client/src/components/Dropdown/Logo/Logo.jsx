@@ -3,7 +3,7 @@ import cn from 'classnames';
 import { ImageComponent } from 'components/Image';
 import { Button } from 'components/Button';
 import { Arrow } from 'components/Arrow';
-import dropdownStyles from 'components/Dropdown/Dropdown.scss';
+import dropdownStyles from 'components/Dropdown/General.scss';
 import styles from 'components/Dropdown/Logo/Logo.scss';
 
 export const LogoDropdown = ({ logo: { name, logos } }) => {
