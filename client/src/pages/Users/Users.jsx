@@ -1,143 +1,23 @@
-import { useLocation } from 'react-router-dom';
-import { useState } from 'react';
+import { useUsers } from 'hooks/useUsers';
+import { formConfig } from 'pages/Users/formConfig';
 import { activeUsersTypes } from 'constants/usersTypes';
+import { usersList } from 'constants/mockedUsers';
 import { TabSelector } from 'components/Button/TabSelector';
 import { Container } from 'components/Container';
+import { Dropdown } from 'components/Dropdown';
+import { Button } from 'components/Button';
+import { Input } from 'components/Input';
 import { UserCard } from 'pages/Users/UserCard';
 import styles from 'pages/Users/Users.scss';
+import { useEffect } from 'react';
 
 export const Users = () => {
-  const { search } = useLocation();
-  const searchTypeParam = new URLSearchParams(search).get('type');
+  const { users, formState, activeTypeIndex, setActiveTypeIndex, handleFilterChange, handleSubmit, clearFilters } =
+    useUsers(usersList, activeUsersTypes);
 
-  const [activeTypeIndex, setActiveTypeIndex] = useState(
-    activeUsersTypes.findIndex((userType) => userType === searchTypeParam)
-  );
-
-  const users = [
-    {
-      id: 1,
-      role: 'dancer',
-      name: 'Emily Johnson',
-      level: 'B',
-      photo: 'https://randomuser.me/api/portraits/women/1.jpg',
-    },
-    {
-      id: 2,
-      role: 'dancer',
-      name: 'Michael Smith',
-      level: 'A',
-      photo: 'https://randomuser.me/api/portraits/men/2.jpg',
-    },
-    {
-      id: 3,
-      role: 'judge',
-      name: 'Sarah Williams',
-      level: 'S',
-      photo: 'https://randomuser.me/api/portraits/women/3.jpg',
-    },
-    { id: 4, role: 'dancer', name: 'David Brown', level: 'C', photo: 'https://randomuser.me/api/portraits/men/4.jpg' },
-    {
-      id: 5,
-      role: 'judge',
-      name: 'Jessica Jones',
-      level: 'D',
-      photo: 'https://randomuser.me/api/portraits/women/5.jpg',
-    },
-    { id: 6, role: 'dancer', name: 'James Garcia', level: 'E', photo: 'https://randomuser.me/api/portraits/men/6.jpg' },
-    {
-      id: 7,
-      role: 'dancer',
-      name: 'Linda Miller',
-      level: 'B',
-      photo: 'https://randomuser.me/api/portraits/women/7.jpg',
-    },
-    { id: 8, role: 'judge', name: 'Robert Wilson', level: 'F', photo: 'https://randomuser.me/api/portraits/men/8.jpg' },
-    {
-      id: 9,
-      role: 'dancer',
-      name: 'Patricia Moore',
-      level: 'A',
-      photo: 'https://randomuser.me/api/portraits/women/9.jpg',
-    },
-    {
-      id: 10,
-      role: 'dancer',
-      name: 'William Taylor',
-      level: 'D',
-      photo: 'https://randomuser.me/api/portraits/men/10.jpg',
-    },
-    {
-      id: 11,
-      role: 'judge',
-      name: 'Barbara Anderson',
-      level: 'S',
-      photo: 'https://randomuser.me/api/portraits/women/11.jpg',
-    },
-    {
-      id: 12,
-      role: 'dancer',
-      name: 'Christopher Thomas',
-      level: 'C',
-      photo: 'https://randomuser.me/api/portraits/men/12.jpg',
-    },
-    {
-      id: 13,
-      role: 'dancer',
-      name: 'Jennifer White',
-      level: 'E',
-      photo: 'https://randomuser.me/api/portraits/women/13.jpg',
-    },
-    {
-      id: 14,
-      role: 'judge',
-      name: 'Charles Harris',
-      level: 'F',
-      photo: 'https://randomuser.me/api/portraits/men/14.jpg',
-    },
-    {
-      id: 15,
-      role: 'dancer',
-      name: 'Mary Martin',
-      level: 'B',
-      photo: 'https://randomuser.me/api/portraits/women/15.jpg',
-    },
-    {
-      id: 16,
-      role: 'dancer',
-      name: 'Joseph Thompson',
-      level: 'A',
-      photo: 'https://randomuser.me/api/portraits/men/16.jpg',
-    },
-    {
-      id: 17,
-      role: 'judge',
-      name: 'Elizabeth Lee',
-      level: 'D',
-      photo: 'https://randomuser.me/api/portraits/women/17.jpg',
-    },
-    {
-      id: 18,
-      role: 'dancer',
-      name: 'Thomas Walker',
-      level: 'C',
-      photo: 'https://randomuser.me/api/portraits/men/18.jpg',
-    },
-    {
-      id: 19,
-      role: 'dancer',
-      name: 'Susan Hall',
-      level: 'E',
-      photo: 'https://randomuser.me/api/portraits/women/19.jpg',
-    },
-    {
-      id: 20,
-      role: 'judge',
-      name: 'Richard Young',
-      level: 'F',
-      photo: 'https://randomuser.me/api/portraits/men/20.jpg',
-    },
-  ];
+  useEffect(() => {
+    console.log(formState);
+  }, [formState]);
 
   return (
     <Container>
@@ -150,16 +30,40 @@ export const Users = () => {
               activeTabIndex={activeTypeIndex}
               setActiveTabIndex={setActiveTypeIndex}
             />
+            <form className={styles.searchForm} onSubmit={handleSubmit}>
+              {formConfig.map(({ name, placeholder, options, zIndex }) =>
+                options ? (
+                  <Dropdown
+                    options={options}
+                    selectedValue={formState[name]}
+                    placeholder={placeholder}
+                    onChange={(option) => handleFilterChange(name, option)}
+                    zIndex={zIndex}
+                    key={name}
+                  />
+                ) : (
+                  <Input
+                    key={name}
+                    name={name}
+                    inputValue={formState[name]}
+                    placeholder={placeholder}
+                    onChange={(e) => handleFilterChange(name, e.target.value)}
+                  />
+                )
+              )}
+              <Button className={styles.searchBtn} text='Search' type='submit' ghostStyle />
+              <Button text='Clear filters' type='reset' onClick={clearFilters} ghostStyle />
+            </form>
           </section>
           <ul className={styles.users}>
-            {users
-              .filter(({ role }) => role === searchTypeParam?.slice(0, -1))
-              .map((user) => (
-                <UserCard user={user} key={user.id} />
-              ))}
+            {users.map((user) => (
+              <UserCard user={user} key={user.id} />
+            ))}
           </ul>
         </div>
       </div>
     </Container>
   );
 };
+
+export default Users;

@@ -14,10 +14,20 @@
 }
 
 .navigation {
+  min-width: 28.2rem;
+}
+
+.searchForm {
   display: flex;
   flex-direction: column;
+  margin-top: 4rem;
   gap: $gapMedium;
-  min-width: 28.2rem;
+  max-width: 28.2rem;
+}
+
+.searchBtn {
+  margin-top: 2.4rem;
+  background: $background2;
 }
 
 .users {
