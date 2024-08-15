@@ -59,12 +59,19 @@
     transition: 0.3s;
   }
 
-  &:hover {
+  &:hover,
+  &:focus {
     color: $primary1;
+    outline: none;
 
     img {
       opacity: 1;
       translate: 0 -50%;
     }
+  }
+
+  &.active {
+    color: $primary1;
+    pointer-events: none;
   }
 }
