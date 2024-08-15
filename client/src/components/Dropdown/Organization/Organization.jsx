@@ -31,7 +31,12 @@ export const OrganizationDropdown = ({ organization: { flag, country, name, mana
               <tr>
                 <td>website</td>
                 <td>
-                  <a href={`https://${website}`} rel='noopener noreferrer' target='_blank'>
+                  <a
+                    href={`https://${website}`}
+                    rel='noopener noreferrer'
+                    target='_blank'
+                    {...(!isOpen && { tabIndex: -1 })}
+                  >
                     {removeProtocol(website)}
                   </a>
                 </td>
@@ -41,7 +46,9 @@ export const OrganizationDropdown = ({ organization: { flag, country, name, mana
               <tr>
                 <td>e-mail</td>
                 <td>
-                  <a href={`mailto: ${email}`}>{email}</a>
+                  <a href={`mailto: ${email}`} {...(!isOpen && { tabIndex: -1 })}>
+                    {email}
+                  </a>
                 </td>
               </tr>
             )}
@@ -49,7 +56,9 @@ export const OrganizationDropdown = ({ organization: { flag, country, name, mana
               <tr>
                 <td>phone</td>
                 <td>
-                  <a href={`tel:${phone}`}>{phone}</a>
+                  <a href={`tel:${phone}`} {...(!isOpen && { tabIndex: -1 })}>
+                    {phone}
+                  </a>
                 </td>
               </tr>
             )}
