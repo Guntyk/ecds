@@ -43,6 +43,7 @@ export const Input = ({
   return (
     <div className={inputWrapperClassNames}>
       <Tag
+        autoComplete='off'
         className={inputClassNames}
         id={id || name}
         name={name}
@@ -52,7 +53,7 @@ export const Input = ({
         {...props}
       />
 
-      {!textarea && (
+      {!textarea && labelText && (
         <label className={labelClassNames} htmlFor={id || name}>
           {labelText}
         </label>

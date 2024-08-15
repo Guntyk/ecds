@@ -1,15 +1,15 @@
 $color-scheme-map: (
   'Light': (
-    labelColor: $secondary3,
+    labelColor: #7b7fb5,
     labelBg: $background1,
     labelFocusBg: $background1,
     labelFocusColor: $primary2,
     inputBg: none,
     inputBorder: $secondary2,
     inputFilledBorder: $secondary2,
-    inputColor: $secondary3,
+    inputColor: $text1,
     inputFocusBg: none,
-    inputBorderFocus: $secondary4,
+    inputBorderFocus: $primary1,
     inputBorderInvalid: $primary3,
   ),
   'Dark': (
