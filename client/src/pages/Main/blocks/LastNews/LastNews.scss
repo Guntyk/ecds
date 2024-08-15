@@ -92,6 +92,8 @@
 
   &:focus,
   &:hover {
+    outline: none;
+
     .cover {
       height: 27.4rem;
       border: 0.1rem solid $lightGray;

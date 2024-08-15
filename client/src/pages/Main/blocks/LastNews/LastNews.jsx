@@ -32,6 +32,12 @@ export const LastNews = () => {
 
   const [containerRef, isVisible] = useElementOnScreen();
 
+  const handleRedirect = (e, id) => {
+    if (e.type === 'click' || (e.type === 'keydown' && e.key === 'Enter')) {
+      push(`${newsPage}/${id}`);
+    }
+  };
+
   useEffect(() => {
     if (isVisible && !news.length) {
       dispatch(newsActions.getNews());
@@ -67,7 +73,13 @@ export const LastNews = () => {
                   navigation={{ nextEl: '#btnNext', prevEl: '#btnPrev' }}
                 >
                   {lastNews.map(({ id, title, publishedAt, media }) => (
-                    <SwiperSlide className={styles.newsCard} onClick={() => push(`${newsPage}/${id}`)} key={id}>
+                    <SwiperSlide
+                      className={styles.newsCard}
+                      tabIndex={0}
+                      onClick={(e) => handleRedirect(e, id)}
+                      onKeyDown={(e) => handleRedirect(e, id)}
+                      key={id}
+                    >
                       <ImageComponent
                         className={styles.cover}
                         src={media?.[0].url || 'https://placehold.co/282'}
