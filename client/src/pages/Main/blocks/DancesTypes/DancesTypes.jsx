@@ -10,9 +10,16 @@ export const DancesTypes = () => {
     <section className={styles.block}>
       <Container>
         <ul className={styles.dances}>
-          {dancesTypes.map(({ id, name, path, key }) => (
+          {dancesTypes.map(({ id, name, path, key, styleNames }) => (
             <li className={styles.card} key={id} onClick={() => push(path)}>
               <p className={styles.name}>{name}</p>
+              {styleNames && (
+                <ul className={styles.styles}>
+                  {styleNames.map((style) => (
+                    <li key={style}>{style}</li>
+                  ))}
+                </ul>
+              )}
               <div className={styles.cover} data-image={key} />
             </li>
           ))}
