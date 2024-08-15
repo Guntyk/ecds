@@ -6,7 +6,7 @@
   border: 0.1rem solid $background2;
   transition: 0.15s;
 
-  &:has(.btn:hover) {
+  &:has(.btn:hover, .btn:focus) {
     border: 0.1rem solid $primary2;
   }
 

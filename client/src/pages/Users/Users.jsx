@@ -15,10 +15,6 @@ export const Users = () => {
   const { users, formState, activeTypeIndex, setActiveTypeIndex, handleFilterChange, handleSubmit, clearFilters } =
     useUsers(usersList, activeUsersTypes);
 
-  useEffect(() => {
-    console.log(formState);
-  }, [formState]);
-
   return (
     <Container>
       <div className={styles.page}>
