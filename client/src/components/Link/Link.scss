@@ -31,19 +31,24 @@
     }
   }
 
-  &:hover:not(.external, .button, .download) {
-    @extend %buttonActive;
-    color: $primary3;
-    padding: 0 0.6rem;
+  &:not(.external, .button, .download) {
+    &:focus,
+    &:hover {
+      @extend %buttonActive;
 
-    &.toLeft {
-      .arrow {
-        translate: -150% -50%;
+      color: $primary3;
+      padding: 0 0.6rem;
+      outline: none;
+
+      &.toLeft {
+        .arrow {
+          translate: -150% -50%;
+        }
       }
-    }
-    &.toRight {
-      .arrow {
-        translate: 150% -50%;
+      &.toRight {
+        .arrow {
+          translate: 150% -50%;
+        }
       }
     }
   }
@@ -63,6 +68,7 @@
     text-transform: none;
     text-align: center;
 
+    &:focus,
     &:hover {
       font-weight: map-get($fontWeights, 'regular');
       border: 0.1rem solid $primary2;
@@ -87,6 +93,7 @@
       rotate: 0deg;
     }
 
+    &:focus,
     &:hover {
       color: $text2;
       padding: 1.6rem 4.55rem;

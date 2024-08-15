@@ -29,6 +29,7 @@
       color: $primary2;
       border-color: $background1;
 
+      &:focus,
       &:hover {
         border-color: $secondary4;
       }
@@ -43,6 +44,7 @@
       letter-spacing: 0.02em;
     }
 
+    &:focus,
     &:hover {
       border-color: $primary2;
     }

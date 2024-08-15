@@ -42,6 +42,7 @@
       }
     }
 
+    &:focus,
     &:hover {
       @extend %buttonActive;
 
@@ -89,6 +90,7 @@
   cursor: pointer;
   transition: 0.4s;
 
+  &:focus,
   &:hover {
     .cover {
       height: 27.4rem;
