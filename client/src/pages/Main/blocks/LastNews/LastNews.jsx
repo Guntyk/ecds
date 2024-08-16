@@ -1,10 +1,11 @@
 import { Scrollbar, Navigation } from 'swiper/modules';
 import { useDispatch, useSelector } from 'react-redux';
-import { Swiper, SwiperSlide } from 'swiper/react';
 import { useHistory } from 'react-router-dom';
+import { Swiper, SwiperSlide } from 'swiper/react';
 import { useEffect } from 'react';
 import SwiperCore from 'swiper';
 import cn from 'classnames';
+import useElementOnScreen from 'hooks/useElementOnScreen';
 import * as newsActions from '../../../../redux/features/newsSlice';
 import { formatDate } from 'helpers/formatDate';
 import { pathnames } from 'constants/pathnames';
@@ -14,9 +15,10 @@ import { Container } from 'components/Container';
 import { Button } from 'components/Button';
 import { Loader } from 'components/Loader';
 import { Link } from 'components/Link';
-import useElementOnScreen from 'hooks/useElementOnScreen';
 import arrowRight from 'assets/icons/arrow-right-background3_2.svg';
 import arrowLeft from 'assets/icons/arrow-left-background3_2.svg';
+import like from 'assets/icons/like.svg';
+import eye from 'assets/icons/eye.svg';
 import 'swiper/css/navigation';
 import 'swiper/css/scrollbar';
 import 'swiper/css';
@@ -26,8 +28,8 @@ SwiperCore.use([Navigation, Scrollbar]);
 
 export const LastNews = () => {
   const { isLoading, error, news } = useSelector((state) => state.news);
-  const dispatch = useDispatch();
   const { newsPage } = pathnames;
+  const dispatch = useDispatch();
   const { push } = useHistory();
 
   const [containerRef, isVisible] = useElementOnScreen();
@@ -72,24 +74,32 @@ export const LastNews = () => {
                   scrollbar={{ dragClass: styles.thumb, draggable: true, dragSize: 240, el: '#scrollbar' }}
                   navigation={{ nextEl: '#btnNext', prevEl: '#btnPrev' }}
                 >
-                  {lastNews.map(({ id, title, publicationDate, media }) => (
+                  {lastNews.map((article) => (
                     <SwiperSlide
                       className={styles.newsCard}
                       tabIndex={0}
-                      onClick={(e) => handleRedirect(e, id)}
-                      onKeyDown={(e) => handleRedirect(e, id)}
-                      key={id}
+                      onClick={(e) => handleRedirect(e, article.id)}
+                      onKeyDown={(e) => handleRedirect(e, article.id)}
+                      key={article.id}
                     >
                       <ImageComponent
                         className={styles.cover}
-                        src={media?.[0].url || 'https://placehold.co/282'}
-                        alt={media?.[0].alt || 'cover placeholder'}
-                        placeholder={media?.[0].placeholder}
-                        external={media}
+                        src={article.media?.[0].url || 'https://placehold.co/282'}
+                        alt={article.media?.[0].alt || 'cover placeholder'}
+                        placeholder={article.media?.[0].placeholder}
+                        external={article.media}
                       />
-                      <p className={styles.publicationDate}>{formatDate(publicationDate)}</p>
+                      <div className={styles.additionalInfo}>
+                        <div className={styles.reactions}>
+                          <img src={eye} alt='Views' />
+                          {article.views}
+                          <img src={like} alt='Likes' />
+                          {article.likes}
+                        </div>
+                        <time dateTime={article.publicationDate}>{formatDate(article.publicationDate)}</time>
+                      </div>
                       <div className={styles.newsTitleWrapper}>
-                        <p className={styles.newsTitle}>{title}</p>
+                        <p className={styles.newsTitle}>{article.title}</p>
                       </div>
                     </SwiperSlide>
                   ))}
