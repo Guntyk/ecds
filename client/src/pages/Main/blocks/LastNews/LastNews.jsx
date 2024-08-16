@@ -72,7 +72,7 @@ export const LastNews = () => {
                   scrollbar={{ dragClass: styles.thumb, draggable: true, dragSize: 240, el: '#scrollbar' }}
                   navigation={{ nextEl: '#btnNext', prevEl: '#btnPrev' }}
                 >
-                  {lastNews.map(({ id, title, publishedAt, media }) => (
+                  {lastNews.map(({ id, title, publicationDate, media }) => (
                     <SwiperSlide
                       className={styles.newsCard}
                       tabIndex={0}
@@ -87,7 +87,7 @@ export const LastNews = () => {
                         placeholder={media?.[0].placeholder}
                         external={media}
                       />
-                      <p className={styles.publicationDate}>{formatDate(publishedAt)}</p>
+                      <p className={styles.publicationDate}>{formatDate(publicationDate)}</p>
                       <div className={styles.newsTitleWrapper}>
                         <p className={styles.newsTitle}>{title}</p>
                       </div>
