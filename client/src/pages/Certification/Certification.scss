@@ -1,0 +1,36 @@
+.page {
+  padding-block: 12.8rem 12rem;
+  min-height: 80vh;
+
+  &Content {
+    display: flex;
+    align-items: start;
+    gap: $gapLarge;
+    margin-top: 4rem;
+  }
+}
+
+.title {
+  @extend %h2;
+}
+
+.navigation {
+  min-width: 28.2rem;
+
+  .typesList {
+    display: flex;
+    flex-direction: column;
+    gap: $gapMedium;
+  }
+
+  .link {
+    text-transform: capitalize;
+  }
+}
+
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $gapLarge;
+  width: 100%;
+}

@@ -1,6 +1,5 @@
 import { useLocation, useHistory } from 'react-router-dom';
 import { useState, useEffect, useMemo } from 'react';
-import { filterUsers } from 'helpers/usersFilter';
 import { initialState } from 'pages/Users/formConfig';
 
 export const useUsers = (usersList, activeUsersTypes) => {
@@ -38,6 +37,15 @@ export const useUsers = (usersList, activeUsersTypes) => {
     const filteredUsers = filterUsers(usersList, filters);
     setUsers(filteredUsers);
   }, [filters, usersList]);
+
+  const filterUsers = (usersList, filters) => {
+    const { searchTypeParam, searchNameParam, searchCountryParam, searchClassParam } = filters;
+    return usersList
+      .filter(({ type }) => !searchTypeParam || type === searchTypeParam)
+      .filter(({ name }) => !searchNameParam || name.toLowerCase().includes(searchNameParam.toLowerCase()))
+      .filter(({ country }) => !searchCountryParam || country?.toLowerCase().includes(searchCountryParam.toLowerCase()))
+      .filter(({ level }) => !searchClassParam || level === searchClassParam.toUpperCase());
+  };
 
   const handleFilterChange = (name, value) => {
     setFormState((prev) => ({ ...prev, [name]: value }));

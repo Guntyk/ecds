@@ -9,7 +9,6 @@ import { Button } from 'components/Button';
 import { Input } from 'components/Input';
 import { UserCard } from 'pages/Users/UserCard';
 import styles from 'pages/Users/Users.scss';
-import { useEffect } from 'react';
 
 export const Users = () => {
   const { users, formState, activeTypeIndex, setActiveTypeIndex, handleFilterChange, handleSubmit, clearFilters } =
