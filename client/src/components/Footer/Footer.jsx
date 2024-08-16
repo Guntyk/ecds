@@ -25,7 +25,7 @@ export const Footer = () => {
               <div className={cn(styles.navigationSection, styles.menu)}>
                 <span className={styles.sectionTitle}>Menu</span>
                 <ul className={styles.navigationLinks}>
-                  {menuLinks.map(({ id, title, path }) => (
+                  {menuLinks[mainPage].map(({ id, title, path }) => (
                     <li className={styles.item} key={id}>
                       <Link to={path} className={styles.itemLink}>
                         {title}

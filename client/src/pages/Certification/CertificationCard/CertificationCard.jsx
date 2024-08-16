@@ -4,7 +4,6 @@ import certificate from 'assets/icons/certificate.svg';
 import styles from 'pages/Certification/CertificationCard/CertificationCard.scss';
 
 export const CertificationCard = ({ user: { name, photo, certificationDate } }) => {
-  console.log(photo);
   return (
     <li className={styles.card}>
       <img className={styles.photo} src={photo ?? 'https://placehold.co/160'} alt='photo' />

@@ -1,6 +1,7 @@
 import { v4 as uuidv4 } from 'uuid';
 import { pathnames } from 'constants/pathnames';
 import { Certification } from 'pages/Certification';
+import { NotFound } from 'pages/Services/NotFound';
 import { Service } from 'pages/Services/Service';
 import { Ballroom } from 'pages/Ballroom/Main';
 import { NewsInfo } from 'pages/News/NewsInfo';
@@ -25,26 +26,23 @@ const {
   certificationPage,
 } = pathnames;
 
+const subPageComponents = {
+  [calendarPage]: Calendar,
+  [certificationPage]: Certification,
+  [usersPage]: Users,
+  [newsPage]: News,
+};
+
 export const routes = [
   { id: uuidv4(), path: mainPage, component: Main },
   { id: uuidv4(), path: ballroomPage, component: Ballroom },
   { id: uuidv4(), path: membersPage, component: Members },
   { id: uuidv4(), path: newsPage, component: News },
   { id: uuidv4(), path: `${newsPage}/:id`, component: NewsInfo },
-  ...[ballroomPage].map((path) => ({
+  ...[calendarPage, certificationPage, usersPage, newsPage].map((subPage) => ({
     id: uuidv4(),
-    path: `${path}${calendarPage}`,
-    component: Calendar,
-  })),
-  ...[ballroomPage].map((path) => ({
-    id: uuidv4(),
-    path: `${path}${certificationPage}`,
-    component: Certification,
-  })),
-  ...[ballroomPage].map((path) => ({
-    id: uuidv4(),
-    path: `${path}${usersPage}`,
-    component: Users,
+    path: `${ballroomPage}${subPage}`,
+    component: subPageComponents[subPage] || NotFound,
   })),
   ...[managementPage, documentsPage, contactsPage, logosPage].map((path) => ({
     id: uuidv4(),
