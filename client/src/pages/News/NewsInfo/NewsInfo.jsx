@@ -46,7 +46,7 @@ export const NewsInfo = () => {
       return <p className={styles.text}>There is no news yet</p>;
     }
 
-    const { title, media, publishedAt, description, content } = currentArticle;
+    const { title, media, publicationDate, description, content } = currentArticle;
 
     return (
       <>
@@ -70,7 +70,7 @@ export const NewsInfo = () => {
             </section>
           )}
           <section>
-            <p className={styles.date}>{formatDate(publishedAt)}</p>
+            <p className={styles.date}>{formatDate(publicationDate)}</p>
             <h1 className={styles.title}>{title}</h1>
             {description && <h2 className={styles.description}>{description}</h2>}
             <div className={styles.content}>

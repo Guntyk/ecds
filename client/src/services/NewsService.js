@@ -5,13 +5,13 @@ import APIErrorsHandlingUtils from 'utils/APIErrorsHandlingUtils';
 export default class NewsService {
   static async getNews() {
     const query = qs.stringify({
-      fields: ['title', 'description', 'publishedAt', 'content'],
+      fields: ['title', 'description', 'publicationDate', 'content', 'views', 'likes'],
       populate: {
         media: {
           fields: ['alternativeText', 'placeholder', 'url'],
         },
       },
-      sort: 'publishedAt:desc',
+      sort: 'publicationDate:desc',
     });
 
     const [error, data] = await backendApi.get(`/articles?${query}`);

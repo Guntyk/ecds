@@ -15,7 +15,7 @@ export const formatDate = (startDate, endDate = null) => {
   ];
 
   const parseDate = (dateStr) => {
-    const datePart = dateStr.split('T')[0];
+    const datePart = dateStr.includes('T') ? dateStr.split('T')[0] : dateStr;
     const [year, month, day] = datePart.split('-').map(Number);
     return new Date(year, month - 1, day);
   };

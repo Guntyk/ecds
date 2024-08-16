@@ -32,6 +32,22 @@
         "images",
         "videos"
       ]
+    },
+    "views": {
+      "type": "biginteger",
+      "min": "0",
+      "required": true,
+      "default": "0"
+    },
+    "likes": {
+      "type": "biginteger",
+      "required": true,
+      "min": "0",
+      "default": "0"
+    },
+    "publicationDate": {
+      "type": "date",
+      "required": true
     }
   }
 }

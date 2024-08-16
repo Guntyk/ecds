@@ -808,6 +808,25 @@ export interface ApiArticleArticle extends Schema.CollectionType {
       }>;
     content: Attribute.Blocks & Attribute.Required;
     media: Attribute.Media<'images' | 'videos', true>;
+    views: Attribute.BigInteger &
+      Attribute.Required &
+      Attribute.SetMinMax<
+        {
+          min: '0';
+        },
+        string
+      > &
+      Attribute.DefaultTo<'0'>;
+    likes: Attribute.BigInteger &
+      Attribute.Required &
+      Attribute.SetMinMax<
+        {
+          min: '0';
+        },
+        string
+      > &
+      Attribute.DefaultTo<'0'>;
+    publicationDate: Attribute.Date & Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

@@ -4,7 +4,7 @@ import { ImageComponent } from 'components/Image';
 import { Link } from 'components/Link';
 import styles from 'pages/News/NewsCard/NewsCard.scss';
 
-export const NewsCard = ({ news: { id, title, description, publishedAt, media } }) => {
+export const NewsCard = ({ news: { id, title, description, publicationDate, media } }) => {
   const { newsPage } = pathnames;
 
   return (
@@ -20,7 +20,7 @@ export const NewsCard = ({ news: { id, title, description, publishedAt, media } 
         <h3 className={styles.title}>{title}</h3>
         <p className={styles.description}>{description}</p>
         <div className={styles.additionalInfo}>
-          <span className={styles.date}>{formatDate(publishedAt)}</span>
+          <span className={styles.date}>{formatDate(publicationDate)}</span>
           <Link content='Read more' path={`${newsPage}/${id}`} arrowRight />
         </div>
       </section>
