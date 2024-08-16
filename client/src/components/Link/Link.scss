@@ -32,7 +32,7 @@
   }
 
   &:not(.external, .button, .download) {
-    &:focus,
+    &:focus-visible,
     &:hover {
       @extend %buttonActive;
 
@@ -68,7 +68,7 @@
     text-transform: none;
     text-align: center;
 
-    &:focus,
+    &:focus-visible,
     &:hover {
       font-weight: map-get($fontWeights, 'regular');
       border: 0.1rem solid $primary2;
@@ -93,7 +93,7 @@
       rotate: 0deg;
     }
 
-    &:focus,
+    &:focus-visible,
     &:hover {
       color: $text2;
       padding: 1.6rem 4.55rem;

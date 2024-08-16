@@ -66,7 +66,7 @@
       padding: 0.8rem;
       transition: 0.3s;
 
-      &:focus,
+      &:focus-visible,
       &:hover {
         color: $primary2;
         outline: none;

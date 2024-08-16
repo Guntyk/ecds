@@ -28,7 +28,7 @@
         @include dynamic-input-styles(map-get($colors, inputBg), map-get($colors, inputBorder), 0.05rem);
         color: map-get($colors, inputColor);
 
-        &:focus {
+        &:focus-visible {
           @include dynamic-input-styles(map-get($colors, inputFocusBg), map-get($colors, inputBorderFocus), 0.05rem);
 
           & ~ .label {
@@ -43,7 +43,7 @@
     }
   }
 
-  .input:focus ~ .label,
+  .input:focus-visible ~ .label,
   &Filled .label {
     @extend %fieldTitle;
     @extend %label-active;

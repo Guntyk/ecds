@@ -29,7 +29,7 @@
       color: $primary2;
       border-color: $background1;
 
-      &:focus,
+      &:focus-visible,
       &:hover {
         border-color: $secondary4;
       }
@@ -44,14 +44,14 @@
       letter-spacing: 0.02em;
     }
 
-    &:focus,
+    &:focus-visible,
     &:hover {
       border-color: $primary2;
     }
   }
 
   &:hover:not(.small),
-  &:focus:not(.small) {
+  &:focus-visible:not(.small) {
     @extend %buttonActive;
   }
 

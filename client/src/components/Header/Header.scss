@@ -17,7 +17,7 @@
         color: $text1;
 
         &:hover,
-        &:focus,
+        &:focus-visible,
         &.active {
           color: $primary1;
         }
@@ -52,7 +52,7 @@
     transition: 0.2s;
 
     &:hover,
-    &:focus {
+    &:focus-visible {
       @extend %buttonActive;
       padding-inline: 0.5rem;
       color: $secondary4;

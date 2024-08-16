@@ -49,14 +49,14 @@
   &:has(+ *:hover),
   &:has(+ * + *:hover),
   &:has(+ * + * + *:hover),
-  &:has(+ *:focus),
-  &:has(+ * + *:focus),
-  &:has(+ * + * + *:focus) {
+  &:has(+ *:focus-visible),
+  &:has(+ * + *:focus-visible),
+  &:has(+ * + * + *:focus-visible) {
     width: 27.2rem;
   }
 
   &:hover,
-  &:focus {
+  &:focus-visible {
     @extend %body3Medium;
 
     width: 33.6rem;

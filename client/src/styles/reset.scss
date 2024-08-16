@@ -158,7 +158,7 @@ input {
   font-size: inherit;
 }
 
-textarea:focus,
-input:focus {
+textarea:focus-visible,
+input:focus-visible {
   outline: none;
 }

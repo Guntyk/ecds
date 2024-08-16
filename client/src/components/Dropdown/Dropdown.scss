@@ -22,7 +22,7 @@
       color: $text1;
     }
 
-    &:focus:not(.open) {
+    &:focus-visible:not(.open) {
       border: 0.05rem solid $primary1;
     }
   }
@@ -82,7 +82,7 @@
     text-align: left;
 
     &:hover,
-    &:focus,
+    &:focus-visible,
     &.selectedItem {
       background-color: $background2;
     }

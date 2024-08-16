@@ -40,7 +40,7 @@
   overflow: visible;
 
   &:hover,
-  &:focus {
+  &:focus-visible {
     .arrow {
       translate: calc(100% + 0.4rem) -50%;
       opacity: 0;

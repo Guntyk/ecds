@@ -42,7 +42,7 @@
       }
     }
 
-    &:focus,
+    &:focus-visible,
     &:hover {
       @extend %buttonActive;
 
@@ -90,7 +90,7 @@
   cursor: pointer;
   transition: 0.4s;
 
-  &:focus,
+  &:focus-visible,
   &:hover {
     outline: none;
 
