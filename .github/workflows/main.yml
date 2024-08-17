@@ -9,7 +9,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Deploy using ssh
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Deploy frontend using ssh
       uses: appleboy/ssh-action@master
       with:
         host: ${{ secrets.HOST }}
@@ -17,7 +20,23 @@ jobs:
         key: ${{ secrets.SSH_PRIVATE_KEY }}
         port: 22
         script: |
-          cd /var/www/ecds/
+          cd /var/www/ecds/client/
           git pull origin main
           git status
           npm install
+          npm run build
+          pm2 restart frontend_app
+
+    - name: Deploy backend using ssh
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USERNAME }}
+        key: ${{ secrets.SSH_PRIVATE_KEY }}
+        port: 22
+        script: |
+          cd /var/www/ecds/server/
+          git pull origin main
+          git status
+          npm install
+          pm2 restart backend_app
