@@ -31,7 +31,7 @@ export const Hero = () => {
           </div>
           {!error ? (
             isLoading ? (
-              <Loader />
+              <Loader className={styles.loader} />
             ) : (
               banners.length > 0 && <Banners banners={banners} />
             )

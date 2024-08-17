@@ -6,6 +6,7 @@
 .wrapper {
   display: flex;
   justify-content: space-between;
+  align-items: start;
   gap: $gapLarge;
   width: 100%;
 }
@@ -67,6 +68,10 @@
     width: 1.6rem;
     background: $primary2;
   }
+}
+
+.loader {
+  width: 50%;
 }
 
 .error {
