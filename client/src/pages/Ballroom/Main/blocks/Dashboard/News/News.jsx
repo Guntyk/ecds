@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 import { useEffect } from 'react';
 import cn from 'classnames';
 import useElementOnScreen from 'hooks/useElementOnScreen';
-import * as newsActions from '../../../../../../redux/features/newsSlice';
+import { getNews } from '@redux/features/newsSlice';
 import { formatDate } from 'helpers/formatDate';
 import { pathnames } from 'constants/pathnames';
 import { Notification } from 'components/Notification';
@@ -20,10 +20,10 @@ export const News = () => {
   const [containerRef, isVisible] = useElementOnScreen();
 
   useEffect(() => {
-    if (isVisible && !news.length) {
-      dispatch(newsActions.getNews());
+    if (!error & isVisible && !news.length) {
+      dispatch(getNews());
     }
-  }, [dispatch, isVisible, news.length]);
+  }, [isVisible, news.length]);
 
   const nearestNews = news.length > 3 ? news.slice(0, 3) : news;
 
@@ -36,7 +36,9 @@ export const News = () => {
       </h2>
       <ul className={dashboardStyles.list}>
         {!error ? (
-          !isLoading && news.length === 0 ? (
+          isLoading ? (
+            <Loader className={dashboardStyles.loader} />
+          ) : news.length === 0 ? (
             <p className={styles.text}>There is no news yet</p>
           ) : (
             nearestNews.map(({ id, title, publicationDate }) => (
@@ -52,7 +54,6 @@ export const News = () => {
         ) : (
           <Notification className={dashboardStyles.error} text={error} type='error' />
         )}
-        {isLoading && <Loader className={dashboardStyles.loader} />}
       </ul>
     </div>
   );

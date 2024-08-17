@@ -24,6 +24,7 @@ const managementSlice = createSlice({
     builder
       .addCase(getManagement.pending, (state) => {
         state.isLoading = true;
+        state.error = null;
       })
       .addCase(getManagement.fulfilled, (state, action) => {
         state.isLoading = false;
@@ -38,5 +39,5 @@ const managementSlice = createSlice({
   },
 });
 
+export const { resetError } = managementSlice.actions;
 export default managementSlice.reducer;
-export const { actions } = managementSlice;

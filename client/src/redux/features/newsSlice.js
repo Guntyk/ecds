@@ -24,6 +24,7 @@ const newsSlice = createSlice({
     builder
       .addCase(getNews.pending, (state) => {
         state.isLoading = true;
+        state.error = null;
       })
       .addCase(getNews.fulfilled, (state, action) => {
         state.isLoading = false;
@@ -38,5 +39,5 @@ const newsSlice = createSlice({
   },
 });
 
+export const { resetError } = newsSlice.actions;
 export default newsSlice.reducer;
-export const { actions } = newsSlice;

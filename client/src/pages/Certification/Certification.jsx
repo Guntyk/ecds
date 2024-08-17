@@ -1,9 +1,9 @@
 import { useHistory, useLocation } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { usersList } from 'constants/mockedUsers';
-import { CertificationCard } from 'pages/Certification/CertificationCard';
 import { Container } from 'components/Container';
 import { Link } from 'components/Link';
+import { CertificationCard } from 'pages/Certification/CertificationCard';
 import styles from 'pages/Certification/Certification.scss';
 
 export const Certification = () => {
@@ -12,8 +12,6 @@ export const Certification = () => {
   const { push } = useHistory();
 
   const searchTypeParam = new URLSearchParams(search).get('type');
-
-  const [activeType, setActiveType] = useState(searchTypeParam);
 
   useEffect(() => {
     if (!searchTypeParam) {

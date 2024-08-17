@@ -6,7 +6,7 @@ import { useEffect } from 'react';
 import SwiperCore from 'swiper';
 import cn from 'classnames';
 import useElementOnScreen from 'hooks/useElementOnScreen';
-import * as newsActions from '../../../../redux/features/newsSlice';
+import { getNews } from '@redux/features/newsSlice';
 import { formatDate } from 'helpers/formatDate';
 import { pathnames } from 'constants/pathnames';
 import { Notification } from 'components/Notification';
@@ -41,10 +41,10 @@ export const LastNews = () => {
   };
 
   useEffect(() => {
-    if (isVisible && !news.length) {
-      dispatch(newsActions.getNews());
+    if (!error && isVisible && !news.length) {
+      dispatch(getNews());
     }
-  }, [dispatch, isVisible, news.length]);
+  }, [isVisible, news.length]);
 
   const lastNews = news.length > 8 ? news.slice(0, 8) : news;
 
@@ -52,18 +52,22 @@ export const LastNews = () => {
     <section className={styles.block} ref={containerRef}>
       <Container>
         <h2 className={styles.title}>Latest news</h2>
-        <div className={styles.navigationWrapper}>
-          <Button className={cn(styles.btn, styles.prev)} id='btnPrev' ghostStyle small>
-            <img src={arrowLeft} alt='arrow left' />
-            Prev
-          </Button>
-          <Button className={cn(styles.btn, styles.next)} id='btnNext' ghostStyle small>
-            Next
-            <img src={arrowRight} alt='arrow right' />
-          </Button>
-        </div>
+        {news.length > 0 && (
+          <div className={styles.navigationWrapper}>
+            <Button className={cn(styles.btn, styles.prev)} id='btnPrev' ghostStyle small>
+              <img src={arrowLeft} alt='arrow left' />
+              Prev
+            </Button>
+            <Button className={cn(styles.btn, styles.next)} id='btnNext' ghostStyle small>
+              Next
+              <img src={arrowRight} alt='arrow right' />
+            </Button>
+          </div>
+        )}
         {!error ? (
-          !isLoading && lastNews.length === 0 ? (
+          isLoading ? (
+            <Loader className={styles.loader} />
+          ) : lastNews.length === 0 ? (
             <p className={styles.text}>There is no news yet</p>
           ) : (
             <>
@@ -114,7 +118,6 @@ export const LastNews = () => {
         ) : (
           <Notification text={error} type='error' />
         )}
-        {isLoading && <Loader className={styles.loader} />}
       </Container>
     </section>
   );

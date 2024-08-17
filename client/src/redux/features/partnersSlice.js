@@ -24,6 +24,7 @@ const partnersSlice = createSlice({
     builder
       .addCase(getPartners.pending, (state) => {
         state.isLoading = true;
+        state.error = null;
       })
       .addCase(getPartners.fulfilled, (state, action) => {
         state.isLoading = false;
@@ -38,5 +39,5 @@ const partnersSlice = createSlice({
   },
 });
 
+export const { resetError } = partnersSlice.actions;
 export default partnersSlice.reducer;
-export const { actions } = partnersSlice;

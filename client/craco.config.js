@@ -8,6 +8,9 @@ module.exports = {
     },
   },
   webpack: {
+    alias: {
+      '@redux': resolvePath('./src/redux'),
+    },
     configure: (webpackConfig, { env, paths }) => {
       const oneOfRule = webpackConfig.module.rules.find((rule) => rule.oneOf);
       const scssRule = {

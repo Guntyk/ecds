@@ -24,6 +24,7 @@ const documentsSlice = createSlice({
     builder
       .addCase(getDocuments.pending, (state) => {
         state.isLoading = true;
+        state.error = null;
       })
       .addCase(getDocuments.fulfilled, (state, action) => {
         state.isLoading = false;
@@ -39,4 +40,3 @@ const documentsSlice = createSlice({
 });
 
 export default documentsSlice.reducer;
-export const { actions } = documentsSlice;

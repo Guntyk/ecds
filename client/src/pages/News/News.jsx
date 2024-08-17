@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import * as newsActions from '../../redux/features/newsSlice';
+import { getNews } from '@redux/features/newsSlice';
 import { Container } from 'components/Container';
 import { Loader } from 'components/Loader';
 import { TryAgain } from 'pages/Services/TryAgain';
@@ -13,7 +13,7 @@ export const News = () => {
 
   useEffect(() => {
     if (!news.length) {
-      dispatch(newsActions.getNews());
+      dispatch(getNews());
     }
   }, []);
 

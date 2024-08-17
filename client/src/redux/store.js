@@ -1,12 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit';
-import organizationsReducer from './features/organizationsSlice';
-import managementReducer from './features/managementSlice';
-import documentsReducer from './features/documentsSlice';
-import partnersReducer from './features/partnersSlice';
-import bannersReducer from './features/bannersSlice';
-import eventsReducer from './features/eventsSlice';
-import logosReducer from './features/logosSlice';
-import newsReducer from './features/newsSlice';
+import organizationsReducer from '@redux/features/organizationsSlice';
+import managementReducer from '@redux/features/managementSlice';
+import documentsReducer from '@redux/features/documentsSlice';
+import partnersReducer from '@redux/features/partnersSlice';
+import bannersReducer from '@redux/features/bannersSlice';
+import eventsReducer from '@redux/features/eventsSlice';
+import logosReducer from '@redux/features/logosSlice';
+import newsReducer from '@redux/features/newsSlice';
 
 export const store = configureStore({
   reducer: {

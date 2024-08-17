@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import * as eventsActions from '../../redux/features/eventsSlice';
+import { getEvents } from '@redux/features/eventsSlice';
 import { Container } from 'components/Container';
 import { Loader } from 'components/Loader';
 import { EventCard } from 'pages/Calendar/EventCard';
@@ -13,7 +13,7 @@ export const Calendar = () => {
 
   useEffect(() => {
     if (!events.length) {
-      dispatch(eventsActions.getEvents());
+      dispatch(getEvents());
     }
   }, []);
 
@@ -29,12 +29,13 @@ export const Calendar = () => {
           <p className={styles.subtitle}>Of competition</p>
         </div>
         <div className={styles.events}>
-          {!isLoading && events.length === 0 ? (
+          {isLoading ? (
+            <Loader />
+          ) : events.length === 0 ? (
             <p className={styles.text}>The calendar is temporarily empty</p>
           ) : (
             events.map((event) => <EventCard event={event} key={event.id} />)
           )}
-          {isLoading && <Loader />}
         </div>
       </section>
     </Container>

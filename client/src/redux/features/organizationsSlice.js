@@ -24,6 +24,7 @@ const organizationsSlice = createSlice({
     builder
       .addCase(getOrganizations.pending, (state) => {
         state.isLoading = true;
+        state.error = null;
       })
       .addCase(getOrganizations.fulfilled, (state, action) => {
         state.isLoading = false;
@@ -38,5 +39,5 @@ const organizationsSlice = createSlice({
   },
 });
 
+export const { resetError } = organizationsSlice.actions;
 export default organizationsSlice.reducer;
-export const { actions } = organizationsSlice;

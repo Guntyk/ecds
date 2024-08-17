@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import useElementOnScreen from 'hooks/useElementOnScreen';
-import * as partnersActions from '../../../../redux/features/partnersSlice';
+import { getPartners } from '@redux/features/partnersSlice';
 import { Notification } from 'components/Notification';
 import { ImageComponent } from 'components/Image';
 import { Container } from 'components/Container';
@@ -17,17 +17,19 @@ export const Partners = () => {
   const [containerRef, isVisible] = useElementOnScreen();
 
   useEffect(() => {
-    if (isVisible && !partners.length) {
-      dispatch(partnersActions.getPartners());
+    if (!error && isVisible && !partners.length) {
+      dispatch(getPartners());
     }
-  }, [dispatch, isVisible, partners.length]);
+  }, [isVisible, partners.length]);
 
   return (
     <Container>
       <section className={styles.block} ref={containerRef}>
         <h2 className={styles.title}>Our sponsors & partners</h2>
         {!error ? (
-          !isLoading && partners.length === 0 ? (
+          isLoading ? (
+            <Loader className={styles.text} />
+          ) : partners.length === 0 ? (
             <p className={styles.text}>There is no partners yet</p>
           ) : (
             partners.map(({ id, website, logo: { alternativeText, url, placeholder } }) => (
@@ -49,7 +51,6 @@ export const Partners = () => {
         ) : (
           <Notification className={styles.text} text={error} type='error' />
         )}
-        {isLoading && <Loader className={styles.text} />}
         {/* <aside className={styles.donate}>
           <h3 className={styles.donateText}>
             If you like our idea, support it with money.

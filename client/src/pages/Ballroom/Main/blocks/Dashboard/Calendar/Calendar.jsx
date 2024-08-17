@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 import { useEffect } from 'react';
 import cn from 'classnames';
 import useElementOnScreen from 'hooks/useElementOnScreen';
-import * as eventsActions from '../../../../../../redux/features/eventsSlice';
+import { getEvents } from '@redux/features/eventsSlice';
 import { formatDate } from 'helpers/formatDate';
 import { pathnames } from 'constants/pathnames';
 import { Notification } from 'components/Notification';
@@ -21,10 +21,10 @@ export const Calendar = () => {
   const [containerRef, isVisible] = useElementOnScreen();
 
   useEffect(() => {
-    if (isVisible && !events.length) {
-      dispatch(eventsActions.getEvents());
+    if (!error && isVisible && !events.length) {
+      dispatch(getEvents());
     }
-  }, [dispatch, isVisible, events.length]);
+  }, [isVisible, events.length]);
 
   const nearestEvents = events.length > 3 ? events.slice(0, 3) : events;
 
@@ -37,7 +37,9 @@ export const Calendar = () => {
       </h2>
       <ul className={dashboardStyles.list}>
         {!error ? (
-          !isLoading && events.length === 0 ? (
+          isLoading ? (
+            <Loader className={dashboardStyles.loader} />
+          ) : events.length === 0 ? (
             <p className={styles.text}>The calendar is empty for now</p>
           ) : (
             nearestEvents.map(({ id, title, startDate, endDate, address }) => (
@@ -67,7 +69,6 @@ export const Calendar = () => {
         ) : (
           <Notification className={dashboardStyles.error} text={error} type='error' />
         )}
-        {isLoading && <Loader className={dashboardStyles.loader} />}
       </ul>
     </div>
   );

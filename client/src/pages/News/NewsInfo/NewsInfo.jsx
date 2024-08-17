@@ -2,7 +2,7 @@ import { BlocksRenderer } from '@strapi/blocks-react-renderer';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { useEffect } from 'react';
-import * as newsActions from '../../../redux/features/newsSlice';
+import { getNews } from '@redux/features/newsSlice';
 import { formatDate } from 'helpers/formatDate';
 import { ImageComponent } from 'components/Image';
 import { pathnames } from 'constants/pathnames';
@@ -14,20 +14,20 @@ import { TryAgain } from 'pages/Services/TryAgain';
 import styles from 'pages/News/NewsInfo/NewsInfo.scss';
 
 export const NewsInfo = () => {
+  const { isLoading, error, news } = useSelector((state) => state.news);
+  const { newsPage } = pathnames;
   const dispatch = useDispatch();
   const { id } = useParams();
-  const { newsPage } = pathnames;
   const newsId = Number(id);
 
-  const { isLoading, error, news } = useSelector((state) => state.news);
   const currentArticle = news.find((article) => article.id === newsId);
   const nextArticle = news[news.findIndex((article) => article.id === newsId) + 1];
 
   useEffect(() => {
     if (!news.length) {
-      dispatch(newsActions.getNews());
+      dispatch(getNews());
     }
-  }, [dispatch, news.length]);
+  }, []);
 
   if (!isLoading && !currentArticle && news.length) {
     return <NotFound />;

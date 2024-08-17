@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import useElementOnScreen from 'hooks/useElementOnScreen';
-import * as organizationsActions from '../../../../redux/features/organizationsSlice';
+import { getOrganizations } from '@redux/features/organizationsSlice';
 import { apiErrors } from 'constants/apiErrors';
 import { OrganizationDropdown } from 'components/Dropdown/Organization';
 import { Notification } from 'components/Notification';
@@ -16,10 +16,10 @@ export const Organizations = () => {
   const [containerRef, isVisible] = useElementOnScreen();
 
   useEffect(() => {
-    if (isVisible && !organizations.length) {
-      dispatch(organizationsActions.getOrganizations());
+    if (!error && isVisible && !organizations.length) {
+      dispatch(getOrganizations());
     }
-  }, [dispatch, isVisible, organizations.length]);
+  }, [isVisible, organizations.length]);
 
   return (
     <Container>
@@ -27,7 +27,9 @@ export const Organizations = () => {
         <h2 className={styles.title}>National organizations</h2>
         <p className={styles.subtitle}>that are part of the European Confederation of Dance Sports</p>
         {!error ? (
-          !isLoading && organizations.length === 0 ? (
+          isLoading ? (
+            <Loader />
+          ) : organizations.length === 0 ? (
             <Notification text={apiErrors.error404Message} type='error' />
           ) : (
             <ul className={styles.organizationsList}>
@@ -41,7 +43,6 @@ export const Organizations = () => {
         ) : (
           <Notification text={error} type='error' />
         )}
-        {isLoading && <Loader />}
       </section>
     </Container>
   );

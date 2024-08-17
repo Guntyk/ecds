@@ -24,6 +24,7 @@ const bannersSlice = createSlice({
     builder
       .addCase(getBanners.pending, (state) => {
         state.isLoading = true;
+        state.error = null;
       })
       .addCase(getBanners.fulfilled, (state, action) => {
         state.isLoading = false;
@@ -39,4 +40,3 @@ const bannersSlice = createSlice({
 });
 
 export default bannersSlice.reducer;
-export const { actions } = bannersSlice;

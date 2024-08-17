@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import * as organizationsActions from '../../redux/features/organizationsSlice';
+import { getOrganizations } from '@redux/features/organizationsSlice';
 import { OrganizationDropdown } from 'components/Dropdown/Organization';
 import { Container } from 'components/Container';
 import { Loader } from 'components/Loader';
@@ -13,9 +13,13 @@ export const Members = () => {
 
   useEffect(() => {
     if (!organizations.length) {
-      dispatch(organizationsActions.getOrganizations());
+      dispatch(getOrganizations());
     }
-  }, [dispatch, organizations.length]);
+  }, []);
+
+  if (error) {
+    return <TryAgain />;
+  }
 
   return (
     <Container>
@@ -24,10 +28,10 @@ export const Members = () => {
         <p className={styles.subtitle}>
           National organizations that are part of the European Confederation of Dance Sports
         </p>
-        {!error ? (
-          !isLoading && organizations.length === 0 ? (
-            <TryAgain />
-          ) : (
+        {isLoading ? (
+          <Loader />
+        ) : (
+          organizations.length > 0 && (
             <ul className={styles.members}>
               {organizations.map((organization) => (
                 <li className={styles.member} key={organization.id}>
@@ -36,10 +40,7 @@ export const Members = () => {
               ))}
             </ul>
           )
-        ) : (
-          <TryAgain />
         )}
-        {isLoading && <Loader />}
       </section>
     </Container>
   );

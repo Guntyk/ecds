@@ -1,11 +1,12 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import useElementOnScreen from 'hooks/useElementOnScreen';
-import * as bannersActions from '../../../../redux/features/bannersSlice';
+import { getBanners } from '@redux/features/bannersSlice';
 import { Notification } from 'components/Notification';
 import { Container } from 'components/Container';
 import { Banners } from 'components/Banners';
 import { Button } from 'components/Button';
+import { Loader } from 'components/Loader';
 import styles from 'pages/Main/blocks/Hero/Hero.scss';
 
 export const Hero = () => {
@@ -15,10 +16,10 @@ export const Hero = () => {
   const [containerRef, isVisible] = useElementOnScreen();
 
   useEffect(() => {
-    if (isVisible && !banners.length) {
-      dispatch(bannersActions.getBanners());
+    if (!error && isVisible && !banners.length) {
+      dispatch(getBanners());
     }
-  }, [dispatch, isVisible, banners.length]);
+  }, [isVisible, banners.length]);
 
   return (
     <section className={styles.block}>
@@ -29,7 +30,11 @@ export const Hero = () => {
             <Button text='Registration' onClick={() => window.open(process.env.REACT_APP_EPHAN_URL)} normalStyle />
           </div>
           {!error ? (
-            !isLoading && banners.length > 0 && <Banners banners={banners} />
+            isLoading ? (
+              <Loader />
+            ) : (
+              banners.length > 0 && <Banners banners={banners} />
+            )
           ) : (
             <Notification className={styles.error} text={error} type='error' />
           )}

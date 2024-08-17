@@ -24,6 +24,7 @@ const eventsSlice = createSlice({
     builder
       .addCase(getEvents.pending, (state) => {
         state.isLoading = true;
+        state.error = null;
       })
       .addCase(getEvents.fulfilled, (state, action) => {
         state.isLoading = false;
@@ -39,4 +40,3 @@ const eventsSlice = createSlice({
 });
 
 export default eventsSlice.reducer;
-export const { actions } = eventsSlice;

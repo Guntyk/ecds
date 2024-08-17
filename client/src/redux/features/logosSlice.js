@@ -24,6 +24,7 @@ const logosSlice = createSlice({
     builder
       .addCase(getLogos.pending, (state) => {
         state.isLoading = true;
+        state.error = null;
       })
       .addCase(getLogos.fulfilled, (state, action) => {
         state.isLoading = false;
@@ -38,5 +39,5 @@ const logosSlice = createSlice({
   },
 });
 
+export const { resetError } = logosSlice.actions;
 export default logosSlice.reducer;
-export const { actions } = logosSlice;
