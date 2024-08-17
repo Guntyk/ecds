@@ -17,6 +17,19 @@ export const getNews = createAsyncThunk('news/getNews', async (_, { rejectWithVa
   return rejectWithValue(error || 'An error occurred while getting news data. Please try again later');
 });
 
+export const updateViews = createAsyncThunk('news/updateViews', async (articleObj, { rejectWithValue }) => {
+  const increasedArticleViews = Number(articleObj.views) + 1;
+  const newsId = articleObj.id;
+
+  const { result, error } = await NewsService.updateViews(newsId, increasedArticleViews);
+
+  if (result) {
+    return { newsId, views: increasedArticleViews };
+  }
+
+  return rejectWithValue(error || 'An error occurred while updating views. Please try again later');
+});
+
 const newsSlice = createSlice({
   name: 'news',
   initialState,
@@ -35,9 +48,14 @@ const newsSlice = createSlice({
         state.isLoading = false;
         state.news = [];
         state.error = action.payload;
+      })
+      .addCase(updateViews.fulfilled, (state, action) => {
+        const article = state.news.find((article) => article.id === action.payload.newsId);
+        if (article) {
+          article.views = action.payload.views;
+        }
       });
   },
 });
 
-export const { resetError } = newsSlice.actions;
 export default newsSlice.reducer;

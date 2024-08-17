@@ -39,5 +39,4 @@ const managementSlice = createSlice({
   },
 });
 
-export const { resetError } = managementSlice.actions;
 export default managementSlice.reducer;

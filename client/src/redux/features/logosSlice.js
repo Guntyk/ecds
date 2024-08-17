@@ -39,5 +39,4 @@ const logosSlice = createSlice({
   },
 });
 
-export const { resetError } = logosSlice.actions;
 export default logosSlice.reducer;

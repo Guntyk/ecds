@@ -22,4 +22,14 @@ export default class NewsService {
 
     return { result: data, error: null };
   }
+
+  static async updateViews(newsId, views) {
+    const [error, data] = await backendApi.put(`/articles/${newsId}`, { views: views });
+
+    if (error) {
+      return { result: null, error: APIErrorsHandlingUtils.handleErrors(error) };
+    }
+
+    return { result: data, error: null };
+  }
 }

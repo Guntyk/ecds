@@ -2,7 +2,7 @@ import { BlocksRenderer } from '@strapi/blocks-react-renderer';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { useEffect } from 'react';
-import { getNews } from '@redux/features/newsSlice';
+import { getNews, updateViews } from '@redux/features/newsSlice';
 import { formatDate } from 'helpers/formatDate';
 import { ImageComponent } from 'components/Image';
 import { pathnames } from 'constants/pathnames';
@@ -29,6 +29,12 @@ export const NewsInfo = () => {
     }
   }, []);
 
+  useEffect(() => {
+    if (news.length && currentArticle) {
+      dispatch(updateViews(currentArticle));
+    }
+  }, [news.length, id]);
+
   if (!isLoading && !currentArticle && news.length) {
     return <NotFound />;
   }
@@ -46,7 +52,7 @@ export const NewsInfo = () => {
       return <p className={styles.text}>There is no news yet</p>;
     }
 
-    const { title, media, publicationDate, description, content } = currentArticle;
+    const { title, media, publicationDate, description, content, views } = currentArticle;
 
     return (
       <>

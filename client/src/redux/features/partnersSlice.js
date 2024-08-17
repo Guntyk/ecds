@@ -39,5 +39,4 @@ const partnersSlice = createSlice({
   },
 });
 
-export const { resetError } = partnersSlice.actions;
 export default partnersSlice.reducer;

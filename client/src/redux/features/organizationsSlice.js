@@ -39,5 +39,4 @@ const organizationsSlice = createSlice({
   },
 });
 
-export const { resetError } = organizationsSlice.actions;
 export default organizationsSlice.reducer;
