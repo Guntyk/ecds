@@ -817,15 +817,6 @@ export interface ApiArticleArticle extends Schema.CollectionType {
         string
       > &
       Attribute.DefaultTo<'0'>;
-    likes: Attribute.BigInteger &
-      Attribute.Required &
-      Attribute.SetMinMax<
-        {
-          min: '0';
-        },
-        string
-      > &
-      Attribute.DefaultTo<'0'>;
     publicationDate: Attribute.Date & Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;

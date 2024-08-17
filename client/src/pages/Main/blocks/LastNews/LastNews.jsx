@@ -97,8 +97,6 @@ export const LastNews = () => {
                         <div className={styles.reactions}>
                           <img src={eye} alt='Views' />
                           {article.views}
-                          <img src={like} alt='Likes' />
-                          {article.likes}
                         </div>
                         <time dateTime={article.publicationDate}>{formatDate(article.publicationDate)}</time>
                       </div>
