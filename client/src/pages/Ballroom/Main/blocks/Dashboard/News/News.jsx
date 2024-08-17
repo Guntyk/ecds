@@ -13,7 +13,7 @@ import styles from 'pages/Ballroom/Main/blocks/Dashboard/News/News.scss';
 
 export const News = () => {
   const { isLoading, error, news } = useSelector((state) => state.news);
-  const { newsPage } = pathnames;
+  const { newsPage, ballroomPage } = pathnames;
   const dispatch = useDispatch();
   const { push } = useHistory();
 
@@ -29,7 +29,7 @@ export const News = () => {
 
   return (
     <div ref={containerRef} className={cn(dashboardStyles.block, styles.block)}>
-      <h2 className={cn(dashboardStyles.title, styles.title)} onClick={() => push(newsPage)}>
+      <h2 className={cn(dashboardStyles.title, styles.title)} onClick={() => push(`${ballroomPage}${newsPage}`)}>
         Latest news
         <span className={cn(dashboardStyles.arrow, styles.arrow)} />
         <span className={cn(dashboardStyles.arrow, styles.arrow)} />
@@ -39,11 +39,11 @@ export const News = () => {
           !isLoading && news.length === 0 ? (
             <p className={styles.text}>There is no news yet</p>
           ) : (
-            nearestNews.map(({ id, title, publishedAt }) => (
+            nearestNews.map(({ id, title, publicationDate }) => (
               <li className={cn(dashboardStyles.item, styles.item)} onClick={() => push(`${newsPage}/${id}`)} key={id}>
-                <time dateTime={publishedAt}>
+                <time dateTime={publicationDate}>
                   <span className={dashboardStyles.calendarIcon} />
-                  {formatDate(publishedAt)}
+                  {formatDate(publicationDate)}
                 </time>
                 <strong>{title}</strong>
               </li>
