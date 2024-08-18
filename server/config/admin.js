@@ -15,5 +15,5 @@ module.exports = ({ env }) => ({
     promoteEE: env.bool('FLAG_PROMOTE_EE', true),
   },
   port: 1337,
-  url: `http://185.25.117.139/admin`
+  url: env('PUBLIC_URL', 'http://euro-dance.org/panel'),
 });
