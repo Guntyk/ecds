@@ -27,7 +27,6 @@ module.exports = [
           ],
           "media-src": ["'self'", "data:", "blob:"],
           "object-src": ["'none'"],
-          "upgrade-insecure-requests": [],
         },
       },
     },
