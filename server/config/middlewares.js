@@ -13,7 +13,7 @@ module.exports = {
     },
     cors: {
       enabled: true,
-      origin: "http://euro-dance.org/",
+      origin: "http://185.25.117.139/",
     },
     poweredBy: {
       enabled: false,
