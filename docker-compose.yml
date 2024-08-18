@@ -10,6 +10,7 @@ services:
       - "443:443"
     volumes:
       - './nginx.conf:/etc/nginx/nginx.conf'
+      - '/etc/letsencrypt/live/euro-dance.org:/etc/letsencrypt/live/euro-dance.org:ro'
     depends_on:
       - backend
       - frontend
