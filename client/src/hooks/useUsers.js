@@ -19,7 +19,7 @@ export const useUsers = (usersList, activeUsersTypes) => {
   );
 
   const [formState, setFormState] = useState(initialState);
-  const [users, setUsers] = useState(usersList);
+  const [users, setUsers] = useState([]);
   const [activeTypeIndex, setActiveTypeIndex] = useState(
     activeUsersTypes.findIndex((userType) => userType === filters.searchTypeParam)
   );
