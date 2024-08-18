@@ -47,5 +47,10 @@ services:
       POSTGRES_DB: strapi_db
     ports:
       - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
     networks:
       - dev
+
+volumes:
+  postgres_data:
