@@ -8,5 +8,5 @@ module.exports = ({ env }) => ({
     populateRelations: env.bool("WEBHOOKS_POPULATE_RELATIONS", false),
   },
   proxy: true,
-  url: 'http://euro-dance.org/test',
+  url: 'http://euro-dance.org/panel',
 });
