@@ -20,9 +20,10 @@
   display: flex;
   flex-direction: column;
   gap: $gapLarge;
-  min-width: 48.6rem;
+  max-width: 48.6rem;
 
   .image {
+    width: 100%;
     border-radius: $borderRadiusLarge;
   }
 }
