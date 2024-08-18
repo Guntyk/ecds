@@ -34,7 +34,7 @@ export const useUsers = (usersList, activeUsersTypes) => {
   }, [filters.searchTypeParam, pathname, push]);
 
   useEffect(() => {
-    const filteredUsers = filterUsers(usersList, filters);
+    const filteredUsers = filterUsers([], filters);
     setUsers(filteredUsers);
   }, [filters, usersList]);
 
