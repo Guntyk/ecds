@@ -5,10 +5,12 @@ module.exports = [
   {
     name: "strapi::cors",
     config: {
-      origin: ["https://euro-dance.org"],
+      enabled: true,
+      origin: ["http://localhost:1337", "http://euro-dance.org"],
       methods: ["GET", "POST", "PUT"],
       headers: ["Content-Type", "Authorization", "Origin", "Accept"],
       keepHeaderOnError: true,
+      credentials: true,
     },
   },
   "strapi::poweredBy",
