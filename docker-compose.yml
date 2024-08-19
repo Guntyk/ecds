@@ -27,7 +27,7 @@ services:
       DATABASE_USERNAME: strapi
       DATABASE_PASSWORD: strapi
     volumes:
-      - ./server/public/uploads:~/ecds/server/public/uploads
+      - ./server/public/uploads:./server/public/uploads
     networks:
       - dev
     depends_on:
