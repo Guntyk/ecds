@@ -61,7 +61,7 @@ export const OrganizationDropdown = ({
                 <td>phone</td>
                 <td>
                   <a href={`tel:${phone}`} {...(!isOpen && { tabIndex: -1 })}>
-                    {phone}
+                    +{phone}
                   </a>
                 </td>
               </tr>
