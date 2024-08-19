@@ -86,6 +86,14 @@
     background: $background2;
     border-radius: $borderRadius;
   }
+
+  strong {
+    font-weight: map-get($fontWeights, 'bold');
+  }
+
+  em {
+    font-style: italic;
+  }
 }
 
 .text {
