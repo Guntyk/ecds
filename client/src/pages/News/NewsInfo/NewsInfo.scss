@@ -19,10 +19,9 @@
   display: flex;
   flex-direction: column;
   gap: $gapLarge;
-  width: 48.6rem;
 
   .image {
-    width: 100%;
+    width: 48.6rem;
     border-radius: $borderRadiusLarge;
   }
 }
