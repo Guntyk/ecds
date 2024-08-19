@@ -44,7 +44,7 @@ export const Certification = () => {
             </nav>
           </section>
           <section className={styles.list}>
-            {usersList
+            {[]
               .filter(({ type }) => type === searchTypeParam)
               .map((user) => (
                 <CertificationCard user={user} key={user.id} />

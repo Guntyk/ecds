@@ -30,7 +30,7 @@
   flex-wrap: wrap;
   gap: $gapLarge;
   width: min-content;
-  max-height: 28rem;
+  max-height: 40rem;
 
   &Section {
     display: flex;
@@ -64,19 +64,43 @@
 }
 
 .bankDetails {
+  .sectionTitle {
+    margin-bottom: 0;
+  }
+
   table {
+    width: max-content;
     border-collapse: separate;
-    border-spacing: 1.6rem 0.8rem;
-    translate: -1.6rem -0.8rem;
+    margin-bottom: 2.4rem;
+  }
+
+  tbody {
+    display: flex;
+    flex-direction: column;
+    gap: $gapMedium;
+  }
+
+  tr {
+    display: flex;
+    gap: $gapMedium;
   }
 
   td:first-child {
-    white-space: nowrap;
+    display: inline-block;
+    width: 16rem;
     font-weight: map-get($fontWeights, 'light');
     letter-spacing: 0;
+  }
+
+  td:last-child {
+    display: inline-block;
   }
 }
 
 .email {
   margin-top: -1.6rem;
+}
+
+.address p {
+  line-height: 3.2rem;
 }
