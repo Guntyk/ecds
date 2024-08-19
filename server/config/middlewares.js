@@ -34,7 +34,6 @@ module.exports = [
   {
     name: "strapi::cors",
     config: {
-      enabled: true,
       origin: [
         "http://localhost:1337",
         "http://euro-dance.org",
