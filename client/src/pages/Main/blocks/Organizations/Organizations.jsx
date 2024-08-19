@@ -34,11 +34,7 @@ export const Organizations = () => {
           ) : (
             <ul className={styles.organizationsList}>
               {organizations
-                .sort((a, b) => {
-                  if (a.name < b.name) return -1;
-                  if (a.name > b.name) return 1;
-                  return 0;
-                })
+                .sort((a, b) => a.name.localeCompare(b.name))
                 .map((organization) => (
                   <li className={styles.organization} key={organization.id}>
                     <OrganizationDropdown organization={organization} />
