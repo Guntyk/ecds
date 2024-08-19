@@ -62,6 +62,7 @@ export default class StaticDataService {
       populate: {
         flag: { fields: ['url'] },
       },
+      sort: 'name',
     });
 
     const [error, data] = await backendApi.get(`/organizations?${query}`);

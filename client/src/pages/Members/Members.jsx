@@ -33,13 +33,11 @@ export const Members = () => {
         ) : (
           organizations.length > 0 && (
             <ul className={styles.members}>
-              {organizations
-                .sort((a, b) => a.name.localeCompare(b.name))
-                .map((organization) => (
-                  <li className={styles.member} key={organization.id}>
-                    <OrganizationDropdown className={styles.card} organization={organization} opened />
-                  </li>
-                ))}
+              {organizations.map((organization) => (
+                <li className={styles.member} key={organization.id}>
+                  <OrganizationDropdown className={styles.card} organization={organization} opened />
+                </li>
+              ))}
             </ul>
           )
         )}

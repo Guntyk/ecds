@@ -33,13 +33,11 @@ export const Organizations = () => {
             <Notification text={apiErrors.error404Message} type='error' />
           ) : (
             <ul className={styles.organizationsList}>
-              {organizations
-                .sort((a, b) => a.name.localeCompare(b.name))
-                .map((organization) => (
-                  <li className={styles.organization} key={organization.id}>
-                    <OrganizationDropdown organization={organization} />
-                  </li>
-                ))}
+              {organizations.map((organization) => (
+                <li className={styles.organization} key={organization.id}>
+                  <OrganizationDropdown organization={organization} />
+                </li>
+              ))}
             </ul>
           )
         ) : (
