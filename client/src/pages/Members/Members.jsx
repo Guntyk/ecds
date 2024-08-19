@@ -33,11 +33,17 @@ export const Members = () => {
         ) : (
           organizations.length > 0 && (
             <ul className={styles.members}>
-              {organizations.map((organization) => (
-                <li className={styles.member} key={organization.id}>
-                  <OrganizationDropdown className={styles.card} organization={organization} opened />
-                </li>
-              ))}
+              {organizations
+                .sort((a, b) => {
+                  if (a.name < b.name) return -1;
+                  if (a.name > b.name) return 1;
+                  return 0;
+                })
+                .map((organization) => (
+                  <li className={styles.member} key={organization.id}>
+                    <OrganizationDropdown className={styles.card} organization={organization} opened />
+                  </li>
+                ))}
             </ul>
           )
         )}
