@@ -28,12 +28,12 @@ export const Link = ({
   });
 
   return external ? (
-    <a className={linkClass} href={path} target='_blank' rel='noopener noreferrer'>
+    <a className={linkClass} href={path} tabIndex={active ? -1 : 0} target='_blank' rel='noopener noreferrer'>
       {children ?? content}
       {(arrowRight || arrowLeft) && <img className={styles.arrow} src={arrowSrc ?? arrowIcon} alt='arrow right' />}
     </a>
   ) : (
-    <RouterLink className={linkClass} to={path}>
+    <RouterLink className={linkClass} to={path} tabIndex={active ? -1 : 0}>
       {children ?? content}
       {(arrowRight || arrowLeft) && <img className={styles.arrow} src={arrowSrc ?? arrowIcon} alt='arrow right' />}
     </RouterLink>
