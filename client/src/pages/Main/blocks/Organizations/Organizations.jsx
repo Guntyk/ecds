@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import useElementOnScreen from 'hooks/useElementOnScreen';
 import { getOrganizations } from '@redux/features/organizationsSlice';
 import { apiErrors } from 'constants/apiErrors';
@@ -13,6 +13,8 @@ export const Organizations = () => {
   const { organizations, error, isLoading } = useSelector((state) => state.organizations);
   const dispatch = useDispatch();
 
+  const [openDropdownId, setOpenDropdownId] = useState(null);
+
   const [containerRef, isVisible] = useElementOnScreen();
 
   useEffect(() => {
@@ -20,6 +22,10 @@ export const Organizations = () => {
       dispatch(getOrganizations());
     }
   }, [isVisible, organizations.length]);
+
+  const handleDropdownToggle = (id) => {
+    setOpenDropdownId((prevId) => (prevId === id ? null : id));
+  };
 
   return (
     <Container>
@@ -35,7 +41,11 @@ export const Organizations = () => {
             <ul className={styles.organizationsList}>
               {organizations.map((organization) => (
                 <li className={styles.organization} key={organization.id}>
-                  <OrganizationDropdown organization={organization} />
+                  <OrganizationDropdown
+                    organization={organization}
+                    isOpen={openDropdownId === organization.id}
+                    onToggle={() => handleDropdownToggle(organization.id)}
+                  />
                 </li>
               ))}
             </ul>

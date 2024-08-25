@@ -35,7 +35,7 @@ export const Members = () => {
             <ul className={styles.members}>
               {organizations.map((organization) => (
                 <li className={styles.member} key={organization.id}>
-                  <OrganizationDropdown className={styles.card} organization={organization} opened />
+                  <OrganizationDropdown className={styles.card} organization={organization} nonClosable />
                 </li>
               ))}
             </ul>
