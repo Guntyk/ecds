@@ -11,7 +11,7 @@
   border: 0.1rem solid $text2;
   background: $background2;
   transition: 0.5s;
-  z-index: 1;
+  z-index: 999999;
 
   &Open {
     pointer-events: all;

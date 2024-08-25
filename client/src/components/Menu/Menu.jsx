@@ -1,5 +1,5 @@
 import { NavLink, useLocation } from 'react-router-dom';
-import { useMemo } from 'react';
+import { useEffect, useMemo, useRef } from 'react';
 import cn from 'classnames';
 import { pathnames } from 'constants/pathnames';
 import { menuLinks } from 'constants/links';
@@ -8,15 +8,19 @@ import cross from 'assets/icons/cross.svg';
 import styles from 'components/Menu/Menu.scss';
 
 export const Menu = ({ isOpen, setIsOpen }) => {
+  const menuRef = useRef(null);
   const { mainPage } = pathnames;
   const { pathname } = useLocation();
 
   const currentBasePathname = useMemo(() => {
     const basePath = pathname.split('/')[1] || '';
     return basePath.length > 0 ? `/${basePath}` : mainPage;
-  }, [pathname]);
+  }, [pathname, mainPage]);
 
-  const currentLinks = useMemo(() => menuLinks[currentBasePathname] || menuLinks[mainPage], [currentBasePathname]);
+  const currentLinks = useMemo(
+    () => menuLinks[currentBasePathname] || menuLinks[mainPage],
+    [currentBasePathname, mainPage]
+  );
 
   const generateLinkPath = (path) => {
     if (currentBasePathname === mainPage) {
@@ -30,10 +34,28 @@ export const Menu = ({ isOpen, setIsOpen }) => {
     return isSubPageLink ? `${currentBasePathname}${path}` : path;
   };
 
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (menuRef.current && !menuRef.current.contains(event.target)) {
+        setIsOpen(false);
+      }
+    };
+
+    if (isOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+    } else {
+      document.removeEventListener('mousedown', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isOpen, setIsOpen]);
+
   return (
     <nav
+      ref={menuRef}
       className={cn(styles.menu, { [styles.menuOpen]: isOpen })}
-      onMouseLeave={() => setIsOpen(false)}
       role='navigation'
       aria-label='Main menu'
     >

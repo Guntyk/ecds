@@ -7,7 +7,7 @@ import 'swiper/css/free-mode';
 import 'swiper/css/scrollbar';
 import styles from 'components/Dropdown/Dropdown.scss';
 
-export const Dropdown = ({ options, placeholder, selectedValue, printable, onChange, zIndex }) => {
+export const Dropdown = ({ className, options, placeholder, selectedValue, printable, onChange, zIndex }) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef(null);
@@ -19,9 +19,14 @@ export const Dropdown = ({ options, placeholder, selectedValue, printable, onCha
       }
     };
 
-    document.addEventListener('mousedown', handleClickOutside);
+    if (isOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+    } else {
+      document.removeEventListener('mousedown', handleClickOutside);
+    }
+
     return () => document.removeEventListener('mousedown', handleClickOutside);
-  }, []);
+  }, [isOpen, setIsOpen]);
 
   const toggleDropdown = () => setIsOpen((prev) => !prev);
 
@@ -39,7 +44,7 @@ export const Dropdown = ({ options, placeholder, selectedValue, printable, onCha
   const filteredOptions = options.filter((option) => option.toLowerCase().includes(searchTerm.toLowerCase()));
 
   return (
-    <div className={styles.dropdown} ref={dropdownRef}>
+    <div className={cn(styles.dropdown, className)} ref={dropdownRef}>
       {printable ? (
         <input
           type='text'

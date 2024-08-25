@@ -46,7 +46,7 @@ export const Users = () => {
                   />
                 )
               )}
-              <Button className={styles.searchBtn} text='Search' type='submit' ghostStyle />
+              <Button className={styles.searchBtn} text='Search' type='submit' searchStyle />
               <Button text='Clear filters' type='reset' onClick={clearFilters} ghostStyle />
             </form>
           </section>
@@ -60,5 +60,3 @@ export const Users = () => {
     </Container>
   );
 };
-
-export default Users;

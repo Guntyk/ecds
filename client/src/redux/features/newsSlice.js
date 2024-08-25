@@ -7,15 +7,18 @@ const initialState = {
   isLoading: false,
 };
 
-export const getNews = createAsyncThunk('news/getNews', async (_, { rejectWithValue }) => {
-  const { result, error } = await NewsService.getNews();
+export const getNews = createAsyncThunk(
+  'news/getNews',
+  async ({ searchTerm, sortFactor } = {}, { rejectWithValue }) => {
+    const { result, error } = await NewsService.getNews(searchTerm, sortFactor);
 
-  if (result?.data) {
-    return result.data;
+    if (result?.data) {
+      return result.data;
+    }
+
+    return rejectWithValue(error || 'An error occurred while getting news data. Please try again later');
   }
-
-  return rejectWithValue(error || 'An error occurred while getting news data. Please try again later');
-});
+);
 
 export const updateViews = createAsyncThunk('news/updateViews', async (articleObj, { rejectWithValue }) => {
   const increasedArticleViews = Number(articleObj.views) + 1;

@@ -8,7 +8,7 @@ export const Button = ({
   type,
   normalStyle,
   ghostStyle,
-  filterStyle,
+  searchStyle,
   large,
   small,
   noStyle,
@@ -18,7 +18,8 @@ export const Button = ({
     {
       [styles.btn]: !noStyle,
       [styles.btnNormal]: normalStyle,
-      [styles.btnGhost]: ghostStyle,
+      [styles.btnGhost]: ghostStyle || searchStyle,
+      [styles.btnSearch]: searchStyle,
       [styles.large]: large,
       [styles.small]: small,
     },

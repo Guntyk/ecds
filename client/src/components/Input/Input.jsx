@@ -26,7 +26,7 @@ export const Input = ({
     [styles.inputWrapperDark]: darkStyle,
   });
 
-  const inputClassNames = cn(styles.input, styles[inputClassName], {
+  const inputClassNames = cn(styles.input, inputClassName, {
     [styles.textareaInput]: textarea,
   });
 
