@@ -5,6 +5,17 @@
   border-radius: $borderRadiusLarge;
   border: 0.05rem solid $background2;
   background: $text2;
+  cursor: pointer;
+  transition: 0.15s;
+
+  &:focus {
+    outline: none;
+  }
+
+  &:focus-visible,
+  &:hover {
+    border: 0.05rem solid $lavender;
+  }
 }
 
 .cover {
@@ -52,4 +63,21 @@
   @extend %body4Regular;
 
   text-transform: uppercase;
+}
+
+.views {
+  @extend %body4Regular;
+
+  display: flex;
+  align-items: center;
+  gap: $gapExtraSmall;
+  color: $primary1;
+  line-height: 1.6rem;
+
+  &Icon {
+    width: 1.6rem;
+    height: 1.6rem;
+    mask: url(assets/icons/eye.svg);
+    background: $primary1;
+  }
 }

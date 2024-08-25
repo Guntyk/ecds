@@ -61,12 +61,12 @@ export const News = () => {
           </form>
         </header>
         <div className={styles.newsList}>
+          {isLoading && <Loader />}
           {!isLoading && news.length === 0 ? (
-            <p className={styles.text}>There is no news yet</p>
+            <p className={styles.text}>Nothing found matching your request 😕</p>
           ) : (
             news.map((newsItem) => <NewsCard news={newsItem} key={newsItem.id} />)
           )}
-          {isLoading && <Loader />}
         </div>
       </section>
     </Container>

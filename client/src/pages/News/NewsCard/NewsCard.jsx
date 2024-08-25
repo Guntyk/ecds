@@ -1,17 +1,33 @@
+import { useHistory } from 'react-router-dom';
 import { formatDate } from 'helpers/formatDate';
 import { pathnames } from 'constants/pathnames';
 import { ImageComponent } from 'components/Image';
-import { Link } from 'components/Link';
 import styles from 'pages/News/NewsCard/NewsCard.scss';
 
-export const NewsCard = ({ news: { id, title, description, publicationDate, media } }) => {
+export const NewsCard = ({ news: { id, title, description, publicationDate, media, views } }) => {
   const { newsPage } = pathnames;
+  const { push } = useHistory();
+
+  const openArticle = () => push(`${newsPage}/${id}`);
+
+  const handleKeyDown = (event) => {
+    if (event.key === 'Enter') {
+      openArticle();
+    }
+  };
 
   return (
-    <article className={styles.card}>
+    <article
+      className={styles.card}
+      onClick={openArticle}
+      onKeyDown={handleKeyDown}
+      tabIndex={0}
+      role='button'
+      aria-label={`Open article: ${title}`}
+    >
       <ImageComponent
         src={media?.[0].url || 'https://placehold.co/282'}
-        alt={media?.[0].alt || 'cover placeholder'}
+        alt={media?.[0].alt || 'Cover placeholder'}
         placeholder={media?.[0].placeholder}
         className={styles.cover}
         external={media}
@@ -21,7 +37,10 @@ export const NewsCard = ({ news: { id, title, description, publicationDate, medi
         <p className={styles.description}>{description}</p>
         <div className={styles.additionalInfo}>
           <span className={styles.date}>{formatDate(publicationDate)}</span>
-          <Link content='Read more' path={`${newsPage}/${id}`} arrowRight />
+          <div className={styles.views}>
+            <span className={styles.viewsIcon} />
+            {views}
+          </div>
         </div>
       </section>
     </article>
