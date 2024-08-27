@@ -6,8 +6,15 @@
   border: 0.1rem solid $background2;
   transition: 0.15s;
 
-  &:has(.btn:hover, .btn:focus-visible) {
-    border: 0.1rem solid $primary2;
+  @media (hover: hover) {
+    &:has(.btn:hover, .btn:focus-visible) {
+      border: 0.1rem solid $primary2;
+    }
+  }
+  @media (hover: none) {
+    &:has(.btn:active) {
+      border: 0.1rem solid $primary2;
+    }
   }
 
   &::before {

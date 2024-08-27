@@ -26,15 +26,17 @@
     }
   }
 
-  &:hover {
-    .arrow {
-      background: $primary2;
+  @media (hover: hover) {
+    &:hover {
+      .arrow {
+        background: $primary2;
 
-      &:first-child {
-        translate: 100% -50%;
-      }
-      &:last-child {
-        translate: -100% -50%;
+        &:first-child {
+          translate: 100% -50%;
+        }
+        &:last-child {
+          translate: -100% -50%;
+        }
       }
     }
   }
@@ -62,12 +64,14 @@
     transition: 0.4s;
   }
 
-  &:hover {
-    .arrow {
-      background: $primary2;
-      translate: 0 calc($gapExtraSmall / 2);
-      &:last-child {
-        translate: 0 calc($gapExtraSmall / 2 * -1);
+  @media (hover: hover) {
+    &:hover {
+      .arrow {
+        background: $primary2;
+        translate: 0 calc($gapExtraSmall / 2);
+        &:last-child {
+          translate: 0 calc($gapExtraSmall / 2 * -1);
+        }
       }
     }
   }
@@ -82,11 +86,13 @@
       }
     }
 
-    &:hover {
-      .arrow {
-        translate: 0 calc($gapExtraSmall / 2);
-        &:last-child {
-          translate: 0 calc($gapExtraSmall / 2 * -1);
+    @media (hover: hover) {
+      &:hover {
+        .arrow {
+          translate: 0 calc($gapExtraSmall / 2);
+          &:last-child {
+            translate: 0 calc($gapExtraSmall / 2 * -1);
+          }
         }
       }
     }
@@ -111,12 +117,14 @@
     transition: 0.4s;
   }
 
-  &:hover {
-    .arrow {
-      background: $primary2;
-      translate: 0 calc($gapExtraSmall / 2);
-      &:last-child {
-        translate: 0 calc($gapExtraSmall / 2 * -1);
+  @media (hover: hover) {
+    &:hover {
+      .arrow {
+        background: $primary2;
+        translate: 0 calc($gapExtraSmall / 2);
+        &:last-child {
+          translate: 0 calc($gapExtraSmall / 2 * -1);
+        }
       }
     }
   }
@@ -133,13 +141,15 @@
       }
     }
 
-    &:hover {
-      .arrow {
-        translate: 0 calc($gapExtraSmall / 2);
-        rotate: 0deg;
-        &:last-child {
-          translate: 0 calc($gapExtraSmall / 2 * -1);
+    @media (hover: hover) {
+      &:hover {
+        .arrow {
+          translate: 0 calc($gapExtraSmall / 2);
           rotate: 0deg;
+          &:last-child {
+            translate: 0 calc($gapExtraSmall / 2 * -1);
+            rotate: 0deg;
+          }
         }
       }
     }

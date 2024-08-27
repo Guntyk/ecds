@@ -2,4 +2,9 @@
   position: relative;
   margin: $centeredMargin;
   max-width: 120rem;
+
+  @media (max-width: 557px) {
+    max-width: unset;
+    padding-inline: 1.6rem;
+  }
 }

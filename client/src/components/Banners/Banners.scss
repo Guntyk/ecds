@@ -3,10 +3,12 @@
   height: 37.8rem;
   z-index: 0;
 
-  &:hover,
-  &:has(.banner:focus-visible, .arrow:focus-visible) {
-    .navigation {
-      background: #dadbea4d;
+  @media (hover: hover) {
+    &:hover,
+    &:has(.banner:focus-visible, .arrow:focus-visible) {
+      .navigation {
+        background: #dadbea4d;
+      }
     }
   }
 }
