@@ -1,5 +1,5 @@
 .block {
-  padding: 12rem 0;
+  padding-block: 12rem;
   background: $background2;
 }
 
@@ -45,27 +45,31 @@
     }
   }
 
-  &:has(+ *:hover),
-  &:has(+ * + *:hover),
-  &:has(+ * + * + *:hover),
-  &:has(+ *:focus-visible),
-  &:has(+ * + *:focus-visible),
-  &:has(+ * + * + *:focus-visible) {
-    width: 27.2rem;
+  @media (hover: hover) {
+    &:has(+ *:hover),
+    &:has(+ * + *:hover),
+    &:has(+ * + * + *:hover),
+    &:has(+ *:focus-visible),
+    &:has(+ * + *:focus-visible),
+    &:has(+ * + * + *:focus-visible) {
+      width: 27.2rem;
+    }
   }
 
-  &:hover,
-  &:focus-visible {
-    @include typography(body3, medium);
+  @media (hover: hover) {
+    &:hover,
+    &:focus-visible {
+      @include typography(body3, medium);
 
-    width: 33.6rem;
-    color: $primary3;
-    outline: none;
+      width: 33.6rem;
+      color: $primary3;
+      outline: none;
 
-    & + *,
-    & + * + *,
-    & + * + * + * {
-      width: 27.2rem;
+      & + *,
+      & + * + *,
+      & + * + * + * {
+        width: 27.2rem;
+      }
     }
   }
 }
@@ -89,4 +93,45 @@
   line-height: 2.4rem;
   letter-spacing: 0;
   text-transform: capitalize;
+}
+
+@media (max-width: 557px) {
+  .block {
+    padding-block: 6.4rem;
+  }
+
+  .dances {
+    flex-direction: column;
+  }
+
+  .card {
+    justify-content: start;
+    flex-direction: row-reverse;
+    width: 100%;
+
+    .cover {
+      width: 9.8rem;
+      height: 10.4rem;
+    }
+
+    &:active {
+      @include typography(buttonActive, medium);
+
+      color: $primary3;
+    }
+  }
+
+  .name {
+    flex-grow: 1;
+
+    &.other {
+      padding-block: 4rem;
+    }
+  }
+
+  .styles {
+    right: 0;
+    width: calc(100% - 9.8rem);
+    font-size: 2rem;
+  }
 }

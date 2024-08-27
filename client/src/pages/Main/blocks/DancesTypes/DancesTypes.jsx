@@ -1,3 +1,4 @@
+import cn from 'classnames';
 import { dancesTypes } from 'constants/dancesTypes';
 import { Container } from 'components/Container';
 import { Link } from 'components/Link';
@@ -9,7 +10,7 @@ export const DancesTypes = () => (
       <div className={styles.dances}>
         {dancesTypes.map(({ id, name, path, key, styleNames }) => (
           <Link className={styles.card} key={id} path={path} noStyle>
-            <p className={styles.name}>{name}</p>
+            <p className={cn(styles.name, styles[key])}>{name}</p>
             {styleNames && (
               <ul className={styles.styles}>
                 {styleNames.map((style) => (
