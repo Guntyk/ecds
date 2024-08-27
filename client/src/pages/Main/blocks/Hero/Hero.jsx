@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
+import useWindowDimensions from 'hooks/useWindowDimensions';
 import useElementOnScreen from 'hooks/useElementOnScreen';
 import { getBanners } from '@redux/features/bannersSlice';
 import { Notification } from 'components/Notification';
@@ -14,9 +15,10 @@ export const Hero = () => {
   const dispatch = useDispatch();
 
   const [containerRef, isVisible] = useElementOnScreen();
+  const { width } = useWindowDimensions();
 
   useEffect(() => {
-    if (!error && isVisible && !banners.length) {
+    if (width > 557 && !error && isVisible && !banners.length) {
       dispatch(getBanners());
     }
   }, [isVisible, banners.length]);
@@ -29,15 +31,16 @@ export const Hero = () => {
             <h1 className={styles.title}>Unified Standards for a United Europe</h1>
             <Button text='Registration' onClick={() => window.open(process.env.REACT_APP_EPHAN_URL)} normalStyle />
           </div>
-          {!error ? (
-            isLoading ? (
-              <Loader className={styles.loader} />
+          {width > 557 &&
+            (!error ? (
+              isLoading ? (
+                <Loader className={styles.loader} />
+              ) : (
+                banners.length > 0 && <Banners banners={banners} />
+              )
             ) : (
-              banners.length > 0 && <Banners banners={banners} />
-            )
-          ) : (
-            <Notification className={styles.error} text={error} type='error' />
-          )}
+              <Notification className={styles.error} text={error} type='error' />
+            ))}
         </div>
       </Container>
     </section>

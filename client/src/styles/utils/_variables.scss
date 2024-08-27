@@ -9,16 +9,11 @@ $fontWeights: (
   'bold': 700,
 );
 
-$fontSizeRegular: 1.6rem;
-$fontSizeSubtitle: 1.4rem;
-
 $borderRadiusLarge: 1.4rem;
 $borderRadius: 1.2rem;
 $borderRadiusSmall: 1rem;
 $centeredMargin: 0 auto;
 
-$paddingLabel: 0.2rem 0.8rem;
-$letterSpacing: 0.05em;
 $transitionDuration: 0.115s;
 
 $fontSizes: (
@@ -39,18 +34,6 @@ $fontSizes: (
   'fieldDescription': 1.4rem,
 );
 
-@media (max-width: 557px) {
-  $fontSizes: map-merge(
-    $fontSizes,
-    (
-      'h1': 5.2rem,
-      'h2': 4rem,
-      'h3': 3.2rem,
-      'h4': 2.8rem,
-    )
-  );
-}
-
 $lineHeights: (
   'h1': 7.2rem,
   'h2': 5.6rem,
@@ -69,17 +52,41 @@ $lineHeights: (
   'fieldDescription': 1.8rem,
 );
 
-@media (max-width: 557px) {
-  $lineHeights: map-merge(
-    $lineHeights,
-    (
-      'h1': 4.4rem,
-      'h2': 4rem,
-      'h3': 3.2rem,
-      'h4': 2.8rem,
-    )
-  );
-}
+$fontSizesMobile: (
+  'h1': 5.2rem,
+  'h2': 4.8rem,
+  'h3': 4.8rem,
+  'h4': 3.2rem,
+  'logoText': 3.2rem,
+  'body1': 1.6rem,
+  'body2': 1.6rem,
+  'body3': 1.4rem,
+  'body4': 1.6rem,
+  'button': 1.6rem,
+  'buttonActive': 1.8rem,
+  'buttonSmall': 1.4rem,
+  'fieldPlaceholder': 1.6rem,
+  'fieldTitle': 1.4rem,
+  'fieldDescription': 1.4rem,
+);
+
+$lineHeightsMobile: (
+  'h1': 4.4rem,
+  'h2': 4rem,
+  'h3': 4rem,
+  'h4': 3.2rem,
+  'logoText': 3.2rem,
+  'body1': 2.4rem,
+  'body2': 2.2rem,
+  'body3': 2rem,
+  'body4': 2.4rem,
+  'button': 2.4rem,
+  'buttonActive': 2.4rem,
+  'buttonSmall': 1.6rem,
+  'fieldPlaceholder': 2.4rem,
+  'fieldTitle': 2rem,
+  'fieldDescription': 1.8rem,
+);
 
 $letterSpacing: (
   'body': 0.02em,

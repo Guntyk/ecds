@@ -13,8 +13,12 @@
     $bodyFont
   );
   font-family: $font;
-  font-size: get-font-style($key, $fontSizes);
-  line-height: get-font-style($key, $lineHeights);
+  font-size: map-get($fontSizes, $key);
+  line-height: map-get($lineHeights, $key);
+  @media (max-width: 557px) {
+    font-size: map-get($fontSizesMobile, $key);
+    line-height: map-get($lineHeightsMobile, $key);
+  }
   font-weight: map-get($fontWeights, $weight);
   letter-spacing: if(
     $key == 'h1' or $key == 'h2' or $key == 'h3' or $key == 'h4' or $key == 'logoText',
