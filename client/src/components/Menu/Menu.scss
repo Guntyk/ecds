@@ -32,14 +32,13 @@
 }
 
 .links {
-  @include typography(h3);
+  @include typography(h3, medium);
 
   display: flex;
   flex-direction: column;
   gap: 3.2rem;
   padding-right: 2.4rem;
   color: $text1;
-  font-weight: map-get($fontWeights, 'medium');
 }
 
 .link {
@@ -80,10 +79,11 @@
 
 @media (max-width: 557px) {
   .menu {
+    position: fixed;
     padding-left: 3.2rem;
     padding-bottom: 3.2rem;
     width: 36rem;
-    top: -0.8rem;
+    top: 1.6rem;
     opacity: 1;
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
@@ -115,7 +115,7 @@
     opacity: 0;
     pointer-events: none;
     transition: 0.3s;
-    z-index: 0;
+    z-index: 1;
   }
 
   .link.active {
