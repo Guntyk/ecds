@@ -65,15 +65,11 @@
         text-transform: none;
       }
     }
-    @media (hover: none) {
-      &:active {
-        @include typography(buttonActive, medium);
+  }
+}
 
-        padding-inline: 0.5rem;
-        color: $secondary4;
-        outline: none;
-        text-transform: none;
-      }
-    }
+@media (max-width: 557px) {
+  .navigationLink {
+    padding: 0;
   }
 }
