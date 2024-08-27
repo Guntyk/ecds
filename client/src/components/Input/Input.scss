@@ -45,13 +45,13 @@
 
   .input:focus-visible ~ .label,
   &Filled .label {
-    @extend %fieldTitle;
+    @include typography(fieldTitle);
     @extend %label-active;
   }
 }
 
 .input {
-  @extend %fieldPlaceholder;
+  @include typography(fieldPlaceholder);
   @extend %input;
 
   &::placeholder {
@@ -60,12 +60,12 @@
 }
 
 .label {
-  @extend %fieldPlaceholder;
+  @include typography(fieldPlaceholder);
   @extend %label;
 }
 
 .errorMessage {
-  @extend %fieldDescription;
+  @include typography(fieldDescription);
 
   display: flex;
   align-items: center;

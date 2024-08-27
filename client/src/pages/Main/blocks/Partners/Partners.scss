@@ -3,7 +3,7 @@
 }
 
 .title {
-  @extend %h2;
+  @include typography(h2, bold);
 
   text-transform: capitalize;
 }
@@ -43,7 +43,7 @@
   }
 
   .moreBtn {
-    @extend %buttonSmall;
+    @include typography(buttonSmall);
 
     position: absolute;
     padding-right: 1.5rem;
@@ -83,7 +83,7 @@
   background: $gradient1;
 
   &Text {
-    @extend %h4;
+    @include typography(h4);
 
     color: $text2;
     font-weight: map-get($fontWeights, 'medium');
@@ -98,7 +98,7 @@
 }
 
 .text {
-  @extend %body3Regular;
+  @include typography(body3);
 
   margin-block: 4.8rem;
 }

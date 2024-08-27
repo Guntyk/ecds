@@ -11,7 +11,7 @@
 }
 
 .title {
-  @extend %h2;
+  @include typography(h2, bold);
 }
 
 .navigation {

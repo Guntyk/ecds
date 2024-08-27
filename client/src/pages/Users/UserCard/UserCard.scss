@@ -18,19 +18,19 @@
 }
 
 .name {
-  @extend %body1Medium;
+  @include typography(body1, medium);
 
   text-transform: capitalize;
 }
 
 .class {
-  @extend %body4Regular;
+  @include typography(body4);
 
   text-transform: uppercase;
 }
 
 .moreBtn {
-  @extend %buttonSmall;
+  @include typography(buttonSmall);
 
   position: relative;
   margin-top: auto;

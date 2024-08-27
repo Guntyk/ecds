@@ -21,11 +21,11 @@
   padding-block: 2.4rem;
 
   time {
-    @extend %buttonSmall;
+    @include typography(buttonSmall, light);
 
-    font-weight: map-get($fontWeights, 'light');
     line-height: 2.8rem;
     white-space: nowrap;
+    text-transform: uppercase;
   }
 
   strong {
@@ -36,5 +36,5 @@
 }
 
 .text {
-  @extend %body3Regular;
+  @include typography(body3);
 }

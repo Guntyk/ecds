@@ -13,18 +13,18 @@
 }
 
 .title {
-  @extend %h2;
+  @include typography(h2, bold);
 }
 
 .subtitle {
-  @extend %body3Regular;
+  @include typography(body3);
 
   margin-left: 1.6rem;
   text-transform: uppercase;
 }
 
 .text {
-  @extend %body3Regular;
+  @include typography(body3);
 }
 
 .events {

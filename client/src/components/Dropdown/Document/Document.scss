@@ -21,7 +21,7 @@
 }
 
 .text {
-  @extend %body4Regular;
+  @include typography(body4);
 
   display: flex;
   flex-direction: column;
@@ -36,7 +36,7 @@
 }
 
 .openBtn {
-  @extend %body4Medium;
+  @include typography(body4, medium);
 
   padding: 0.8rem 1.6rem;
   color: $background3_2;

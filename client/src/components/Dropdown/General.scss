@@ -4,7 +4,7 @@
   background: $text2;
 
   &Btn {
-    @extend %body2Medium;
+    @include typography(body2, medium);
 
     display: flex;
     justify-content: space-between;
@@ -14,7 +14,7 @@
     transition: 0.5s;
 
     &.open {
-      @extend %body1Medium;
+      @include typography(body1, medium);
 
       padding-top: 3.2rem;
     }

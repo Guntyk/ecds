@@ -1,3 +1,38 @@
+@function get-font-style($key, $property) {
+  @return map-get($property, $key);
+}
+
+@function get-letter-spacing($type) {
+  @return map-get($letterSpacing, $type) or 0em;
+}
+
+@mixin typography($key, $weight: regular) {
+  $font: if(
+    $key == 'h1' or $key == 'h2' or $key == 'h3' or $key == 'h4' or $key == 'logoText',
+    $headlineFont,
+    $bodyFont
+  );
+  font-family: $font;
+  font-size: get-font-style($key, $fontSizes);
+  line-height: get-font-style($key, $lineHeights);
+  font-weight: map-get($fontWeights, $weight);
+  letter-spacing: if(
+    $key == 'h1' or $key == 'h2' or $key == 'h3' or $key == 'h4' or $key == 'logoText',
+    0em,
+    get-letter-spacing(
+      if(
+        $key == 'body1' or $key == 'body2' or $key == 'body3' or $key == 'body4',
+        'body',
+        if(
+          $key == 'fieldPlaceholder' or $key == 'fieldTitle' or $key == 'fieldDescription',
+          'field',
+          if($key == 'buttonSmall', 'buttonSmall', 'button')
+        )
+      )
+    )
+  );
+}
+
 @mixin dynamic-label-styles($bgColor, $textColor) {
   color: $textColor;
   background: $bgColor;
@@ -6,33 +41,4 @@
 @mixin dynamic-input-styles($bgColor, $borderColor, $borderWidth) {
   border: $borderWidth solid $borderColor;
   background: $bgColor;
-}
-
-@mixin headlineText($size, $weight) {
-  font-family: $headlineFont;
-  font-size: map-get($fontSizes, $size);
-  font-weight: map-get($fontWeights, $weight);
-  line-height: map-get($lineHeights, $size);
-}
-
-@mixin bodyText($size, $weight) {
-  font-size: map-get($fontSizes, $size);
-  font-weight: map-get($fontWeights, $weight);
-  line-height: map-get($lineHeights, $size);
-  letter-spacing: 0.02em;
-}
-
-@mixin buttonText($size, $weight, $spacing) {
-  font-size: map-get($fontSizes, $size);
-  font-weight: map-get($fontWeights, $weight);
-  line-height: map-get($lineHeights, $size);
-  letter-spacing: $spacing;
-  text-transform: uppercase;
-}
-
-@mixin fieldText($size) {
-  font-size: map-get($fontSizes, $size);
-  font-weight: map-get($fontWeights, 'regular');
-  line-height: map-get($lineHeights, $size);
-  letter-spacing: $letterSpacing;
 }

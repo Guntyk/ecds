@@ -12,7 +12,8 @@
 }
 
 .btn {
-  @extend %button;
+  @include typography(button, medium);
+
   display: flex;
   justify-content: center;
   align-items: center;
@@ -20,6 +21,7 @@
   position: relative;
   overflow: hidden;
   border-radius: $borderRadius;
+  text-transform: uppercase;
 
   &Normal {
     width: 24rem;
@@ -31,7 +33,6 @@
   &Ghost {
     padding-block: 1rem;
     color: $primary1;
-    font-weight: map-get($fontWeights, 'medium');
     letter-spacing: 0.05em;
     border-width: 0.05rem;
     border-style: solid;
@@ -61,7 +62,7 @@
   @media (hover: hover) {
     &:hover:not(.small),
     &:focus-visible:not(.small) {
-      @include buttonText(buttonActive, medium, $letterSpacing);
+      @include typography(buttonActive, medium);
     }
 
     &Ghost {
@@ -74,7 +75,7 @@
 
   @media (hover: none) {
     &:active:not(.small) {
-      @include buttonText(buttonActive, medium, $letterSpacing);
+      @include typography(buttonActive, medium);
     }
 
     &Ghost {

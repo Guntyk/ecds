@@ -5,5 +5,5 @@
 }
 
 .text {
-  @extend %body3Regular;
+  @include typography(body3);
 }

@@ -12,20 +12,18 @@
 }
 
 .title {
-  @extend %h1;
-
-  font-size: 8.8rem;
+  @include typography(h1, bold);
 }
 
 .subtitle {
-  @extend %body1Medium;
+  @include typography(body1, medium);
 
   margin-block: 0.8rem 1.6rem;
   text-transform: uppercase;
 }
 
 .text {
-  @extend %body3Medium;
+  @include typography(body3, medium);
 
   color: $text1;
 }

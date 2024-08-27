@@ -34,11 +34,11 @@
 }
 
 .title {
-  @extend %body3Medium;
+  @include typography(body3, medium);
 }
 
 .text {
-  @extend %body4Light;
+  @include typography(body4, light);
 
   line-height: 140%;
 }

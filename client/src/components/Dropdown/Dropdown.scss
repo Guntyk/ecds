@@ -4,7 +4,7 @@
 
   &Input,
   &Button {
-    @extend %body4Regular;
+    @include typography(body4);
 
     display: flex;
     justify-content: space-between;
@@ -72,7 +72,7 @@
   }
   
   &Item {
-    @extend %body4Regular;
+    @include typography(body4);
     
     width: 100%;
     padding: 0.8rem;

@@ -22,7 +22,7 @@ $letterSpacing: 0.05em;
 $transitionDuration: 0.115s;
 
 $fontSizes: (
-  'h1': 9.6rem,
+  'h1': 8.8rem,
   'h2': 7.2rem,
   'h3': 4.8rem,
   'h4': 3.2rem,
@@ -38,6 +38,18 @@ $fontSizes: (
   'fieldTitle': 1.4rem,
   'fieldDescription': 1.4rem,
 );
+
+@media (max-width: 557px) {
+  $fontSizes: map-merge(
+    $fontSizes,
+    (
+      'h1': 5.2rem,
+      'h2': 4rem,
+      'h3': 3.2rem,
+      'h4': 2.8rem,
+    )
+  );
+}
 
 $lineHeights: (
   'h1': 7.2rem,
@@ -55,6 +67,25 @@ $lineHeights: (
   'fieldPlaceholder': 2.4rem,
   'fieldTitle': 2rem,
   'fieldDescription': 1.8rem,
+);
+
+@media (max-width: 557px) {
+  $lineHeights: map-merge(
+    $lineHeights,
+    (
+      'h1': 4.4rem,
+      'h2': 4rem,
+      'h3': 3.2rem,
+      'h4': 2.8rem,
+    )
+  );
+}
+
+$letterSpacing: (
+  'body': 0.02em,
+  'field': 0.05em,
+  'button': 0.05em,
+  'buttonSmall': 0.02em,
 );
 
 $gapLarge: 2.4rem;

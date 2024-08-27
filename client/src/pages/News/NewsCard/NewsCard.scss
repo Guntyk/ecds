@@ -27,7 +27,7 @@
 }
 
 .info {
-  @extend %body3Regular;
+  @include typography(body3);
 
   display: flex;
   flex-direction: column;
@@ -39,10 +39,7 @@
 }
 
 .title {
-  @extend %h3;
-
-  font-weight: map-get($fontWeights, 'bold');
-  letter-spacing: 0;
+  @include typography(h3, bold);
 }
 
 .description {
@@ -60,13 +57,13 @@
 }
 
 .date {
-  @extend %body4Regular;
+  @include typography(body4);
 
   text-transform: uppercase;
 }
 
 .views {
-  @extend %body4Regular;
+  @include typography(body4);
 
   display: flex;
   align-items: center;

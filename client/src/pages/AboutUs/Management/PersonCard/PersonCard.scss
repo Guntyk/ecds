@@ -49,7 +49,7 @@
 }
 
 .name {
-  @extend %h3;
+  @include typography(h3);
 
   font-size: 4rem;
   font-weight: map-get($fontWeights, 'bold');
@@ -57,7 +57,7 @@
 }
 
 .role {
-  @extend %body4Regular;
+  @include typography(body4);
   text-transform: uppercase;
 }
 
@@ -71,7 +71,7 @@
 }
 
 .text {
-  @extend %body4Regular;
+  @include typography(body4);
 
   display: flex;
   flex-direction: column;

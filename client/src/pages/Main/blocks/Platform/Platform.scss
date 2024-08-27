@@ -9,12 +9,12 @@
   background: url(assets/images/backgrounds/platform-background.webp) no-repeat center / cover;
 
   .title {
-    @extend %h2;
+    @include typography(h2, bold);
   }
 }
 
 .text {
-  @extend %body1Medium;
+  @include typography(body1, medium);
 
   max-width: 48.8rem;
   line-height: 3.36rem;
@@ -33,7 +33,7 @@
 }
 
 .subtext {
-  @extend %body3Regular;
+  @include typography(body3);
 
   color: $secondary2;
   max-width: 48.8rem;
@@ -71,7 +71,7 @@
   line-height: 5.6rem;
 
   span {
-    @extend %body2Medium;
+    @include typography(body2, medium);
 
     margin-left: 1.6rem;
     font-family: $bodyFont;
@@ -87,7 +87,5 @@
 }
 
 .h3 {
-  @extend %h3;
-
-  font-weight: map-get($fontWeights, 'medium');
+  @include typography(h3, medium);
 }

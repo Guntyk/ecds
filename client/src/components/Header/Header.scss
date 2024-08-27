@@ -2,12 +2,15 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  position: absolute;
-  top: 0;
   color: $text2;
-  width: 100%;
-  padding-top: 2.4rem;
-  z-index: 1;
+
+  &Wrapper {
+    position: absolute;
+    top: 0;
+    margin-top: 2.4rem;
+    width: 100%;
+    z-index: 1;
+  }
 
   &Dark {
     color: $text1;
@@ -31,7 +34,7 @@
 }
 
 .logo {
-  @extend %logoText;
+  @include typography(logoText, bold);
 
   display: flex;
   align-items: center;
@@ -44,20 +47,33 @@
   gap: $gapLarge;
 
   &Link {
-    @extend %button;
+    @include typography(button, medium);
 
     padding: 0.8rem;
     line-height: 2.2rem;
     text-transform: none;
     transition: 0.2s;
 
-    &:hover,
-    &:focus-visible {
-      @extend %buttonActive;
-      padding-inline: 0.5rem;
-      color: $secondary4;
-      outline: none;
-      text-transform: none;
+    @media (hover: hover) {
+      &:hover,
+      &:focus-visible {
+        @include typography(buttonActive, medium);
+
+        padding-inline: 0.5rem;
+        color: $secondary4;
+        outline: none;
+        text-transform: none;
+      }
+    }
+    @media (hover: none) {
+      &:active {
+        @include typography(buttonActive, medium);
+
+        padding-inline: 0.5rem;
+        color: $secondary4;
+        outline: none;
+        text-transform: none;
+      }
     }
   }
 }

@@ -9,11 +9,11 @@
 }
 
 .title {
-  @extend %h2;
+  @include typography(h2, bold);
 }
 
 .subtitle {
-  @extend %body2Regular;
+  @include typography(body2);
 
   margin-left: 2.4rem;
   text-transform: capitalize;
@@ -28,7 +28,7 @@
   max-width: 22rem;
 
   &Title {
-    @extend %body4Regular;
+    @include typography(body4);
 
     color: $primary1;
     text-transform: uppercase;
@@ -82,7 +82,7 @@
 }
 
 .link {
-  @extend %body4Light;
+  @include typography(body4, light);
 
   display: block;
   padding-block: 0.7rem;

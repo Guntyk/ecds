@@ -21,12 +21,11 @@
 }
 
 .info {
-  @extend %buttonSmall;
+  @include typography(buttonSmall, light);
 
   display: flex;
   align-items: center;
   gap: $gapLarge;
-  font-weight: map-get($fontWeights, 'light');
   letter-spacing: 0.02em;
   margin-bottom: 0.8rem;
 
@@ -52,5 +51,5 @@
 }
 
 .text {
-  @extend %body3Regular;
+  @include typography(body3);
 }

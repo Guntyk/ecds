@@ -23,7 +23,7 @@
 }
 
 .title {
-  @extend %h2;
+  @include typography(h2, bold);
   margin-bottom: 2.4rem;
 }
 
@@ -44,8 +44,7 @@
   }
 
   &Title {
-    @extend %h3;
-    font-weight: map-get($fontWeights, 'medium');
+    @include typography(h3, medium);
   }
 }
 
@@ -220,7 +219,7 @@
 }
 
 .text {
-  @extend %body2Regular;
+  @include typography(body2);
 
   &Main {
     margin-block: 1.6rem 0.8rem;

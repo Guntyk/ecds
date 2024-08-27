@@ -8,15 +8,14 @@
 }
 
 .title {
-  @extend %h1;
+  @include typography(h1, bold);
 
-  font-size: 8.8rem;
   color: $secondary1;
   text-transform: capitalize;
 }
 
 .subtitle {
-  @extend %body1Medium;
+  @include typography(body1, medium);
 
   margin-block: 0.8rem 2.4rem;
   color: $background3;

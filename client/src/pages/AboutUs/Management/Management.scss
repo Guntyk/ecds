@@ -6,11 +6,11 @@
 }
 
 .text {
-  @extend %body3Regular;
+  @include typography(body3);
 }
 
 .error {
-  @extend %body4Regular;
+  @include typography(body4);
 
   color: $primary3;
 }

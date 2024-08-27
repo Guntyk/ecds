@@ -16,7 +16,7 @@
 }
 
 .info {
-  @extend %body3Regular;
+  @include typography(body3);
 
   position: relative;
   display: flex;
@@ -35,10 +35,7 @@
 }
 
 .title {
-  @extend %h3;
-
-  font-weight: map-get($fontWeights, 'bold');
-  letter-spacing: 0;
+  @include typography(h3, bold);
 }
 
 .description {
@@ -57,7 +54,7 @@
       color: $primary1;
     }
     &:last-child {
-      @extend %body3Medium;
+      @include typography(body3, medium);
       padding-right: 0;
     }
   }

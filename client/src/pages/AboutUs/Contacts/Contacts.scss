@@ -6,7 +6,7 @@
 }
 
 .title {
-  @extend %h4;
+  @include typography(h4);
 
   font-size: 4rem;
   font-weight: map-get($fontWeights, 'medium');
@@ -14,7 +14,7 @@
 }
 
 .subtitle {
-  @extend %body4Light;
+  @include typography(body4, light);
 }
 
 .line {
@@ -44,7 +44,7 @@
 }
 
 .sectionTitle {
-  @extend %body2Light;
+  @include typography(body2, light);
 
   color: $primary2;
   line-height: 2.4rem;
@@ -55,7 +55,7 @@
 .contact,
 .bankDetails,
 .email {
-  @extend %body4Medium;
+  @include typography(body4, medium);
 }
 
 .contact,

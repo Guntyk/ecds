@@ -11,7 +11,7 @@
 }
 
 .card {
-  @extend %body4Medium;
+  @include typography(body4, medium);
 
   display: flex;
   flex-direction: column;
@@ -19,7 +19,6 @@
   width: calc(100% / 4);
   color: $primary1;
   text-transform: uppercase;
-  letter-spacing: $letterSpacing;
   text-align: center;
   overflow: hidden;
   background: $text2;
@@ -57,11 +56,10 @@
 
   &:hover,
   &:focus-visible {
-    @extend %body3Medium;
+    @include typography(body3, medium);
 
     width: 33.6rem;
     color: $primary3;
-    letter-spacing: $letterSpacing;
     outline: none;
 
     & + *,
@@ -77,7 +75,7 @@
 }
 
 .styles {
-  @extend %body1Regular;
+  @include typography(body1);
 
   display: flex;
   justify-content: center;

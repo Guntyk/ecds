@@ -9,11 +9,11 @@
 }
 
 .title {
-  @extend %h2;
+  @include typography(h2, bold);
 }
 
 .subtitle {
-  @extend %body2Regular;
+  @include typography(body2);
 
   margin-left: 2.4rem;
   text-transform: capitalize;

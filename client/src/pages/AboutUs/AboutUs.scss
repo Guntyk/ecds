@@ -15,7 +15,7 @@
 }
 
 .title {
-  @extend %h2;
+  @include typography(h2, bold);
   margin-bottom: 4rem;
 }
 

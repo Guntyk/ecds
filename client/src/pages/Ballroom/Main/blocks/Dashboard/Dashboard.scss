@@ -22,18 +22,15 @@
 }
 
 .title {
-  @extend %h2;
+  @include typography(h2);
 
-  display: block;
   position: relative;
-  font-weight: map-get($fontWeights, 'regular');
   cursor: pointer;
 
   span {
-    @extend %body3Regular;
+    @include typography(body3);
 
     margin-left: 1.6rem;
-    font-family: $bodyFont;
     color: $secondary4;
     text-transform: uppercase;
   }
@@ -71,7 +68,7 @@
 }
 
 .link {
-  @extend %buttonSmall;
+  @include typography(buttonSmall);
 
   display: inline-block;
   padding: 0.8rem 1.6rem;
@@ -84,7 +81,7 @@
   flex-direction: column;
 
   .item {
-    @extend %body3Medium;
+    @include typography(body3, medium);
 
     border-bottom-width: 0.05rem;
     border-bottom-style: solid;

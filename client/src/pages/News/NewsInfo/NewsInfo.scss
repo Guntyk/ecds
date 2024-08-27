@@ -27,21 +27,21 @@
 }
 
 .date {
-  @extend %body4Regular;
+  @include typography(body4);
 
   text-transform: uppercase;
   line-height: 1.6rem;
 }
 
 .title {
-  @extend %h2;
+  @include typography(h2, bold);
 
   margin-block: 1.6rem;
   font-size: 6.4rem;
 }
 
 .description {
-  @extend %body1Regular;
+  @include typography(body1);
 
   letter-spacing: 0;
 }
@@ -67,7 +67,7 @@
 }
 
 .views {
-  @extend %body4Regular;
+  @include typography(body4);
 
   display: flex;
   align-items: center;
@@ -84,28 +84,28 @@
 }
 
 .content {
-  @extend %body2Regular;
+  @include typography(body2);
 
   display: flex;
   flex-direction: column;
   gap: $gapLarge;
 
   h1 {
-    @extend %h1;
+    @include typography(h1, bold);
   }
 
   h2 {
-    @extend %h2;
+    @include typography(h2, bold);
   }
 
   h3 {
-    @extend %h3;
+    @include typography(h3);
   }
 
   h4,
   h5,
   h6 {
-    @extend %h4;
+    @include typography(h4);
   }
 
   ul {
@@ -114,7 +114,7 @@
   }
 
   blockquote {
-    @extend %body1Light;
+    @include typography(body1, light);
 
     margin: 2.4rem 0;
     padding: 2.4rem;
@@ -133,5 +133,5 @@
 }
 
 .text {
-  @extend %body3Regular;
+  @include typography(body3);
 }

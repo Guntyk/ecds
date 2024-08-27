@@ -1,9 +1,7 @@
 .footer {
-  @extend %button;
+  @include typography(button, light);
 
   padding-block: 7.2rem 8rem;
-  font-weight: map-get($fontWeights, 'light');
-  text-transform: none;
   background: $background3;
 }
 

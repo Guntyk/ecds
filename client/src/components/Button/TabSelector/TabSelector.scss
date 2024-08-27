@@ -27,7 +27,7 @@
   }
 
   .btn {
-    @extend %body2Light;
+    @include typography(body2, light);
 
     padding-block: 0.8rem;
     width: calc(100% / var(--tabsLength));
