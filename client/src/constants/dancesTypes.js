@@ -3,8 +3,8 @@ import { pathnames } from 'constants/pathnames';
 const { constructionPage, ballroomPage, streetDancePage, caribbeanDancePage } = pathnames;
 
 export const dancesTypes = [
-  { id: 1, name: 'Ballroom dance', path: ballroomPage, key: 'ballroom', styleNames: ['European', 'Latin'] },
-  { id: 2, name: 'Street dance', path: streetDancePage, key: 'street', styleNames: ['Hip-Hop', 'Breaking', 'Others'] },
+  { id: 1, name: 'Ballroom dance', path: ballroomPage, key: 'ballroom', styleNames: ['Standard', 'Latin'] },
+  { id: 2, name: 'Street dance', path: streetDancePage, key: 'street', styleNames: ['Breaking', 'Hip-Hop', 'Others'] },
   {
     id: 3,
     name: 'Caribbean dance',
