@@ -1,6 +1,6 @@
 .menu {
   position: absolute;
-  top: 2.4rem;
+  top: 0;
   right: 0;
   padding: 1.6rem 1.6rem 4rem 4rem;
   width: 44rem;
@@ -59,19 +59,66 @@
     transition: 0.3s;
   }
 
-  &:hover,
-  &:focus-visible {
-    color: $primary1;
-    outline: none;
+  @media (hover: hover) {
+    &:hover,
+    &:focus-visible {
+      color: $primary1;
+      outline: none;
 
-    img {
-      opacity: 1;
-      translate: 0 -50%;
+      img {
+        opacity: 1;
+        translate: 0 -50%;
+      }
     }
   }
 
   &.active {
     color: $primary1;
     pointer-events: none;
+  }
+}
+
+@media (max-width: 557px) {
+  .menu {
+    padding-left: 3.2rem;
+    padding-bottom: 3.2rem;
+    width: 36rem;
+    top: -0.8rem;
+    opacity: 1;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-right: none;
+    translate: 125% 0;
+
+    &Open {
+      translate: 0 0;
+
+      & ~ .background {
+        pointer-events: all;
+        opacity: 30%;
+      }
+    }
+  }
+
+  .header {
+    @include typography(body1, medium);
+    margin-bottom: 3.2rem;
+  }
+
+  .background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: $background2;
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.3s;
+    z-index: 0;
+  }
+
+  .link.active {
+    translate: 1.6rem 0;
   }
 }

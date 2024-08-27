@@ -1,18 +1,19 @@
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import { useState } from 'react';
 import cn from 'classnames';
-import useWindowDimensions from 'hooks/useWindowDimensions';
+import { useScreenWidth } from 'hooks/useScreenWidth';
 import { pathnames } from 'constants/pathnames';
 import { Container } from 'components/Container';
 import { Button } from 'components/Button';
 import { Menu } from 'components/Menu';
+import logoSmallDark from 'assets/icons/logos/ecds-compressed-dark.svg';
 import logoSmall from 'assets/icons/logos/ecds-compressed.svg';
 import logo from 'assets/icons/logos/ecds.svg';
-import menu from 'assets/icons/menu.svg';
 import styles from 'components/Header/Header.scss';
 
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const screenWidth = useScreenWidth();
   const { pathname } = useLocation();
 
   const {
@@ -44,21 +45,23 @@ export const Header = () => {
     }
   };
 
-  const { width } = useWindowDimensions();
-
   const currentPathName = '/' + pathname.split('/')[1];
+  const isPageDark = darkHeaderPages.includes(currentPathName);
 
   return (
     <header className={styles.headerWrapper}>
       <Container>
-        <div className={cn(styles.header, { [styles.headerDark]: darkHeaderPages.includes(currentPathName) })}>
+        <div className={cn(styles.header, { [styles.headerDark]: isPageDark })}>
           <Link to={mainPage} className={styles.logo}>
-            <img src={width > 557 ? logo : logoSmall} alt='European Confederation of Dance Sports logo' />
-            {width > 557 && 'European Confederation of Dance Sports'}
+            <img
+              src={screenWidth > 557 ? logo : isPageDark ? logoSmallDark : logoSmall}
+              alt='European Confederation of Dance Sports logo'
+            />
+            {screenWidth > 557 && 'European Confederation of Dance Sports'}
           </Link>
           <nav>
             <ul className={styles.navigation}>
-              {width > 557 && (
+              {screenWidth > 557 && (
                 <li>
                   <NavLink
                     className={cn(styles.navigationLink, { [styles.active]: aboutUsPages.includes(currentPathName) })}
@@ -73,15 +76,15 @@ export const Header = () => {
               <li>
                 <Button
                   className={styles.navigationLink}
-                  text={width > 557 ? 'Menu' : <img src={menu} alt='Menu' />}
+                  text={screenWidth > 557 ? 'Menu' : <div className={styles.menuIcon} />}
                   onClick={() => setIsMenuOpen(true)}
                   noStyle
                 />
               </li>
             </ul>
           </nav>
-          <Menu isOpen={isMenuOpen} setIsOpen={setIsMenuOpen} />
         </div>
+        <Menu isOpen={isMenuOpen} setIsOpen={setIsMenuOpen} />
       </Container>
     </header>
   );

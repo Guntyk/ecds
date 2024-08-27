@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import useWindowDimensions from 'hooks/useWindowDimensions';
 import useElementOnScreen from 'hooks/useElementOnScreen';
+import { useScreenWidth } from 'hooks/useScreenWidth';
 import { getBanners } from '@redux/features/bannersSlice';
 import { Notification } from 'components/Notification';
 import { Container } from 'components/Container';
@@ -12,13 +12,12 @@ import styles from 'pages/Main/blocks/Hero/Hero.scss';
 
 export const Hero = () => {
   const { isLoading, error, banners } = useSelector((state) => state.banners);
+  const [containerRef, isVisible] = useElementOnScreen();
+  const screenWidth = useScreenWidth();
   const dispatch = useDispatch();
 
-  const [containerRef, isVisible] = useElementOnScreen();
-  const { width } = useWindowDimensions();
-
   useEffect(() => {
-    if (width > 557 && !error && isVisible && !banners.length) {
+    if (screenWidth > 557 && !error && isVisible && !banners.length) {
       dispatch(getBanners());
     }
   }, [isVisible, banners.length]);
@@ -31,7 +30,7 @@ export const Hero = () => {
             <h1 className={styles.title}>Unified Standards for a United Europe</h1>
             <Button text='Registration' onClick={() => window.open(process.env.REACT_APP_EPHAN_URL)} normalStyle />
           </div>
-          {width > 557 &&
+          {screenWidth > 557 &&
             (!error ? (
               isLoading ? (
                 <Loader className={styles.loader} />

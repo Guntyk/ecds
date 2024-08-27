@@ -30,6 +30,10 @@
         }
       }
     }
+
+    .menuIcon {
+      background: $text1;
+    }
   }
 }
 
@@ -66,6 +70,13 @@
       }
     }
   }
+}
+
+.menuIcon {
+  width: 2.4rem;
+  height: 2.4rem;
+  mask: url(assets/icons/menu.svg);
+  background: $background1;
 }
 
 @media (max-width: 557px) {
