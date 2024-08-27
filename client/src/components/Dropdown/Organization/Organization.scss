@@ -74,10 +74,12 @@
       transition: 0.2s;
     }
 
-    a:hover,
-    a:focus-visible {
-      color: $primary1;
-      outline: none;
+    @media (hover: hover) {
+      a:hover,
+      a:focus-visible {
+        color: $primary1;
+        outline: none;
+      }
     }
 
     &:first-child {
@@ -85,6 +87,26 @@
       text-transform: lowercase;
       width: 7rem;
       margin-right: 0.8rem;
+    }
+  }
+}
+
+@media (max-width: 557px) {
+  .infoTable {
+    font-size: 1.6rem;
+    line-height: 2.4rem;
+
+    caption {
+      font: inherit;
+      font-weight: map-get($fontWeights, medium);
+    }
+
+    td {
+      padding-block: 0.2rem;
+    }
+
+    a:active {
+      color: $primary1;
     }
   }
 }
