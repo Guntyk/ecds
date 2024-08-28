@@ -23,9 +23,11 @@ export const getNews = createAsyncThunk(
         pages: article.pages.map((page) => page.name),
       }));
 
-      const currentPageArticles = getCurrentPageNews(flattenedArticles);
-
-      return currentPageArticles;
+      if (getCurrentPageNews) {
+        return getCurrentPageNews(flattenedArticles);
+      } else {
+        return flattenedArticles;
+      }
     }
 
     return rejectWithValue(error || 'An error occurred while getting news data. Please try again later');
