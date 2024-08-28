@@ -10,6 +10,9 @@ export default class NewsService {
         media: {
           fields: ['alternativeText', 'placeholder', 'url'],
         },
+        pages: {
+          fields: 'name',
+        },
         tags: true,
       },
       sort: sortFactor,

@@ -3,17 +3,29 @@ import NewsService from 'services/NewsService';
 
 const initialState = {
   news: [],
+  main: [],
+  ballroom: [],
+  street: [],
   error: null,
   isLoading: false,
 };
 
 export const getNews = createAsyncThunk(
   'news/getNews',
-  async ({ searchTerm, sortFactor } = {}, { rejectWithValue }) => {
+  async ({ searchTerm, sortFactor, getCurrentPageNews } = {}, { rejectWithValue }) => {
     const { result, error } = await NewsService.getNews(searchTerm, sortFactor);
 
     if (result?.data) {
-      return result.data;
+      const { data: articles } = result;
+
+      const flattenedArticles = articles.map((article) => ({
+        ...article,
+        pages: article.pages.map((page) => page.name),
+      }));
+
+      const currentPageArticles = getCurrentPageNews(flattenedArticles);
+
+      return currentPageArticles;
     }
 
     return rejectWithValue(error || 'An error occurred while getting news data. Please try again later');

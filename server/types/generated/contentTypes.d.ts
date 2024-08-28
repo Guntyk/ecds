@@ -821,6 +821,11 @@ export interface ApiArticleArticle extends Schema.CollectionType {
     publicationDate: Attribute.Date & Attribute.Required;
     tags: Attribute.Component<'services.tag', true> & Attribute.Required;
     author: Attribute.String;
+    pages: Attribute.Relation<
+      'api::article.article',
+      'oneToMany',
+      'api::content-type.content-type'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -898,6 +903,37 @@ export interface ApiContactContact extends Schema.SingleType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::contact.contact',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiContentTypeContentType extends Schema.CollectionType {
+  collectionName: 'content_types';
+  info: {
+    singularName: 'content-type';
+    pluralName: 'content-types';
+    displayName: 'Content types';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Attribute.String & Attribute.Required & Attribute.Unique;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::content-type.content-type',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::content-type.content-type',
       'oneToOne',
       'admin::user'
     > &
@@ -1140,6 +1176,7 @@ declare module '@strapi/types' {
       'api::article.article': ApiArticleArticle;
       'api::banner.banner': ApiBannerBanner;
       'api::contact.contact': ApiContactContact;
+      'api::content-type.content-type': ApiContentTypeContentType;
       'api::document.document': ApiDocumentDocument;
       'api::event.event': ApiEventEvent;
       'api::logo.logo': ApiLogoLogo;

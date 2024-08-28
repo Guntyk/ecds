@@ -1,0 +1,21 @@
+{
+  "kind": "collectionType",
+  "collectionName": "content_types",
+  "info": {
+    "singularName": "content-type",
+    "pluralName": "content-types",
+    "displayName": "Content types",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    }
+  }
+}

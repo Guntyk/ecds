@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom';
 import { useEffect } from 'react';
 import cn from 'classnames';
 import useElementOnScreen from 'hooks/useElementOnScreen';
+import { useNews } from 'hooks/useNews';
 import { getNews } from '@redux/features/newsSlice';
 import { formatDate } from 'helpers/formatDate';
 import { pathnames } from 'constants/pathnames';
@@ -14,14 +15,15 @@ import styles from 'pages/Ballroom/Main/blocks/Dashboard/News/News.scss';
 export const News = () => {
   const { isLoading, error, news } = useSelector((state) => state.news);
   const { newsPage, ballroomPage } = pathnames;
+  const { getCurrentPageNews } = useNews();
   const dispatch = useDispatch();
   const { push } = useHistory();
 
   const [containerRef, isVisible] = useElementOnScreen();
 
   useEffect(() => {
-    if (!error & isVisible && !news.length) {
-      dispatch(getNews());
+    if (!error & isVisible && !news.includes(({ pages }) => pages.some((page) => ballroomPage.includes(page)))) {
+      dispatch(getNews({ getCurrentPageNews }));
     }
   }, [isVisible, news.length]);
 

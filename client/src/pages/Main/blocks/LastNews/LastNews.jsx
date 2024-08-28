@@ -1,11 +1,12 @@
 import { Scrollbar, Navigation } from 'swiper/modules';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { useHistory } from 'react-router-dom';
 import { useEffect } from 'react';
 import SwiperCore from 'swiper';
 import cn from 'classnames';
 import useElementOnScreen from 'hooks/useElementOnScreen';
+import { useNews } from 'hooks/useNews';
 import { getNews } from '@redux/features/newsSlice';
 import { formatDate } from 'helpers/formatDate';
 import { pathnames } from 'constants/pathnames';
@@ -17,7 +18,6 @@ import { Loader } from 'components/Loader';
 import { Link } from 'components/Link';
 import arrowRight from 'assets/icons/arrow-right-background3_2.svg';
 import arrowLeft from 'assets/icons/arrow-left-background3_2.svg';
-import like from 'assets/icons/like.svg';
 import eye from 'assets/icons/eye.svg';
 import 'swiper/css/navigation';
 import 'swiper/css/scrollbar';
@@ -28,6 +28,7 @@ SwiperCore.use([Navigation, Scrollbar]);
 
 export const LastNews = () => {
   const { isLoading, error, news } = useSelector((state) => state.news);
+  const { getCurrentPageNews } = useNews();
   const { newsPage } = pathnames;
   const dispatch = useDispatch();
   const { push } = useHistory();
@@ -41,8 +42,8 @@ export const LastNews = () => {
   };
 
   useEffect(() => {
-    if (!error && isVisible && !news.length) {
-      dispatch(getNews());
+    if (!error && isVisible && !news.includes(({ pages }) => pages.some((page) => page === 'main'))) {
+      dispatch(getNews({ getCurrentPageNews }));
     }
   }, [isVisible, news.length]);
 

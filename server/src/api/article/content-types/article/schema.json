@@ -52,6 +52,11 @@
     },
     "author": {
       "type": "string"
+    },
+    "pages": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::content-type.content-type"
     }
   }
 }

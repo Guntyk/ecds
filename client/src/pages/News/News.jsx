@@ -1,6 +1,7 @@
 import { useHistory, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
+import { useNews } from 'hooks/useNews';
 import { getNews } from '@redux/features/newsSlice';
 import { Container } from 'components/Container';
 import { Dropdown } from 'components/Dropdown';
@@ -13,11 +14,12 @@ import styles from 'pages/News/News.scss';
 
 export const News = () => {
   const { isLoading, error, news } = useSelector((state) => state.news);
+  const { getCurrentPageNews } = useNews();
   const { search } = useLocation();
   const dispatch = useDispatch();
   const { push } = useHistory();
 
-  const sortParam = new URLSearchParams(search).get('sort');
+  const searchParam = new URLSearchParams(search);
 
   const sortOptions = {
     newest: 'publicationDate:desc',
@@ -25,19 +27,35 @@ export const News = () => {
     relevance: 'publicationDate:desc',
   };
 
-  const [sortFactor, setSortFactor] = useState(sortParam || '');
-  const [searchTerm, setSearchTerm] = useState('');
+  const [sortFactor, setSortFactor] = useState(searchParam.get('sort') || '');
+  const [searchTerm, setSearchTerm] = useState(searchParam.get('query') || '');
+
+  const updateSearchString = () => {
+    if (sortFactor) {
+      searchParam.set('sort', sortFactor);
+    } else {
+      searchParam.delete('sort');
+    }
+
+    if (searchTerm) {
+      searchParam.set('query', searchTerm);
+    } else {
+      searchParam.delete('query');
+    }
+    push({ search: searchParam.toString() });
+  };
 
   useEffect(() => {
-    if (sortFactor) {
-      push(`?sort=${sortFactor}`);
-    }
-    dispatch(getNews({ searchTerm, sortFactor: sortOptions[sortFactor] }));
+    updateSearchString();
   }, [sortFactor]);
+
+  useEffect(() => {
+    dispatch(getNews({ searchTerm, sortFactor: sortOptions[sortFactor], getCurrentPageNews }));
+  }, [search]);
 
   const handleSearch = (e) => {
     e.preventDefault();
-    dispatch(getNews({ searchTerm, sortFactor: sortOptions[sortFactor] }));
+    updateSearchString();
   };
 
   if (error) {
@@ -62,7 +80,7 @@ export const News = () => {
                 wrapperClassName={styles.searchInput}
                 labelText='Enter Search Terms'
                 inputValue={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
+                setInputValue={setSearchTerm}
               />
               <Button className={styles.searchBtn} text='Search' type='submit' searchStyle />
             </div>
