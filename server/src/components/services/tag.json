@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_services_tags",
+  "info": {
+    "displayName": "Tag"
+  },
+  "options": {},
+  "attributes": {
+    "tag": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

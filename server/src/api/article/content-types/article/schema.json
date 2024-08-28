@@ -18,7 +18,8 @@
     },
     "description": {
       "type": "text",
-      "maxLength": 300
+      "maxLength": 300,
+      "required": true
     },
     "content": {
       "type": "blocks",
@@ -42,6 +43,15 @@
     "publicationDate": {
       "type": "date",
       "required": true
+    },
+    "tags": {
+      "type": "component",
+      "repeatable": true,
+      "component": "services.tag",
+      "required": true
+    },
+    "author": {
+      "type": "string"
     }
   }
 }

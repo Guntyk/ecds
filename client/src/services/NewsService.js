@@ -5,11 +5,12 @@ import APIErrorsHandlingUtils from 'utils/APIErrorsHandlingUtils';
 export default class NewsService {
   static async getNews(searchTerm = '', sortFactor = 'publicationDate:desc') {
     const query = qs.stringify({
-      fields: ['title', 'description', 'publicationDate', 'content', 'views'],
+      fields: ['title', 'description', 'publicationDate', 'content', 'views', 'author'],
       populate: {
         media: {
           fields: ['alternativeText', 'placeholder', 'url'],
         },
+        tags: true,
       },
       sort: sortFactor,
       filters: {

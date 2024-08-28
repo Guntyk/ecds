@@ -803,6 +803,7 @@ export interface ApiArticleArticle extends Schema.CollectionType {
   attributes: {
     title: Attribute.String & Attribute.Required;
     description: Attribute.Text &
+      Attribute.Required &
       Attribute.SetMinMaxLength<{
         maxLength: 300;
       }>;
@@ -818,6 +819,8 @@ export interface ApiArticleArticle extends Schema.CollectionType {
       > &
       Attribute.DefaultTo<'0'>;
     publicationDate: Attribute.Date & Attribute.Required;
+    tags: Attribute.Component<'services.tag', true> & Attribute.Required;
+    author: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
