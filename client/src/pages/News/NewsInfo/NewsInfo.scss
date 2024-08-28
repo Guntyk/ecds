@@ -26,11 +26,20 @@
   }
 }
 
-.date {
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $gapExtraSmall;
+}
+
+.tag {
   @include typography(body4);
 
+  padding-inline: 1.2rem;
+  color: $text2;
+  border-radius: 0.8rem;
+  background: $secondary2;
   text-transform: uppercase;
-  line-height: 1.6rem;
 }
 
 .title {
@@ -47,7 +56,20 @@
 }
 
 .credits {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   margin-block: 4.8rem 2.4rem;
+}
+
+.date {
+  @include typography(body4);
+
+  text-transform: uppercase;
+}
+
+.author {
+  @include typography(body4, medium);
 }
 
 .line {

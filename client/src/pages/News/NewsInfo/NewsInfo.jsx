@@ -61,7 +61,7 @@ export const NewsInfo = () => {
       return <p className={styles.text}>There is no news yet</p>;
     }
 
-    const { title, media, publicationDate, description, content, views } = currentArticle;
+    const { title, media, publicationDate, description, content, views, tags, author } = currentArticle;
 
     return (
       <>
@@ -85,12 +85,20 @@ export const NewsInfo = () => {
             </section>
           )}
           <section>
+            <ul className={styles.tags}>
+              {tags.map(({ id, tag }) => (
+                <li className={styles.tag} key={id}>
+                  {tag}
+                </li>
+              ))}
+            </ul>
             <h1 className={styles.title}>{title}</h1>
             {description && <h2 className={styles.description}>{description}</h2>}
             <div className={styles.credits}>
               <time dateTime={publicationDate} className={styles.date}>
                 {formatDate(publicationDate)}
               </time>
+              {author && <p className={styles.author}>by {author}</p>}
             </div>
             <hr className={styles.line} />
             <div className={styles.promotion}>
