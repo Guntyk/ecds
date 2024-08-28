@@ -1,3 +1,4 @@
+import { useHistory, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { getNews } from '@redux/features/newsSlice';
@@ -11,21 +12,28 @@ import { NewsCard } from 'pages/News/NewsCard';
 import styles from 'pages/News/News.scss';
 
 export const News = () => {
+  const { isLoading, error, news } = useSelector((state) => state.news);
+  const { search } = useLocation();
+  const dispatch = useDispatch();
+  const { push } = useHistory();
+
+  const sortParam = new URLSearchParams(search).get('sort');
+
   const sortOptions = {
     newest: 'publicationDate:desc',
     oldest: 'publicationDate:asc',
     relevance: 'publicationDate:desc',
   };
 
-  const [sortFactor, setSortFactor] = useState('');
+  const [sortFactor, setSortFactor] = useState(sortParam || '');
   const [searchTerm, setSearchTerm] = useState('');
 
-  const { isLoading, error, news } = useSelector((state) => state.news);
-  const dispatch = useDispatch();
-
   useEffect(() => {
+    if (sortFactor) {
+      push(`?sort=${sortFactor}`);
+    }
     dispatch(getNews({ searchTerm, sortFactor: sortOptions[sortFactor] }));
-  }, [dispatch, sortFactor]);
+  }, [sortFactor]);
 
   const handleSearch = (e) => {
     e.preventDefault();
