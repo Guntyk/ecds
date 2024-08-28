@@ -4,12 +4,16 @@ import styles from 'components/Dropdown/Organization/Organization.scss';
 
 export const OrganizationDropdown = ({
   className,
-  organization: { flag, country, name, manager, website, email, phone },
+  organization: { flag, country, name, manager, website, email, phone, status },
   nonClosable,
   onToggle,
   isOpen,
 }) => {
   const removeProtocol = (url) => url.replace(/^https?:\/\//, '');
+
+  if (nonClosable) {
+    isOpen = true;
+  }
 
   return (
     <div className={cn(styles.container, className)}>
@@ -22,6 +26,10 @@ export const OrganizationDropdown = ({
         <table className={styles.infoTable}>
           <caption>{name}</caption>
           <tbody>
+            <tr>
+              <td>status</td>
+              <td>{status}</td>
+            </tr>
             <tr>
               <td>manager</td>
               <td>{manager}</td>

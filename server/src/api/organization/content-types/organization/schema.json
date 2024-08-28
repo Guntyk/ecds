@@ -49,7 +49,16 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::event.event",
+      "private": true,
       "mappedBy": "organization"
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": [
+        "Full member",
+        "Provisional member"
+      ],
+      "required": true
     }
   }
 }

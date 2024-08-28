@@ -1104,7 +1104,10 @@ export interface ApiOrganizationOrganization extends Schema.CollectionType {
       'api::organization.organization',
       'oneToMany',
       'api::event.event'
-    >;
+    > &
+      Attribute.Private;
+    status: Attribute.Enumeration<['Full member', 'Provisional member']> &
+      Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
