@@ -5,7 +5,6 @@ import { getPartners } from '@redux/features/partnersSlice';
 import { Notification } from 'components/Notification';
 import { ImageComponent } from 'components/Image';
 import { Container } from 'components/Container';
-import { Button } from 'components/Button';
 import { Loader } from 'components/Loader';
 import { Link } from 'components/Link';
 import styles from 'pages/Main/blocks/Partners/Partners.scss';
@@ -32,8 +31,8 @@ export const Partners = () => {
           ) : partners.length === 0 ? (
             <p className={styles.text}>There is no partners yet</p>
           ) : (
-            partners.map(({ id, website, logo: { alternativeText, url, placeholder } }) => (
-              <ul className={styles.partners}>
+            <ul className={styles.partners}>
+              {partners.map(({ id, website, logo: { alternativeText, url, placeholder } }) => (
                 <li className={styles.partner} key={id}>
                   <ImageComponent
                     className={styles.partnerLogo}
@@ -45,8 +44,8 @@ export const Partners = () => {
                   />
                   {website && <Link className={styles.moreBtn} content='More about' path={website} external />}
                 </li>
-              </ul>
-            ))
+              ))}
+            </ul>
           )
         ) : (
           <Notification className={styles.text} text={error} type='error' />
