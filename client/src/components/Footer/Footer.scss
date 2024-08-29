@@ -53,7 +53,7 @@
 
   .sectionTitle {
     padding: 0.8rem;
-    font-weight: map-get($fontWeights, 'medium');
+    font-weight: map-get($fontWeights, "medium");
   }
 
   .item {
@@ -110,4 +110,32 @@
   align-items: center;
   margin-top: auto;
   height: 4rem;
+}
+
+@media (max-width: 1052px) {
+  .wrapper {
+    margin-top: 464px;
+    flex-direction: column-reverse;
+  }
+
+  .creditsWrapper {
+    position: relative;
+  }
+
+  .navigation {
+    width: 100%;
+    margin-top: 100px;
+    margin-bottom: 100px;
+  }
+
+  .navigationLinks {
+    flex-direction: column;
+  }
+
+  .credits {
+    position: absolute;
+    top: 750px;
+    font-size: 12px;
+    white-space: nowrap;
+  }
 }

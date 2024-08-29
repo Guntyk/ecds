@@ -6,11 +6,13 @@
 .wrapper {
   padding-block: 12rem 3.4rem;
   color: $text2;
-  background: url(assets/images/backgrounds/platform-background.webp) no-repeat center / cover;
+  background: url(assets/images/backgrounds/platform-background.webp) no-repeat
+    center / cover;
 
   .title {
     @include typography(h2, bold);
   }
+  overflow: hidden;
 }
 
 .text {
@@ -20,7 +22,7 @@
   line-height: 3.36rem;
 
   strong {
-    font-weight: map-get($fontWeights, 'bold');
+    font-weight: map-get($fontWeights, "bold");
   }
 
   &:nth-child(2) {
@@ -41,9 +43,14 @@
 }
 
 .ephanScreen {
+  display: block;
   position: absolute;
   bottom: -3.4rem;
   right: -1.6rem;
+}
+
+.ephanPhone {
+  display: none;
 }
 
 .statsWrapper {
@@ -64,10 +71,15 @@
   display: flex;
 }
 
+.statsBox {
+  display: flex;
+  justify-content: center;
+}
+
 .statisticsValue {
   font-family: $headlineFont;
   font-size: 8.8rem;
-  font-weight: map-get($fontWeights, 'medium');
+  font-weight: map-get($fontWeights, "medium");
   line-height: 5.6rem;
 
   span {
@@ -88,4 +100,74 @@
 
 .h3 {
   @include typography(h3, medium);
+}
+
+@media (max-width: 557px) {
+  .ephanScreen {
+    display: none;
+  }
+
+  .testInfo {
+    width: 230px;
+  }
+
+  .subtext {
+    width: 280px;
+  }
+
+  .ephanPhone {
+    display: block;
+    width: 233px;
+    height: 396px;
+    position: absolute;
+    bottom: 100px;
+    right: -50px;
+    overflow: hidden;
+  }
+
+  .stats {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .statsWrapper .title {
+    margin-left: 0rem;
+    margin: 0 auto;
+  }
+
+  .statisticsValue {
+    font-size: 64px;
+  }
+
+  .h3 {
+    font-size: 48px;
+  }
+}
+
+@media screen and (min-width: 558px) and (max-width: 1157px) {
+  .ephanScreen {
+    display: none;
+  }
+
+  .ephanPhone {
+    display: block;
+    width: 233px;
+    height: 396px;
+    position: absolute;
+    bottom: 100px;
+    right: -30px;
+    overflow: hidden;
+  }
+
+  .stats {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .statsWrapper .title {
+    margin-left: 0rem;
+    margin: 0 auto;
+  }
 }

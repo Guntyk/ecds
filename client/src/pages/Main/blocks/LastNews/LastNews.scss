@@ -194,3 +194,9 @@
   text-overflow: ellipsis;
   -webkit-line-clamp: 3;
 }
+
+@media (max-width: 557px) {
+  .newsTitle {
+    font-size: 18px;
+  }
+}

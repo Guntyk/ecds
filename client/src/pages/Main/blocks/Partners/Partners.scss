@@ -55,7 +55,7 @@
     transition: 0.2s;
 
     &::after {
-      content: '';
+      content: "";
       position: absolute;
       right: 0;
       width: 1.1rem;
@@ -87,7 +87,7 @@
     @include typography(h4);
 
     color: $text2;
-    font-weight: map-get($fontWeights, 'medium');
+    font-weight: map-get($fontWeights, "medium");
     text-transform: capitalize;
   }
 
@@ -102,4 +102,30 @@
   @include typography(body3);
 
   margin-block: 4.8rem;
+}
+
+@media (max-width: 768px) {
+  .block {
+    padding: 64px 0px;
+  }
+
+  .partners {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+    justify-content: center;
+  }
+
+  .partner {
+    width: 100%;
+    height: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .donate {
+    flex-direction: column;
+    padding: 24px;
+  }
 }

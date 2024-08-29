@@ -378,3 +378,38 @@
     background: #698717;
   }
 }
+
+@media (max-width: 768px) {
+  .block {
+    padding-block: 48px;
+  }
+
+  .title {
+    font-size: 58px;
+  }
+
+  .principlesList {
+    flex-wrap: nowrap;
+    max-height: none;
+  }
+
+  .principle {
+    &:not(:nth-child(3)) {
+      margin-top: 32px;
+    }
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1157px) {
+  .principlesList {
+    max-width: 1157px;
+    margin-top: 32px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+
+  .principle {
+    margin-top: 0px;
+  }
+}

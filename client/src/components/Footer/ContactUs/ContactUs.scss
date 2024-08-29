@@ -42,3 +42,14 @@
   margin: 0 auto;
   margin-block: 4.6rem 8rem;
 }
+
+@media (max-width: 557px) {
+  .contactForm {
+    flex-direction: column;
+  }
+
+  .sendBtn {
+    width: 90%;
+    margin: 0 auto;
+  }
+}
