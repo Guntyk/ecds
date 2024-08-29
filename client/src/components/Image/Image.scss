@@ -12,3 +12,10 @@
 .placeholder {
   filter: blur(0.5rem);
 }
+
+@media (max-width: 557px) {
+  .image {
+    width: 282px;
+    height: 242px;
+  }
+}
