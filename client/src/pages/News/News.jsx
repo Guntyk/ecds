@@ -22,9 +22,9 @@ export const News = () => {
   const searchParam = new URLSearchParams(search);
 
   const sortOptions = {
+    relevance: 'relevance',
     newest: 'publicationDate:desc',
     oldest: 'publicationDate:asc',
-    relevance: 'publicationDate:desc',
   };
 
   const [sortFactor, setSortFactor] = useState(searchParam.get('sort') || '');
@@ -71,7 +71,7 @@ export const News = () => {
             <Dropdown
               className={styles.sort}
               options={Object.keys(sortOptions)}
-              placeholder={Object.keys(sortOptions)[0]}
+              placeholder={Object.keys(sortOptions)[1]}
               selectedValue={sortFactor}
               onChange={setSortFactor}
             />

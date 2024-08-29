@@ -15,7 +15,7 @@ export default class NewsService {
         },
         tags: true,
       },
-      sort: sortFactor,
+      sort: sortFactor !== 'relevance' ? sortFactor : undefined,
       filters: {
         $or: [{ title: { $containsi: searchTerm } }, { description: { $containsi: searchTerm } }],
       },
@@ -27,7 +27,7 @@ export default class NewsService {
       return { result: null, error: APIErrorsHandlingUtils.handleErrors(error) };
     }
 
-    return { result: data, error: null };
+    return { result: data?.data || [], error: null };
   }
 
   static async updateViews(newsId, views) {

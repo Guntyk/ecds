@@ -1,11 +1,9 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { calculateRelevanceScore } from 'helpers/calculateRelevanceScore';
 import NewsService from 'services/NewsService';
 
 const initialState = {
   news: [],
-  main: [],
-  ballroom: [],
-  street: [],
   error: null,
   isLoading: false,
 };
@@ -15,19 +13,21 @@ export const getNews = createAsyncThunk(
   async ({ searchTerm, sortFactor, getCurrentPageNews } = {}, { rejectWithValue }) => {
     const { result, error } = await NewsService.getNews(searchTerm, sortFactor);
 
-    if (result?.data) {
-      const { data: articles } = result;
-
-      const flattenedArticles = articles.map((article) => ({
+    if (result) {
+      let articles = result.map((article) => ({
         ...article,
         pages: article.pages.map((page) => page.name),
       }));
 
       if (getCurrentPageNews) {
-        return getCurrentPageNews(flattenedArticles);
-      } else {
-        return flattenedArticles;
+        articles = getCurrentPageNews(articles);
       }
+
+      if (sortFactor === 'relevance') {
+        articles = articles.sort((a, b) => calculateRelevanceScore(b) - calculateRelevanceScore(a));
+      }
+
+      return articles;
     }
 
     return rejectWithValue(error || 'An error occurred while getting news data. Please try again later');
