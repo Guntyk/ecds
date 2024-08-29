@@ -378,14 +378,13 @@
     background: #698717;
   }
 }
-
 @media (max-width: 768px) {
   .block {
-    padding-block: 48px;
+    padding-block: 4.8rem;
   }
 
   .title {
-    font-size: 58px;
+    font-size: 5.8rem;
   }
 
   .principlesList {
@@ -395,21 +394,21 @@
 
   .principle {
     &:not(:nth-child(3)) {
-      margin-top: 32px;
+      margin-top: 3.2rem;
     }
   }
 }
 
 @media screen and (min-width: 768px) and (max-width: 1157px) {
   .principlesList {
-    max-width: 1157px;
-    margin-top: 32px;
+    max-width: 115.7rem;
+    margin-top: 3.2rem;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 20px;
+    gap: 2rem;
   }
 
   .principle {
-    margin-top: 0px;
+    margin-top: 0rem;
   }
 }

@@ -1,0 +1,24 @@
+.block {
+  padding-block: 12.8rem 27.4rem;
+  min-height: 78rem;
+  background: url(assets/images/backgrounds/ballroom-page-background.webp) no-repeat bottom/contain;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  width: 100%;
+}
+
+.bannersSlider:hover .bannersNavigation {
+  background: rgba(243, 245, 247, 0.8);
+}
+.bannersNavigation {
+  background: rgba(243, 245, 247, 0.8);
+}
+
+.loader {
+  margin-top: 15rem;
+  width: 50%;
+}/*# sourceMappingURL=Hero.css.map */

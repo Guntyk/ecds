@@ -44,6 +44,10 @@
 }
 
 @media (max-width: 557px) {
+  .block {
+    padding-top: 4.8rem;
+  }
+
   .contactForm {
     flex-direction: column;
   }

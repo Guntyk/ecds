@@ -10,20 +10,22 @@ export const Platform = () => {
     <section className={styles.block}>
       <div className={styles.wrapper}>
         <Container maxWidth={980}>
-          <h2 className={styles.title}>Platform</h2>
-          <p className={styles.text}>
-            <strong>e-phan</strong> is an online ECDS platform.
-          </p>
-          <p className={styles.text}>
-            Become a part of the European dance community regardless of your
-            skill level, place of residence and membership of organizations.*
-          </p>
-          <Button
-            text="Registration"
-            className={styles.registrationBtn}
-            onClick={() => window.open(process.env.REACT_APP_EPHAN_URL)}
-            normalStyle
-          />
+          <div className={styles.textInfo}>
+            <h2 className={styles.title}>Platform</h2>
+            <p className={styles.text}>
+              <strong>e-phan</strong> is an online ECDS platform.
+            </p>
+            <p className={styles.text}>
+              Become a part of the European dance community regardless of your
+              skill level, place of residence and membership of organizations.*
+            </p>
+            <Button
+              text="Registration"
+              className={styles.registrationBtn}
+              onClick={() => window.open(process.env.REACT_APP_EPHAN_URL)}
+              normalStyle
+            />
+          </div>
           <p className={styles.subtext}>
             * If you are not a member of a national organization, there will be
             a fee to register on the platform.
