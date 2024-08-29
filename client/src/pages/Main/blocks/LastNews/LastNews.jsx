@@ -42,10 +42,10 @@ export const LastNews = () => {
   };
 
   useEffect(() => {
-    if (!error && isVisible && !news.includes(({ pages }) => pages.some((page) => page === 'main'))) {
+    if (!error && isVisible && !news.some(({ pages }) => pages.some((page) => page === 'main'))) {
       dispatch(getNews({ getCurrentPageNews }));
     }
-  }, [isVisible, news.length]);
+  }, [isVisible]);
 
   const lastNews = news.length > 8 ? news.slice(0, 8) : news;
 
