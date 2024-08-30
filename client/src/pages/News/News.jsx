@@ -1,16 +1,21 @@
-import { useHistory, useLocation } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import { useEffect, useState } from 'react';
-import { useNews } from 'hooks/useNews';
-import { getNews } from '@redux/features/newsSlice';
-import { Container } from 'components/Container';
-import { Dropdown } from 'components/Dropdown';
-import { Button } from 'components/Button';
-import { Loader } from 'components/Loader';
-import { Input } from 'components/Input';
-import { TryAgain } from 'pages/Services/TryAgain';
-import { NewsCard } from 'pages/News/NewsCard';
-import styles from 'pages/News/News.scss';
+import { useHistory, useLocation } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect, useState } from "react";
+import { useNews } from "hooks/useNews";
+import { getNews } from "@redux/features/newsSlice";
+import { Container } from "components/Container";
+import { Dropdown } from "components/Dropdown";
+import { Button } from "components/Button";
+import { Loader } from "components/Loader";
+import { Input } from "components/Input";
+import { TryAgain } from "pages/Services/TryAgain";
+import { NewsCard } from "pages/News/NewsCard";
+import styles from "pages/News/News.scss";
+
+import news from "../new.json";
+
+const newsparse = JSON.parse(news);
+console.log(newsparse);
 
 export const News = () => {
   const { isLoading, error, news } = useSelector((state) => state.news);
@@ -22,25 +27,25 @@ export const News = () => {
   const searchParam = new URLSearchParams(search);
 
   const sortOptions = {
-    relevance: 'relevance',
-    newest: 'publicationDate:desc',
-    oldest: 'publicationDate:asc',
+    relevance: "relevance",
+    newest: "publicationDate:desc",
+    oldest: "publicationDate:asc",
   };
 
-  const [sortFactor, setSortFactor] = useState(searchParam.get('sort') || '');
-  const [searchTerm, setSearchTerm] = useState(searchParam.get('query') || '');
+  const [sortFactor, setSortFactor] = useState(searchParam.get("sort") || "");
+  const [searchTerm, setSearchTerm] = useState(searchParam.get("query") || "");
 
   const updateSearchString = () => {
     if (sortFactor) {
-      searchParam.set('sort', sortFactor);
+      searchParam.set("sort", sortFactor);
     } else {
-      searchParam.delete('sort');
+      searchParam.delete("sort");
     }
 
     if (searchTerm) {
-      searchParam.set('query', searchTerm);
+      searchParam.set("query", searchTerm);
     } else {
-      searchParam.delete('query');
+      searchParam.delete("query");
     }
     push({ search: searchParam.toString() });
   };
@@ -50,7 +55,13 @@ export const News = () => {
   }, [sortFactor]);
 
   useEffect(() => {
-    dispatch(getNews({ searchTerm, sortFactor: sortOptions[sortFactor], getCurrentPageNews }));
+    dispatch(
+      getNews({
+        searchTerm,
+        sortFactor: sortOptions[sortFactor],
+        getCurrentPageNews,
+      })
+    );
   }, [search]);
 
   const handleSearch = (e) => {
@@ -78,20 +89,29 @@ export const News = () => {
             <div className={styles.searchTerm}>
               <Input
                 wrapperClassName={styles.searchInput}
-                labelText='Enter Search Terms'
+                labelText="Enter Search Terms"
                 inputValue={searchTerm}
                 setInputValue={setSearchTerm}
               />
-              <Button className={styles.searchBtn} text='Search' type='submit' searchStyle />
+              <Button
+                className={styles.searchBtn}
+                text="Search"
+                type="submit"
+                searchStyle
+              />
             </div>
           </form>
         </header>
         <div className={styles.newsList}>
           {isLoading && <Loader />}
-          {!isLoading && news.length === 0 ? (
-            <p className={styles.text}>Nothing found matching your request 😕</p>
+          {!isLoading && newsparse.length === 0 ? (
+            <p className={styles.text}>
+              Nothing found matching your request 😕
+            </p>
           ) : (
-            news.map((newsItem) => <NewsCard news={newsItem} key={newsItem.id} />)
+            newsparse.map((newsItem) => (
+              <NewsCard news={newsItem} key={newsItem.id} />
+            ))
           )}
         </div>
       </section>

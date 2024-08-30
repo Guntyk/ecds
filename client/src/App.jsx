@@ -1,8 +1,8 @@
-import { Switch, Route, useLocation } from 'react-router-dom';
-import { useEffect, useMemo } from 'react';
-import { routes } from 'constants/routes';
-import { Header } from 'components/Header';
-import { Footer } from 'components/Footer';
+import { Switch, Route, useLocation } from "react-router-dom";
+import { useEffect, useMemo } from "react";
+import { routes } from "constants/routes";
+import { Header } from "components/Header";
+import { Footer } from "components/Footer";
 
 export default function App() {
   const { pathname } = useLocation();
