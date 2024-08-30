@@ -1,17 +1,23 @@
-import { useLocation, Redirect } from 'react-router-dom';
-import { aboutUsLinks } from 'constants/links';
-import { pathnames } from 'constants/pathnames';
-import { Container } from 'components/Container';
-import { Link } from 'components/Link';
-import { Management } from 'pages/AboutUs/Management';
-import { Documents } from 'pages/AboutUs/Documents';
-import { Contacts } from 'pages/AboutUs/Contacts';
-import { Logos } from 'pages/AboutUs/Logos';
-import styles from 'pages/AboutUs/AboutUs.scss';
+import { useLocation, Redirect } from "react-router-dom";
+import { aboutUsLinks } from "constants/links";
+import { pathnames } from "constants/pathnames";
+import { Container } from "components/Container";
+import { Link } from "components/Link";
+import { Management } from "pages/AboutUs/Management";
+import { Documents } from "pages/AboutUs/Documents";
+import { Contacts } from "pages/AboutUs/Contacts";
+import { Logos } from "pages/AboutUs/Logos";
+import styles from "pages/AboutUs/AboutUs.scss";
 
 export const AboutUs = () => {
   const { pathname } = useLocation();
-  const { managementPage, documentsPage, contactsPage, logosPage, notFoundPage } = pathnames;
+  const {
+    managementPage,
+    documentsPage,
+    contactsPage,
+    logosPage,
+    notFoundPage,
+  } = pathnames;
 
   const renderPage = () => {
     switch (pathname) {
@@ -38,7 +44,12 @@ export const AboutUs = () => {
               <ul>
                 {aboutUsLinks.map(({ id, title, path }) => (
                   <li key={id}>
-                    <Link content={title} path={path} active={pathname === path} buttonStyle />
+                    <Link
+                      content={title}
+                      path={path}
+                      active={pathname === path}
+                      buttonStyle
+                    />
                   </li>
                 ))}
               </ul>

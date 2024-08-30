@@ -22,3 +22,26 @@
 .content {
   flex-grow: 1;
 }
+
+@media (max-width: 1158px) {
+  .pageContent {
+    flex-direction: column;
+  }
+
+  .navigation ul {
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+    white-space: nowrap;
+    gap: 0.4rem;
+  }
+
+  .navigation ul::-webkit-scrollbar {
+    display: none;
+  }
+
+  .navigation ul li {
+    flex-shrink: 0;
+    width: auto;
+  }
+}

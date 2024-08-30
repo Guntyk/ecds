@@ -14,3 +14,9 @@
 
   color: $primary3;
 }
+
+@media (max-width: 1158px) {
+  .management {
+    flex-direction: column;
+  }
+}

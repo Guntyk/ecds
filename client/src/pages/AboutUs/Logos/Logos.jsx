@@ -1,10 +1,10 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
-import { getLogos } from '@redux/features/logosSlice';
-import { LogoDropdown } from 'components/Dropdown/Logo';
-import { Notification } from 'components/Notification';
-import { Loader } from 'components/Loader';
-import styles from 'pages/AboutUs/Logos/Logos.scss';
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { getLogos } from "@redux/features/logosSlice";
+import { LogoDropdown } from "components/Dropdown/Logo";
+import { Notification } from "components/Notification";
+import { Loader } from "components/Loader";
+import styles from "pages/AboutUs/Logos/Logos.scss";
 
 export const Logos = () => {
   const { isLoading, error, logos } = useSelector((state) => state.logos);
@@ -22,12 +22,14 @@ export const Logos = () => {
         isLoading ? (
           <Loader />
         ) : logos.length === 0 ? (
-          <p className={styles.text}>There is no logos available to download yet</p>
+          <p className={styles.text}>
+            There is no logos available to download yet
+          </p>
         ) : (
           logos.map((logo) => <LogoDropdown logo={logo} key={logo.id} />)
         )
       ) : (
-        <Notification text={error} type='error' />
+        <Notification text={error} type="error" />
       )}
     </div>
   );

@@ -50,3 +50,17 @@
   background: $background3_2;
   transition: 0.3s;
 }
+
+@media (max-width: 557px) {
+  .logo {
+    flex-direction: column;
+  }
+
+  .logoWrapper {
+    width: 100%;
+  }
+
+  .buttonsWrapper {
+    width: 25rem;
+  }
+}

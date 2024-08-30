@@ -9,7 +9,7 @@
   @include typography(h4);
 
   font-size: 4rem;
-  font-weight: map-get($fontWeights, 'medium');
+  font-weight: map-get($fontWeights, "medium");
   margin-bottom: 0.8rem;
 }
 
@@ -88,7 +88,7 @@
   td:first-child {
     display: inline-block;
     width: 16rem;
-    font-weight: map-get($fontWeights, 'light');
+    font-weight: map-get($fontWeights, "light");
     letter-spacing: 0;
   }
 
@@ -103,4 +103,59 @@
 
 .address p {
   line-height: 3.2rem;
+}
+
+@media (max-width: 1158px) {
+  .card {
+    padding: 1.6rem;
+    height: 98.7rem;
+    border-radius: 0;
+    max-width: 50rem;
+    margin: 0 auto;
+  }
+
+  .info {
+    flex-direction: column;
+    flex-wrap: nowrap;
+    width: 100%;
+  }
+
+  .bankDetails {
+    .sectionTitle {
+      font-size: 1.4rem;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 1.6rem;
+      display: block;
+      overflow-x: auto;
+    }
+
+    tbody {
+      display: block;
+    }
+
+    tr {
+      margin-bottom: 1.6rem;
+    }
+
+    td {
+      display: block;
+      width: 100%;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+      word-break: break-all;
+      hyphens: auto;
+    }
+
+    td:first-child {
+      padding-right: 0;
+    }
+  }
+
+  .sectionTitle {
+    font-size: 1.6rem;
+  }
 }

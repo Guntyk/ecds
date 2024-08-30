@@ -72,12 +72,12 @@
     &:focus-visible,
     &:hover {
       outline: none;
-      font-weight: map-get($fontWeights, 'regular');
+      font-weight: map-get($fontWeights, "regular");
       border: 0.1rem solid $primary2;
     }
 
     &.active {
-      font-weight: map-get($fontWeights, 'regular');
+      font-weight: map-get($fontWeights, "regular");
       background: $secondary4;
       pointer-events: none;
     }
@@ -103,6 +103,15 @@
       .arrow {
         opacity: 0;
       }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .link {
+    &.button {
+      width: auto;
+      padding: 0.8rem;
     }
   }
 }

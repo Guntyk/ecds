@@ -58,3 +58,15 @@
     background: $primary2;
   }
 }
+
+@media (max-width: 557px) {
+  .sliderWrapper {
+    position: absolute;
+    max-width: 39.8rem;
+    max-height: 22.3rem;
+
+    top: 30rem;
+
+    margin-bottom: 20rem;
+  }
+}
