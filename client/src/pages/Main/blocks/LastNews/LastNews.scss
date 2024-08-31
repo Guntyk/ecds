@@ -42,21 +42,23 @@
       }
     }
 
-    &:focus-visible,
-    &:hover {
-      @include typography(buttonActive, medium);
+    @media (hover: hover) {
+      &:focus-visible,
+      &:hover {
+        @include typography(buttonActive, medium);
 
-      padding-inline: unset;
-      animation: borderPulsation 3s ease-in-out infinite;
+        padding-inline: unset;
+        animation: borderPulsation 3s ease-in-out infinite;
 
-      &.prev img {
-        left: -1.7rem;
-        opacity: 0;
-      }
+        &.prev img {
+          left: -1.7rem;
+          opacity: 0;
+        }
 
-      &.next img {
-        right: -1.7rem;
-        opacity: 0;
+        &.next img {
+          right: -1.7rem;
+          opacity: 0;
+        }
       }
     }
   }
@@ -113,32 +115,34 @@
   cursor: pointer;
   transition: 0.4s;
 
-  &:focus-visible,
-  &:hover {
-    outline: none;
+  @media (hover: hover) {
+    &:focus-visible,
+    &:hover {
+      outline: none;
 
-    .cover {
-      height: 27.4rem;
-      border: 0.1rem solid $lightGray;
-    }
+      .cover {
+        height: 27.4rem;
+        border: 0.1rem solid $lightGray;
+      }
 
-    .additionalInfo {
-      opacity: 0;
-    }
+      .additionalInfo {
+        opacity: 0;
+      }
 
-    .newsTitleWrapper {
-      margin-top: 1.6rem;
-    }
+      .newsTitleWrapper {
+        margin-top: 1.6rem;
+      }
 
-    .newsTitle {
-      @include typography(body1, medium);
+      .newsTitle {
+        @include typography(body1, medium);
 
-      $lineHeight: 2.88rem;
+        $lineHeight: 2.88rem;
 
-      max-width: 100%;
-      line-height: $lineHeight;
+        max-width: 100%;
+        line-height: $lineHeight;
 
-      max-height: calc($lineHeight * 3);
+        max-height: calc($lineHeight * 3);
+      }
     }
   }
 }
@@ -196,7 +200,39 @@
 }
 
 @media (max-width: 557px) {
+  .block {
+    padding-block: 4.8rem 12rem;
+    background: $background2;
+  }
+
+  .title {
+    margin-bottom: 3.2rem;
+  }
+
+  .newsList {
+    padding-block: 2.4rem 1.6rem;
+    padding-inline: 0.8rem;
+  }
+
+  .additionalInfo {
+    top: 25.8rem;
+    left: 50%;
+    translate: -50% 0;
+    width: calc(100% - 1.6rem);
+  }
+
+  .scrollbar {
+    display: none;
+  }
+
+  .newsTitleWrapper {
+    margin-top: 4rem;
+    margin-inline: 0.8rem;
+    height: 7.2rem;
+  }
+
   .newsTitle {
     font-size: 1.8rem;
+    max-width: unset;
   }
 }

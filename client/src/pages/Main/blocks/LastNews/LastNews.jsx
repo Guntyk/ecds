@@ -6,6 +6,7 @@ import { useEffect } from 'react';
 import SwiperCore from 'swiper';
 import cn from 'classnames';
 import useElementOnScreen from 'hooks/useElementOnScreen';
+import { useScreenWidth } from 'hooks/useScreenWidth';
 import { useNews } from 'hooks/useNews';
 import { getNews } from '@redux/features/newsSlice';
 import { formatDate } from 'helpers/formatDate';
@@ -31,6 +32,7 @@ export const LastNews = () => {
   const { getCurrentPageNews } = useNews();
   const { newsPage } = pathnames;
   const dispatch = useDispatch();
+  const width = useScreenWidth();
   const { push } = useHistory();
 
   const [containerRef, isVisible] = useElementOnScreen();
@@ -74,7 +76,7 @@ export const LastNews = () => {
             <>
               <div className={cn(styles.newsList, { [styles.empty]: news.length === 0 })}>
                 <Swiper
-                  spaceBetween={24}
+                  spaceBetween={width > 557 ? 24 : 8}
                   slidesPerView='auto'
                   scrollbar={{ dragClass: styles.thumb, draggable: true, dragSize: 240, el: '#scrollbar' }}
                   navigation={{ nextEl: '#btnNext', prevEl: '#btnPrev' }}
