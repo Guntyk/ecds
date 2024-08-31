@@ -4,7 +4,7 @@
   "info": {
     "singularName": "event",
     "pluralName": "events",
-    "displayName": "Events",
+    "displayName": "Calendar",
     "description": ""
   },
   "options": {
@@ -15,7 +15,11 @@
     "type": {
       "type": "enumeration",
       "enum": [
-        "Tournament",
+        "Classification tournament",
+        "Ranking tournament",
+        "Open tournament",
+        "National championship",
+        "Cup",
         "Championship"
       ],
       "required": true
@@ -56,6 +60,16 @@
       "allowedTypes": [
         "images"
       ]
+    },
+    "style": {
+      "type": "enumeration",
+      "enum": [
+        "Ballroom",
+        "Street",
+        "Caribbean",
+        "Other"
+      ],
+      "required": true
     }
   }
 }
