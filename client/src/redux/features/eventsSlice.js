@@ -7,8 +7,8 @@ const initialState = {
   isLoading: false,
 };
 
-export const getEvents = createAsyncThunk('events/getEvents', async ({ danceStyle }, { rejectWithValue }) => {
-  const { result, error } = await EventsService.getEvents(danceStyle);
+export const getEvents = createAsyncThunk('events/getEvents', async (_, { rejectWithValue }) => {
+  const { result, error } = await EventsService.getEvents();
 
   if (result?.data) {
     return result.data;
