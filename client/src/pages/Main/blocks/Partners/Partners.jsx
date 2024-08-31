@@ -1,15 +1,16 @@
-import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
-import useElementOnScreen from "hooks/useElementOnScreen";
-import { getPartners } from "@redux/features/partnersSlice";
-import { Notification } from "components/Notification";
-import { ImageComponent } from "components/Image";
-import { Container } from "components/Container";
-import { Loader } from "components/Loader";
-import { Link } from "components/Link";
-import styles from "pages/Main/blocks/Partners/Partners.scss";
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import useElementOnScreen from 'hooks/useElementOnScreen';
+import { getPartners } from '@redux/features/partnersSlice';
+import { Notification } from 'components/Notification';
+import { ImageComponent } from 'components/Image';
+import { Container } from 'components/Container';
+import { Button } from 'components/Button';
+import { Loader } from 'components/Loader';
+import { Link } from 'components/Link';
+import styles from 'pages/Main/blocks/Partners/Partners.scss';
 
-import spon from "../../../spon.json";
+import spon from '../../../spon.json';
 
 const sponParse = JSON.parse(spon);
 
@@ -35,32 +36,19 @@ export const Partners = () => {
           <p className={styles.text}>There is no partners yet</p>
         ) : (
           <ul className={styles.partners}>
-            {sponParse.map(
-              ({
-                id,
-                website,
-                logo: { alternativeText, url, placeholder },
-              }) => (
-                <li className={styles.partner} key={id}>
-                  <ImageComponent
-                    className={styles.partnerLogo}
-                    src={url}
-                    alt={alternativeText}
-                    placeholder={placeholder}
-                    fit="contain"
-                    external
-                  />
-                  {website && (
-                    <Link
-                      className={styles.moreBtn}
-                      content="More about"
-                      path={website}
-                      external
-                    />
-                  )}
-                </li>
-              )
-            )}
+            {sponParse.map(({ id, website, logo: { alternativeText, url, placeholder } }) => (
+              <li className={styles.partner} key={id}>
+                <ImageComponent
+                  className={styles.partnerLogo}
+                  src={url}
+                  alt={alternativeText}
+                  placeholder={placeholder}
+                  fit='contain'
+                  external
+                />
+                {website && <Link className={styles.moreBtn} content='More about' path={website} external />}
+              </li>
+            ))}
           </ul>
         )}
         {/* <aside className={styles.donate}>

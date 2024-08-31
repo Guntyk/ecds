@@ -12,7 +12,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: $gapLarge;
-  margin-block: 4.8rem 2.4rem;
+  margin-top: 4.8rem;
 }
 
 .partner {
@@ -27,44 +27,56 @@
   filter: grayscale(1);
   transition: 0.2s;
 
-  &:hover {
-    filter: none;
-    border: 0.1rem solid $lightGray;
-
-    .moreBtn {
-      opacity: 1;
-      pointer-events: all;
-    }
-  }
-
   &Logo {
     max-width: 18.6rem;
     max-height: 6.4rem;
     width: 100%;
   }
 
-  .moreBtn {
-    @include typography(buttonSmall);
+  @media (hover: hover) {
+    &:hover {
+      filter: none;
+      border: 0.1rem solid $lightGray;
 
-    position: absolute;
-    padding-right: 1.5rem;
-    bottom: 1.6rem;
-    color: $text1;
-    opacity: 0;
-    pointer-events: none;
-    transition: 0.2s;
-
-    &::after {
-      content: "";
-      position: absolute;
-      right: 0;
-      width: 1.1rem;
-      height: 1.6rem;
-      mask: url(assets/icons/arrow-diagonal.svg);
-      background: $text1;
-      transition: 0.2s;
+      .moreBtn {
+        opacity: 1;
+        pointer-events: all;
+      }
     }
+  }
+  @media (hover: none) {
+    filter: none;
 
+    .moreBtn {
+      opacity: 1;
+      pointer-events: all;
+    }
+  }
+}
+
+.moreBtn {
+  @include typography(buttonSmall);
+
+  position: absolute;
+  padding-right: 1.5rem;
+  bottom: 1.6rem;
+  color: $text1;
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.2s;
+
+  &::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    width: 1.1rem;
+    height: 1.6rem;
+    mask: url(assets/icons/arrow-diagonal.svg);
+    background: $text1;
+    transition: 0.2s;
+  }
+
+  @media (hover: hover) {
     &:hover {
       color: $primary3;
       &::after {
@@ -79,6 +91,7 @@
   justify-content: center;
   align-items: center;
   gap: $gapLarge;
+  margin-top: 2.4rem;
   padding-block: 2.4rem;
   border-radius: $borderRadius;
   background: $gradient1;
@@ -87,7 +100,7 @@
     @include typography(h4);
 
     color: $text2;
-    font-weight: map-get($fontWeights, "medium");
+    font-weight: map-get($fontWeights, 'medium');
     text-transform: capitalize;
   }
 
@@ -106,26 +119,44 @@
 
 @media (max-width: 768px) {
   .block {
-    padding: 64px 0px;
+    padding-block: 4.8rem 6.4rem;
   }
 
   .partners {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 8px;
-    justify-content: center;
+    gap: 0.8rem;
+    margin-top: 3.2rem;
   }
 
   .partner {
+    padding: 0;
+    padding-block: 2.3rem 4.5rem;
     width: 100%;
-    height: 120px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    height: 12rem;
+
+    &Logo {
+      max-width: 14rem;
+      max-height: 4.8rem;
+      height: 100%;
+    }
+  }
+
+  .moreBtn {
+    font-size: 1.2rem;
   }
 
   .donate {
     flex-direction: column;
-    padding: 24px;
+    padding: 2.4rem;
+
+    &Text {
+      font-size: 2.4rem;
+      line-height: 2.4rem;
+    }
+
+    .donateBtn {
+      width: 100%;
+    }
   }
 }
