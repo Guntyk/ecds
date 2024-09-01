@@ -12,10 +12,9 @@ import { TryAgain } from "pages/Services/TryAgain";
 import { NewsCard } from "pages/News/NewsCard";
 import styles from "pages/News/News.scss";
 
-import news from "../new.json";
+import ne from "../ne.json";
 
-const newsparse = JSON.parse(news);
-console.log(newsparse);
+const neParse = JSON.parse(ne);
 
 export const News = () => {
   const { isLoading, error, news } = useSelector((state) => state.news);
@@ -69,9 +68,9 @@ export const News = () => {
     updateSearchString();
   };
 
-  if (error) {
-    return <TryAgain />;
-  }
+  // if (error) {
+  //   return <TryAgain />;
+  // }
 
   return (
     <Container>
@@ -104,12 +103,12 @@ export const News = () => {
         </header>
         <div className={styles.newsList}>
           {isLoading && <Loader />}
-          {!isLoading && newsparse.length === 0 ? (
+          {!isLoading && neParse.length === 0 ? (
             <p className={styles.text}>
               Nothing found matching your request 😕
             </p>
           ) : (
-            newsparse.map((newsItem) => (
+            neParse.map((newsItem) => (
               <NewsCard news={newsItem} key={newsItem.id} />
             ))
           )}

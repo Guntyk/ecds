@@ -1,16 +1,20 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
-import { useEffect } from 'react';
-import cn from 'classnames';
-import useElementOnScreen from 'hooks/useElementOnScreen';
-import { getEvents } from '@redux/features/eventsSlice';
-import { formatDate } from 'helpers/formatDate';
-import { pathnames } from 'constants/pathnames';
-import { Notification } from 'components/Notification';
-import { Loader } from 'components/Loader';
-import { Link } from 'components/Link';
-import dashboardStyles from 'pages/Ballroom/Main/blocks/Dashboard/Dashboard.scss';
-import styles from 'pages/Ballroom/Main/blocks/Dashboard/Calendar/Calendar.scss';
+import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
+import { useEffect } from "react";
+import cn from "classnames";
+import useElementOnScreen from "hooks/useElementOnScreen";
+import { getEvents } from "@redux/features/eventsSlice";
+import { formatDate } from "helpers/formatDate";
+import { pathnames } from "constants/pathnames";
+import { Notification } from "components/Notification";
+import { Loader } from "components/Loader";
+import { Link } from "components/Link";
+import dashboardStyles from "pages/Ballroom/Main/blocks/Dashboard/Dashboard.scss";
+import styles from "pages/Ballroom/Main/blocks/Dashboard/Calendar/Calendar.scss";
+
+import ev from "../../../../../ev.json";
+
+const evParse = JSON.parse(ev);
 
 export const Calendar = () => {
   const { isLoading, error, events } = useSelector((state) => state.events);
@@ -30,8 +34,11 @@ export const Calendar = () => {
 
   return (
     <div ref={containerRef} className={cn(dashboardStyles.block, styles.block)}>
-      <h2 className={dashboardStyles.title} onClick={() => push(`${ballroomPage}${calendarPage}`)}>
-        Calendar<span>of competition</span>
+      <h2
+        className={dashboardStyles.title}
+        onClick={() => push(`${ballroomPage}${calendarPage}`)}
+      >
+        Calendar<span className={styles.competition}>of competition</span>
         <span className={cn(dashboardStyles.arrow, styles.arrow)} />
         <span className={cn(dashboardStyles.arrow, styles.arrow)} />
       </h2>
@@ -39,10 +46,10 @@ export const Calendar = () => {
         {!error ? (
           isLoading ? (
             <Loader className={dashboardStyles.loader} />
-          ) : events.length === 0 ? (
+          ) : evParse.length === 0 ? (
             <p className={styles.text}>The calendar is empty for now</p>
           ) : (
-            nearestEvents.map(({ id, title, startDate, endDate, address }) => (
+            evParse.map(({ id, title, startDate, endDate, address }) => (
               <li className={cn(dashboardStyles.item, styles.item)} key={id}>
                 <Link
                   content={
@@ -57,7 +64,7 @@ export const Calendar = () => {
                           {address}
                         </address>
                       </div>
-                      <strong>{title}</strong>
+                      <strong className={styles.titleСalendar}>{title}</strong>
                     </>
                   }
                   path={`${ballroomPage}${calendarPage}/${id}`}
@@ -67,7 +74,11 @@ export const Calendar = () => {
             ))
           )
         ) : (
-          <Notification className={dashboardStyles.error} text={error} type='error' />
+          <Notification
+            className={dashboardStyles.error}
+            text={error}
+            type="error"
+          />
         )}
       </ul>
     </div>

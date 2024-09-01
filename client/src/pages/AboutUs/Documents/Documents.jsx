@@ -6,6 +6,10 @@ import { Notification } from "components/Notification";
 import { Loader } from "components/Loader";
 import styles from "pages/AboutUs/Documents/Documents.scss";
 
+import doc from "../doc.json";
+
+const docParse = JSON.parse(doc);
+
 export const Documents = () => {
   const { isLoading, error, documents } = useSelector(
     (state) => state.documents
@@ -20,18 +24,14 @@ export const Documents = () => {
 
   return (
     <div className={styles.dropdownsWrapper}>
-      {!error ? (
-        isLoading ? (
-          <Loader />
-        ) : documents.length === 0 ? (
-          <p className={styles.text}>There is no documents yet</p>
-        ) : (
-          documents.map((document) => (
-            <DocumentDropdown document={document} key={document.id} />
-          ))
-        )
+      {isLoading ? (
+        <Loader />
+      ) : docParse.length === 0 ? (
+        <p className={styles.text}>There is no documents yet</p>
       ) : (
-        <Notification text={error} type="error" />
+        docParse.map((document) => (
+          <DocumentDropdown document={document} key={document.id} />
+        ))
       )}
     </div>
   );

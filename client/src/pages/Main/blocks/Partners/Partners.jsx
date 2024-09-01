@@ -9,9 +9,9 @@ import { Loader } from "components/Loader";
 import { Link } from "components/Link";
 import styles from "pages/Main/blocks/Partners/Partners.scss";
 
-import spon from "../../../spon.json";
+import sp from "../../../sp.json";
 
-const sponParse = JSON.parse(spon);
+const spParse = JSON.parse(sp);
 
 export const Partners = () => {
   const { partners, error, isLoading } = useSelector((state) => state.partners);
@@ -31,11 +31,11 @@ export const Partners = () => {
         <h2 className={styles.title}>Our sponsors & partners</h2>
         {isLoading ? (
           <Loader className={styles.text} />
-        ) : sponParse.length === 0 ? (
+        ) : spParse.length === 0 ? (
           <p className={styles.text}>There is no partners yet</p>
         ) : (
           <ul className={styles.partners}>
-            {sponParse.map(
+            {spParse.map(
               ({
                 id,
                 website,

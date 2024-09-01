@@ -7,6 +7,10 @@ import { Loader } from "components/Loader";
 import { PersonCard } from "pages/AboutUs/Management/PersonCard";
 import styles from "pages/AboutUs/Management/Management.scss";
 
+import man from "../man.json";
+
+const manParse = JSON.parse(man);
+
 export const Management = () => {
   const { isLoading, error, management } = useSelector(
     (state) => state.management
@@ -21,19 +25,13 @@ export const Management = () => {
 
   return (
     <div className={styles.management}>
-      {!error ? (
-        isLoading ? (
-          <Loader />
-        ) : management.length === 0 ? (
-          <Notification text={apiErrors.error404Message} type="error" />
-        ) : (
-          management.length > 0 &&
-          management.map((person) => (
-            <PersonCard person={person} key={person.id} />
-          ))
-        )
+      {isLoading ? (
+        <Loader />
+      ) : manParse.length === 0 ? (
+        <Notification text={apiErrors.error404Message} type="error" />
       ) : (
-        <Notification text={error} type="error" />
+        manParse.length > 0 &&
+        manParse.map((person) => <PersonCard person={person} key={person.id} />)
       )}
     </div>
   );

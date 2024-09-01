@@ -104,7 +104,7 @@
 
 @media (max-width: 1158px) {
   .dashboard {
-    padding-block: 8rem;
+    padding-block: 6.4rem;
     height: auto;
   }
 
@@ -113,6 +113,31 @@
     flex-wrap: wrap;
     max-height: none;
     justify-content: center;
+    gap: 1.6rem;
+  }
+
+  .title {
+    @include typography(h2);
+
+    position: relative;
+    cursor: pointer;
+
+    span {
+      margin-left: 0.4rem;
+    }
+  }
+
+  .list .item {
+    flex-direction: column;
+    align-items: baseline;
+    padding: 1.6rem 0;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+
+    strong {
+      font-size: 16px;
+    }
   }
 
   .blocksWrapper > :nth-child(3) {

@@ -36,3 +36,17 @@
   gap: $gapLarge;
   width: 100%;
 }
+
+@media (max-width: 768px) {
+  .page {
+    padding-bottom: 6.4rem;
+  }
+
+  .pageContent {
+    flex-direction: column;
+  }
+  .users {
+    flex-direction: column;
+    gap: 1.6rem;
+  }
+}

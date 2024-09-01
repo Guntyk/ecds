@@ -46,34 +46,34 @@
     border-top: 0.1rem solid $primary1;
     border-radius: $borderRadius;
     transition: 0.4s;
-    
+
     .thumb {
       width: 0.8rem;
       border-radius: 0.4rem;
       background: $background2;
     }
-    
+
     .scrollbar {
       margin-right: 0.2rem;
       background: none;
     }
-    
+
     &.open {
       padding: 0.79rem;
       max-height: 41.2rem;
       opacity: 1;
       border-top-left-radius: 0;
       border-top-right-radius: 0;
-      
+
       &.scrollable {
         padding-right: 1.6rem;
       }
     }
   }
-  
+
   &Item {
     @include typography(body4);
-    
+
     width: 100%;
     padding: 0.8rem;
     line-height: 2rem;
@@ -82,13 +82,13 @@
     transition: 0.2s;
     text-align: left;
     text-transform: capitalize;
-    
+
     &:hover,
     &:focus-visible,
     &.selectedItem {
       background-color: $background2;
     }
-    
+
     &.selectedItem {
       pointer-events: none;
     }
@@ -111,3 +111,4 @@
     rotate: 180deg;
   }
 }
+

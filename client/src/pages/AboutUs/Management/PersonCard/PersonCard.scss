@@ -129,6 +129,8 @@
   .card {
     max-width: 100%;
     height: auto;
+    border-radius: 0rem;
+    padding: 2.4rem 1.6rem;
 
     &.open {
       position: relative;
@@ -170,6 +172,16 @@
   .name {
     font-size: 3.2rem;
     text-align: left;
+    white-space: nowrap;
+    word-spacing: 0.4rem;
+  }
+
+  .name span {
+    margin-right: 0.4rem;
+  }
+
+  .name br {
+    display: none;
   }
 
   .role {
@@ -180,5 +192,11 @@
 
   .biography {
     margin-inline: 4rem 1rem;
+  }
+
+  .moreBtn {
+    width: 100%;
+    height: 4rem;
+    margin-top: 1.6rem;
   }
 }

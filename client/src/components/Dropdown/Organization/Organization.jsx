@@ -17,7 +17,11 @@ export const OrganizationDropdown = ({
 
   return (
     <div className={cn(styles.container, className)}>
-      <div className={cn(styles.header, { [styles.opened]: isOpen })} {...(!nonClosable && { onClick: onToggle })}>
+      <div
+        className={cn(styles.header, { [styles.opened]: isOpen })}
+        {...(!nonClosable && { onClick: onToggle })}
+        {...(nonClosable && { style: { cursor: 'default' } })}
+      >
         <img src={`${process.env.REACT_APP_BASE_API_URL}${flag.url}`} alt={country} className={styles.flagIcon} />
         <span className={styles.name}>{country}</span>
         {!nonClosable && <Arrow className={styles.dropdownArrow} isOpen={isOpen} expandStyle />}

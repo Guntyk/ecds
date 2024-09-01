@@ -32,3 +32,18 @@
   flex-direction: column;
   gap: $gapLarge;
 }
+
+@media (max-width: 557px) {
+  .calendar {
+    padding-bottom: 7.4rem;
+  }
+
+  .titleWrapper {
+    margin-bottom: 4.8rem;
+  }
+
+  .events {
+    gap: 1.6rem;
+    margin: -1.6rem;
+  }
+}

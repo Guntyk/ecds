@@ -107,3 +107,85 @@
     background: $primary1;
   }
 }
+
+@media (max-width: 768px) {
+  .card {
+    align-items: center;
+    gap: 1.6rem;
+    padding: 1.6rem;
+    border-radius: 0;
+  }
+
+  .article {
+    flex-direction: column;
+  }
+
+  .tags {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .tag {
+    width: auto;
+  }
+
+  .characteristic {
+    flex-wrap: wrap;
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    box-sizing: border-box;
+  }
+
+  .characteristic {
+    width: 100%;
+    justify-content: space-between;
+    padding: 1.6rem 1.6rem 0;
+    gap: 0.8rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .author {
+    margin: 0;
+  }
+
+  .cover {
+    min-width: 12rem;
+    height: 12rem;
+    border-radius: 0.8rem;
+  }
+
+  .info {
+    padding: 0;
+    height: 12rem;
+    position: relative;
+  }
+
+  .title {
+    font-size: 3.2rem;
+    line-height: 2.4rem;
+  }
+
+  .description {
+    line-height: 1.8rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+  }
+
+  .additionalInfo {
+    display: flex;
+    position: absolute;
+    overflow: hidden;
+    white-space: nowrap;
+    top: 16rem;
+    left: -13.5rem;
+  }
+
+  .views {
+    position: absolute;
+    right: -13rem;
+  }
+}

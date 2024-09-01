@@ -40,3 +40,9 @@
     transition: 0.5s ease-in;
   }
 }
+
+@media (max-width: 1152px) {
+  .dropdown {
+    border-radius: 0;
+  }
+}

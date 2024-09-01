@@ -1,14 +1,18 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
-import useElementOnScreen from 'hooks/useElementOnScreen';
-import { useScreenWidth } from 'hooks/useScreenWidth';
-import { getBanners } from '@redux/features/bannersSlice';
-import { Notification } from 'components/Notification';
-import { Container } from 'components/Container';
-import { Banners } from 'components/Banners';
-import { Button } from 'components/Button';
-import { Loader } from 'components/Loader';
-import styles from 'pages/Main/blocks/Hero/Hero.scss';
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import useElementOnScreen from "hooks/useElementOnScreen";
+import { useScreenWidth } from "hooks/useScreenWidth";
+import { getBanners } from "@redux/features/bannersSlice";
+import { Notification } from "components/Notification";
+import { Container } from "components/Container";
+import { Banners } from "components/Banners";
+import { Button } from "components/Button";
+import { Loader } from "components/Loader";
+import styles from "pages/Main/blocks/Hero/Hero.scss";
+
+import ban from "../../../ban.json";
+
+const banParse = JSON.parse(ban);
 
 export const Hero = () => {
   const { isLoading, error, banners } = useSelector((state) => state.banners);
@@ -27,19 +31,20 @@ export const Hero = () => {
       <Container>
         <div ref={containerRef} className={styles.wrapper}>
           <div className={styles.titleWrapper}>
-            <h1 className={styles.title}>Unified Standards for a United Europe</h1>
-            <Button text='Registration' onClick={() => window.open(process.env.REACT_APP_EPHAN_URL)} normalStyle />
+            <h1 className={styles.title}>
+              Unified Standards for a United Europe
+            </h1>
+            <Button
+              text="Registration"
+              onClick={() => window.open(process.env.REACT_APP_EPHAN_URL)}
+              normalStyle
+            />
           </div>
-          {screenWidth > 557 &&
-            (!error ? (
-              isLoading ? (
-                <Loader className={styles.loader} />
-              ) : (
-                banners.length > 0 && <Banners banners={banners} />
-              )
-            ) : (
-              <Notification className={styles.error} text={error} type='error' />
-            ))}
+          {screenWidth > 557 && isLoading ? (
+            <Loader className={styles.loader} />
+          ) : (
+            banParse.length > 0 && <Banners banners={banParse} />
+          )}
         </div>
       </Container>
     </section>

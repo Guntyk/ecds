@@ -24,8 +24,17 @@
 }
 
 @media (max-width: 1158px) {
+  .page {
+    padding-top: 10rem;
+    min-height: 100%;
+  }
+
   .pageContent {
     flex-direction: column;
+  }
+
+  .title {
+    margin-bottom: 2.4rem;
   }
 
   .navigation ul {
@@ -34,6 +43,7 @@
     overflow-x: auto;
     white-space: nowrap;
     gap: 0.4rem;
+    margin-bottom: 3.2rem;
   }
 
   .navigation ul::-webkit-scrollbar {
@@ -43,5 +53,9 @@
   .navigation ul li {
     flex-shrink: 0;
     width: auto;
+  }
+
+  .content {
+    margin: -1.6rem;
   }
 }

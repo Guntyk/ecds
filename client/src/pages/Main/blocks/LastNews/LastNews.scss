@@ -170,10 +170,15 @@
   color: $secondary4;
 }
 
+.additionalInfo {
+  padding: 0 1.6rem;
+}
+
 .newsTitleWrapper {
   margin-top: 4.8rem;
   height: 8.8rem;
   transition: 0.4s;
+  padding: 0rem 1.6rem;
 }
 
 .newsTitle {
@@ -196,7 +201,24 @@
 }
 
 @media (max-width: 557px) {
+  .block {
+    padding: 4.8rem 0 12rem 0;
+  }
+
   .newsTitle {
     font-size: 1.8rem;
+  }
+
+  .title {
+    margin-bottom: 3.2rem;
+  }
+
+  .newsList {
+    padding: 2.4rem 0.8rem;
+    height: 39.4rem;
+  }
+
+  .scrollbar {
+    display: none;
   }
 }

@@ -26,7 +26,7 @@ export const EventCard = ({
             <td>Organization</td>
             <td>
               {organization?.website ? (
-                <Link content={organization.name} path={organization.website} external noStyle />
+                <Link content={organization.name} path={`https://${organization.website}`} external noStyle />
               ) : (
                 organization.name
               )}

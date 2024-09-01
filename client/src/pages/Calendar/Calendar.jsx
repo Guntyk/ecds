@@ -1,13 +1,17 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { useLocation } from 'react-router-dom';
-import { useEffect } from 'react';
-import { getEvents } from '@redux/features/eventsSlice';
-import { Container } from 'components/Container';
-import { Loader } from 'components/Loader';
-import { EventCard } from 'pages/Calendar/EventCard';
-import { TryAgain } from 'pages/Services/TryAgain';
-import styles from 'pages/Calendar/Calendar.scss';
-import { pathnames } from 'constants/pathnames';
+import { useDispatch, useSelector } from "react-redux";
+import { useLocation } from "react-router-dom";
+import { useEffect } from "react";
+import { getEvents } from "@redux/features/eventsSlice";
+import { Container } from "components/Container";
+import { Loader } from "components/Loader";
+import { EventCard } from "pages/Calendar/EventCard";
+import { TryAgain } from "pages/Services/TryAgain";
+import styles from "pages/Calendar/Calendar.scss";
+import { pathnames } from "constants/pathnames";
+
+import ev from "../ev.json";
+
+const evParse = JSON.parse(ev);
 
 export const Calendar = () => {
   const { isLoading, error, events } = useSelector((state) => state.events);
@@ -15,14 +19,14 @@ export const Calendar = () => {
   const { pathname } = useLocation();
   const dispatch = useDispatch();
 
-  let danceStyle = '';
+  let danceStyle = "";
 
   if (pathname.includes(ballroomPage)) {
-    danceStyle = 'Ballroom';
+    danceStyle = "Ballroom";
   } else if (pathname.includes(streetDancePage)) {
-    danceStyle = 'Street';
+    danceStyle = "Street";
   } else if (pathname.includes(caribbeanDancePage)) {
-    danceStyle = 'Caribbean';
+    danceStyle = "Caribbean";
   }
 
   useEffect(() => {
@@ -31,9 +35,9 @@ export const Calendar = () => {
     }
   }, [danceStyle]);
 
-  if (error) {
-    return <TryAgain />;
-  }
+  // if (error) {
+  //   return <TryAgain />;
+  // }
 
   return (
     <Container>
@@ -45,10 +49,10 @@ export const Calendar = () => {
         <div className={styles.events}>
           {isLoading ? (
             <Loader />
-          ) : events.length === 0 ? (
+          ) : evParse.length === 0 ? (
             <p className={styles.text}>The calendar is temporarily empty</p>
           ) : (
-            events.map((event) => <EventCard event={event} key={event.id} />)
+            evParse.map((event) => <EventCard event={event} key={event.id} />)
           )}
         </div>
       </section>

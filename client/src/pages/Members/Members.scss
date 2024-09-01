@@ -28,3 +28,21 @@
     max-width: unset;
   }
 }
+
+@media (max-width: 768px) {
+  .page {
+    padding-bottom: 7.4rem;
+  }
+  .subtitle {
+    max-width: 100%;
+  }
+  .members {
+    flex-direction: column;
+    margin: -1.6rem;
+    gap: 1.6rem;
+  }
+
+  .member {
+    width: 100%;
+  }
+}

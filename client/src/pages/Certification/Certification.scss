@@ -34,3 +34,65 @@
   gap: $gapLarge;
   width: 100%;
 }
+
+@media (max-width: 557px) {
+  .page {
+    padding-bottom: 6.4rem;
+  }
+  .pageContent {
+    flex-direction: column;
+  }
+  .navigation {
+    .typesList {
+      flex-direction: row;
+      overflow-x: auto;
+      white-space: nowrap;
+    }
+  }
+
+  .list {
+    flex-direction: column;
+    gap: 1.6rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .pageContent {
+    flex-direction: column;
+    margin: 0;
+    gap: 3.2rem;
+  }
+
+  .title {
+    margin-bottom: 2.4rem;
+  }
+
+  .navigation {
+    width: 100%;
+
+    overflow-x: auto;
+    white-space: nowrap;
+    .typesList {
+      flex-direction: row;
+      padding: 0;
+      gap: 0.4rem;
+
+      li {
+        flex-shrink: 0;
+      }
+    }
+
+    .link {
+      padding: 0.8rem 1.2rem;
+    }
+  }
+
+  .navigation ul::-webkit-scrollbar {
+    display: none;
+  }
+
+  .list {
+    flex-direction: column;
+    gap: 1.6rem;
+  }
+}

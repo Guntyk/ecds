@@ -39,9 +39,9 @@ export const PersonCard = ({
           />
           <div className={styles.personInfo}>
             <p className={styles.name}>
-              {name}
+              <span>{name}</span>
               <br />
-              {surname}
+              <span>{surname}</span>
             </p>
             <p className={styles.role}>{role}</p>
             {socials && isOpen && (

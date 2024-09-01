@@ -53,3 +53,23 @@
 .text {
   @include typography(body3);
 }
+
+@media (max-width: 557px) {
+  .block {
+    padding: 2.4rem 1.6rem;
+  }
+
+  .info {
+    flex-direction: column;
+    align-items: baseline;
+    gap: 0.8rem;
+  }
+
+  .titleСalendar {
+    font-size: 1.6rem;
+  }
+
+  .competition {
+    margin-left: 0.4rem;
+  }
+}

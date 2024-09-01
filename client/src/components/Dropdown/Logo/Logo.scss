@@ -54,6 +54,7 @@
 @media (max-width: 557px) {
   .logo {
     flex-direction: column;
+    gap: 2.4rem;
   }
 
   .logoWrapper {
@@ -61,6 +62,10 @@
   }
 
   .buttonsWrapper {
-    width: 25rem;
+    width: 100%;
+    .downloadBtn {
+      padding: 0.8rem 2rem;
+      width: 20.5rem;
+    }
   }
 }

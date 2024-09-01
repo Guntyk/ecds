@@ -1,7 +1,8 @@
 .block {
   padding-block: 12.8rem 27.4rem;
   min-height: 78rem;
-  background: url(assets/images/backgrounds/ballroom-page-background.webp) no-repeat bottom / contain;
+  background: url(assets/images/backgrounds/ballroom-page-background.webp)
+    no-repeat bottom / contain;
 }
 
 .wrapper {
@@ -24,4 +25,53 @@
 .loader {
   margin-top: 15rem;
   width: 50%;
+}
+
+@media (max-width: 557px) {
+  .block {
+    min-height: 66rem;
+    background-position: top left -2.2rem;
+    background-size: 170% 39.2rem;
+  }
+
+  .bannersSlider {
+    position: absolute;
+    top: 30rem;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .banners {
+    &Slider:hover .bannersNavigation {
+      background: none;
+    }
+
+    &Navigation {
+      background: none;
+    }
+  }
+}
+
+@media screen and (min-width: 558px) and (max-width: 767px) {
+  .block {
+    min-height: 66rem;
+    padding: 0;
+    background-position: top;
+    background-size: 100% 39.2rem;
+  }
+
+  .bannersSlider {
+    position: absolute;
+    top: 42.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .banners {
+    &Slider:hover .bannersNavigation {
+      background: none;
+    }
+
+    &Navigation {
+      background: none;
+    }
+  }
 }
