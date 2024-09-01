@@ -32,23 +32,25 @@
     }
   }
 
-  &:not(.external, .button, .download) {
-    &:focus-visible,
-    &:hover {
-      @include typography(buttonActive, medium);
+  @media (hover: hover) {
+    &:not(.external, .button, .download) {
+      &:focus-visible,
+      &:hover {
+        @include typography(buttonActive, medium);
 
-      color: $primary3;
-      padding: 0 0.6rem;
-      outline: none;
+        color: $primary3;
+        padding: 0 0.6rem;
+        outline: none;
 
-      &.toLeft {
-        .arrow {
-          translate: -150% -50%;
+        &.toLeft {
+          .arrow {
+            translate: -150% -50%;
+          }
         }
-      }
-      &.toRight {
-        .arrow {
-          translate: 150% -50%;
+        &.toRight {
+          .arrow {
+            translate: 150% -50%;
+          }
         }
       }
     }
@@ -72,12 +74,12 @@
     &:focus-visible,
     &:hover {
       outline: none;
-      font-weight: map-get($fontWeights, "regular");
+      font-weight: map-get($fontWeights, 'regular');
       border: 0.1rem solid $primary2;
     }
 
     &.active {
-      font-weight: map-get($fontWeights, "regular");
+      font-weight: map-get($fontWeights, 'regular');
       background: $secondary4;
       pointer-events: none;
     }

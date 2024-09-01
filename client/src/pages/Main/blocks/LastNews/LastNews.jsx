@@ -6,6 +6,7 @@ import { useEffect } from "react";
 import SwiperCore from "swiper";
 import cn from "classnames";
 import useElementOnScreen from "hooks/useElementOnScreen";
+import { useScreenWidth } from "hooks/useScreenWidth";
 import { useNews } from "hooks/useNews";
 import { getNews } from "@redux/features/newsSlice";
 import { formatDate } from "helpers/formatDate";
@@ -24,10 +25,6 @@ import "swiper/css/scrollbar";
 import "swiper/css";
 import styles from "pages/Main/blocks/LastNews/LastNews.scss";
 
-import ne from "../../../ne.json";
-
-const neParse = JSON.parse(ne);
-
 SwiperCore.use([Navigation, Scrollbar]);
 
 export const LastNews = () => {
@@ -35,6 +32,7 @@ export const LastNews = () => {
   const { getCurrentPageNews } = useNews();
   const { newsPage } = pathnames;
   const dispatch = useDispatch();
+  const width = useScreenWidth();
   const { push } = useHistory();
 
   const [containerRef, isVisible] = useElementOnScreen();
@@ -61,7 +59,7 @@ export const LastNews = () => {
     <section className={styles.block} ref={containerRef}>
       <Container>
         <h2 className={styles.title}>Latest news</h2>
-        {neParse.length > 0 && (
+        {news.length > 0 && (
           <div className={styles.navigationWrapper}>
             <Button
               className={cn(styles.btn, styles.prev)}
@@ -83,69 +81,75 @@ export const LastNews = () => {
             </Button>
           </div>
         )}
-        {isLoading ? (
-          <Loader className={styles.loader} />
-        ) : neParse.length === 0 ? (
-          <p className={styles.text}>There is no news yet</p>
-        ) : (
-          <>
-            <div
-              className={cn(styles.newsList, {
-                [styles.empty]: neParse.length === 0,
-              })}
-            >
-              <Swiper
-                spaceBetween={24}
-                slidesPerView="auto"
-                scrollbar={{
-                  dragClass: styles.thumb,
-                  draggable: true,
-                  dragSize: 240,
-                  el: "#scrollbar",
-                }}
-                navigation={{ nextEl: "#btnNext", prevEl: "#btnPrev" }}
+        {!error ? (
+          isLoading ? (
+            <Loader className={styles.loader} />
+          ) : lastNews.length === 0 ? (
+            <p className={styles.text}>There is no news yet</p>
+          ) : (
+            <>
+              <div
+                className={cn(styles.newsList, {
+                  [styles.empty]: news.length === 0,
+                })}
               >
-                {neParse.map((article) => (
-                  <SwiperSlide
-                    className={styles.newsCard}
-                    tabIndex={0}
-                    onClick={(e) => handleRedirect(e, article.id)}
-                    onKeyDown={(e) => handleRedirect(e, article.id)}
-                    key={article.id}
-                  >
-                    <ImageComponent
-                      className={styles.cover}
-                      src={article.media?.[0].url || "https://placehold.co/282"}
-                      alt={article.media?.[0].alt || "cover placeholder"}
-                      placeholder={article.media?.[0].placeholder}
-                      external={article.media}
-                    />
-                    <div className={styles.additionalInfo}>
-                      <div className={styles.reactions}>
-                        <img src={eye} alt="Views" />
-                        {article.views}
+                <Swiper
+                  spaceBetween={width > 557 ? 24 : 8}
+                  slidesPerView="auto"
+                  scrollbar={{
+                    dragClass: styles.thumb,
+                    draggable: true,
+                    dragSize: 240,
+                    el: "#scrollbar",
+                  }}
+                  navigation={{ nextEl: "#btnNext", prevEl: "#btnPrev" }}
+                >
+                  {lastNews.map((article) => (
+                    <SwiperSlide
+                      className={styles.newsCard}
+                      tabIndex={0}
+                      onClick={(e) => handleRedirect(e, article.id)}
+                      onKeyDown={(e) => handleRedirect(e, article.id)}
+                      key={article.id}
+                    >
+                      <ImageComponent
+                        className={styles.cover}
+                        src={
+                          article.media?.[0].url || "https://placehold.co/282"
+                        }
+                        alt={article.media?.[0].alt || "cover placeholder"}
+                        placeholder={article.media?.[0].placeholder}
+                        external={article.media}
+                      />
+                      <div className={styles.additionalInfo}>
+                        <div className={styles.reactions}>
+                          <img src={eye} alt="Views" />
+                          {article.views}
+                        </div>
+                        <time dateTime={article.publicationDate}>
+                          {formatDate(article.publicationDate)}
+                        </time>
                       </div>
-                      <time dateTime={article.publicationDate}>
-                        {formatDate(article.publicationDate)}
-                      </time>
-                    </div>
-                    <div className={styles.newsTitleWrapper}>
-                      <p className={styles.newsTitle}>{article.title}</p>
-                    </div>
-                  </SwiperSlide>
-                ))}
-                <div id="scrollbar" className={styles.scrollbar} />
-              </Swiper>
-            </div>
-            {neParse.length > 0 && (
-              <Link
-                className={styles.moreBtn}
-                content="See all news"
-                path={newsPage}
-                arrowRight
-              />
-            )}
-          </>
+                      <div className={styles.newsTitleWrapper}>
+                        <p className={styles.newsTitle}>{article.title}</p>
+                      </div>
+                    </SwiperSlide>
+                  ))}
+                  <div id="scrollbar" className={styles.scrollbar} />
+                </Swiper>
+              </div>
+              {lastNews.length > 0 && (
+                <Link
+                  className={styles.moreBtn}
+                  content="See all news"
+                  path={newsPage}
+                  arrowRight
+                />
+              )}
+            </>
+          )
+        ) : (
+          <Notification text={error} type="error" />
         )}
       </Container>
     </section>
