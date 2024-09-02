@@ -109,32 +109,47 @@
 }
 
 @media (max-width: 768px) {
-  .card {
-    align-items: center;
-    gap: 1.6rem;
-    padding: 1.6rem;
-    border-radius: 0;
+  .article {
+    position: relative;
   }
 
-  .article {
+  .card {
+    padding-top: 8rem;
+    gap: 1.6rem;
+    height: 24.5rem;
+    padding-inline: 1.6rem;
+    border-radius: 0;
+    border-left: none;
+    border-right: none;
+  }
+
+  .characteristic {
+    position: absolute;
+    display: flex;
     flex-direction: column;
   }
 
   .tags {
+    width: calc(100% + 1.6rem * 2);
     flex-direction: row;
-    flex-wrap: wrap;
+    overflow-y: hidden;
+    transform: translateX(-1.6rem);
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
   }
 
   .tag {
-    width: auto;
-  }
+    font-size: 1.4rem;
+    line-height: 2.4rem;
 
-  .characteristic {
-    flex-wrap: wrap;
-    position: absolute;
-    display: flex;
-    flex-direction: row;
-    box-sizing: border-box;
+    &:first-child {
+      margin-left: 1.6rem;
+    }
+    &:last-child {
+      margin-right: 1.6rem;
+    }
   }
 
   .characteristic {
@@ -149,6 +164,8 @@
 
   .author {
     margin: 0;
+    font-size: 1.4rem;
+    line-height: 2rem;
   }
 
   .cover {
@@ -160,7 +177,6 @@
   .info {
     padding: 0;
     height: 12rem;
-    position: relative;
   }
 
   .title {
@@ -178,14 +194,17 @@
   .additionalInfo {
     display: flex;
     position: absolute;
+    width: calc(100% - 1.6rem * 2);
     overflow: hidden;
     white-space: nowrap;
-    top: 16rem;
-    left: -13.5rem;
+    bottom: 1.6rem;
+    left: 50%;
+    translate: -50% 0;
   }
 
+  .date,
   .views {
-    position: absolute;
-    right: -13rem;
+    font-size: 1.4rem;
+    line-height: 1.6rem;
   }
 }

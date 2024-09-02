@@ -108,7 +108,7 @@ export const News = () => {
               Nothing found matching your request 😕
             </p>
           ) : (
-            neParse.map((newsItem) => (
+            news.map((newsItem) => (
               <NewsCard news={newsItem} key={newsItem.id} />
             ))
           )}
