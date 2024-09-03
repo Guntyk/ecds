@@ -83,7 +83,6 @@
 @media (max-width: 768px) {
   .block {
     padding-bottom: 9.6rem;
-    margin-bottom: 72%;
   }
 
   .wrapper {
@@ -92,5 +91,10 @@
 
   .title {
     max-width: 39.8rem;
+  }
+
+  .loader,
+  .banners {
+    display: none;
   }
 }

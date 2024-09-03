@@ -1,16 +1,11 @@
-import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
-import useElementOnScreen from "hooks/useElementOnScreen";
-import { getBanners } from "@redux/features/bannersSlice";
-import { Notification } from "components/Notification";
-import { Container } from "components/Container";
-import { Banners } from "components/Banners";
-import { Loader } from "components/Loader";
-import styles from "pages/Ballroom/Main/blocks/Hero/Hero.scss";
-
-import ban from "../../../../ban.json";
-
-const banParse = JSON.parse(ban);
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import useElementOnScreen from 'hooks/useElementOnScreen';
+import { getBanners } from '@redux/features/bannersSlice';
+import { Container } from 'components/Container';
+import { Banners } from 'components/Banners';
+import { Loader } from 'components/Loader';
+import styles from 'pages/Ballroom/Main/blocks/Hero/Hero.scss';
 
 export const Hero = () => {
   const { isLoading, error, banners } = useSelector((state) => state.banners);
@@ -31,9 +26,9 @@ export const Hero = () => {
           {isLoading ? (
             <Loader className={styles.loader} />
           ) : (
-            banParse.length > 0 && (
+            banners.length > 0 && (
               <Banners
-                banners={banParse}
+                banners={banners}
                 sliderClassName={styles.bannersSlider}
                 navigationClassName={styles.bannersNavigation}
               />
