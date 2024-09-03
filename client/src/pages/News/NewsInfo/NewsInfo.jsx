@@ -95,11 +95,11 @@ export const NewsInfo = () => {
               {neParse.map(({ id, url, alternativeText, placeholder }) => (
                 <ImageComponent
                   className={styles.image}
-                  src={url}
+                  src="https://placehold.co/375x375"
                   alt={alternativeText}
                   placeholder={placeholder}
                   key={id}
-                  external
+                  // external
                 />
               ))}
             </section>

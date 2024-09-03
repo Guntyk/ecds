@@ -146,7 +146,7 @@
   }
 
   strong {
-    font-weight: map-get($fontWeights, 'medium');
+    font-weight: map-get($fontWeights, "medium");
   }
 
   em {
@@ -156,4 +156,14 @@
 
 .text {
   @include typography(body3);
+}
+
+@media (max-width: 768px) {
+  .news {
+    flex-direction: column;
+  }
+
+  .image {
+    border-radius: 0;
+  }
 }

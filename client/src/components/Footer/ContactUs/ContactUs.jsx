@@ -1,15 +1,19 @@
-import emailjs from '@emailjs/browser';
-import { useState } from 'react';
-import { formConfig, initialState } from 'components/Footer/ContactUs/formConfig';
-import { Notification } from 'components/Notification';
-import { Container } from 'components/Container';
-import { Button } from 'components/Button';
-import { Loader } from 'components/Loader';
-import { Input } from 'components/Input';
-import styles from 'components/Footer/ContactUs/ContactUs.scss';
+import emailjs from "@emailjs/browser";
+import { useState } from "react";
+import {
+  formConfig,
+  initialState,
+} from "components/Footer/ContactUs/formConfig";
+import { Notification } from "components/Notification";
+import { Container } from "components/Container";
+import { Button } from "components/Button";
+import { Loader } from "components/Loader";
+import { Input } from "components/Input";
+import styles from "components/Footer/ContactUs/ContactUs.scss";
 
 export const ContactUs = () => {
-  const [isSuccessNotificationShown, setIsSuccessNotificationShown] = useState(false);
+  const [isSuccessNotificationShown, setIsSuccessNotificationShown] =
+    useState(false);
   const [isEmailRequestLoading, setIsEmailRequestLoading] = useState(false);
   const [formState, setFormState] = useState(initialState);
 
@@ -58,15 +62,21 @@ export const ContactUs = () => {
               required
             />
           ))}
-          <Button text='Send' className={styles.sendBtn} type='submit' ghostStyle large />
+          <Button
+            text="Send"
+            className={styles.sendBtn}
+            type="submit"
+            ghostStyle
+            large
+          />
         </form>
         {isEmailRequestLoading && <Loader />}
         {isSuccessNotificationShown && (
           <Notification
             className={styles.notification}
             setIsActive={setIsSuccessNotificationShown}
-            title='Your message has been sent'
-            type='success'
+            title="Your message has been sent"
+            type="success"
           />
         )}
         <hr className={styles.line} />

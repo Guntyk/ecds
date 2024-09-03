@@ -74,12 +74,12 @@
     &:focus-visible,
     &:hover {
       outline: none;
-      font-weight: map-get($fontWeights, 'regular');
+      font-weight: map-get($fontWeights, "regular");
       border: 0.1rem solid $primary2;
     }
 
     &.active {
-      font-weight: map-get($fontWeights, 'regular');
+      font-weight: map-get($fontWeights, "regular");
       background: $secondary4;
       pointer-events: none;
     }
@@ -113,7 +113,7 @@
   .link {
     &.button {
       width: auto;
-      padding: 0.8rem;
+      padding: 0.8rem 1.2rem;
     }
   }
 }

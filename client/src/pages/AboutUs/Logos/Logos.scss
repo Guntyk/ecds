@@ -7,3 +7,9 @@
 .text {
   @include typography(body3);
 }
+
+@media (max-width: 557px) {
+  .logos {
+    gap: 0;
+  }
+}

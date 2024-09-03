@@ -45,4 +45,23 @@
   .dropdown {
     border-radius: 0;
   }
+
+  .dropdownBtn {
+    padding: 2.4rem 1.6rem;
+  }
+
+  .dropdown {
+    &Btn {
+      &.open {
+        @include typography(body1, medium);
+
+        padding-top: 2.4rem;
+        padding-right: 3.6rem;
+      }
+    }
+  }
+
+  .contentInner {
+    padding-left: 1.6rem;
+  }
 }

@@ -1,13 +1,13 @@
-import { Link, useLocation } from 'react-router-dom';
-import cn from 'classnames';
-import { contactUsBlockPages } from 'constants/pagesCategories';
-import { aboutUsLinks, menuLinks } from 'constants/links';
-import { pathnames } from 'constants/pathnames';
-import { socials } from 'constants/socials';
-import { ContactUs } from 'components/Footer/ContactUs';
-import { Container } from 'components/Container';
-import logo from 'assets/icons/logos/ecds-extended.svg';
-import styles from 'components/Footer/Footer.scss';
+import { Link, useLocation } from "react-router-dom";
+import cn from "classnames";
+import { contactUsBlockPages } from "constants/pagesCategories";
+import { aboutUsLinks, menuLinks } from "constants/links";
+import { pathnames } from "constants/pathnames";
+import { socials } from "constants/socials";
+import { ContactUs } from "components/Footer/ContactUs";
+import { Container } from "components/Container";
+import logo from "assets/icons/logos/ecds-extended.svg";
+import styles from "components/Footer/Footer.scss";
 
 export const Footer = () => {
   const { pathname } = useLocation();
@@ -49,21 +49,28 @@ export const Footer = () => {
             </div>
             <div className={styles.creditsWrapper}>
               <Link to={mainPage}>
-                <img src={logo} alt='ecds logo' />
+                <img className={styles.footerLogo} src={logo} alt="ecds logo" />
               </Link>
               <div className={styles.socialsWrapper}>
                 Follow us on
                 <ul className={styles.socials}>
                   {socials.map(({ id, name, link, icon }) => (
                     <li key={id}>
-                      <a href={link} target='_blank' rel='noreferrer noopener'>
+                      <a
+                        className={styles.socialsIcon}
+                        href={link}
+                        target="_blank"
+                        rel="noreferrer noopener"
+                      >
                         <img src={icon} alt={name} />
                       </a>
                     </li>
                   ))}
                 </ul>
               </div>
-              <p className={styles.credits}>© {currentYear} European Confederation of Dance Sports</p>
+              <p className={styles.credits}>
+                © {currentYear} European Confederation of Dance Sports
+              </p>
             </div>
           </div>
         </Container>

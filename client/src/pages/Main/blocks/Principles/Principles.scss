@@ -378,24 +378,40 @@
     background: #698717;
   }
 }
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   .block {
     padding-block: 4.8rem;
   }
 
   .title {
-    font-size: 5.8rem;
+    font-size: 4.8rem;
+    text-transform: capitalize;
+    margin-bottom: 3.2rem;
+  }
+
+  .principlesList {
+    gap: 3.2rem;
+  }
+
+  .principle {
+    max-width: 56.7rem;
+    &:not(:nth-child(3)) {
+      margin-top: 0;
+    }
+  }
+
+  .principleTitle {
+    font-size: 4rem;
+  }
+
+  .textMain {
+    margin: 8px 0;
+    line-height: 2.4rem;
   }
 
   .principlesList {
     flex-wrap: nowrap;
     max-height: none;
-  }
-
-  .principle {
-    &:not(:nth-child(3)) {
-      margin-top: 3.2rem;
-    }
   }
 }
 

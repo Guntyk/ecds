@@ -80,10 +80,10 @@
   height: min-content;
 }
 
-@media (max-width: 557px) {
+@media (max-width: 768px) {
   .block {
     padding-bottom: 9.6rem;
-    margin-bottom: calc(25rem + 1vh);
+    margin-bottom: 72%;
   }
 
   .wrapper {
@@ -92,12 +92,5 @@
 
   .title {
     max-width: 39.8rem;
-  }
-}
-
-@media screen and (min-width: 558px) and (max-width: 767px) {
-  .block {
-    padding-bottom: 10rem;
-    margin-bottom: calc(25rem + 1vh);
   }
 }

@@ -40,7 +40,19 @@ export const LogoDropdown = ({ logo: { name, logos } }) => {
         })}
       >
         <span>{name}</span>
-        <Arrow isOpen={isOpen} logoStyle onClick={() => setIsOpen(!isOpen)} />
+        <div className={styles.multiBtn}>
+          <Arrow isOpen={isOpen} logoStyle onClick={() => setIsOpen(!isOpen)} />
+        </div>
+
+        {isOpen === false && (
+          <div className={styles.openBtn}>
+            <Arrow
+              className={styles.arrow}
+              onClick={() => setIsOpen(true)}
+              expandStyle
+            />
+          </div>
+        )}
       </div>
       <div
         className={cn(dropdownStyles.content, {
@@ -77,6 +89,13 @@ export const LogoDropdown = ({ logo: { name, logos } }) => {
                       Download in {ext.slice(1)}
                     </Button>
                   ))}
+                </div>
+                <div className={styles.closingArrow}>
+                  <Arrow
+                    isOpen={true}
+                    onClick={() => setIsOpen(false)}
+                    expandStyle
+                  />
                 </div>
               </li>
             );

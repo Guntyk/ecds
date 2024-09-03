@@ -27,11 +27,12 @@
   width: 50%;
 }
 
-@media (max-width: 557px) {
+@media (max-width: 300px) {
   .block {
     min-height: 66rem;
     background-position: top left -2.2rem;
     background-size: 170% 39.2rem;
+    margin-bottom: -12rem;
   }
 
   .bannersSlider {
@@ -51,17 +52,117 @@
   }
 }
 
-@media screen and (min-width: 558px) and (max-width: 767px) {
+@media screen and (min-width: 301px) and (max-width: 400px) {
   .block {
     min-height: 66rem;
-    padding: 0;
-    background-position: top;
-    background-size: 100% 39.2rem;
+    background-position: top left -2.2rem;
+    background-size: 170% 39.2rem;
+    margin-bottom: 1%;
   }
 
   .bannersSlider {
     position: absolute;
-    top: 42.5rem;
+    top: 30rem;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .banners {
+    &Slider:hover .bannersNavigation {
+      background: none;
+    }
+
+    &Navigation {
+      background: none;
+    }
+  }
+}
+
+@media screen and (min-width: 401px) and (max-width: 768px) {
+  .block {
+    min-height: 66rem;
+    background-position: top left -2.2rem;
+    background-size: 170% 39.2rem;
+    margin-bottom: 10%;
+  }
+
+  .bannersSlider {
+    position: absolute;
+    top: 30rem;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .banners {
+    &Slider:hover .bannersNavigation {
+      background: none;
+    }
+
+    &Navigation {
+      background: none;
+    }
+  }
+}
+
+@media screen and (min-width: 501px) and (max-width: 600px) {
+  .block {
+    min-height: 66rem;
+    background-position: top left -2.2rem;
+    background-size: 170% 39.2rem;
+    margin-bottom: 15%;
+  }
+
+  .bannersSlider {
+    position: absolute;
+    top: 30rem;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .banners {
+    &Slider:hover .bannersNavigation {
+      background: none;
+    }
+
+    &Navigation {
+      background: none;
+    }
+  }
+}
+
+@media screen and (min-width: 601px) and (max-width: 700px) {
+  .block {
+    min-height: 66rem;
+    background-position: top left -2.2rem;
+    background-size: 170% 39.2rem;
+    margin-bottom: 20%;
+  }
+
+  .bannersSlider {
+    position: absolute;
+    top: 30rem;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .banners {
+    &Slider:hover .bannersNavigation {
+      background: none;
+    }
+
+    &Navigation {
+      background: none;
+    }
+  }
+}
+
+@media screen and (min-width: 601px) and (max-width: 768px) {
+  .block {
+    min-height: 66rem;
+    background-position: top left -2.2rem;
+    background-size: 170% 39.2rem;
+    margin-bottom: 25%;
+  }
+
+  .bannersSlider {
+    position: absolute;
+    top: 30rem;
     left: 50%;
     transform: translateX(-50%);
   }

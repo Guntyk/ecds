@@ -1,5 +1,5 @@
-import cn from 'classnames';
-import styles from 'components/Button/Button.scss';
+import cn from "classnames";
+import styles from "components/Button/Button.scss";
 
 export const Button = ({
   children,
@@ -27,7 +27,7 @@ export const Button = ({
   );
 
   return (
-    <button className={buttonClasses} type={type || 'button'} {...props}>
+    <button className={buttonClasses} type={type || "button"} {...props}>
       {children ?? text}
     </button>
   );
