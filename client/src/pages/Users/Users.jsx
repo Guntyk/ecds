@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useUsers } from "hooks/useUsers";
 import { formConfig } from "pages/Users/formConfig";
 import { activeUsersTypes } from "constants/usersTypes";
@@ -8,6 +9,7 @@ import { Dropdown } from "components/Dropdown";
 import { Button } from "components/Button";
 import { Input } from "components/Input";
 import { UserCard } from "pages/Users/UserCard";
+import { FilterMobile } from "components/FilterMobile/FilterMobile";
 import styles from "pages/Users/Users.scss";
 
 import us from "../us.json";
@@ -15,6 +17,7 @@ import us from "../us.json";
 const usParse = JSON.parse(us);
 
 export const Users = () => {
+  const [isFilterMobileOpen, setIsFilterMobileOpen] = useState(false);
   const {
     users,
     formState,
@@ -36,10 +39,16 @@ export const Users = () => {
               activeTabIndex={activeTypeIndex}
               setActiveTabIndex={setActiveTypeIndex}
             />
-            <form className={styles.searchForm} onSubmit={handleSubmit}>
+            <form
+              className={`${styles.searchForm} ${
+                isFilterMobileOpen ? styles.searchFormWithFilterOpen : ""
+              }`}
+              onSubmit={handleSubmit}
+            >
               {formConfig.map(({ name, placeholder, options, zIndex }) =>
                 options ? (
                   <Dropdown
+                    className={styles.dropdownFilter}
                     options={options}
                     selectedValue={formState[name]}
                     placeholder={placeholder}
@@ -49,6 +58,7 @@ export const Users = () => {
                   />
                 ) : (
                   <Input
+                    wrapperClassName={styles.input}
                     key={name}
                     name={name}
                     inputValue={formState[name]}
@@ -64,10 +74,20 @@ export const Users = () => {
                 searchStyle
               />
               <Button
+                className={styles.clearFilters}
                 text="Clear filters"
                 type="reset"
                 onClick={clearFilters}
                 ghostStyle
+              />
+              <FilterMobile
+                className={styles.filterMobile}
+                formState={formState}
+                handleFilterChange={handleFilterChange}
+                handleSubmit={handleSubmit}
+                clearFilters={clearFilters}
+                formConfig={formConfig}
+                onOpenChange={setIsFilterMobileOpen}
               />
             </form>
           </section>
