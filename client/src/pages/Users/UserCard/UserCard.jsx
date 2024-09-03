@@ -1,6 +1,6 @@
-import { Button } from "components/Button";
-import { ImageComponent } from "components/Image";
-import styles from "pages/Users/UserCard/UserCard.scss";
+import { Button } from 'components/Button';
+import { ImageComponent } from 'components/Image';
+import styles from 'pages/Users/UserCard/UserCard.scss';
 
 export const UserCard = ({ user: { name, level, photo } }) => {
   return (

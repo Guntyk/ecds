@@ -1,15 +1,11 @@
-import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
-import { getEvents } from "@redux/features/eventsSlice";
-import { Container } from "components/Container";
-import { Loader } from "components/Loader";
-import { EventCard } from "pages/Calendar/EventCard";
-import { TryAgain } from "pages/Services/TryAgain";
-import styles from "pages/Calendar/Calendar.scss";
-
-import ev from "../ev.json";
-
-const evParse = JSON.parse(ev);
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { getEvents } from '@redux/features/eventsSlice';
+import { Container } from 'components/Container';
+import { Loader } from 'components/Loader';
+import { EventCard } from 'pages/Calendar/EventCard';
+import { TryAgain } from 'pages/Services/TryAgain';
+import styles from 'pages/Calendar/Calendar.scss';
 
 export const Calendar = () => {
   const { isLoading, error, events } = useSelector((state) => state.events);
@@ -21,9 +17,9 @@ export const Calendar = () => {
     }
   }, []);
 
-  // if (error) {
-  //   return <TryAgain />;
-  // }
+  if (error) {
+    return <TryAgain />;
+  }
 
   return (
     <Container>
@@ -35,10 +31,10 @@ export const Calendar = () => {
         <div className={styles.events}>
           {isLoading ? (
             <Loader />
-          ) : evParse.length === 0 ? (
+          ) : events.length === 0 ? (
             <p className={styles.text}>The calendar is temporarily empty</p>
           ) : (
-            evParse.map((event) => <EventCard event={event} key={event.id} />)
+            events.map((event) => <EventCard event={event} key={event.id} />)
           )}
         </div>
       </section>

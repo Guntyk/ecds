@@ -1,23 +1,17 @@
-import { useHistory, useLocation } from "react-router-dom";
-import { useEffect } from "react";
-import { usersList } from "constants/mockedUsers";
-import { Container } from "components/Container";
-import { Link } from "components/Link";
-import { CertificationCard } from "pages/Certification/CertificationCard";
-import styles from "pages/Certification/Certification.scss";
-
-import us from "../us.json";
-
-const usParse = JSON.parse(us);
-
-console.log(usParse);
+import { useHistory, useLocation } from 'react-router-dom';
+import { useEffect } from 'react';
+import { usersList } from 'constants/mockedUsers';
+import { Container } from 'components/Container';
+import { Link } from 'components/Link';
+import { CertificationCard } from 'pages/Certification/CertificationCard';
+import styles from 'pages/Certification/Certification.scss';
 
 export const Certification = () => {
-  const certificationTypes = ["dancers", "coaches", "clubs", "conditions"];
+  const certificationTypes = ['dancers', 'coaches', 'clubs', 'conditions'];
   const { search, pathname } = useLocation();
   const { push } = useHistory();
 
-  const searchTypeParam = new URLSearchParams(search).get("type");
+  const searchTypeParam = new URLSearchParams(search).get('type');
 
   useEffect(() => {
     if (!searchTypeParam) {
@@ -50,7 +44,7 @@ export const Certification = () => {
             </nav>
           </section>
           <section className={styles.list}>
-            {usParse
+            {[]
               .filter(({ type }) => type === searchTypeParam)
               .map((user) => (
                 <CertificationCard user={user} key={user.id} />

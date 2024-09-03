@@ -1,15 +1,15 @@
-import { Link, NavLink, useLocation } from "react-router-dom";
-import { useState } from "react";
-import cn from "classnames";
-import { useScreenWidth } from "hooks/useScreenWidth";
-import { pathnames } from "constants/pathnames";
-import { Container } from "components/Container";
-import { Button } from "components/Button";
-import { Menu } from "components/Menu";
-import logoSmallDark from "assets/icons/logos/ecds-compressed-dark.svg";
-import logoSmall from "assets/icons/logos/ecds-compressed.svg";
-import logo from "assets/icons/logos/ecds.svg";
-import styles from "components/Header/Header.scss";
+import { Link, NavLink, useLocation } from 'react-router-dom';
+import { useState } from 'react';
+import cn from 'classnames';
+import { useScreenWidth } from 'hooks/useScreenWidth';
+import { pathnames } from 'constants/pathnames';
+import { Container } from 'components/Container';
+import { Button } from 'components/Button';
+import { Menu } from 'components/Menu';
+import logoSmallDark from 'assets/icons/logos/ecds-compressed-dark.svg';
+import logoSmall from 'assets/icons/logos/ecds-compressed.svg';
+import logo from 'assets/icons/logos/ecds.svg';
+import styles from 'components/Header/Header.scss';
 
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -45,28 +45,20 @@ export const Header = () => {
     }
   };
 
-  const currentPathName = "/" + pathname.split("/")[1];
+  const currentPathName = '/' + pathname.split('/')[1];
   const isPageDark = darkHeaderPages.includes(currentPathName);
 
   return (
     <>
       <header className={styles.headerWrapper}>
         <Container>
-          <div
-            className={cn(styles.header, { [styles.headerDark]: isPageDark })}
-          >
+          <div className={cn(styles.header, { [styles.headerDark]: isPageDark })}>
             <Link to={mainPage} className={styles.logo}>
               <img
-                src={
-                  screenWidth > 557
-                    ? logo
-                    : isPageDark
-                    ? logoSmallDark
-                    : logoSmall
-                }
-                alt="European Confederation of Dance Sports logo"
+                src={screenWidth > 557 ? logo : isPageDark ? logoSmallDark : logoSmall}
+                alt='European Confederation of Dance Sports logo'
               />
-              {screenWidth > 557 && "European Confederation of Dance Sports"}
+              {screenWidth > 557 && 'European Confederation of Dance Sports'}
             </Link>
             <nav>
               <ul className={styles.navigation}>
@@ -89,13 +81,7 @@ export const Header = () => {
                 <li>
                   <Button
                     className={styles.navigationLink}
-                    text={
-                      screenWidth > 557 ? (
-                        "Menu"
-                      ) : (
-                        <div className={styles.menuIcon} />
-                      )
-                    }
+                    text={screenWidth > 557 ? 'Menu' : <div className={styles.menuIcon} />}
                     onClick={() => setIsMenuOpen(true)}
                     noStyle
                   />
@@ -103,14 +89,10 @@ export const Header = () => {
               </ul>
             </nav>
           </div>
-          {screenWidth > 557 && (
-            <Menu isOpen={isMenuOpen} setIsOpen={setIsMenuOpen} />
-          )}
+          {screenWidth > 557 && <Menu isOpen={isMenuOpen} setIsOpen={setIsMenuOpen} />}
         </Container>
       </header>
-      {screenWidth <= 557 && (
-        <Menu isOpen={isMenuOpen} setIsOpen={setIsMenuOpen} />
-      )}
+      {screenWidth <= 557 && <Menu isOpen={isMenuOpen} setIsOpen={setIsMenuOpen} />}
     </>
   );
 };

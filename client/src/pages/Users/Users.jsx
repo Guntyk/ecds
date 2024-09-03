@@ -1,32 +1,21 @@
-import { useState } from "react";
-import { useUsers } from "hooks/useUsers";
-import { formConfig } from "pages/Users/formConfig";
-import { activeUsersTypes } from "constants/usersTypes";
-import { usersList } from "constants/mockedUsers";
-import { TabSelector } from "components/Button/TabSelector";
-import { Container } from "components/Container";
-import { Dropdown } from "components/Dropdown";
-import { Button } from "components/Button";
-import { Input } from "components/Input";
-import { UserCard } from "pages/Users/UserCard";
-import { FilterMobile } from "components/FilterMobile/FilterMobile";
-import styles from "pages/Users/Users.scss";
-
-import us from "../us.json";
-
-const usParse = JSON.parse(us);
+import { useState } from 'react';
+import { useUsers } from 'hooks/useUsers';
+import { formConfig } from 'pages/Users/formConfig';
+import { activeUsersTypes } from 'constants/usersTypes';
+import { usersList } from 'constants/mockedUsers';
+import { TabSelector } from 'components/Button/TabSelector';
+import { Container } from 'components/Container';
+import { Dropdown } from 'components/Dropdown';
+import { Button } from 'components/Button';
+import { Input } from 'components/Input';
+import { UserCard } from 'pages/Users/UserCard';
+import { FilterMobile } from 'components/FilterMobile/FilterMobile';
+import styles from 'pages/Users/Users.scss';
 
 export const Users = () => {
   const [isFilterMobileOpen, setIsFilterMobileOpen] = useState(false);
-  const {
-    users,
-    formState,
-    activeTypeIndex,
-    setActiveTypeIndex,
-    handleFilterChange,
-    handleSubmit,
-    clearFilters,
-  } = useUsers(usersList, activeUsersTypes);
+  const { users, formState, activeTypeIndex, setActiveTypeIndex, handleFilterChange, handleSubmit, clearFilters } =
+    useUsers(usersList, activeUsersTypes);
 
   return (
     <Container>
@@ -40,9 +29,7 @@ export const Users = () => {
               setActiveTabIndex={setActiveTypeIndex}
             />
             <form
-              className={`${styles.searchForm} ${
-                isFilterMobileOpen ? styles.searchFormWithFilterOpen : ""
-              }`}
+              className={`${styles.searchForm} ${isFilterMobileOpen ? styles.searchFormWithFilterOpen : ''}`}
               onSubmit={handleSubmit}
             >
               {formConfig.map(({ name, placeholder, options, zIndex }) =>
@@ -67,16 +54,11 @@ export const Users = () => {
                   />
                 )
               )}
-              <Button
-                className={styles.searchBtn}
-                text="Search"
-                type="submit"
-                searchStyle
-              />
+              <Button className={styles.searchBtn} text='Search' type='submit' searchStyle />
               <Button
                 className={styles.clearFilters}
-                text="Clear filters"
-                type="reset"
+                text='Clear filters'
+                type='reset'
                 onClick={clearFilters}
                 ghostStyle
               />
@@ -92,7 +74,7 @@ export const Users = () => {
             </form>
           </section>
           <ul className={styles.users}>
-            {usParse.map((user) => (
+            {users.map((user) => (
               <UserCard user={user} key={user.id} />
             ))}
           </ul>

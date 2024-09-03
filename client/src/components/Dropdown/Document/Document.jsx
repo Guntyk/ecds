@@ -1,14 +1,12 @@
-import { BlocksRenderer } from "@strapi/blocks-react-renderer";
-import { useState } from "react";
-import cn from "classnames";
-import { Arrow } from "components/Arrow";
-import { Link } from "components/Link";
-import dropdownStyles from "components/Dropdown/General.scss";
-import styles from "components/Dropdown/Document/Document.scss";
+import { BlocksRenderer } from '@strapi/blocks-react-renderer';
+import { useState } from 'react';
+import cn from 'classnames';
+import { Arrow } from 'components/Arrow';
+import { Link } from 'components/Link';
+import dropdownStyles from 'components/Dropdown/General.scss';
+import styles from 'components/Dropdown/Document/Document.scss';
 
-export const DocumentDropdown = ({
-  document: { title, description, file },
-}) => {
+export const DocumentDropdown = ({ document: { title, description, file } }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -20,11 +18,7 @@ export const DocumentDropdown = ({
         })}
       >
         <span>{title}</span>
-        <Arrow
-          className={styles.arrow}
-          onClick={() => setIsOpen(true)}
-          expandStyle
-        />
+        <Arrow className={styles.arrow} onClick={() => setIsOpen(true)} expandStyle />
       </div>
       <div
         className={cn(dropdownStyles.content, {

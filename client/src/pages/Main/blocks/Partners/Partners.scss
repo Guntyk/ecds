@@ -66,7 +66,7 @@
   transition: 0.2s;
 
   &::after {
-    content: "";
+    content: '';
     position: absolute;
     right: 0;
     width: 1.1rem;
@@ -100,7 +100,7 @@
     @include typography(h4);
 
     color: $text2;
-    font-weight: map-get($fontWeights, "medium");
+    font-weight: map-get($fontWeights, 'medium');
     text-transform: capitalize;
   }
 

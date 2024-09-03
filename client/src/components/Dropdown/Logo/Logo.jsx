@@ -1,10 +1,10 @@
-import { useState } from "react";
-import cn from "classnames";
-import { ImageComponent } from "components/Image";
-import { Button } from "components/Button";
-import { Arrow } from "components/Arrow";
-import dropdownStyles from "components/Dropdown/General.scss";
-import styles from "components/Dropdown/Logo/Logo.scss";
+import { useState } from 'react';
+import cn from 'classnames';
+import { ImageComponent } from 'components/Image';
+import { Button } from 'components/Button';
+import { Arrow } from 'components/Arrow';
+import dropdownStyles from 'components/Dropdown/General.scss';
+import styles from 'components/Dropdown/Logo/Logo.scss';
 
 export const LogoDropdown = ({ logo: { name, logos } }) => {
   const [downloadedLogosIds, setDownloadedLogosIds] = useState([]);
@@ -12,24 +12,22 @@ export const LogoDropdown = ({ logo: { name, logos } }) => {
 
   const handleDownload = (id, url, desiredFileName) => {
     const externalUrl = process.env.REACT_APP_BASE_API_URL + url;
-    const filename =
-      desiredFileName ||
-      externalUrl.substring(externalUrl.lastIndexOf("/") + 1).split("?")[0];
+    const filename = desiredFileName || externalUrl.substring(externalUrl.lastIndexOf('/') + 1).split('?')[0];
 
     fetch(externalUrl)
       .then((response) => response.blob())
       .then((blob) => {
-        const a = document.createElement("a");
+        const a = document.createElement('a');
         a.href = window.URL.createObjectURL(blob);
         a.download = filename;
-        a.style.display = "none";
+        a.style.display = 'none';
         document.body.appendChild(a);
         a.click();
         document.body.removeChild(a);
 
         setDownloadedLogosIds((prevIds) => [...prevIds, id]);
       })
-      .catch((err) => console.error("Error fetching file:", err));
+      .catch((err) => console.error('Error fetching file:', err));
   };
 
   return (
@@ -46,11 +44,7 @@ export const LogoDropdown = ({ logo: { name, logos } }) => {
 
         {isOpen === false && (
           <div className={styles.openBtn}>
-            <Arrow
-              className={styles.arrow}
-              onClick={() => setIsOpen(true)}
-              expandStyle
-            />
+            <Arrow className={styles.arrow} onClick={() => setIsOpen(true)} expandStyle />
           </div>
         )}
       </div>
@@ -62,9 +56,9 @@ export const LogoDropdown = ({ logo: { name, logos } }) => {
         <ul className={dropdownStyles.contentInner}>
           {logos.map(({ id, images }) => {
             const coverImg =
-              images.find(({ ext }) => ext === ".svg") ||
-              images.find(({ ext }) => ext === ".png") ||
-              images.find(({ ext }) => ext === ".jpg");
+              images.find(({ ext }) => ext === '.svg') ||
+              images.find(({ ext }) => ext === '.png') ||
+              images.find(({ ext }) => ext === '.jpg');
 
             return (
               <li className={styles.logo} key={id}>
@@ -73,7 +67,7 @@ export const LogoDropdown = ({ logo: { name, logos } }) => {
                   placeholder={coverImg?.placeholder}
                   src={`${process.env.REACT_APP_BASE_API_URL}${coverImg?.url}`}
                   alt={coverImg?.alternativeText}
-                  fit="contain"
+                  fit='contain'
                 />
                 <div className={styles.buttonsWrapper}>
                   {images.map(({ id, name, ext, url }) => (
@@ -91,11 +85,7 @@ export const LogoDropdown = ({ logo: { name, logos } }) => {
                   ))}
                 </div>
                 <div className={styles.closingArrow}>
-                  <Arrow
-                    isOpen={true}
-                    onClick={() => setIsOpen(false)}
-                    expandStyle
-                  />
+                  <Arrow isOpen={true} onClick={() => setIsOpen(false)} expandStyle />
                 </div>
               </li>
             );

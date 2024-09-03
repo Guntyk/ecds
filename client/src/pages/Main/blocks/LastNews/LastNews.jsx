@@ -1,29 +1,29 @@
-import { Scrollbar, Navigation } from "swiper/modules";
-import { useDispatch, useSelector } from "react-redux";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { useHistory } from "react-router-dom";
-import { useEffect } from "react";
-import SwiperCore from "swiper";
-import cn from "classnames";
-import useElementOnScreen from "hooks/useElementOnScreen";
-import { useScreenWidth } from "hooks/useScreenWidth";
-import { useNews } from "hooks/useNews";
-import { getNews } from "@redux/features/newsSlice";
-import { formatDate } from "helpers/formatDate";
-import { pathnames } from "constants/pathnames";
-import { Notification } from "components/Notification";
-import { ImageComponent } from "components/Image";
-import { Container } from "components/Container";
-import { Button } from "components/Button";
-import { Loader } from "components/Loader";
-import { Link } from "components/Link";
-import arrowRight from "assets/icons/arrow-right-background3_2.svg";
-import arrowLeft from "assets/icons/arrow-left-background3_2.svg";
-import eye from "assets/icons/eye.svg";
-import "swiper/css/navigation";
-import "swiper/css/scrollbar";
-import "swiper/css";
-import styles from "pages/Main/blocks/LastNews/LastNews.scss";
+import { Scrollbar, Navigation } from 'swiper/modules';
+import { useDispatch, useSelector } from 'react-redux';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { useHistory } from 'react-router-dom';
+import { useEffect } from 'react';
+import SwiperCore from 'swiper';
+import cn from 'classnames';
+import useElementOnScreen from 'hooks/useElementOnScreen';
+import { useScreenWidth } from 'hooks/useScreenWidth';
+import { useNews } from 'hooks/useNews';
+import { getNews } from '@redux/features/newsSlice';
+import { formatDate } from 'helpers/formatDate';
+import { pathnames } from 'constants/pathnames';
+import { Notification } from 'components/Notification';
+import { ImageComponent } from 'components/Image';
+import { Container } from 'components/Container';
+import { Button } from 'components/Button';
+import { Loader } from 'components/Loader';
+import { Link } from 'components/Link';
+import arrowRight from 'assets/icons/arrow-right-background3_2.svg';
+import arrowLeft from 'assets/icons/arrow-left-background3_2.svg';
+import eye from 'assets/icons/eye.svg';
+import 'swiper/css/navigation';
+import 'swiper/css/scrollbar';
+import 'swiper/css';
+import styles from 'pages/Main/blocks/LastNews/LastNews.scss';
 
 SwiperCore.use([Navigation, Scrollbar]);
 
@@ -38,17 +38,13 @@ export const LastNews = () => {
   const [containerRef, isVisible] = useElementOnScreen();
 
   const handleRedirect = (e, id) => {
-    if (e.type === "click" || (e.type === "keydown" && e.key === "Enter")) {
+    if (e.type === 'click' || (e.type === 'keydown' && e.key === 'Enter')) {
       push(`${newsPage}/${id}`);
     }
   };
 
   useEffect(() => {
-    if (
-      !error &&
-      isVisible &&
-      !news.some(({ pages }) => pages.some((page) => page === "main"))
-    ) {
+    if (!error && isVisible && !news.some(({ pages }) => pages.some((page) => page === 'main'))) {
       dispatch(getNews({ getCurrentPageNews }));
     }
   }, [isVisible]);
@@ -61,23 +57,13 @@ export const LastNews = () => {
         <h2 className={styles.title}>Latest news</h2>
         {news.length > 0 && (
           <div className={styles.navigationWrapper}>
-            <Button
-              className={cn(styles.btn, styles.prev)}
-              id="btnPrev"
-              ghostStyle
-              small
-            >
-              <img src={arrowLeft} alt="arrow left" />
+            <Button className={cn(styles.btn, styles.prev)} id='btnPrev' ghostStyle small>
+              <img src={arrowLeft} alt='arrow left' />
               Prev
             </Button>
-            <Button
-              className={cn(styles.btn, styles.next)}
-              id="btnNext"
-              ghostStyle
-              small
-            >
+            <Button className={cn(styles.btn, styles.next)} id='btnNext' ghostStyle small>
               Next
-              <img src={arrowRight} alt="arrow right" />
+              <img src={arrowRight} alt='arrow right' />
             </Button>
           </div>
         )}
@@ -95,14 +81,14 @@ export const LastNews = () => {
               >
                 <Swiper
                   spaceBetween={width > 557 ? 24 : 8}
-                  slidesPerView="auto"
+                  slidesPerView='auto'
                   scrollbar={{
                     dragClass: styles.thumb,
                     draggable: true,
                     dragSize: 240,
-                    el: "#scrollbar",
+                    el: '#scrollbar',
                   }}
-                  navigation={{ nextEl: "#btnNext", prevEl: "#btnPrev" }}
+                  navigation={{ nextEl: '#btnNext', prevEl: '#btnPrev' }}
                 >
                   {lastNews.map((article) => (
                     <SwiperSlide
@@ -114,42 +100,33 @@ export const LastNews = () => {
                     >
                       <ImageComponent
                         className={styles.cover}
-                        src={
-                          article.media?.[0].url || "https://placehold.co/282"
-                        }
-                        alt={article.media?.[0].alt || "cover placeholder"}
+                        src={article.media?.[0].url || 'https://placehold.co/282'}
+                        alt={article.media?.[0].alt || 'cover placeholder'}
                         placeholder={article.media?.[0].placeholder}
                         external={article.media}
                       />
                       <div className={styles.additionalInfo}>
                         <div className={styles.reactions}>
-                          <img src={eye} alt="Views" />
+                          <img src={eye} alt='Views' />
                           {article.views}
                         </div>
-                        <time dateTime={article.publicationDate}>
-                          {formatDate(article.publicationDate)}
-                        </time>
+                        <time dateTime={article.publicationDate}>{formatDate(article.publicationDate)}</time>
                       </div>
                       <div className={styles.newsTitleWrapper}>
                         <p className={styles.newsTitle}>{article.title}</p>
                       </div>
                     </SwiperSlide>
                   ))}
-                  <div id="scrollbar" className={styles.scrollbar} />
+                  <div id='scrollbar' className={styles.scrollbar} />
                 </Swiper>
               </div>
               {lastNews.length > 0 && (
-                <Link
-                  className={styles.moreBtn}
-                  content="See all news"
-                  path={newsPage}
-                  arrowRight
-                />
+                <Link className={styles.moreBtn} content='See all news' path={newsPage} arrowRight />
               )}
             </>
           )
         ) : (
-          <Notification text={error} type="error" />
+          <Notification text={error} type='error' />
         )}
       </Container>
     </section>

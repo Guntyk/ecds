@@ -31,16 +31,16 @@
     height: 29.6rem;
     background: no-repeat top / cover;
 
-    &[data-image="ballroom"] {
+    &[data-image='ballroom'] {
       background-image: url(assets/images/dances/ballroom-dance.webp);
     }
-    &[data-image="street"] {
+    &[data-image='street'] {
       background-image: url(assets/images/dances/street-dance.webp);
     }
-    &[data-image="caribbean"] {
+    &[data-image='caribbean'] {
       background-image: url(assets/images/dances/caribbean-dance.webp);
     }
-    &[data-image="other"] {
+    &[data-image='other'] {
       background-image: url(assets/images/dances/other-dances.webp);
     }
   }

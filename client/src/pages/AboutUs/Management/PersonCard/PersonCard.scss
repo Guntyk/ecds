@@ -52,7 +52,7 @@
   @include typography(h3);
 
   font-size: 4rem;
-  font-weight: map-get($fontWeights, "bold");
+  font-weight: map-get($fontWeights, 'bold');
   text-align: center;
 }
 
