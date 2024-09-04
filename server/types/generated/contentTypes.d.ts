@@ -986,7 +986,16 @@ export interface ApiEventEvent extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    type: Attribute.Enumeration<['Tournament', 'Championship']> &
+    type: Attribute.Enumeration<
+      [
+        'Classification tournament',
+        'Ranking tournament',
+        'Open tournament',
+        'National championship',
+        'Cup',
+        'Championship'
+      ]
+    > &
       Attribute.Required;
     title: Attribute.String & Attribute.Required;
     description: Attribute.Text &
@@ -1003,6 +1012,8 @@ export interface ApiEventEvent extends Schema.CollectionType {
     endDate: Attribute.Date;
     address: Attribute.String & Attribute.Required;
     cover: Attribute.Media<'images'>;
+    style: Attribute.Enumeration<['Ballroom', 'Street', 'Caribbean', 'Other']> &
+      Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
