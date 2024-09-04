@@ -32,11 +32,27 @@ export const LogoDropdown = ({ logo: { name, logos } }) => {
 
   return (
     <div className={dropdownStyles.dropdown}>
-      <div className={cn(dropdownStyles.dropdownBtn, { [dropdownStyles.open]: isOpen })}>
+      <div
+        className={cn(dropdownStyles.dropdownBtn, {
+          [dropdownStyles.open]: isOpen,
+        })}
+      >
         <span>{name}</span>
-        <Arrow isOpen={isOpen} logoStyle onClick={() => setIsOpen(!isOpen)} />
+        <div className={styles.multiBtn}>
+          <Arrow isOpen={isOpen} logoStyle onClick={() => setIsOpen(!isOpen)} />
+        </div>
+
+        {isOpen === false && (
+          <div className={styles.openBtn}>
+            <Arrow className={styles.arrow} onClick={() => setIsOpen(true)} expandStyle />
+          </div>
+        )}
       </div>
-      <div className={cn(dropdownStyles.content, { [dropdownStyles.open]: isOpen })}>
+      <div
+        className={cn(dropdownStyles.content, {
+          [dropdownStyles.open]: isOpen,
+        })}
+      >
         <ul className={dropdownStyles.contentInner}>
           {logos.map(({ id, images }) => {
             const coverImg =
@@ -67,6 +83,9 @@ export const LogoDropdown = ({ logo: { name, logos } }) => {
                       Download in {ext.slice(1)}
                     </Button>
                   ))}
+                </div>
+                <div className={styles.closingArrow}>
+                  <Arrow isOpen={true} onClick={() => setIsOpen(false)} expandStyle />
                 </div>
               </li>
             );

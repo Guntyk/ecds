@@ -50,3 +50,70 @@
   background: $background3_2;
   transition: 0.3s;
 }
+
+.closingArrow {
+  display: none;
+}
+
+.openBtn {
+  display: none;
+}
+
+.multiBtn {
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .logo {
+    flex-direction: column;
+    gap: 2.4rem;
+  }
+
+  .logoWrapper {
+    width: 100%;
+  }
+
+  .buttonsWrapper {
+    width: 100%;
+    .downloadBtn {
+      padding: 0.8rem 2rem;
+      width: 20.5rem;
+    }
+  }
+
+  .closingArrow {
+    display: none;
+  }
+
+  .logo:last-child .closingArrow {
+    display: block;
+  }
+
+  .openBtn {
+    display: block;
+  }
+
+  .multiBtn {
+    display: none;
+  }
+
+  .buttonsWrapper {
+    padding-right: 2.4rem;
+
+    &.open {
+      .openBtn {
+        display: none;
+      }
+
+      .arrow {
+        opacity: 0;
+        pointer-events: none;
+        user-select: none;
+      }
+    }
+
+    .arrow {
+      transition: 0.2s;
+    }
+  }
+}

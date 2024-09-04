@@ -37,6 +37,17 @@
   );
 }
 
+@mixin container($maxWidth: 123.2rem) {
+  position: relative;
+  margin: $centeredMargin;
+  padding-inline: 1.6rem;
+  max-width: 123.2rem;
+
+  @media (max-width: 557px) {
+    max-width: unset;
+  }
+}
+
 @mixin dynamic-label-styles($bgColor, $textColor) {
   color: $textColor;
   background: $bgColor;

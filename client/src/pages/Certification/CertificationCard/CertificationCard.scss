@@ -17,6 +17,14 @@
   border-radius: 50%;
 }
 
+.cardInfo {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.6rem;
+}
+
 .name {
   @include typography(body1, medium);
 
@@ -29,6 +37,7 @@
   display: flex;
   align-items: center;
   gap: $gapExtraSmall;
+  margin-bottom: 3.2rem;
 }
 
 .moreBtn {
@@ -67,5 +76,32 @@
     right: 0;
     opacity: 0;
     background: $primary3;
+  }
+}
+
+@media (max-width: 768px) {
+  .card {
+    width: 100%;
+    height: 16.8rem;
+    padding: 2.4rem 1.6rem;
+    flex-direction: row;
+  }
+
+  .photo {
+    width: 12rem;
+    height: 12rem;
+  }
+
+  .cardInfo {
+    align-items: baseline;
+    gap: 0.8rem;
+  }
+
+  .name {
+    font-size: 1.8rem;
+  }
+
+  .date {
+    margin-bottom: 2.4rem;
   }
 }

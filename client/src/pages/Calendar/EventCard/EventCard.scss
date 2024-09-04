@@ -90,3 +90,67 @@
     gap: $gapExtraSmall;
   }
 }
+
+@media (max-width: 557px) {
+  .card {
+    padding: 2.4rem 1.6rem;
+    border-radius: 0;
+    display: flex;
+    height: auto;
+    overflow: visible;
+    gap: 1.6rem;
+  }
+
+  .cover {
+    max-width: 12rem;
+    min-width: 12rem;
+    max-height: 16.6rem;
+    min-height: 16.6rem;
+    border-radius: 0.8rem;
+  }
+
+  .info {
+    padding: 0;
+    gap: 0.8rem;
+  }
+
+  .description {
+    display: none;
+  }
+
+  .organizationInfo tr {
+    display: flex;
+    flex-direction: column;
+    td {
+      padding: 0;
+    }
+  }
+
+  .wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: min-content;
+    margin-left: -13.6rem;
+
+    span {
+      white-space: nowrap;
+
+      img {
+        width: 2rem;
+        height: 2.1rem;
+        margin-right: -0.25rem;
+      }
+    }
+
+    a {
+      display: none;
+    }
+  }
+}
+
+@media (max-width: 359px) {
+  .wrapper {
+    width: 100%;
+  }
+}

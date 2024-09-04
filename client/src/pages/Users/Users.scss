@@ -36,3 +36,52 @@
   gap: $gapLarge;
   width: 100%;
 }
+
+.dropdownFilter,
+.clearFilters,
+.searchBtn {
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .page {
+    padding-bottom: 6.4rem;
+  }
+
+  .pageContent {
+    flex-direction: column;
+    gap: 3.2rem;
+  }
+
+  .title {
+    margin-bottom: 2.4rem;
+  }
+
+  .searchForm {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    max-width: 100%;
+    margin-top: 3.2rem;
+
+    .input {
+      flex: 1;
+      min-width: 0;
+    }
+  }
+
+  .dropdownFilter,
+  .clearFilters,
+  .searchBtn {
+    display: none;
+  }
+
+  .searchFormWithFilterOpen {
+    margin-bottom: 22.5rem;
+  }
+
+  .users {
+    flex-direction: column;
+    gap: 1.6rem;
+  }
+}

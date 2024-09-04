@@ -17,6 +17,14 @@
   border-radius: 50%;
 }
 
+.cardInfo {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.6rem;
+}
+
 .name {
   @include typography(body1, medium);
 
@@ -27,6 +35,7 @@
   @include typography(body4);
 
   text-transform: uppercase;
+  margin-bottom: 3.2rem;
 }
 
 .moreBtn {
@@ -65,5 +74,34 @@
     right: 0;
     opacity: 0;
     background: $primary3;
+  }
+}
+
+@media (max-width: 768px) {
+  .card {
+    width: 100%;
+    height: auto;
+    padding: 2.4rem 1.6rem;
+    flex-direction: row;
+  }
+
+  .photo {
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .cardInfo {
+    align-items: baseline;
+    gap: 0.8rem;
+  }
+
+  .name {
+    font-size: 1.8rem;
+  }
+
+  .class {
+    margin-bottom: 2.8rem;
   }
 }

@@ -794,7 +794,7 @@ export interface ApiArticleArticle extends Schema.CollectionType {
   info: {
     singularName: 'article';
     pluralName: 'articles';
-    displayName: 'News';
+    displayName: 'Articles';
     description: '';
   };
   options: {
@@ -979,23 +979,14 @@ export interface ApiEventEvent extends Schema.CollectionType {
   info: {
     singularName: 'event';
     pluralName: 'events';
-    displayName: 'Calendar';
+    displayName: 'Events';
     description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    type: Attribute.Enumeration<
-      [
-        'Classification tournament',
-        'Ranking tournament',
-        'Open tournament',
-        'National championship',
-        'Cup',
-        'Championship'
-      ]
-    > &
+    type: Attribute.Enumeration<['Tournament', 'Championship']> &
       Attribute.Required;
     title: Attribute.String & Attribute.Required;
     description: Attribute.Text &
@@ -1012,8 +1003,6 @@ export interface ApiEventEvent extends Schema.CollectionType {
     endDate: Attribute.Date;
     address: Attribute.String & Attribute.Required;
     cover: Attribute.Media<'images'>;
-    style: Attribute.Enumeration<['Ballroom', 'Street', 'Caribbean', 'Other']> &
-      Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1061,7 +1050,7 @@ export interface ApiManagerManager extends Schema.CollectionType {
   info: {
     singularName: 'manager';
     pluralName: 'managers';
-    displayName: 'Management';
+    displayName: 'Managers';
     description: '';
   };
   options: {
@@ -1119,6 +1108,7 @@ export interface ApiOrganizationOrganization extends Schema.CollectionType {
       Attribute.Private;
     status: Attribute.Enumeration<['Full member', 'Provisional member']> &
       Attribute.Required;
+    shortName: Attribute.String & Attribute.Unique;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

@@ -59,6 +59,11 @@
         "Provisional member"
       ],
       "required": true
+    },
+    "shortName": {
+      "type": "string",
+      "required": false,
+      "unique": true
     }
   }
 }

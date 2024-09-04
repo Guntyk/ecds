@@ -104,3 +104,77 @@
 .address p {
   line-height: 3.2rem;
 }
+
+@media (max-width: 1158px) {
+  .card {
+    padding: 3.2rem 1.6rem;
+    border-radius: 0;
+    max-width: 50rem;
+    margin: 0 auto;
+    line-height: 2rem;
+  }
+
+  .title {
+    line-height: 2.4rem;
+    margin-bottom: 0.5rem;
+  }
+
+  hr {
+    margin: 2.9rem 0;
+  }
+
+  .subtitle {
+    font-size: 1.6rem;
+  }
+
+  .sectionTitle {
+    margin-bottom: 0;
+  }
+
+  .address p {
+    line-height: 3rem;
+  }
+
+  .info {
+    flex-direction: column;
+    flex-wrap: nowrap;
+    width: 100%;
+    max-height: none;
+    gap: 3.2rem;
+  }
+
+  .bankDetails {
+    .sectionTitle {
+      font-size: 1.4rem;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 0;
+      display: block;
+      overflow-x: auto;
+    }
+
+    tbody {
+      display: block;
+    }
+
+    tr:not(:last-child) {
+      margin-bottom: 1.6rem;
+    }
+
+    td {
+      display: block;
+      max-width: 16rem;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+      word-break: break-all;
+      hyphens: auto;
+    }
+
+    td:first-child {
+      padding-right: 0;
+    }
+  }
+}

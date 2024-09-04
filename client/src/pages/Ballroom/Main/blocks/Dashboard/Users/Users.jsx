@@ -24,7 +24,10 @@ export const Users = () => {
           </li>
         ))}
       </ul>
-      <h2 className={cn(dashboardStyles.title, styles.title)} onClick={() => push(`${ballroomPage}${usersPage}?type=${activeUsersTypes[0]}`)}>
+      <h2
+        className={cn(dashboardStyles.title, styles.title)}
+        onClick={() => push(`${ballroomPage}${usersPage}?type=${activeUsersTypes[0]}`)}
+      >
         List of active users
         <span className={cn(dashboardStyles.arrow, styles.arrow)} />
         <span className={cn(dashboardStyles.arrow, styles.arrow)} />

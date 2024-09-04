@@ -14,8 +14,8 @@ import styles from 'components/Banners/Banners.scss';
 
 SwiperCore.use([EffectFade, Navigation, Pagination, Autoplay]);
 
-export const Banners = ({ banners, sliderClassName, navigationClassName }) => (
-  <div className={cn(styles.sliderWrapper, sliderClassName)}>
+export const Banners = ({ banners, sliderClassName, navigationClassName, ...props }) => (
+  <div className={cn(styles.sliderWrapper, sliderClassName)} {...props}>
     <Swiper className={styles.bannersSlider} {...sliderSettings}>
       {banners.map(({ id, link, image: { alternativeText, url, placeholder } }) => (
         <SwiperSlide className={styles.bannerSlide} key={id}>

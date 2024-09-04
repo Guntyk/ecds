@@ -22,26 +22,26 @@ export const Members = () => {
   }
 
   return (
-    <Container>
-      <section className={styles.page}>
+    <section className={styles.page}>
+      <Container>
         <h2 className={styles.title}>Members</h2>
         <p className={styles.subtitle}>
           National organizations that are part of the European Confederation of Dance Sports
         </p>
-        {isLoading ? (
-          <Loader />
-        ) : (
-          organizations.length > 0 && (
-            <ul className={styles.members}>
-              {organizations.map((organization) => (
-                <li className={styles.member} key={organization.id}>
-                  <OrganizationDropdown className={styles.card} organization={organization} nonClosable />
-                </li>
-              ))}
-            </ul>
-          )
-        )}
-      </section>
-    </Container>
+      </Container>
+      {isLoading ? (
+        <Loader />
+      ) : (
+        organizations.length > 0 && (
+          <ul className={styles.members}>
+            {organizations.map((organization) => (
+              <li className={styles.member} key={organization.id}>
+                <OrganizationDropdown className={styles.card} organization={organization} nonClosable />
+              </li>
+            ))}
+          </ul>
+        )
+      )}
+    </section>
   );
 };

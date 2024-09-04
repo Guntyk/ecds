@@ -32,23 +32,25 @@
     }
   }
 
-  &:not(.external, .button, .download) {
-    &:focus-visible,
-    &:hover {
-      @include typography(buttonActive, medium);
+  @media (hover: hover) {
+    &:not(.external, .button, .download) {
+      &:focus-visible,
+      &:hover {
+        @include typography(buttonActive, medium);
 
-      color: $primary3;
-      padding: 0 0.6rem;
-      outline: none;
+        color: $primary3;
+        padding: 0 0.6rem;
+        outline: none;
 
-      &.toLeft {
-        .arrow {
-          translate: -150% -50%;
+        &.toLeft {
+          .arrow {
+            translate: -150% -50%;
+          }
         }
-      }
-      &.toRight {
-        .arrow {
-          translate: 150% -50%;
+        &.toRight {
+          .arrow {
+            translate: 150% -50%;
+          }
         }
       }
     }
@@ -103,6 +105,15 @@
       .arrow {
         opacity: 0;
       }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .link {
+    &.button {
+      width: auto;
+      padding: 0.8rem 1.2rem;
     }
   }
 }

@@ -48,3 +48,18 @@
     border: 0.175rem solid $primary2;
   }
 }
+
+@media (max-width: 557px) {
+  .dropdownBtn {
+    padding-top: 2.4rem;
+    padding-right: 1.6rem;
+  }
+
+  .contentInner {
+    padding-right: 1.6rem;
+  }
+
+  .text {
+    padding-right: 2rem;
+  }
+}

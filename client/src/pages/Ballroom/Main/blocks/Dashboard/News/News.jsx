@@ -37,24 +37,20 @@ export const News = () => {
         <span className={cn(dashboardStyles.arrow, styles.arrow)} />
       </h2>
       <ul className={dashboardStyles.list}>
-        {!error ? (
-          isLoading ? (
-            <Loader className={dashboardStyles.loader} />
-          ) : news.length === 0 ? (
-            <p className={styles.text}>There is no news yet</p>
-          ) : (
-            nearestNews.map(({ id, title, publicationDate }) => (
-              <li className={cn(dashboardStyles.item, styles.item)} onClick={() => push(`${newsPage}/${id}`)} key={id}>
-                <time dateTime={publicationDate}>
-                  <span className={dashboardStyles.calendarIcon} />
-                  {formatDate(publicationDate)}
-                </time>
-                <strong>{title}</strong>
-              </li>
-            ))
-          )
+        {isLoading ? (
+          <Loader className={dashboardStyles.loader} />
+        ) : nearestNews.length === 0 ? (
+          <p className={styles.text}>There is no news yet</p>
         ) : (
-          <Notification className={dashboardStyles.error} text={error} type='error' />
+          nearestNews.map(({ id, title, publicationDate }) => (
+            <li className={cn(dashboardStyles.item, styles.item)} onClick={() => push(`${newsPage}/${id}`)} key={id}>
+              <time dateTime={publicationDate}>
+                <span className={dashboardStyles.calendarIcon} />
+                {formatDate(publicationDate)}
+              </time>
+              <strong>{title}</strong>
+            </li>
+          ))
         )}
       </ul>
     </div>

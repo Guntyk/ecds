@@ -22,3 +22,44 @@
 .content {
   flex-grow: 1;
 }
+
+@media (max-width: 1158px) {
+  .page {
+    padding-top: 10.4rem;
+    min-height: 100%;
+  }
+
+  .pageContent {
+    flex-direction: column;
+  }
+
+  .title {
+    margin-bottom: 2.4rem;
+    text-transform: capitalize;
+  }
+
+  .navigation ul {
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+    white-space: nowrap;
+    gap: 0.4rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .navigation ul::-webkit-scrollbar {
+    display: none;
+  }
+
+  .navigation ul li {
+    flex-shrink: 0;
+    width: auto;
+    a {
+      padding: 0.8rem 1.2rem;
+    }
+  }
+
+  .content {
+    margin: -1.6rem;
+  }
+}

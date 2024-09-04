@@ -50,7 +50,13 @@ export const News = () => {
   }, [sortFactor]);
 
   useEffect(() => {
-    dispatch(getNews({ searchTerm, sortFactor: sortOptions[sortFactor], getCurrentPageNews }));
+    dispatch(
+      getNews({
+        searchTerm,
+        sortFactor: sortOptions[sortFactor],
+        getCurrentPageNews,
+      })
+    );
   }, [search]);
 
   const handleSearch = (e) => {

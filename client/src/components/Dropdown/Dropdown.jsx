@@ -48,7 +48,10 @@ export const Dropdown = ({ className, options, placeholder, selectedValue, print
       {printable ? (
         <input
           type='text'
-          className={cn(styles.dropdownInput, { [styles.open]: isOpen, [styles.filled]: searchTerm || selectedValue })}
+          className={cn(styles.dropdownInput, {
+            [styles.open]: isOpen,
+            [styles.filled]: searchTerm || selectedValue,
+          })}
           value={searchTerm || selectedValue || ''}
           onClick={toggleDropdown}
           onChange={handleInputChange}
@@ -61,7 +64,10 @@ export const Dropdown = ({ className, options, placeholder, selectedValue, print
       ) : (
         <button
           type='button'
-          className={cn(styles.dropdownButton, { [styles.open]: isOpen, [styles.filled]: selectedValue })}
+          className={cn(styles.dropdownButton, {
+            [styles.open]: isOpen,
+            [styles.filled]: selectedValue,
+          })}
           onClick={toggleDropdown}
           aria-expanded={isOpen}
           aria-haspopup='listbox'
@@ -72,11 +78,18 @@ export const Dropdown = ({ className, options, placeholder, selectedValue, print
         </button>
       )}
       <Swiper
-        className={cn(styles.dropdownList, { [styles.open]: isOpen, [styles.scrollable]: filteredOptions.length > 11 })}
+        className={cn(styles.dropdownList, {
+          [styles.open]: isOpen,
+          [styles.scrollable]: filteredOptions.length > 11,
+        })}
         direction='vertical'
         slidesPerView='auto'
         freeMode={true}
-        scrollbar={{ dragClass: styles.thumb, dragSize: 80, verticalClass: styles.scrollbar }}
+        scrollbar={{
+          dragClass: styles.thumb,
+          dragSize: 80,
+          verticalClass: styles.scrollbar,
+        }}
         mousewheel={{ sensitivity: 0.5 }}
         modules={[FreeMode, Scrollbar, Mousewheel]}
         id='dropdown-list'
@@ -88,7 +101,9 @@ export const Dropdown = ({ className, options, placeholder, selectedValue, print
             <button
               type='button'
               role='option'
-              className={cn(styles.dropdownItem, { [styles.selectedItem]: option === selectedValue })}
+              className={cn(styles.dropdownItem, {
+                [styles.selectedItem]: option === selectedValue,
+              })}
               onClick={() => handleSelectOption(option)}
               aria-selected={option === selectedValue}
               tabIndex={isOpen && option !== selectedValue ? '0' : '-1'}

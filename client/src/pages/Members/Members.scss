@@ -12,6 +12,7 @@
 
   margin-block: 0.8rem 4rem;
   max-width: 50%;
+  text-transform: capitalize;
 }
 
 .members {
@@ -26,5 +27,42 @@
   .card {
     width: 100%;
     max-width: unset;
+  }
+}
+
+@media (min-width: 769px) {
+  .members {
+    @include container;
+  }
+}
+
+@media (max-width: 768px) {
+  .page {
+    padding-block: 10.4rem 6.4rem;
+  }
+
+  .subtitle {
+    max-width: 100%;
+    margin-bottom: 2.4rem;
+  }
+
+  .members {
+    flex-direction: column;
+    gap: 1.6rem;
+  }
+
+  .member {
+    width: 100%;
+  }
+
+  .card {
+    border-radius: 0;
+    & > div {
+      padding-inline: 1.6rem;
+
+      &:first-child {
+        padding-bottom: 1.6rem;
+      }
+    }
   }
 }

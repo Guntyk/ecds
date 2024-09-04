@@ -19,16 +19,12 @@ export const Management = () => {
 
   return (
     <div className={styles.management}>
-      {!error ? (
-        isLoading ? (
-          <Loader />
-        ) : management.length === 0 ? (
-          <Notification text={apiErrors.error404Message} type='error' />
-        ) : (
-          management.length > 0 && management.map((person) => <PersonCard person={person} key={person.id} />)
-        )
+      {isLoading ? (
+        <Loader />
+      ) : management.length === 0 ? (
+        <Notification text={apiErrors.error404Message} type='error' />
       ) : (
-        <Notification text={error} type='error' />
+        management.length > 0 && management.map((person) => <PersonCard person={person} key={person.id} />)
       )}
     </div>
   );

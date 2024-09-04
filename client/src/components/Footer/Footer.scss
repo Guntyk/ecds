@@ -111,3 +111,103 @@
   margin-top: auto;
   height: 4rem;
 }
+
+@media (max-width: 1052px) {
+  .footer {
+    padding-block: 0;
+    padding-top: 6.4rem;
+    font-size: 1.4rem;
+    position: relative;
+  }
+  .wrapper {
+    flex-direction: column-reverse;
+    height: auto;
+  }
+
+  .footerLogo {
+    margin-left: -0.9rem;
+    width: 23.7rem;
+    height: 4.8rem;
+  }
+
+  .socialsWrapper {
+    margin-top: 4.8rem;
+    font-size: 1.4rem;
+    margin-bottom: 5.3rem;
+    margin-left: 1rem;
+    .socialsIcon {
+      width: 3.2rem;
+      height: 3.2rem;
+
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+
+  .socials {
+    margin-left: 1rem;
+
+    li {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
+  .navigationLinks {
+    flex-direction: column;
+  }
+
+  .navigationSection {
+    gap: 0.8rem;
+  }
+
+  .navigation {
+    display: flex;
+    flex-direction: column;
+    gap: $gapExtraSmall;
+    color: $background1;
+
+    &Section {
+      &.menu .sectionTitle {
+        width: 7.2rem;
+      }
+    }
+  }
+
+  .aboutUs {
+    gap: 0;
+    margin-bottom: 10.4rem;
+  }
+
+  .aboutUs .navigationLinks {
+    display: flex;
+
+    .item {
+      &Link {
+        padding: 0.8rem 0.55rem;
+      }
+
+      .itemLink {
+        padding: 0.8rem;
+      }
+      &::before {
+        content: url(assets/icons/arrow-right-light-footer.svg);
+      }
+
+      &:last-child {
+        .itemLink {
+          padding: 0.8rem 0.7rem;
+        }
+      }
+    }
+  }
+
+  .credits {
+    font-size: 1.2rem;
+    position: absolute;
+    bottom: 2.2rem;
+  }
+}

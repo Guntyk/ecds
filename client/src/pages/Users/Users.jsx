@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useUsers } from 'hooks/useUsers';
 import { formConfig } from 'pages/Users/formConfig';
 import { activeUsersTypes } from 'constants/usersTypes';
@@ -8,9 +9,11 @@ import { Dropdown } from 'components/Dropdown';
 import { Button } from 'components/Button';
 import { Input } from 'components/Input';
 import { UserCard } from 'pages/Users/UserCard';
+import { FilterMobile } from 'components/FilterMobile/FilterMobile';
 import styles from 'pages/Users/Users.scss';
 
 export const Users = () => {
+  const [isFilterMobileOpen, setIsFilterMobileOpen] = useState(false);
   const { users, formState, activeTypeIndex, setActiveTypeIndex, handleFilterChange, handleSubmit, clearFilters } =
     useUsers(usersList, activeUsersTypes);
 
@@ -25,10 +28,14 @@ export const Users = () => {
               activeTabIndex={activeTypeIndex}
               setActiveTabIndex={setActiveTypeIndex}
             />
-            <form className={styles.searchForm} onSubmit={handleSubmit}>
+            <form
+              className={`${styles.searchForm} ${isFilterMobileOpen ? styles.searchFormWithFilterOpen : ''}`}
+              onSubmit={handleSubmit}
+            >
               {formConfig.map(({ name, placeholder, options, zIndex }) =>
                 options ? (
                   <Dropdown
+                    className={styles.dropdownFilter}
                     options={options}
                     selectedValue={formState[name]}
                     placeholder={placeholder}
@@ -38,6 +45,7 @@ export const Users = () => {
                   />
                 ) : (
                   <Input
+                    wrapperClassName={styles.input}
                     key={name}
                     name={name}
                     inputValue={formState[name]}
@@ -47,7 +55,22 @@ export const Users = () => {
                 )
               )}
               <Button className={styles.searchBtn} text='Search' type='submit' searchStyle />
-              <Button text='Clear filters' type='reset' onClick={clearFilters} ghostStyle />
+              <Button
+                className={styles.clearFilters}
+                text='Clear filters'
+                type='reset'
+                onClick={clearFilters}
+                ghostStyle
+              />
+              <FilterMobile
+                className={styles.filterMobile}
+                formState={formState}
+                handleFilterChange={handleFilterChange}
+                handleSubmit={handleSubmit}
+                clearFilters={clearFilters}
+                formConfig={formConfig}
+                onOpenChange={setIsFilterMobileOpen}
+              />
             </form>
           </section>
           <ul className={styles.users}>

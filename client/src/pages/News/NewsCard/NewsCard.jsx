@@ -18,7 +18,7 @@ export const NewsCard = ({ news: { id, title, description, publicationDate, medi
 
   return (
     <article className={styles.article}>
-      <section>
+      <section className={styles.characteristic}>
         <ul className={styles.tags}>
           {tags.map(({ id, tag }) => (
             <li className={styles.tag} key={id}>

@@ -20,7 +20,11 @@ export const DocumentDropdown = ({ document: { title, description, file } }) => 
         <span>{title}</span>
         <Arrow className={styles.arrow} onClick={() => setIsOpen(true)} expandStyle />
       </div>
-      <div className={cn(dropdownStyles.content, { [dropdownStyles.open]: isOpen })}>
+      <div
+        className={cn(dropdownStyles.content, {
+          [dropdownStyles.open]: isOpen,
+        })}
+      >
         <div className={cn(dropdownStyles.contentInner, styles.contentInner)}>
           <div className={styles.text}>
             <BlocksRenderer content={description} />

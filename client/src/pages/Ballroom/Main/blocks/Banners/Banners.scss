@@ -1,0 +1,17 @@
+.block {
+  display: none;
+  padding-block: 3.2rem;
+
+  &Shown {
+    display: block;
+  }
+}
+
+.slider {
+  width: 100%;
+  height: auto;
+
+  & > div {
+    height: auto;
+  }
+}

@@ -32,3 +32,27 @@
   flex-direction: column;
   gap: $gapLarge;
 }
+
+@media (min-width: 558px) {
+  .events {
+    @include container;
+  }
+}
+
+@media (max-width: 557px) {
+  .calendar {
+    padding-block: 10.4rem 6.4rem;
+  }
+
+  .subtitle {
+    margin-left: 0.8rem;
+  }
+
+  .titleWrapper {
+    margin-bottom: 2.4rem;
+  }
+
+  .events {
+    gap: 1.6rem;
+  }
+}

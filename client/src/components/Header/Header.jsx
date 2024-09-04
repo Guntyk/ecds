@@ -65,10 +65,14 @@ export const Header = () => {
                 {screenWidth > 557 && (
                   <li>
                     <NavLink
-                      className={cn(styles.navigationLink, { [styles.active]: aboutUsPages.includes(currentPathName) })}
+                      className={cn(styles.navigationLink, {
+                        [styles.active]: aboutUsPages.includes(currentPathName),
+                      })}
                       to={managementPage}
                       onClick={handleAboutUsLinkClick}
-                      {...(aboutUsPages.includes(currentPathName) && { tabIndex: -1 })}
+                      {...(aboutUsPages.includes(currentPathName) && {
+                        tabIndex: -1,
+                      })}
                     >
                       About us
                     </NavLink>

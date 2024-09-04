@@ -5,6 +5,7 @@ import { getPartners } from '@redux/features/partnersSlice';
 import { Notification } from 'components/Notification';
 import { ImageComponent } from 'components/Image';
 import { Container } from 'components/Container';
+import { Button } from 'components/Button';
 import { Loader } from 'components/Loader';
 import { Link } from 'components/Link';
 import styles from 'pages/Main/blocks/Partners/Partners.scss';
@@ -25,30 +26,26 @@ export const Partners = () => {
     <Container>
       <section className={styles.block} ref={containerRef}>
         <h2 className={styles.title}>Our sponsors & partners</h2>
-        {!error ? (
-          isLoading ? (
-            <Loader className={styles.text} />
-          ) : partners.length === 0 ? (
-            <p className={styles.text}>There is no partners yet</p>
-          ) : (
-            <ul className={styles.partners}>
-              {partners.map(({ id, website, logo: { alternativeText, url, placeholder } }) => (
-                <li className={styles.partner} key={id}>
-                  <ImageComponent
-                    className={styles.partnerLogo}
-                    src={url}
-                    alt={alternativeText}
-                    placeholder={placeholder}
-                    fit='contain'
-                    external
-                  />
-                  {website && <Link className={styles.moreBtn} content='More about' path={website} external />}
-                </li>
-              ))}
-            </ul>
-          )
+        {isLoading ? (
+          <Loader className={styles.text} />
+        ) : partners.length === 0 ? (
+          <p className={styles.text}>There is no partners yet</p>
         ) : (
-          <Notification className={styles.text} text={error} type='error' />
+          <ul className={styles.partners}>
+            {partners.map(({ id, website, logo: { alternativeText, url, placeholder } }) => (
+              <li className={styles.partner} key={id}>
+                <ImageComponent
+                  className={styles.partnerLogo}
+                  src={url}
+                  alt={alternativeText}
+                  placeholder={placeholder}
+                  fit='contain'
+                  external
+                />
+                {website && <Link className={styles.moreBtn} content='More about' path={website} external />}
+              </li>
+            ))}
+          </ul>
         )}
         {/* <aside className={styles.donate}>
           <h3 className={styles.donateText}>

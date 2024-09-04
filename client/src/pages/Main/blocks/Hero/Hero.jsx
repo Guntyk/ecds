@@ -3,7 +3,6 @@ import { useEffect } from 'react';
 import useElementOnScreen from 'hooks/useElementOnScreen';
 import { useScreenWidth } from 'hooks/useScreenWidth';
 import { getBanners } from '@redux/features/bannersSlice';
-import { Notification } from 'components/Notification';
 import { Container } from 'components/Container';
 import { Banners } from 'components/Banners';
 import { Button } from 'components/Button';
@@ -30,16 +29,11 @@ export const Hero = () => {
             <h1 className={styles.title}>Unified Standards for a United Europe</h1>
             <Button text='Registration' onClick={() => window.open(process.env.REACT_APP_EPHAN_URL)} normalStyle />
           </div>
-          {screenWidth > 557 &&
-            (!error ? (
-              isLoading ? (
-                <Loader className={styles.loader} />
-              ) : (
-                banners.length > 0 && <Banners banners={banners} />
-              )
-            ) : (
-              <Notification className={styles.error} text={error} type='error' />
-            ))}
+          {isLoading ? (
+            <Loader className={styles.loader} />
+          ) : (
+            banners.length > 0 && <Banners sliderClassName={styles.banners} banners={banners} />
+          )}
         </div>
       </Container>
     </section>

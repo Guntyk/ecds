@@ -11,6 +11,7 @@
   .title {
     @include typography(h2, bold);
   }
+  overflow: hidden;
 }
 
 .text {
@@ -41,9 +42,14 @@
 }
 
 .ephanScreen {
+  display: block;
   position: absolute;
   bottom: -3.4rem;
   right: -1.6rem;
+}
+
+.ephanPhone {
+  display: none;
 }
 
 .statsWrapper {
@@ -62,6 +68,11 @@
 
 .stats {
   display: flex;
+}
+
+.statsBox {
+  display: flex;
+  justify-content: center;
 }
 
 .statisticsValue {
@@ -88,4 +99,78 @@
 
 .h3 {
   @include typography(h3, medium);
+}
+
+@media (max-width: 557px) {
+  .wrapper {
+    padding-top: 8rem;
+  }
+
+  .ephanScreen {
+    display: none;
+  }
+
+  .textInfo {
+    width: 24.5rem;
+  }
+
+  .subtext {
+    width: 28rem;
+  }
+
+  .ephanPhone {
+    display: block;
+    width: 23.3rem;
+    height: 39.6rem;
+    position: absolute;
+    bottom: 10rem;
+    right: -5rem;
+    overflow: hidden;
+  }
+
+  .stats {
+    display: flex;
+    flex-direction: column;
+    gap: 2.4rem;
+  }
+
+  .statsWrapper .title {
+    margin-left: 0rem;
+    margin: 0 auto;
+  }
+
+  .statisticsValue {
+    font-size: 6.4rem;
+  }
+
+  .h3 {
+    font-size: 4.8rem;
+  }
+}
+
+@media screen and (min-width: 558px) and (max-width: 1157px) {
+  .ephanScreen {
+    display: none;
+  }
+
+  .ephanPhone {
+    display: block;
+    width: 23.3rem;
+    height: 39.6rem;
+    position: absolute;
+    bottom: 10rem;
+    right: -3rem;
+    overflow: hidden;
+  }
+
+  .stats {
+    display: flex;
+    flex-direction: column;
+    gap: 2.4rem;
+  }
+
+  .statsWrapper .title {
+    margin-left: 0rem;
+    margin: 0 auto;
+  }
 }

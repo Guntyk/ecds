@@ -37,7 +37,9 @@ export const TabSelector = ({ tabs, activeTabIndex, setActiveTabIndex }) => {
       {tabs.map((element, index) => (
         <button
           ref={(el) => (buttonRefs.current[index] = el)}
-          className={cn(styles.btn, { [styles.btnActive]: activeTabIndex === index })}
+          className={cn(styles.btn, {
+            [styles.btnActive]: activeTabIndex === index,
+          })}
           onClick={() => handleClick(element, index)}
           onKeyDown={(e) => handleKeyDown(e, index)}
           tabIndex={activeTabIndex === index ? -1 : 0}

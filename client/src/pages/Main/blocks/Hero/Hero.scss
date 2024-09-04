@@ -80,12 +80,21 @@
   height: min-content;
 }
 
-@media (max-width: 557px) {
+@media (max-width: 768px) {
   .block {
     padding-bottom: 9.6rem;
   }
 
+  .wrapper {
+    flex-direction: column;
+  }
+
   .title {
     max-width: 39.8rem;
+  }
+
+  .loader,
+  .banners {
+    display: none;
   }
 }

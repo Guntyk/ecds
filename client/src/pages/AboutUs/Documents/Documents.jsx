@@ -18,16 +18,12 @@ export const Documents = () => {
 
   return (
     <div className={styles.dropdownsWrapper}>
-      {!error ? (
-        isLoading ? (
-          <Loader />
-        ) : documents.length === 0 ? (
-          <p className={styles.text}>There is no documents yet</p>
-        ) : (
-          documents.map((document) => <DocumentDropdown document={document} key={document.id} />)
-        )
+      {isLoading ? (
+        <Loader />
+      ) : documents.length === 0 ? (
+        <p className={styles.text}>There is no documents yet</p>
       ) : (
-        <Notification text={error} type='error' />
+        documents.map((document) => <DocumentDropdown document={document} key={document.id} />)
       )}
     </div>
   );

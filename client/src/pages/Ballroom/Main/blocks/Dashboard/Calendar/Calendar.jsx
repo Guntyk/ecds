@@ -39,7 +39,7 @@ export const Calendar = () => {
         {!error ? (
           isLoading ? (
             <Loader className={dashboardStyles.loader} />
-          ) : events.length === 0 ? (
+          ) : nearestEvents.length === 0 ? (
             <p className={styles.text}>The calendar is empty for now</p>
           ) : (
             nearestEvents.map(({ id, title, startDate, endDate, address }) => (
@@ -57,7 +57,7 @@ export const Calendar = () => {
                           {address}
                         </address>
                       </div>
-                      <strong>{title}</strong>
+                      <strong className={styles.titleCalendar}>{title}</strong>
                     </>
                   }
                   path={`${ballroomPage}${calendarPage}/${id}`}

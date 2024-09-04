@@ -21,39 +21,45 @@ export const PersonCard = ({ person: { name, surname, role, socials, biography, 
   return (
     <div className={cn(styles.cardWrapper, { [styles.open]: isOpen })}>
       <div className={cn(styles.card, { [styles.open]: isOpen })}>
-        <div className={cn(styles.cardInner, { [styles.addMargin]: !socials && isOpen })}>
+        <div
+          className={cn(styles.cardInner, {
+            [styles.addMargin]: !socials && isOpen,
+          })}
+        >
           <ImageComponent
             className={styles.photo}
             src={`${process.env.REACT_APP_BASE_API_URL}${photo?.url}` || 'https://placehold.co/234'}
             alt={photo?.alternativeText || 'photo placeholder'}
             placeholder={photo?.placeholder}
           />
-          <p className={styles.name}>
-            {name}
-            <br />
-            {surname}
-          </p>
-          <p className={styles.role}>{role}</p>
-          {socials && isOpen && (
-            <ul className={styles.socials}>
-              {socials.map(({ id, url }) => {
-                const socialName = socialLinks.detectProfile(url);
+          <div className={styles.personInfo}>
+            <p className={styles.name}>
+              <span>{name}</span>
+              <br />
+              <span>{surname}</span>
+            </p>
+            <p className={styles.role}>{role}</p>
+            {socials && isOpen && (
+              <ul className={styles.socials}>
+                {socials.map(({ id, url }) => {
+                  const socialName = socialLinks.detectProfile(url);
 
-                if (socialName) {
-                  return (
-                    <li key={id}>
-                      <Link className={cn(styles.social, styles[socialName])} path={url} external />
-                    </li>
-                  );
-                }
-              })}
-            </ul>
-          )}
-          {!isOpen && (
-            <Button className={styles.moreBtn} text='Read more' onClick={() => setIsOpen(true)} ghostStyle small>
-              Read more <img src={arrowRight} alt='arrow right' />
-            </Button>
-          )}
+                  if (socialName) {
+                    return (
+                      <li key={id}>
+                        <Link className={cn(styles.social, styles[socialName])} path={url} external />
+                      </li>
+                    );
+                  }
+                })}
+              </ul>
+            )}
+            {!isOpen && (
+              <Button className={styles.moreBtn} text='Read more' onClick={() => setIsOpen(true)} ghostStyle small>
+                Read more <img src={arrowRight} alt='arrow right' />
+              </Button>
+            )}
+          </div>
         </div>
         {isOpen && (
           <>
@@ -62,7 +68,11 @@ export const PersonCard = ({ person: { name, surname, role, socials, biography, 
               direction={'vertical'}
               slidesPerView={'auto'}
               freeMode={true}
-              scrollbar={{ dragClass: styles.thumb, dragSize: 80, verticalClass: styles.scrollbar }}
+              scrollbar={{
+                dragClass: styles.thumb,
+                dragSize: 80,
+                verticalClass: styles.scrollbar,
+              }}
               mousewheel={{ sensitivity: 0.5 }}
               modules={[FreeMode, Scrollbar, Mousewheel]}
             >

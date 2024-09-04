@@ -3,18 +3,12 @@ import { backendApi } from 'api/api';
 import APIErrorsHandlingUtils from 'utils/APIErrorsHandlingUtils';
 
 export default class EventsService {
-  static async getEvents(danceStyle) {
-    const filters = {};
-    if (danceStyle) {
-      filters.style = danceStyle;
-    }
-
+  static async getEvents() {
     const query = qs.stringify({
-      filters: filters,
       fields: ['type', 'title', 'description', 'organizer', 'startDate', 'endDate', 'address'],
       populate: {
         organization: {
-          fields: ['name', 'website'],
+          fields: ['name', 'shortName', 'website'],
         },
         cover: {
           fields: ['alternativeText', 'placeholder', 'url'],

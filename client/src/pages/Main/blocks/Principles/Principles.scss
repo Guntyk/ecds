@@ -378,3 +378,54 @@
     background: #698717;
   }
 }
+
+@media (max-width: 767px) {
+  .block {
+    padding-block: 4.8rem;
+  }
+
+  .title {
+    font-size: 4.8rem;
+    text-transform: capitalize;
+    margin-bottom: 3.2rem;
+  }
+
+  .principlesList {
+    gap: 3.2rem;
+  }
+
+  .principle {
+    max-width: 56.7rem;
+    &:not(:nth-child(3)) {
+      margin-top: 0;
+    }
+  }
+
+  .principleTitle {
+    font-size: 4rem;
+  }
+
+  .textMain {
+    margin: 8px 0;
+    line-height: 2.4rem;
+  }
+
+  .principlesList {
+    flex-wrap: nowrap;
+    max-height: none;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1157px) {
+  .principlesList {
+    max-width: 115.7rem;
+    margin-top: 3.2rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+
+  .principle {
+    margin-top: 0rem;
+  }
+}

@@ -25,3 +25,16 @@
   margin-top: 15rem;
   width: 50%;
 }
+
+@media (max-width: 557px) {
+  .block {
+    padding: 0;
+    min-height: unset;
+    height: 39.2rem;
+    background: url(assets/images/backgrounds/ballroom-page-background.webp) no-repeat -40px bottom / cover;
+  }
+
+  .bannersSlider {
+    display: none;
+  }
+}

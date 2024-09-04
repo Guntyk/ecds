@@ -49,14 +49,14 @@ export const Footer = () => {
             </div>
             <div className={styles.creditsWrapper}>
               <Link to={mainPage}>
-                <img src={logo} alt='ecds logo' />
+                <img className={styles.footerLogo} src={logo} alt='ecds logo' />
               </Link>
               <div className={styles.socialsWrapper}>
                 Follow us on
                 <ul className={styles.socials}>
                   {socials.map(({ id, name, link, icon }) => (
                     <li key={id}>
-                      <a href={link} target='_blank' rel='noreferrer noopener'>
+                      <a className={styles.socialsIcon} href={link} target='_blank' rel='noreferrer noopener'>
                         <img src={icon} alt={name} />
                       </a>
                     </li>
