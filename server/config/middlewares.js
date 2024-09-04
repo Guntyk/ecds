@@ -7,8 +7,8 @@ module.exports = [
       contentSecurityPolicy: {
         useDefaults: true,
         directives: {
-          "default-src": ["'self'", "https:"],
-          "script-src": ["'self'", "https:"],
+          "default-src": ["'self'", "https:", "http:"],
+          "script-src": ["'self'", "https:", "http:", "'unsafe-inline'"],
           "style-src": ["'self'", "https:", "'unsafe-inline'"],
           "img-src": ["'self'", "data:", "blob:", "https://euro-dance.org"],
           "connect-src": [
