@@ -91,7 +91,7 @@
   }
 }
 
-@media (max-width: 1152px) {
+@media (max-width: 557px) {
   .card {
     padding: 2.4rem 1.6rem;
     border-radius: 0;
@@ -106,6 +106,7 @@
     min-width: 12rem;
     max-height: 16.6rem;
     min-height: 16.6rem;
+    border-radius: 0.8rem;
   }
 
   .info {
@@ -129,8 +130,13 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 34rem;
-    margin-left: -13.4rem;
+    width: min-content;
+    margin-left: -13.6rem;
+
+    span {
+      white-space: nowrap;
+    }
+
     a {
       display: none;
     }

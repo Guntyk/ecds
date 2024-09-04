@@ -1108,6 +1108,7 @@ export interface ApiOrganizationOrganization extends Schema.CollectionType {
       Attribute.Private;
     status: Attribute.Enumeration<['Full member', 'Provisional member']> &
       Attribute.Required;
+    shortName: Attribute.String & Attribute.Unique;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

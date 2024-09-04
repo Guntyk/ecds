@@ -8,7 +8,7 @@ export default class EventsService {
       fields: ['type', 'title', 'description', 'organizer', 'startDate', 'endDate', 'address'],
       populate: {
         organization: {
-          fields: ['name', 'website'],
+          fields: ['name', 'shortName', 'website'],
         },
         cover: {
           fields: ['alternativeText', 'placeholder', 'url'],

@@ -58,7 +58,7 @@ export default class StaticDataService {
 
   static async getOrganizations() {
     const query = qs.stringify({
-      fields: ['name', 'country', 'manager', 'website', 'email', 'phone', 'status'],
+      fields: ['name', 'shortName', 'country', 'manager', 'website', 'email', 'phone', 'status'],
       populate: {
         flag: { fields: ['url'] },
       },

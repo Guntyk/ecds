@@ -22,22 +22,22 @@ export const Calendar = () => {
   }
 
   return (
-    <Container>
-      <section className={styles.calendar}>
+    <section className={styles.calendar}>
+      <Container>
         <div className={styles.titleWrapper}>
           <h2 className={styles.title}>Calendar</h2>
           <p className={styles.subtitle}>Of competition</p>
         </div>
-        <div className={styles.events}>
-          {isLoading ? (
-            <Loader />
-          ) : events.length === 0 ? (
-            <p className={styles.text}>The calendar is temporarily empty</p>
-          ) : (
-            events.map((event) => <EventCard event={event} key={event.id} />)
-          )}
-        </div>
-      </section>
-    </Container>
+      </Container>
+      <div className={styles.events}>
+        {isLoading ? (
+          <Loader />
+        ) : events.length === 0 ? (
+          <p className={styles.text}>The calendar is temporarily empty</p>
+        ) : (
+          events.map((event) => <EventCard event={event} key={event.id} />)
+        )}
+      </div>
+    </section>
   );
 };
