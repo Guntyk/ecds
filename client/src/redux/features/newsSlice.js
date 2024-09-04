@@ -13,20 +13,25 @@ export const getNews = createAsyncThunk(
   async ({ searchTerm, sortFactor, getCurrentPageNews } = {}, { rejectWithValue }) => {
     const { result, error } = await NewsService.getNews(searchTerm, sortFactor);
 
+    console.log('Response:', result);
+
     if (result) {
       let articles = result.map((article) => ({
         ...article,
         pages: article.pages.map((page) => page.name),
       }));
+      console.log('Flatted:', articles);
 
       if (getCurrentPageNews) {
         articles = getCurrentPageNews(articles);
       }
+      console.log('Current page:', articles);
 
       if (sortFactor === 'relevance') {
         articles = articles.sort((a, b) => calculateRelevanceScore(b) - calculateRelevanceScore(a));
       }
 
+      console.log('Result:', articles);
       return articles;
     }
 
