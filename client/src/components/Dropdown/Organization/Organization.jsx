@@ -35,7 +35,7 @@ export const OrganizationDropdown = ({
               <td>{status}</td>
             </tr>
             <tr>
-              <td>ambassador</td>
+              <td>manager</td>
               <td>{manager}</td>
             </tr>
             {website && (
