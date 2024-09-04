@@ -31,7 +31,7 @@ export const Calendar = () => {
   return (
     <div ref={containerRef} className={cn(dashboardStyles.block, styles.block)}>
       <h2 className={dashboardStyles.title} onClick={() => push(`${ballroomPage}${calendarPage}`)}>
-        Calendar<span className={styles.competition}>of competition</span>
+        Calendar<span>of competition</span>
         <span className={cn(dashboardStyles.arrow, styles.arrow)} />
         <span className={cn(dashboardStyles.arrow, styles.arrow)} />
       </h2>
@@ -57,7 +57,7 @@ export const Calendar = () => {
                           {address}
                         </address>
                       </div>
-                      <strong className={styles.titleСalendar}>{title}</strong>
+                      <strong className={styles.titleCalendar}>{title}</strong>
                     </>
                   }
                   path={`${ballroomPage}${calendarPage}/${id}`}

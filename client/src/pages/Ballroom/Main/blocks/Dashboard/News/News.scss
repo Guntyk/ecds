@@ -40,8 +40,21 @@
 }
 
 @media (max-width: 557px) {
-  .block {
-    padding: 2.4rem 1.6rem;
-    gap: 1.6rem;
+  .item {
+    gap: 0;
+
+    time {
+      line-height: 2.8rem;
+    }
+
+    strong {
+      line-height: 2.4rem;
+      width: 100%;
+    }
+
+    &:last-child {
+      padding-bottom: 0;
+      border-bottom: none;
+    }
   }
 }
