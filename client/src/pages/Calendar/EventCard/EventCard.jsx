@@ -54,7 +54,7 @@ export const EventCard = ({
             {address}
           </span>
         </div>
-        <Link content='Read more' path={`/events/${id}`} arrowRight />
+        {/* <Link content='Read more' path={`/events/${id}`} arrowRight /> */}
       </div>
     </section>
   </article>

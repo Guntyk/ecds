@@ -8,11 +8,39 @@
   text-transform: capitalize;
 }
 
+.offer {
+  margin-top: 4.8rem;
+  padding-block: 4rem;
+  background: $text2;
+  border: 0.05rem solid $background2;
+  border-radius: $borderRadiusLarge;
+  text-align: center;
+
+  &Title {
+    @include typography(h3, medium);
+
+    margin-bottom: 1.6rem;
+  }
+
+  &Contact {
+    @include typography(body3, medium);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: $gapMedium;
+  }
+
+  .contactLink {
+    color: $primary1;
+  }
+}
+
 .partners {
   display: flex;
   flex-wrap: wrap;
   gap: $gapLarge;
-  margin-top: 4.8rem;
+  margin-top: 2.4rem;
 }
 
 .partner {
@@ -120,6 +148,21 @@
 @media (max-width: 768px) {
   .block {
     padding-block: 4.8rem 6.4rem;
+  }
+
+  .offer {
+    margin-top: 3.2rem;
+    padding: 2.4rem;
+
+    &Title {
+      font-size: 4rem;
+      line-height: 3.2rem;
+      margin-bottom: 1.2rem;
+    }
+
+    &Contact {
+      flex-direction: column;
+    }
   }
 
   .partners {

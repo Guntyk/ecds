@@ -26,26 +26,35 @@ export const Partners = () => {
     <Container>
       <section className={styles.block} ref={containerRef}>
         <h2 className={styles.title}>Our sponsors & partners</h2>
+        <div className={styles.offer}>
+          <h3 className={styles.offerTitle}>Want to become a partner or sponsor?</h3>
+          <p className={styles.offerContact}>
+            <span>Please contact:</span>
+            <a className={styles.contactLink} href='mailto:dancesporteurope@gmail.com'>
+              dancesporteurope@gmail.com
+            </a>
+          </p>
+        </div>
         {isLoading ? (
           <Loader className={styles.text} />
-        ) : partners.length === 0 ? (
-          <p className={styles.text}>There is no partners yet</p>
         ) : (
-          <ul className={styles.partners}>
-            {partners.map(({ id, website, logo: { alternativeText, url, placeholder } }) => (
-              <li className={styles.partner} key={id}>
-                <ImageComponent
-                  className={styles.partnerLogo}
-                  src={url}
-                  alt={alternativeText}
-                  placeholder={placeholder}
-                  fit='contain'
-                  external
-                />
-                {website && <Link className={styles.moreBtn} content='More about' path={website} external />}
-              </li>
-            ))}
-          </ul>
+          partners.length !== 0 && (
+            <ul className={styles.partners}>
+              {partners.map(({ id, website, logo: { alternativeText, url, placeholder } }) => (
+                <li className={styles.partner} key={id}>
+                  <ImageComponent
+                    className={styles.partnerLogo}
+                    src={url}
+                    alt={alternativeText}
+                    placeholder={placeholder}
+                    fit='contain'
+                    external
+                  />
+                  {website && <Link className={styles.moreBtn} content='More about' path={website} external />}
+                </li>
+              ))}
+            </ul>
+          )
         )}
         {/* <aside className={styles.donate}>
           <h3 className={styles.donateText}>
