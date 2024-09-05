@@ -38,7 +38,7 @@
     top: calc(100% - 0.05rem);
     width: 100%;
     max-height: 0;
-    padding: 0;
+    padding-inline: 0.79rem;
     opacity: 0;
     overflow: hidden;
     background: $background1;
@@ -59,11 +59,15 @@
     }
 
     &.open {
-      padding: 0.79rem;
+      padding-block: 0.79rem;
       max-height: 41.2rem;
       opacity: 1;
       border-top-left-radius: 0;
       border-top-right-radius: 0;
+
+      .dropdownItem {
+        padding-block: 0.8rem;
+      }
 
       &.scrollable {
         padding-right: 1.6rem;
@@ -75,7 +79,7 @@
     @include typography(body4);
 
     width: 100%;
-    padding: 0.8rem;
+    padding-inline: 0.8rem;
     line-height: 2rem;
     border-radius: $borderRadiusSmall;
     cursor: pointer;
@@ -83,8 +87,13 @@
     text-align: left;
     text-transform: capitalize;
 
-    &:hover,
-    &:focus-visible,
+    @media (hover: hover) {
+      &:hover,
+      &:focus-visible {
+        background-color: $background2;
+      }
+    }
+
     &.selectedItem {
       background-color: $background2;
     }

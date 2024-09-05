@@ -22,7 +22,7 @@ export const News = () => {
   const searchParam = new URLSearchParams(search);
 
   const sortOptions = {
-    relevance: 'relevance',
+    relevant: 'relevance',
     newest: 'publicationDate:desc',
     oldest: 'publicationDate:asc',
   };
