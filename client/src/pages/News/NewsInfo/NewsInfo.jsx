@@ -72,7 +72,7 @@ export const NewsInfo = () => {
         <article className={styles.news}>
           {media && (
             <section className={styles.media}>
-              {news.map(({ id, url, alternativeText, placeholder }) => (
+              {media.map(({ id, url, alternativeText, placeholder }) => (
                 <ImageComponent
                   className={styles.image}
                   src={url}

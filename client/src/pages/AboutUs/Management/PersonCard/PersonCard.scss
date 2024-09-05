@@ -16,6 +16,7 @@
   &Inner {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
     gap: 1.6rem;
 
@@ -58,16 +59,24 @@
 
 .role {
   @include typography(body4);
+
+  margin-block: 1.6rem 2.4rem;
   text-transform: uppercase;
 }
 
+.personInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .moreBtn {
-  margin-top: 0.8rem;
   text-transform: none;
 }
 
 .biography {
   margin-inline: 2.4rem 1.6rem;
+  width: 100%;
 }
 
 .text {
@@ -123,12 +132,10 @@
 @media (max-width: 1158px) {
   .cardWrapper {
     width: 100%;
-    min-height: 9rem;
+    min-height: 18rem;
   }
 
   .card {
-    max-width: 100%;
-    height: auto;
     border-radius: 0rem;
     padding: 2.4rem 1.6rem;
 
@@ -155,10 +162,6 @@
     }
   }
 
-  .socials {
-    flex-direction: column;
-  }
-
   .cardInner {
     flex-direction: row;
     white-space: nowrap;
@@ -167,26 +170,24 @@
   .photo {
     width: 12rem;
     height: 12rem;
+    aspect-ratio: 1/1;
   }
 
   .name {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
     font-size: 3.2rem;
-    text-align: left;
-    white-space: nowrap;
-    word-spacing: 0.4rem;
-  }
+    line-height: 2.8rem;
 
-  .name span {
-    margin-right: 0.4rem;
-  }
-
-  .name br {
-    display: none;
+    br {
+      display: none;
+    }
   }
 
   .role {
     font-size: 1.4rem;
-    width: 100%;
+    line-height: 2rem;
     white-space: normal;
   }
 
