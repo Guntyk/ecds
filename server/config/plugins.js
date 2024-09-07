@@ -1,4 +1,6 @@
-module.exports = ({ env }) => ({
+const { env } = require("@strapi/utils");
+
+module.exports = () => ({
   transformer: {
     enabled: true,
     config: {
@@ -18,9 +20,18 @@ module.exports = ({ env }) => ({
     },
   },
   upload: {
-    provider: "custom-provider",
-    providerOptions: {
-      url: env("STORAGE_URL", "https://d0c7f715738e1445.cdn.express"),
+    config: {
+      provider: "cloudinary",
+      providerOptions: {
+        cloud_name: env("CLOUDINARY_NAME"),
+        api_key: env("CLOUDINARY_KEY"),
+        api_secret: env("CLOUDINARY_SECRET"),
+      },
+      actionOptions: {
+        upload: {},
+        uploadStream: {},
+        delete: {},
+      },
     },
   },
 });
