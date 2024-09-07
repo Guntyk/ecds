@@ -1,0 +1,81 @@
+.overflow {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  opacity: 0.64;
+  background: $background2;
+  z-index: 1;
+}
+
+.box {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  width: 48.6rem;
+  aspect-ratio: 1/1;
+  border-radius: $borderRadiusLarge;
+  border: 0.05rem solid $background2;
+  background: $text2;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2.4rem;
+  border-bottom: 0.1rem solid $background2;
+}
+
+.title {
+  @include typography(body1, medium);
+}
+
+.socials {
+  height: 40.6rem;
+
+  li:last-child {
+    padding-bottom: 0.8rem;
+  }
+}
+
+.socialBtn {
+  display: flex;
+  align-items: center;
+  gap: $gapMedium;
+  width: 100%;
+  padding: 1.6rem 2.4rem !important;
+  cursor: pointer;
+  transition: 0.2s;
+
+  span {
+    @include typography(body4);
+  }
+
+  @media (hover: hover) {
+    &:hover {
+      background: $background1 !important;
+    }
+  }
+}
+
+.scrollbar {
+  &Track {
+    width: auto !important;
+    padding: 0.4rem;
+    top: 0 !important;
+    height: 100% !important;
+    border-radius: 0 !important;
+    background: $text2 !important;
+    border-left: 0.05rem solid $background2;
+  }
+
+  &Thumb {
+    background: $background2 !important;
+    width: 0.8rem !important;
+  }
+}

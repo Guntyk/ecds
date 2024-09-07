@@ -146,7 +146,7 @@
   }
 
   strong {
-    font-weight: map-get($fontWeights, "medium");
+    font-weight: map-get($fontWeights, 'medium');
   }
 
   em {
@@ -156,6 +156,12 @@
 
 .text {
   @include typography(body3);
+}
+
+.shareBox {
+  &.hide {
+    display: none;
+  }
 }
 
 @media (max-width: 768px) {

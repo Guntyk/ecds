@@ -1,12 +1,15 @@
 import { BlocksRenderer } from '@strapi/blocks-react-renderer';
 import { useDispatch, useSelector } from 'react-redux';
+import { useEffect, useMemo, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { useEffect, useMemo } from 'react';
+import cn from 'classnames';
 import { getNews, updateViews } from '@redux/features/newsSlice';
 import { formatDate } from 'helpers/formatDate';
-import { ImageComponent } from 'components/Image';
 import { pathnames } from 'constants/pathnames';
+import { Notification } from 'components/Notification';
+import { ImageComponent } from 'components/Image';
 import { Container } from 'components/Container';
+import { ShareBox } from 'components/ShareBox';
 import { Button } from 'components/Button';
 import { Loader } from 'components/Loader';
 import { Link } from 'components/Link';
@@ -25,6 +28,8 @@ const useArticles = (news, newsId) => {
 
 export const NewsInfo = () => {
   const { isLoading, error, news } = useSelector((state) => state.news);
+  const [isShareLinkCopied, setIsShareLinkCopied] = useState(false);
+  const [isShareBoxOpened, setIsShareBoxOpened] = useState(false);
   const { newsPage } = pathnames;
   const dispatch = useDispatch();
   const { id } = useParams();
@@ -62,6 +67,22 @@ export const NewsInfo = () => {
     }
 
     const { title, media, publicationDate, description, content, views, tags, author } = currentArticle;
+
+    const share = async () => {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: title,
+            text: description,
+            url: window.location.href,
+          });
+        } catch (err) {
+          console.error(`${err.name}: ${err.message}`);
+        }
+      } else {
+        setIsShareBoxOpened(true);
+      }
+    };
 
     return (
       <>
@@ -102,7 +123,7 @@ export const NewsInfo = () => {
             </div>
             <hr className={styles.line} />
             <div className={styles.promotion}>
-              <Button className={styles.shareBtn} ghostStyle>
+              <Button className={styles.shareBtn} onClick={share} ghostStyle>
                 Share <img src={shareIcon} alt='Share article' />
               </Button>
               <p className={styles.views}>
@@ -122,6 +143,15 @@ export const NewsInfo = () => {
   return (
     <Container>
       <div className={styles.block}>{renderContent()}</div>
+      {isShareLinkCopied && (
+        <Notification type='success' title='Link copied to clipboard' setIsActive={setIsShareLinkCopied} flyStyle />
+      )}
+      <ShareBox
+        isOpen={isShareBoxOpened}
+        setIsOpen={setIsShareBoxOpened}
+        setIsCopied={setIsShareLinkCopied}
+        className={cn(styles.shareBox, { [styles.hide]: !isShareBoxOpened })}
+      />
     </Container>
   );
 };
