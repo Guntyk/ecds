@@ -22,7 +22,7 @@ export const OrganizationDropdown = ({
         {...(!nonClosable && { onClick: onToggle })}
         {...(nonClosable && { style: { cursor: 'default' } })}
       >
-        <img src={`${process.env.REACT_APP_BASE_API_URL}${flag.url}`} alt={country} className={styles.flagIcon} />
+        <img src={flag.url} alt={country} className={styles.flagIcon} />
         <span className={styles.name}>{country}</span>
         {!nonClosable && <Arrow className={styles.dropdownArrow} isOpen={isOpen} expandStyle />}
       </div>
