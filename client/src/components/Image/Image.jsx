@@ -10,7 +10,6 @@ export const ImageComponent = ({ className, src, placeholder, alt, fit, external
     img.onload = () => {
       setIsImageLoaded(true);
     };
-    img.src = external ? `${process.env.REACT_APP_BASE_API_URL}${src}` : src;
   }, [src]);
 
   return (
