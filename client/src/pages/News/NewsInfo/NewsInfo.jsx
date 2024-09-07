@@ -17,6 +17,7 @@ import { NotFound } from 'pages/Services/NotFound';
 import { TryAgain } from 'pages/Services/TryAgain';
 import shareIcon from 'assets/icons/share.svg';
 import styles from 'pages/News/NewsInfo/NewsInfo.scss';
+import { isChromeOnDesktop } from 'helpers/isChromeOnDesktop';
 
 const useArticles = (news, newsId) => {
   return useMemo(() => {
@@ -68,8 +69,10 @@ export const NewsInfo = () => {
 
     const { title, media, publicationDate, description, content, views, tags, author } = currentArticle;
 
+    const isCustomShare = isChromeOnDesktop();
+
     const share = async () => {
-      if (navigator.share) {
+      if (!isCustomShare && navigator.share) {
         try {
           await navigator.share({
             title: title,

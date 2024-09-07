@@ -159,8 +159,10 @@
 }
 
 .shareBox {
+  transition: 0.5s;
   &.hide {
-    display: none;
+    opacity: 0;
+    pointer-events: none;
   }
 }
 
