@@ -27,7 +27,7 @@ export const ImageComponent = ({ className, src, placeholder, alt, fit, external
         <img
           alt={alt}
           className={styles.image}
-          src={src}
+          src={external ? `${process.env.REACT_APP_BASE_API_URL}${src}` : src}
           onLoad={() => setIsImageLoaded(true)}
           loading='lazy'
           style={{ objectFit: fit ?? 'cover' }}

@@ -11,9 +11,10 @@ export const LogoDropdown = ({ logo: { name, logos } }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleDownload = (id, url, desiredFileName) => {
-    const filename = desiredFileName || url.substring(url.lastIndexOf('/') + 1).split('?')[0];
+    const externalUrl = process.env.REACT_APP_BASE_API_URL + url;
+    const filename = desiredFileName || externalUrl.substring(externalUrl.lastIndexOf('/') + 1).split('?')[0];
 
-    fetch(url)
+    fetch(externalUrl)
       .then((response) => response.blob())
       .then((blob) => {
         const a = document.createElement('a');
@@ -64,7 +65,7 @@ export const LogoDropdown = ({ logo: { name, logos } }) => {
                 <ImageComponent
                   className={styles.logoWrapper}
                   placeholder={coverImg?.placeholder}
-                  src={coverImg?.url}
+                  src={`${process.env.REACT_APP_BASE_API_URL}${coverImg?.url}`}
                   alt={coverImg?.alternativeText}
                   fit='contain'
                 />
