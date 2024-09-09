@@ -2,6 +2,7 @@ const { env } = require("@strapi/utils");
 
 module.exports = () => ({
   upload: {
+    enabled: true,
     config: {
       provider: "strapi-provider-upload-custom",
       providerOptions: {
