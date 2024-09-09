@@ -28,14 +28,11 @@ async function uploadFile(file, path) {
       );
     }
 
-    console.log("Uploading file:", file);
-    console.log("Path:", path);
-
     const formData = new FormData();
     formData.append("file", file.buffer, { filename: file.name });
     formData.append("path", path);
 
-    const { data } = await axios.post(
+    const response = await axios.post(
       "https://d0c7f715738e1445.cdn.express/~/upload",
       formData,
       {
@@ -46,9 +43,9 @@ async function uploadFile(file, path) {
       }
     );
 
-    console.log("Data received:", data);
+    console.log("Data received:", response.data);
 
-    return { ...file, url: data.url };
+    return { ...file, url: response.data.url };
   } catch (error) {
     console.error("Failed to upload file:", error.message);
     throw error;
