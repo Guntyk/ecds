@@ -24,10 +24,10 @@ module.exports = () => ({
       },
     },
   },
-  placeholder: {
-    enabled: true,
-    config: {
-      size: 32,
-    },
-  },
+  // placeholder: {
+  //   enabled: true,
+  //   config: {
+  //     size: 32,
+  //   },
+  // },
 });
