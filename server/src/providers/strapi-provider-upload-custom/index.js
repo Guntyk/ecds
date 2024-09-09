@@ -43,6 +43,7 @@ async function uploadFile(file, path) {
       }
     );
 
+    console.log(response);
     console.log(response.data);
 
     return { ...file, url: response.data.url };
