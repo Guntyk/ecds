@@ -26,6 +26,7 @@ services:
       DATABASE_NAME: strapi_db
       DATABASE_USERNAME: strapi
       DATABASE_PASSWORD: strapi
+      STORAGE_URL: https://d0c7f715738e1445.cdn.express
     volumes:
       - ./server/public/uploads:/srv/app/public/uploads
     networks:
