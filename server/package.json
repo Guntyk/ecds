@@ -28,7 +28,7 @@
     "react-router-dom": "5.3.4",
     "strapi-plugin-placeholder": "^4.4.0",
     "strapi-plugin-transformer": "^3.1.2",
-    "strapi-provider-upload-custom-provider": "file:./src/extensions/upload/providers/custom-provider",
+    "strapi-provider-upload-custom": "file:providers/strapi-provider-upload-custom",
     "styled-components": "5.3.3"
   },
   "engines": {

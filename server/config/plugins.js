@@ -2,7 +2,7 @@ const { env } = require("@strapi/utils");
 
 module.exports = () => ({
   upload: {
-    provider: "custom-provider",
+    provider: "strapi-provider-upload-custom",
     providerOptions: {
       url: env("STORAGE_URL", "https://d0c7f715738e1445.cdn.express"),
     },

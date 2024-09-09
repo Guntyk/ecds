@@ -1,9 +1,0 @@
-{
-  "name": "strapi-provider-upload-custom",
-  "version": "1.0.0",
-  "description": "Custom upload provider for Strapi",
-  "main": "index.js",
-  "dependencies": {
-    "axios": "^0.21.1"
-  }
-}
