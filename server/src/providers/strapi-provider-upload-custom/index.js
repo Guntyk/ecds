@@ -12,7 +12,8 @@ async function getAuthToken(username, password) {
         password: password,
       }
     );
-    authToken = response.data.token;
+    console.log(response);
+    authToken = response.data.callback.token;
   } catch (error) {
     console.error("Failed to get auth token:", error.message);
     throw error;
