@@ -1,63 +1,86 @@
 const axios = require("axios");
 const FormData = require("form-data");
 
+let authToken = null;
+
+async function getAuthToken(username, password) {
+  try {
+    const response = await axios.post(
+      "https://d0c7f715738e1445.cdn.express/~/action/storage/auth/login/",
+      {
+        username: username,
+        password: password,
+      }
+    );
+    authToken = response.data.token;
+  } catch (error) {
+    console.error("Failed to get auth token:", error.message);
+    throw error;
+  }
+}
+
+async function uploadFile(file, path) {
+  try {
+    if (!authToken) {
+      throw new Error(
+        "Auth token is not available. Please authenticate first."
+      );
+    }
+
+    const formData = new FormData();
+    formData.append("file", file.buffer, { filename: file.name });
+    formData.append("path", path);
+
+    const response = await axios.post(
+      "https://d0c7f715738e1445.cdn.express/~/upload",
+      formData,
+      {
+        headers: {
+          "Storage-Token": authToken,
+          ...formData.getHeaders(),
+        },
+      }
+    );
+
+    return { ...file, url: response.data.url };
+  } catch (error) {
+    console.error("Failed to upload file:", error.message);
+    throw error;
+  }
+}
+
 module.exports = {
   init(providerOptions) {
-    this.uploadUrl =
-      providerOptions.uploadUrl || "https://d0c7f715738e1445.cdn.express/";
+    const { username, password } = providerOptions;
+
+    getAuthToken(username, password);
 
     return {
       async upload(file) {
-        const form = new FormData();
-        form.append("file", file.buffer, {
-          filename: file.name,
-          contentType: file.mime,
-        });
-
-        try {
-          const response = await axios.post(this.uploadUrl, form, {
-            headers: {
-              ...form.getHeaders(),
-            },
-          });
-
-          return {
-            url: response.data.url,
-          };
-        } catch (err) {
-          throw new Error(`Failed to upload file: ${err.message}`);
-        }
-      },
-
-      async uploadStream(file) {
-        const form = new FormData();
-        form.append("file", file.stream, {
-          filename: file.name,
-          contentType: file.mime,
-        });
-
-        try {
-          const response = await axios.post(this.uploadUrl, form, {
-            headers: {
-              ...form.getHeaders(),
-            },
-          });
-
-          return {
-            url: response.data.url,
-          };
-        } catch (err) {
-          throw new Error(`Failed to upload stream: ${err.message}`);
-        }
+        return uploadFile(file, "/");
       },
 
       async delete(file) {
-        const deleteUrl = `${this.uploadUrl}/${file.key}`;
-
         try {
-          await axios.delete(deleteUrl);
-        } catch (err) {
-          throw new Error(`Failed to delete file: ${err.message}`);
+          if (!authToken) {
+            throw new Error(
+              "Auth token is not available. Please authenticate first."
+            );
+          }
+
+          await axios.post(
+            "https://d0c7f715738e1445.cdn.express/~/action/storage/manage/delete/",
+            {
+              path: "/",
+              items: [file.name],
+            },
+            {
+              headers: { "Storage-Token": authToken },
+            }
+          );
+        } catch (error) {
+          console.error("Failed to delete file:", error.message);
+          throw error;
         }
       },
     };
