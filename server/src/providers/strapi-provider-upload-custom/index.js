@@ -1,17 +1,15 @@
 const axios = require("axios");
+const crypto = require("crypto");
 const FormData = require("form-data");
 
 let authToken = null;
 
-async function getAuthToken(username, password) {
+async function getAuthToken(url, username, password) {
   try {
-    const response = await axios.post(
-      "https://d0c7f715738e1445.cdn.express/~/action/storage/auth/login/",
-      {
-        username: username,
-        password: password,
-      }
-    );
+    const response = await axios.post(`${url}/~/action/storage/auth/login/`, {
+      username: username,
+      password: password,
+    });
 
     authToken = response.data.callback.token;
   } catch (error) {
@@ -20,7 +18,7 @@ async function getAuthToken(username, password) {
   }
 }
 
-async function uploadFile(file, path) {
+async function uploadFile(url, file, path) {
   try {
     if (!authToken) {
       throw new Error(
@@ -34,24 +32,36 @@ async function uploadFile(file, path) {
     formData.append("file", file.buffer, { filename: file.name });
     formData.append("path", path);
 
-    const response = await axios.post(
-      "https://d0c7f715738e1445.cdn.express/~/upload",
-      formData,
-      {
-        headers: {
-          "Storage-Token": authToken,
-          ...formData.getHeaders(),
-        },
-      }
-    );
+    const response = await axios.post(`${url}/~/upload`, formData, {
+      headers: {
+        "Storage-Token": authToken,
+        ...formData.getHeaders(),
+      },
+    });
 
     if (response.status === 200) {
-      return {
-        id: "unique-file-id",
-        name: file.originalname,
-        url: "https://your-storage-url.com/path/to/file",
-        size: file.size,
-      };
+      const listResponse = await axios.post(
+        `${url}/~/action/storage/manage/ls/`,
+        "/",
+        {
+          headers: {
+            "Storage-Token": authToken,
+            ...formData.getHeaders(),
+          },
+        }
+      );
+
+      console.log(listResponse.data);
+
+      if (listResponse.status === 200) {
+        const uniqueId = crypto.randomUUID();
+        return {
+          id: uniqueId,
+          name: file.name,
+          url: `${url}/${file.name}`,
+          size: file.size,
+        };
+      }
     }
   } catch (error) {
     console.error("Failed to upload file:", error.message);
@@ -61,13 +71,13 @@ async function uploadFile(file, path) {
 
 module.exports = {
   init(providerOptions) {
-    const { username, password } = providerOptions;
+    const { url, username, password } = providerOptions;
 
-    getAuthToken(username, password);
+    getAuthToken(url, username, password);
 
     return {
       async upload(file) {
-        return uploadFile(file, "/");
+        return uploadFile(url, file, "/");
       },
 
       async delete(file) {
@@ -79,7 +89,7 @@ module.exports = {
           }
 
           await axios.post(
-            "https://d0c7f715738e1445.cdn.express/~/action/storage/manage/delete/",
+            `${url}/~/action/storage/manage/delete/`,
             {
               path: "/",
               items: [file.name],
