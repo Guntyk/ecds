@@ -42,7 +42,7 @@ async function uploadFile(url, file, path) {
     if (response.status === 200) {
       const listResponse = await axios.post(
         `${url}/~/action/storage/manage/ls/`,
-        "/",
+        { path: "/" },
         {
           headers: {
             "Storage-Token": authToken,
