@@ -28,6 +28,8 @@ async function uploadFile(file, path) {
       );
     }
 
+    console.log(file);
+
     const formData = new FormData();
     formData.append("file", file.buffer, { filename: file.name });
     formData.append("path", path);
@@ -43,10 +45,14 @@ async function uploadFile(file, path) {
       }
     );
 
-    console.log(response);
-    console.log(response.data);
-
-    return { ...file, url: response.data.url };
+    if (response.status === 200) {
+      return {
+        id: "unique-file-id",
+        name: file.originalname,
+        url: "https://your-storage-url.com/path/to/file",
+        size: file.size,
+      };
+    }
   } catch (error) {
     console.error("Failed to upload file:", error.message);
     throw error;
