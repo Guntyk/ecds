@@ -6,7 +6,9 @@ module.exports = () => ({
     config: {
       provider: "strapi-provider-upload-custom",
       providerOptions: {
-        url: env("STORAGE_URL", "https://d0c7f715738e1445.cdn.express"),
+        username: env("STORAGE_NAME"),
+        password: env("STORAGE_PASSWORD"),
+        url: env("STORAGE_URL"),
       },
     },
   },
