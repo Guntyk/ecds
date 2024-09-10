@@ -14,8 +14,6 @@ export const Main = () => {
   return (
     <>
       <Hero />
-      TEST
-      TEST2
       {screenWidth < 557 && <BannersShowcase />}
       <DancesTypes />
       <Organizations />
