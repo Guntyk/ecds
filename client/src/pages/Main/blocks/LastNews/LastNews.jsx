@@ -103,7 +103,6 @@ export const LastNews = () => {
                         src={article.media?.[0].url || 'https://placehold.co/282'}
                         alt={article.media?.[0].alt || 'cover placeholder'}
                         placeholder={article.media?.[0].placeholder}
-                        external={article.media}
                       />
                       <div className={styles.additionalInfo}>
                         <div className={styles.reactions}>

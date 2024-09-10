@@ -1,5 +1,7 @@
 const axios = require("axios");
 const crypto = require("crypto");
+const streamifier = require("streamifier");
+const mime = require("mime-types");
 const FormData = require("form-data");
 
 let authToken = null;
@@ -10,7 +12,6 @@ async function getAuthToken(url, username, password) {
       username: username,
       password: password,
     });
-
     authToken = response.data.callback.token;
   } catch (error) {
     console.error("Failed to get auth token:", error.message);
@@ -18,53 +19,18 @@ async function getAuthToken(url, username, password) {
   }
 }
 
-async function uploadFile(url, file, path) {
+async function getAllStoredFiles(url) {
   try {
-    if (!authToken) {
-      throw new Error(
-        "Auth token is not available. Please authenticate first."
-      );
-    }
-
-    console.log(file);
-
-    const formData = new FormData();
-    formData.append("file", file.buffer, { filename: file.name });
-    formData.append("path", path);
-
-    const response = await axios.post(`${url}/~/upload`, formData, {
-      headers: {
-        "Storage-Token": authToken,
-        ...formData.getHeaders(),
-      },
-    });
-
-    if (response.status === 200) {
-      const listResponse = await axios.post(
-        `${url}/~/action/storage/manage/ls/`,
-        { path: "/" },
-        {
-          headers: {
-            "Storage-Token": authToken,
-            ...formData.getHeaders(),
-          },
-        }
-      );
-
-      console.log(listResponse.data);
-
-      if (listResponse.status === 200) {
-        const uniqueId = crypto.randomUUID();
-        return {
-          id: uniqueId,
-          name: file.name,
-          url: `${url}/${file.name}`,
-          size: file.size,
-        };
+    const response = await axios.post(
+      `${url}/~/action/storage/manage/ls/`,
+      { path: "/" },
+      {
+        headers: { "Storage-Token": authToken },
       }
-    }
+    );
+    return response.data.callback;
   } catch (error) {
-    console.error("Failed to upload file:", error.message);
+    console.error("Failed to get remote URL:", error.message);
     throw error;
   }
 }
@@ -72,12 +38,58 @@ async function uploadFile(url, file, path) {
 module.exports = {
   init(providerOptions) {
     const { url, username, password } = providerOptions;
-
     getAuthToken(url, username, password);
 
     return {
       async upload(file) {
-        return uploadFile(url, file, "/");
+        try {
+          if (!authToken) {
+            throw new Error(
+              "Auth token is not available. Please authenticate first."
+            );
+          }
+
+          const readStream = streamifier.createReadStream(file.buffer);
+          const formData = new FormData();
+          formData.append("file", readStream, { filename: file.name });
+          formData.append("path", "/");
+
+          const uploadResponse = await axios.post(`${url}/~/upload`, formData, {
+            headers: {
+              "Storage-Token": authToken,
+              ...formData.getHeaders(),
+            },
+          });
+
+          if (uploadResponse.status === 200) {
+            const remoteFiles = await getAllStoredFiles(url);
+            const addedFile = remoteFiles.find(
+              ({ name }) => name === file.name
+            );
+
+            if (addedFile) {
+              const fileHash = crypto
+                .createHash("md5")
+                .update(file.name)
+                .digest("hex");
+
+              file.url = `${url}/${file.name}`;
+              file.hash = fileHash;
+              file.ext = `.${file.name.split(".").pop()}`;
+              file.mime = mime.lookup(file.name);
+              file.size = file.size;
+
+              return file;
+            } else {
+              throw new Error(
+                "File upload failed, file not found on remote server."
+              );
+            }
+          }
+        } catch (error) {
+          console.error("Failed to upload file:", error.message);
+          throw error;
+        }
       },
 
       async delete(file) {

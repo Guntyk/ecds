@@ -103,7 +103,6 @@ export const NewsInfo = () => {
                   alt={alternativeText}
                   placeholder={placeholder}
                   key={id}
-                  external
                 />
               ))}
             </section>
@@ -126,7 +125,6 @@ export const NewsInfo = () => {
                   alt={alternativeText}
                   placeholder={placeholder}
                   key={id}
-                  external
                 />
               ))}
             </section>

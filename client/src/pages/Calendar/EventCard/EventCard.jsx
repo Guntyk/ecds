@@ -14,7 +14,6 @@ export const EventCard = ({
       alt={cover?.alternativeText || 'cover placeholder'}
       placeholder={cover?.placeholder}
       className={styles.cover}
-      external={cover}
     />
     <section className={styles.info}>
       <span className={styles.type}>{type}</span>

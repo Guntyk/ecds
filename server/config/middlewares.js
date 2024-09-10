@@ -10,7 +10,13 @@ module.exports = [
           "default-src": ["'self'", "https:", "http:"],
           "script-src": ["'self'", "https:", "http:", "'unsafe-inline'"],
           "style-src": ["'self'", "https:", "'unsafe-inline'"],
-          "img-src": ["'self'", "data:", "blob:", "https://euro-dance.org"],
+          "img-src": [
+            "'self'",
+            "data:",
+            "blob:",
+            "https://euro-dance.org",
+            "https://d0c7f715738e1445.cdn.express",
+          ],
           "connect-src": [
             "'self'",
             "https:",

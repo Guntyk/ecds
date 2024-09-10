@@ -41,7 +41,6 @@ export const NewsCard = ({ news: { id, title, description, publicationDate, medi
           alt={media?.[0].alt || 'Cover placeholder'}
           placeholder={media?.[0].placeholder}
           className={styles.cover}
-          external={media}
         />
         <section className={styles.info}>
           <h3 className={styles.title}>{title.trim()}</h3>

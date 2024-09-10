@@ -48,7 +48,6 @@ export const Partners = () => {
                     alt={alternativeText}
                     placeholder={placeholder}
                     fit='contain'
-                    external
                   />
                   {website && <Link className={styles.moreBtn} content='More about' path={website} external />}
                 </li>

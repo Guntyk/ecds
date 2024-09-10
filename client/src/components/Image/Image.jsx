@@ -1,38 +1,32 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import cn from 'classnames';
 import styles from 'components/Image/Image.scss';
 
-export const ImageComponent = ({ className, src, placeholder, alt, fit, external }) => {
+export const ImageComponent = ({ className, src, placeholder, alt, fit = 'cover' }) => {
   const [isImageLoaded, setIsImageLoaded] = useState(false);
+
+  const handleImageLoad = useCallback(() => {
+    setIsImageLoaded(true);
+  }, []);
 
   useEffect(() => {
     const img = new Image();
-    img.onload = () => {
-      setIsImageLoaded(true);
-    };
-    img.src = external ? `${process.env.REACT_APP_BASE_API_URL}${src}` : src;
-  }, [src]);
+    img.onload = handleImageLoad;
+    img.src = src;
+  }, [src, handleImageLoad]);
+
+  const imageStyle = { objectFit: fit };
 
   return (
     <div className={cn(styles.wrapper, className)}>
-      {placeholder && !isImageLoaded ? (
-        <img
-          alt={alt}
-          className={cn(styles.image, styles.placeholder)}
-          src={placeholder}
-          loading='lazy'
-          style={{ objectFit: fit ?? 'cover' }}
-        />
-      ) : (
-        <img
-          alt={alt}
-          className={styles.image}
-          src={external ? `${process.env.REACT_APP_BASE_API_URL}${src}` : src}
-          onLoad={() => setIsImageLoaded(true)}
-          loading='lazy'
-          style={{ objectFit: fit ?? 'cover' }}
-        />
-      )}
+      <img
+        alt={alt}
+        className={cn(styles.image, { [styles.placeholder]: placeholder && !isImageLoaded })}
+        src={isImageLoaded ? src : placeholder}
+        onLoad={handleImageLoad}
+        loading='lazy'
+        style={imageStyle}
+      />
     </div>
   );
 };

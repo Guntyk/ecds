@@ -18,8 +18,6 @@
     "@strapi/plugin-cloud": "4.25.5",
     "@strapi/plugin-i18n": "4.25.5",
     "@strapi/plugin-users-permissions": "4.25.5",
-    "@strapi/provider-upload-cloudinary": "^4.25.10",
-    "@strapi/provider-upload-local": "^4.25.10",
     "@strapi/strapi": "4.25.5",
     "better-sqlite3": "8.6.0",
     "pg": "^8.12.0",
@@ -29,6 +27,7 @@
     "strapi-plugin-placeholder": "^4.4.0",
     "strapi-plugin-transformer": "^3.1.2",
     "strapi-provider-upload-custom": "file:src/providers/strapi-provider-upload-custom",
+    "streamifier": "^0.1.1",
     "styled-components": "5.3.3"
   },
   "engines": {

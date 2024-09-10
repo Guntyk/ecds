@@ -19,13 +19,9 @@ export const Banners = ({ banners, sliderClassName, navigationClassName, ...prop
     <Swiper className={styles.bannersSlider} {...sliderSettings}>
       {banners.map(({ id, link, image: { alternativeText, url, placeholder } }) => (
         <SwiperSlide className={styles.bannerSlide} key={id}>
-          <Link
-            className={styles.banner}
-            content={<ImageComponent alt={alternativeText} src={url} placeholder={placeholder} external />}
-            path={link}
-            external
-            noStyle
-          />
+          <Link className={styles.banner} path={link} external noStyle>
+            <ImageComponent alt={alternativeText} src={url} placeholder={placeholder} />
+          </Link>
         </SwiperSlide>
       ))}
     </Swiper>
