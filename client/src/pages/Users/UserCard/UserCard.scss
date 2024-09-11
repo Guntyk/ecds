@@ -46,14 +46,16 @@
   border-radius: 0;
   overflow: visible;
 
-  &:hover,
-  &:focus-visible {
-    .arrow {
-      translate: calc(100% + 0.4rem) -50%;
-      opacity: 0;
+  @media (hover: hover) {
+    &:hover,
+    &:focus-visible {
+      .arrow {
+        translate: calc(100% + 0.4rem) -50%;
+        opacity: 0;
 
-      &:nth-child(2) {
-        opacity: 1;
+        &:nth-child(2) {
+          opacity: 1;
+        }
       }
     }
   }

@@ -36,18 +36,20 @@
     cursor: default;
     transition: 0.3s;
 
-    &:hover {
-      color: $primary3;
-      font-weight: map-get($fontWeights, 'medium');
+    @media (hover: hover) {
+      &:hover {
+        color: $primary3;
+        font-weight: map-get($fontWeights, 'medium');
 
-      .arrow {
-        background: $primary3;
+        .arrow {
+          background: $primary3;
 
-        &:first-child {
-          translate: 100% -50%;
-        }
-        &:last-child {
-          translate: -100% -50%;
+          &:first-child {
+            translate: 100% -50%;
+          }
+          &:last-child {
+            translate: -100% -50%;
+          }
         }
       }
     }
@@ -95,17 +97,19 @@
   border-radius: $borderRadius;
   transition: 0.2s;
 
-  &:hover {
-    font-weight: map-get($fontWeights, 'regular');
+  @media (hover: hover) {
+    &:hover {
+      font-weight: map-get($fontWeights, 'regular');
 
-    &:nth-child(2) {
-      border: 0.1rem solid $primary1;
-    }
-    &:nth-child(3) {
-      border: 0.1rem solid $primary2;
-    }
-    &:nth-child(4) {
-      border: 0.1rem solid $primary3;
+      &:nth-child(2) {
+        border: 0.1rem solid $primary1;
+      }
+      &:nth-child(3) {
+        border: 0.1rem solid $primary2;
+      }
+      &:nth-child(4) {
+        border: 0.1rem solid $primary3;
+      }
     }
   }
 }

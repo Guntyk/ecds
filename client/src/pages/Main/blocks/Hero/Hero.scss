@@ -47,8 +47,10 @@
   border-radius: $borderRadiusLarge;
   transition: 0.3s;
 
-  &:hover {
-    background: #dadbea4d;
+  @media (hover: hover) {
+    &:hover {
+      background: #dadbea4d;
+    }
   }
 }
 

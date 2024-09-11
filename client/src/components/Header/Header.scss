@@ -19,13 +19,15 @@
       &Link {
         color: $text1;
 
-        &:hover,
-        &:focus-visible,
-        &.active {
-          color: $primary1;
+        @media (hover: hover) {
+          &:hover,
+          &:focus-visible {
+            color: $primary1;
+          }
         }
 
         &.active {
+          color: $primary1;
           pointer-events: none;
         }
       }

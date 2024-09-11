@@ -152,6 +152,15 @@
   em {
     font-style: italic;
   }
+
+  a {
+    color: $primary1;
+    @media (hover: hover) {
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
 }
 
 .text {

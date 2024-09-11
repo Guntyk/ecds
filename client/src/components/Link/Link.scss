@@ -71,11 +71,13 @@
     text-transform: none;
     text-align: center;
 
-    &:focus-visible,
-    &:hover {
-      outline: none;
-      font-weight: map-get($fontWeights, 'regular');
-      border: 0.1rem solid $primary2;
+    @media (hover: hover) {
+      &:focus-visible,
+      &:hover {
+        outline: none;
+        font-weight: map-get($fontWeights, 'regular');
+        border: 0.1rem solid $primary2;
+      }
     }
 
     &.active {
@@ -97,13 +99,15 @@
       rotate: 0deg;
     }
 
-    &:focus-visible,
-    &:hover {
-      color: $text2;
-      padding: 1.6rem 4.55rem;
+    @media (hover: hover) {
+      &:focus-visible,
+      &:hover {
+        color: $text2;
+        padding: 1.6rem 4.55rem;
 
-      .arrow {
-        opacity: 0;
+        .arrow {
+          opacity: 0;
+        }
       }
     }
   }

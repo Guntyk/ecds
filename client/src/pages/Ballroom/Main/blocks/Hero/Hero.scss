@@ -12,8 +12,10 @@
 }
 
 .banners {
-  &Slider:hover .bannersNavigation {
-    background: #f3f5f7cc;
+  @media (hover: hover) {
+    &Slider:hover .bannersNavigation {
+      background: #f3f5f7cc;
+    }
   }
 
   &Navigation {

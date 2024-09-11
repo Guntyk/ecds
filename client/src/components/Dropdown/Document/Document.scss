@@ -44,8 +44,10 @@
   border: 0.175rem solid $secondary2;
   border-radius: $borderRadius;
 
-  &:hover {
-    border: 0.175rem solid $primary2;
+  @media (hover: hover) {
+    &:hover {
+      border: 0.175rem solid $primary2;
+    }
   }
 }
 

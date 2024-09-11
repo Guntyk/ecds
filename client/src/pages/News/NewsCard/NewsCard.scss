@@ -42,9 +42,11 @@
     outline: none;
   }
 
-  &:focus-visible,
-  &:hover {
-    border: 0.05rem solid $lavender;
+  @media (hover: hover) {
+    &:focus-visible,
+    &:hover {
+      border: 0.05rem solid $lavender;
+    }
   }
 }
 

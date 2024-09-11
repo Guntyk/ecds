@@ -33,11 +33,13 @@
   .downloadBtn {
     padding-inline: 3.9rem;
 
-    &:hover {
-      border: 0.175rem solid $primary2;
+    @media (hover: hover) {
+      &:hover {
+        border: 0.175rem solid $primary2;
 
-      .downloadIcon {
-        background: $primary2;
+        .downloadIcon {
+          background: $primary2;
+        }
       }
     }
   }

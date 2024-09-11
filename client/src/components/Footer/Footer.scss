@@ -64,10 +64,12 @@
       padding: 0.8rem;
       transition: 0.3s;
 
-      &:focus-visible,
-      &:hover {
-        color: $primary2;
-        outline: none;
+      @media (hover: hover) {
+        &:focus-visible,
+        &:hover {
+          color: $primary2;
+          outline: none;
+        }
       }
     }
 
