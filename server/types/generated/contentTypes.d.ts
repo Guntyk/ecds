@@ -794,7 +794,7 @@ export interface ApiArticleArticle extends Schema.CollectionType {
   info: {
     singularName: 'article';
     pluralName: 'articles';
-    displayName: 'Articles';
+    displayName: 'News';
     description: '';
   };
   options: {
@@ -979,7 +979,7 @@ export interface ApiEventEvent extends Schema.CollectionType {
   info: {
     singularName: 'event';
     pluralName: 'events';
-    displayName: 'Events';
+    displayName: 'Calendar';
     description: '';
   };
   options: {
@@ -1061,7 +1061,7 @@ export interface ApiManagerManager extends Schema.CollectionType {
   info: {
     singularName: 'manager';
     pluralName: 'managers';
-    displayName: 'Managers';
+    displayName: 'Management';
     description: '';
   };
   options: {
