@@ -45,9 +45,11 @@ export const DocumentDropdown = ({ document: { title, description, file } }) => 
         })}
       >
         <div className={cn(dropdownStyles.contentInner, styles.contentInner)}>
-          <div className={styles.text}>
-            <BlocksRenderer content={description} />
-          </div>
+          {description && (
+            <div className={styles.text}>
+              <BlocksRenderer content={description} />
+            </div>
+          )}
           <div className={styles.buttonsWrapper}>
             <Button className={styles.openBtn} onClick={() => handleDownload(url, name)}>
               Download in {ext.slice(1).toUpperCase()}
