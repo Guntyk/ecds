@@ -7,7 +7,6 @@ import { useNews } from 'hooks/useNews';
 import { getNews } from '@redux/features/newsSlice';
 import { formatDate } from 'helpers/formatDate';
 import { pathnames } from 'constants/pathnames';
-import { Notification } from 'components/Notification';
 import { Loader } from 'components/Loader';
 import dashboardStyles from 'pages/Ballroom/Main/blocks/Dashboard/Dashboard.scss';
 import styles from 'pages/Ballroom/Main/blocks/Dashboard/News/News.scss';
@@ -22,7 +21,7 @@ export const News = () => {
   const [containerRef, isVisible] = useElementOnScreen();
 
   useEffect(() => {
-    if (!error & isVisible && !news.includes(({ pages }) => pages.some((page) => ballroomPage.includes(page)))) {
+    if (!error & isVisible && !news.some(({ pages }) => pages.some((page) => ballroomPage.includes(page)))) {
       dispatch(getNews({ getCurrentPageNews }));
     }
   }, [isVisible, news.length]);

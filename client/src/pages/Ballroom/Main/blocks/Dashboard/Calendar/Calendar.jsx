@@ -22,7 +22,7 @@ export const Calendar = () => {
 
   useEffect(() => {
     if (!error && isVisible && !events.length) {
-      dispatch(getEvents());
+      dispatch(getEvents({ danceStyle: 'Ballroom' }));
     }
   }, [isVisible, events.length]);
 
