@@ -117,17 +117,19 @@ export const NewsInfo = () => {
             </ul>
             <h1 className={styles.title}>{title}</h1>
             {description && <h2 className={styles.description}>{description}</h2>}
-            <section className={cn(styles.media, styles.mobile)}>
-              {media.map(({ id, url, alternativeText, placeholder }) => (
-                <ImageComponent
-                  className={cn(styles.image, styles.mobile)}
-                  src={url}
-                  alt={alternativeText}
-                  placeholder={placeholder}
-                  key={id}
-                />
-              ))}
-            </section>
+            {media && (
+              <section className={cn(styles.media, styles.mobile)}>
+                {media.map(({ id, url, alternativeText, placeholder }) => (
+                  <ImageComponent
+                    className={cn(styles.image, styles.mobile)}
+                    src={url}
+                    alt={alternativeText}
+                    placeholder={placeholder}
+                    key={id}
+                  />
+                ))}
+              </section>
+            )}
             <div className={styles.credits}>
               <time dateTime={publicationDate} className={styles.date}>
                 {formatDate(publicationDate)}
