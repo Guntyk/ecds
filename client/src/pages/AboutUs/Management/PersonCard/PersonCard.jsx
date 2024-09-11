@@ -28,7 +28,7 @@ export const PersonCard = ({ person: { name, surname, role, socials, biography, 
         >
           <ImageComponent
             className={styles.photo}
-            src={`${process.env.REACT_APP_BASE_API_URL}${photo?.url}` || 'https://placehold.co/234'}
+            src={photo?.url || 'https://placehold.co/234'}
             alt={photo?.alternativeText || 'photo placeholder'}
             placeholder={photo?.placeholder}
           />
