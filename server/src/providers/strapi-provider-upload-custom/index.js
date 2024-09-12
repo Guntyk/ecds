@@ -13,8 +13,9 @@ async function getAuthToken(url, username, password) {
       username: username,
       password: password,
     });
+
     authToken = response.data.callback.token;
-    validUntil = new Date(response.data.callback.valid_until);
+    validUntil = new Date(response.data.callback.valid_until * 1000);
     console.log(response.data.callback.valid_until);
     console.log(validUntil);
     console.log(new Date() >= validUntil);
@@ -36,9 +37,9 @@ async function ensureValidToken(url, username, password) {
   }
 }
 
-async function getAllStoredFiles(url) {
+async function getAllStoredFiles(url, username, password) {
   try {
-    await ensureValidToken();
+    await ensureValidToken(url, username, password);
 
     const response = await axios.post(
       `${url}/~/action/storage/manage/ls/`,
@@ -77,7 +78,11 @@ module.exports = {
           });
 
           if (uploadResponse.status === 200) {
-            const remoteFiles = await getAllStoredFiles(url);
+            const remoteFiles = await getAllStoredFiles(
+              url,
+              username,
+              password
+            );
             const addedFile = remoteFiles.find(
               ({ name }) => name === file.name
             );
