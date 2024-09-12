@@ -5,6 +5,7 @@ const mime = require("mime-types");
 const FormData = require("form-data");
 
 let authToken = null;
+let validUntil = null;
 
 async function getAuthToken(url, username, password) {
   try {
@@ -13,14 +14,31 @@ async function getAuthToken(url, username, password) {
       password: password,
     });
     authToken = response.data.callback.token;
+    validUntil = new Date(response.data.callback.valid_until);
+    console.log(validUntil);
+    console.log(new Date() >= validUntil);
   } catch (error) {
     console.error("Failed to get auth token:", error.message);
     throw error;
   }
 }
 
+function isTokenExpired() {
+  if (!validUntil) return true;
+  return new Date() >= validUntil;
+}
+
+async function ensureValidToken(url, username, password) {
+  if (isTokenExpired()) {
+    console.log("Auth token expired, re-authenticating...");
+    await getAuthToken(url, username, password);
+  }
+}
+
 async function getAllStoredFiles(url) {
   try {
+    await ensureValidToken();
+
     const response = await axios.post(
       `${url}/~/action/storage/manage/ls/`,
       { path: "/" },
@@ -43,11 +61,7 @@ module.exports = {
     return {
       async upload(file) {
         try {
-          if (!authToken) {
-            throw new Error(
-              "Auth token is not available. Please authenticate first."
-            );
-          }
+          await ensureValidToken(url, username, password);
 
           const readStream = streamifier.createReadStream(file.buffer);
           const formData = new FormData();
@@ -94,11 +108,7 @@ module.exports = {
 
       async delete(file) {
         try {
-          if (!authToken) {
-            throw new Error(
-              "Auth token is not available. Please authenticate first."
-            );
-          }
+          await ensureValidToken(url, username, password);
 
           await axios.post(
             `${url}/~/action/storage/manage/delete/`,
