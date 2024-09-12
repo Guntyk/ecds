@@ -15,6 +15,7 @@ async function getAuthToken(url, username, password) {
     });
     authToken = response.data.callback.token;
     validUntil = new Date(response.data.callback.valid_until);
+    console.log(response.data.callback.valid_until);
     console.log(validUntil);
     console.log(new Date() >= validUntil);
   } catch (error) {
