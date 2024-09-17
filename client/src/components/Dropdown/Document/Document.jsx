@@ -6,7 +6,13 @@ import { Link } from 'components/Link';
 import dropdownStyles from 'components/Dropdown/General.scss';
 import styles from 'components/Dropdown/Document/Document.scss';
 
-export const DocumentDropdown = ({ document: { title, description, file } }) => {
+export const DocumentDropdown = ({
+  document: {
+    title,
+    description,
+    file: { ext, url },
+  },
+}) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -32,12 +38,9 @@ export const DocumentDropdown = ({ document: { title, description, file } }) => 
             </div>
           )}
           <div className={styles.buttonsWrapper}>
-            <Link
-              className={styles.openBtn}
-              content={`Open in ${file?.ext.slice(1).toUpperCase()}`}
-              path={file?.url}
-              external
-            />
+            <Link className={styles.openBtn} path={`${process.env.REACT_APP_BASE_API_URL}${url}`} external>
+              Open in {ext.slice(1).toUpperCase()}
+            </Link>
             <Arrow isOpen={true} onClick={() => setIsOpen(false)} expandStyle />
           </div>
         </div>
