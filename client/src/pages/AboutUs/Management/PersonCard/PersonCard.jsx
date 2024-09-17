@@ -76,9 +76,11 @@ export const PersonCard = ({ person: { name, surname, role, socials, biography, 
               mousewheel={{ sensitivity: 0.5 }}
               modules={[FreeMode, Scrollbar, Mousewheel]}
             >
-              <SwiperSlide className={styles.text}>
-                <BlocksRenderer content={biography} />
-              </SwiperSlide>
+              {biography && (
+                <SwiperSlide className={styles.text}>
+                  <BlocksRenderer content={biography} />
+                </SwiperSlide>
+              )}
             </Swiper>
             <Arrow className={styles.cross} isOpen={true} onClick={() => setIsOpen(false)} logoStyle />
           </>
