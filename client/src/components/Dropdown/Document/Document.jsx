@@ -38,7 +38,7 @@ export const DocumentDropdown = ({
             </div>
           )}
           <div className={styles.buttonsWrapper}>
-            <Link className={styles.openBtn} path={`${process.env.REACT_APP_BASE_API_URL}${url}`} external>
+            <Link className={styles.openBtn} path={url} external>
               Open in {ext.slice(1).toUpperCase()}
             </Link>
             <Arrow isOpen={true} onClick={() => setIsOpen(false)} expandStyle />
