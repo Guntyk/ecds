@@ -64,6 +64,13 @@
       "type": "string",
       "required": false,
       "unique": true
+    },
+    "countryAcronym": {
+      "type": "string",
+      "required": true,
+      "maxLength": 2,
+      "unique": true,
+      "minLength": 2
     }
   }
 }

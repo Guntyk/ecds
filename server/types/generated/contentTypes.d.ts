@@ -1010,10 +1010,11 @@ export interface ApiEventEvent extends Schema.CollectionType {
     organizer: Attribute.String & Attribute.Required;
     startDate: Attribute.Date & Attribute.Required;
     endDate: Attribute.Date;
-    address: Attribute.String & Attribute.Required;
+    address: Attribute.String;
     cover: Attribute.Media<'images'>;
     style: Attribute.Enumeration<['Ballroom', 'Street', 'Caribbean', 'Other']> &
       Attribute.Required;
+    city: Attribute.String & Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1120,6 +1121,13 @@ export interface ApiOrganizationOrganization extends Schema.CollectionType {
     status: Attribute.Enumeration<['Full member', 'Provisional member']> &
       Attribute.Required;
     shortName: Attribute.String & Attribute.Unique;
+    countryAcronym: Attribute.String &
+      Attribute.Required &
+      Attribute.Unique &
+      Attribute.SetMinMaxLength<{
+        minLength: 2;
+        maxLength: 2;
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

@@ -1,6 +1,5 @@
 import { useHistory, useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
-import { usersList } from 'constants/mockedUsers';
 import { Container } from 'components/Container';
 import { Link } from 'components/Link';
 import { CertificationCard } from 'pages/Certification/CertificationCard';

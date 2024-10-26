@@ -1,0 +1,13 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: $gapMedium;
+}
+
+.searchBtn {
+  margin-top: 2.4rem;
+}
+
+.clearBtn {
+  border: 0.05rem solid $secondary2;
+}

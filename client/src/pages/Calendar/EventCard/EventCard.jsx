@@ -6,7 +6,7 @@ import markerIcon from 'assets/icons/marker.svg';
 import styles from 'pages/Calendar/EventCard/EventCard.scss';
 
 export const EventCard = ({
-  event: { id, type, title, description, organization, organizer, startDate, endDate, address, cover },
+  event: { type, title, description, organization, organizer, startDate, endDate, cover, city },
 }) => (
   <article className={styles.card}>
     <ImageComponent
@@ -50,10 +50,9 @@ export const EventCard = ({
           </span>
           <span>
             <img src={markerIcon} alt='marker' />
-            {address}
+            {city}, {organization?.country}
           </span>
         </div>
-        {/* <Link content='Read more' path={`/events/${id}`} arrowRight /> */}
       </div>
     </section>
   </article>

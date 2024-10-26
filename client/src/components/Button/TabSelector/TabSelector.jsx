@@ -3,7 +3,7 @@ import { useRef } from 'react';
 import cn from 'classnames';
 import styles from 'components/Button/TabSelector/TabSelector.scss';
 
-export const TabSelector = ({ tabs, activeTabIndex, setActiveTabIndex }) => {
+export const TabSelector = ({ buttonClassName, tabs, activeTabIndex, setActiveTabIndex }) => {
   const { pathname } = useLocation();
   const { push } = useHistory();
 
@@ -37,7 +37,7 @@ export const TabSelector = ({ tabs, activeTabIndex, setActiveTabIndex }) => {
       {tabs.map((element, index) => (
         <button
           ref={(el) => (buttonRefs.current[index] = el)}
-          className={cn(styles.btn, {
+          className={cn(styles.btn, buttonClassName, {
             [styles.btnActive]: activeTabIndex === index,
           })}
           onClick={() => handleClick(element, index)}

@@ -1,13 +1,17 @@
 import { FreeMode, Scrollbar, Mousewheel } from 'swiper/modules';
+import { FixedSizeList as List } from 'react-window';
+import AutoSizer from 'react-virtualized-auto-sizer';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { useRef, useState, useEffect } from 'react';
+import { useRef, useState, useEffect, forwardRef } from 'react';
 import cn from 'classnames';
 import 'swiper/css';
 import 'swiper/css/free-mode';
 import 'swiper/css/scrollbar';
 import styles from 'components/Dropdown/Dropdown.scss';
 
-export const Dropdown = ({ className, options, placeholder, selectedValue, printable, onChange, zIndex }) => {
+const GAP_SIZE = 4;
+
+export const Dropdown = ({ className, options, placeholder, selectedValue, printable, onChange, zIndex, ...props }) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef(null);
@@ -43,24 +47,54 @@ export const Dropdown = ({ className, options, placeholder, selectedValue, print
 
   const filteredOptions = options.filter((option) => option.toLowerCase().includes(searchTerm.toLowerCase()));
 
+  const Row = ({ index, style }) => {
+    const option = filteredOptions[index];
+
+    return (
+      <button
+        type='button'
+        role='option'
+        className={cn(styles.dropdownItem, {
+          [styles.selectedItem]: option === selectedValue,
+        })}
+        onClick={() => handleSelectOption(option)}
+        aria-selected={option === selectedValue}
+        tabIndex={isOpen && option !== selectedValue ? '0' : '-1'}
+        key={option}
+        style={{
+          ...style,
+          top: style.top + GAP_SIZE,
+          height: style.height - GAP_SIZE,
+        }}
+      >
+        {option}
+      </button>
+    );
+  };
+
   return (
     <div className={cn(styles.dropdown, className)} ref={dropdownRef}>
       {printable ? (
-        <input
-          type='text'
-          className={cn(styles.dropdownInput, {
-            [styles.open]: isOpen,
-            [styles.filled]: searchTerm || selectedValue,
-          })}
-          value={searchTerm || selectedValue || ''}
-          onClick={toggleDropdown}
-          onChange={handleInputChange}
-          placeholder={placeholder || 'Select or type...'}
-          aria-expanded={isOpen}
-          aria-haspopup='listbox'
-          aria-controls='dropdown-list'
-          aria-autocomplete='list'
-        />
+        <label>
+          <input
+            type='text'
+            className={cn(styles.dropdownInput, {
+              [styles.open]: isOpen,
+              [styles.filled]: searchTerm || selectedValue,
+            })}
+            value={searchTerm || selectedValue || ''}
+            onClick={toggleDropdown}
+            onChange={handleInputChange}
+            placeholder={placeholder || 'Select or type...'}
+            aria-expanded={isOpen}
+            aria-haspopup='listbox'
+            aria-controls='dropdown-list'
+            aria-autocomplete='list'
+            autoComplete='nope'
+            {...props}
+          />
+          <span className={cn(styles.arrow, { [styles.open]: isOpen })} />
+        </label>
       ) : (
         <button
           type='button'
@@ -77,7 +111,47 @@ export const Dropdown = ({ className, options, placeholder, selectedValue, print
           <span className={cn(styles.arrow, { [styles.open]: isOpen })} />
         </button>
       )}
-      <Swiper
+      <div
+        className={cn(styles.dropdownList, {
+          [styles.open]: isOpen,
+          [styles.scrollable]: filteredOptions.length > 11,
+        })}
+        style={{ zIndex: 99999 }}
+      >
+        {filteredOptions.length > 20 ? (
+          <AutoSizer>
+            {({ height, width }) => (
+              <List
+                className={styles.hugeList}
+                height={height}
+                itemCount={filteredOptions.length}
+                innerElementType={innerElementType}
+                itemSize={36 + GAP_SIZE}
+                width={width}
+              >
+                {Row}
+              </List>
+            )}
+          </AutoSizer>
+        ) : (
+          filteredOptions.map((option) => (
+            <button
+              type='button'
+              role='option'
+              className={cn(styles.dropdownItem, {
+                [styles.selectedItem]: option === selectedValue,
+              })}
+              onClick={() => handleSelectOption(option)}
+              aria-selected={option === selectedValue}
+              tabIndex={isOpen && option !== selectedValue ? '0' : '-1'}
+              key={option}
+            >
+              {option}
+            </button>
+          ))
+        )}
+      </div>
+      {/* <Swiper
         className={cn(styles.dropdownList, {
           [styles.open]: isOpen,
           [styles.scrollable]: filteredOptions.length > 11,
@@ -113,7 +187,19 @@ export const Dropdown = ({ className, options, placeholder, selectedValue, print
             </button>
           ))}
         </SwiperSlide>
-      </Swiper>
+      </Swiper> */}
     </div>
   );
 };
+
+const innerElementType = forwardRef(({ style, ...rest }, ref) => (
+  <div
+    ref={ref}
+    style={{
+      ...style,
+      width: '240px',
+      position: 'relative',
+    }}
+    {...rest}
+  />
+));

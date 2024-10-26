@@ -27,16 +27,30 @@
   @include typography(body3);
 }
 
-.events {
+.pageContent {
   display: flex;
-  flex-direction: column;
   gap: $gapLarge;
 }
 
-@media (min-width: 558px) {
-  .events {
-    @include container;
+.navigation {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+  max-width: 28.2rem;
+  width: 100%;
+
+  .tenseBtn {
+    @include typography(body4, medium);
+    padding-block: 1.2rem;
+    color: $primary1;
   }
+}
+
+.events {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: $gapLarge;
 }
 
 @media (max-width: 557px) {

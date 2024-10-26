@@ -13,6 +13,9 @@
     width: 100%;
     padding: 1.5rem;
     text-transform: capitalize;
+    background: none;
+    border: 0.05rem solid $secondary2;
+    border-radius: $borderRadius;
 
     &.open {
       border-bottom-left-radius: 0;
@@ -26,11 +29,18 @@
     &:focus-visible {
       border: 0.05rem solid $primary1;
     }
+
+    &::placeholder {
+      color: $secondary3;
+    }
   }
 
-  &Button {
-    border: 0.05rem solid $secondary2;
-    border-radius: $borderRadius;
+  &Input ~ .arrow {
+    display: block;
+    position: absolute;
+    top: 50%;
+    right: 1.6rem;
+    translate: 0 -50%;
   }
 
   &List {
@@ -58,6 +68,12 @@
       background: none;
     }
 
+    &:not(.scrollable) {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
     &.open {
       padding-block: 0.79rem;
       max-height: 41.2rem;
@@ -70,8 +86,12 @@
       }
 
       &.scrollable {
-        padding-right: 1.6rem;
+        height: 41.2rem;
       }
+    }
+
+    &:has(.hugeList) {
+      padding: 0;
     }
   }
 
@@ -102,6 +122,10 @@
       pointer-events: none;
     }
   }
+}
+
+.hugeList .dropdownItem {
+  margin-inline: 0.8rem;
 }
 
 .optionsList {
