@@ -11,6 +11,7 @@ import { Members } from 'pages/Members';
 import { Users } from 'pages/Users';
 import { News } from 'pages/News';
 import { Main } from 'pages/Main';
+import { EventInfo } from 'pages/Calendar/EventInfo';
 
 const {
   mainPage,
@@ -39,6 +40,8 @@ export const routes = [
   { id: uuidv4(), path: membersPage, component: Members },
   { id: uuidv4(), path: newsPage, component: News },
   { id: uuidv4(), path: `${newsPage}/:id`, component: NewsInfo },
+  { id: uuidv4(), path: '/event-info', component: EventInfo },
+
   ...[calendarPage, certificationPage, usersPage, newsPage].map((subPage) => ({
     id: uuidv4(),
     path: `${ballroomPage}${subPage}`,
