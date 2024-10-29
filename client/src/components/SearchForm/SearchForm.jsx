@@ -50,7 +50,7 @@ export const SearchForm = ({ className, formConfig, formState, setFormState, onS
           wrapperClassName={styles.searchInput}
           key={initialInput.name}
           name={initialInput.name}
-          inputValue={formState[initialInput.name]}
+          inputValue={formState[initialInput.name] || ''}
           placeholder={initialInput.placeholder}
           onChange={(e) => modifyQuery(initialInput.name, e.target.value)}
         />

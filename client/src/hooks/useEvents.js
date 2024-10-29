@@ -28,7 +28,7 @@ export const useEvents = ({ organizations, searchFormState, setSearchFormState }
       setCountryOptions(organizations.map(({ country }) => country));
       setCityOptions(getCityOptions(organizations));
 
-      if (searchFormState.country) {
+      if (events.length && searchFormState.country) {
         setSearchFormState((prevState) => {
           const { city, ...restState } = prevState;
           return restState;
@@ -52,9 +52,20 @@ export const useEvents = ({ organizations, searchFormState, setSearchFormState }
   useEffect(() => {
     if (events.length) {
       setSearchFormState({});
+    }
+  }, [activeEventTenseIndex]);
+
+  useEffect(() => {
+    if (events.length) {
       setEventsList(filterEventsByParams(events, null, activeEventTenseIndex));
     }
   }, [events, activeEventTenseIndex]);
+
+  useEffect(() => {
+    if (events.length && (searchFormState.name || searchFormState.country || searchFormState.city)) {
+      handleSearch();
+    }
+  }, [events]);
 
   const handleSearch = () => {
     setEventsList(filterEventsByParams(events, searchFormState, activeEventTenseIndex));

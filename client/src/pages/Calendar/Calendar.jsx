@@ -1,3 +1,4 @@
+import { useLocation } from 'react-router-dom';
 import { useState } from 'react';
 import { useOrganizations } from 'hooks/useOrganizations';
 import { useEvents } from 'hooks/useEvents';
@@ -10,7 +11,16 @@ import { TryAgain } from 'pages/Services/TryAgain';
 import styles from 'pages/Calendar/Calendar.scss';
 
 export const Calendar = () => {
-  const [searchFormState, setSearchFormState] = useState({});
+  const { search } = useLocation();
+  const URLParams = new URLSearchParams(search);
+
+  const initialURLParams = {
+    name: URLParams.get('name'),
+    country: URLParams.get('country'),
+    city: URLParams.get('city'),
+  };
+
+  const [searchFormState, setSearchFormState] = useState(initialURLParams || {});
   const organizations = useOrganizations();
   const {
     isLoading,
