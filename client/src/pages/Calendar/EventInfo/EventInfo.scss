@@ -1,0 +1,340 @@
+.info {
+  display: flex;
+  padding-top: 100px;
+  gap: 32px;
+  // border: 3px solid red;
+}
+
+.title {
+  @include typography(h2);
+  font-size: 6.4rem;
+  padding-top: 16px;
+}
+
+.cover {
+  border-radius: 14px;
+  width: 384px;
+  height: 543px;
+  object-fit: cover;
+}
+
+.description {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  // border: 3px solid red;
+  font-size: 18px;
+}
+
+.stats {
+  display: flex;
+  justify-content: space-between;
+  line-height: 24px;
+}
+
+.type {
+  color: #424895;
+  text-transform: uppercase;
+}
+
+.status {
+  border: 1px solid #96c121;
+  border-radius: 8px;
+  padding: 4px 12px;
+  font-size: 16px;
+}
+.wrapper {
+  //   display: flex;
+  //   justify-content: space-between;
+  //   align-items: center;
+  //   width: 300px;
+  //   margin: 0 auto;
+  padding: 24px 0;
+}
+
+.additionalInfo {
+  display: flex;
+  gap: $gapLarge;
+  padding: 0.8rem 1.6rem;
+  color: $primary1;
+  border-radius: 0.6rem;
+  background: #e1e1ee;
+
+  span {
+    display: flex;
+    align-items: center;
+    gap: $gapExtraSmall;
+  }
+}
+
+.tournamentInfo {
+  font-size: 18px;
+  padding-bottom: 32px;
+  display: flex;
+  td {
+    padding: 0.4rem;
+    line-height: 2.8rem;
+
+    &:first-child {
+      padding-left: 0;
+      padding-right: 8px;
+      min-width: 12.4rem;
+      color: $primary1;
+    }
+    &:last-child {
+      @include typography(body3, medium);
+      padding-right: 0;
+    }
+  }
+
+  tr {
+    &:first-child td {
+      padding-top: 0;
+    }
+    &:last-child td {
+      padding-bottom: 0;
+    }
+  }
+}
+
+.buttons {
+  display: flex;
+  gap: 16px;
+}
+
+.formBtn {
+  padding: 1.6rem;
+  width: 200px;
+  border: 1.5px solid #7b7fb5;
+}
+
+.regBtn {
+  width: 200px;
+  background-color: #7b7fb5;
+}
+
+.additionalDescr {
+  width: 100%;
+  padding: 72px 0 120px;
+}
+
+.additionalDescrLinks {
+  display: flex;
+  gap: 8px;
+  align-items: end;
+  // z-index: -2;
+  overflow: hidden;
+}
+
+.link {
+  padding: 16px 32.5px 16px;
+  border-radius: 14px 14px 0 0;
+  border: 1px solid #dadbea;
+  border-bottom: none;
+  transition: 0.3s;
+  transform: translateY(8px);
+  color: #7b7fb5;
+  cursor: pointer;
+  // z-index: -1;
+
+  &:hover {
+    transform: translateY(0px);
+    border: 1px solid #96c121;
+    border-bottom: none;
+    cursor: pointer;
+  }
+  &.active {
+    background: #fff;
+    transform: translateY(0px);
+    color: #07070f;
+    &:hover {
+      border: 1px solid #dadbea;
+      border-bottom: none;
+    }
+  }
+}
+
+.inner {
+  background: #fff;
+  border-radius: 0 14px 14px 14px;
+  border: 1px solid #dadbea;
+  padding: 32px;
+  border-top: none;
+}
+
+.line {
+  margin: 3.2rem 0;
+  height: 0.15rem;
+  background: $background2;
+}
+
+.informationPassages {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.passageTitle {
+  color: #96c121;
+}
+
+//categories
+
+.categories {
+  margin-bottom: 32px;
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.categoryHeader {
+  display: flex;
+  justify-content: space-between;
+  background: #f3f5f7;
+  color: #424895;
+  padding: 16px;
+  border-radius: 12px 12px 0 0;
+}
+
+.dateWrapper {
+  display: flex;
+  gap: 8px;
+}
+
+.category {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 16px;
+  border: 1px solid #f3f5f7;
+  border-top: none;
+  span {
+    width: 12.2rem;
+    &:first-child {
+      width: 21rem;
+    }
+    &:last-child {
+      width: 4.8rem;
+    }
+  }
+}
+
+.categoryName {
+  text-align: start;
+}
+
+.count {
+  text-align: end;
+  color: #96c121;
+}
+
+.categoriesTotlas {
+  display: flex;
+  padding: 16px;
+  border: 1px solid #f3f5f7;
+  justify-content: space-between;
+  border-radius: 0 0 12px 12px;
+}
+
+.clubsHeader {
+  background: #f3f5f7;
+  display: flex;
+  padding: 16px;
+  align-items: center;
+  border-radius: 12px;
+}
+
+.totals {
+  color: #424895;
+  font-size: 16px;
+}
+
+.stats,
+.clubStats {
+  display: flex;
+  gap: 16px;
+  font-size: 16px;
+}
+
+.stat {
+  display: flex;
+  gap: 8px;
+}
+.statData {
+  color: #96c121;
+}
+
+.club {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 24px 0;
+}
+.clubImg {
+  height: 80px;
+  width: 80px;
+  object-fit: cover;
+  border-radius: 50px;
+}
+.clubInfo {
+  width: 311px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.clubs .line {
+  margin: 0;
+}
+
+.judgesHeader {
+  background: #f3f5f7;
+  display: flex;
+  padding: 16px;
+  align-items: center;
+  border-radius: 12px;
+  font-size: 16px;
+}
+
+.stats {
+  display: flex;
+  gap: 16px;
+  font-size: 16px;
+}
+
+.stat {
+  display: flex;
+  gap: 8px;
+}
+.statData {
+  color: #96c121;
+}
+
+.judge {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 24px 0;
+}
+.judgeImg {
+  height: 80px;
+  width: 80px;
+  object-fit: cover;
+  border-radius: 50px;
+}
+.judgeInfo {
+  width: 311px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.judges .line {
+  margin: 0;
+}
+
+.addressWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
