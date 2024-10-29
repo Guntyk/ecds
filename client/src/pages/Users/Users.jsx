@@ -9,7 +9,7 @@ import { Dropdown } from 'components/Dropdown';
 import { Button } from 'components/Button';
 import { Input } from 'components/Input';
 import { UserCard } from 'pages/Users/UserCard';
-import { FilterMobile } from 'components/FilterMobile/FilterMobile';
+import { CompactFilters } from 'components/SearchForm/CompactFilters';
 import styles from 'pages/Users/Users.scss';
 
 export const Users = () => {
@@ -62,7 +62,7 @@ export const Users = () => {
                 onClick={clearFilters}
                 ghostStyle
               />
-              <FilterMobile
+              <CompactFilters
                 className={styles.filterMobile}
                 formState={formState}
                 handleFilterChange={handleFilterChange}

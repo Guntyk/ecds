@@ -20,7 +20,7 @@
         "Open tournament",
         "National championship",
         "Cup",
-        "Championship"
+        "ECDS Championship"
       ],
       "required": true
     },
@@ -74,6 +74,9 @@
     "city": {
       "type": "string",
       "required": true
+    },
+    "acceptRegistration": {
+      "type": "boolean"
     }
   }
 }

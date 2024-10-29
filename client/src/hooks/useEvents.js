@@ -46,7 +46,11 @@ export const useEvents = ({ organizations, searchFormState, setSearchFormState }
     const danceStyle = getDanceStyleFromPath(pathname);
     if (danceStyle && !events.length) {
       dispatch(getEvents({ danceStyle }));
-    } else {
+    }
+  }, []);
+
+  useEffect(() => {
+    if (events.length) {
       setSearchFormState({});
       setEventsList(filterEventsByParams(events, null, activeEventTenseIndex));
     }

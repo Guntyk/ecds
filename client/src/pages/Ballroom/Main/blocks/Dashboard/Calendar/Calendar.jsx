@@ -42,7 +42,7 @@ export const Calendar = () => {
           ) : nearestEvents.length === 0 ? (
             <p className={styles.text}>The calendar is empty for now</p>
           ) : (
-            nearestEvents.map(({ id, title, startDate, endDate, address }) => (
+            nearestEvents.map(({ id, title, startDate, endDate, organization, city }) => (
               <li className={cn(dashboardStyles.item, styles.item)} key={id}>
                 <Link
                   content={
@@ -54,7 +54,7 @@ export const Calendar = () => {
                         </time>
                         <address>
                           <span className={styles.markerIcon} />
-                          {address}
+                          {city}, {organization.country}
                         </address>
                       </div>
                       <strong className={styles.titleCalendar}>{title}</strong>

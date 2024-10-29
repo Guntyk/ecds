@@ -1,0 +1,39 @@
+.filterHeader {
+  display: none;
+}
+
+.filterBtn {
+  width: 5.6rem;
+  height: 5.6rem;
+  border: 0.05rem solid #a1a4ca;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.filterMenu {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+  z-index: 1;
+}
+
+.boxBtn {
+  display: flex;
+  margin-top: 1.6rem;
+  width: 100%;
+  gap: 1.6rem;
+  justify-content: center;
+}
+
+.searchBtn,
+.clearFilters {
+  width: 16.8rem;
+  height: 4.8rem;
+}
+
+@media (max-width: 768px) {
+  .filterHeader {
+    display: block;
+  }
+}

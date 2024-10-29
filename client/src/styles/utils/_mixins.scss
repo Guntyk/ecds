@@ -15,7 +15,7 @@
   font-family: $font;
   font-size: map-get($fontSizes, $key);
   line-height: map-get($lineHeights, $key);
-  @media (max-width: 557px) {
+  @media (max-width: 768px) {
     font-size: map-get($fontSizesMobile, $key);
     line-height: map-get($lineHeightsMobile, $key);
   }

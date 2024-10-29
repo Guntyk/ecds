@@ -993,7 +993,7 @@ export interface ApiEventEvent extends Schema.CollectionType {
         'Open tournament',
         'National championship',
         'Cup',
-        'Championship'
+        'ECDS Championship'
       ]
     > &
       Attribute.Required;
@@ -1015,6 +1015,7 @@ export interface ApiEventEvent extends Schema.CollectionType {
     style: Attribute.Enumeration<['Ballroom', 'Street', 'Caribbean', 'Other']> &
       Attribute.Required;
     city: Attribute.String & Attribute.Required;
+    acceptRegistration: Attribute.Boolean;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

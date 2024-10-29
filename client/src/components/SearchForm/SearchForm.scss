@@ -4,10 +4,56 @@
   gap: $gapMedium;
 }
 
+.searchHeader {
+  display: flex;
+  gap: $gapMedium;
+  width: 100%;
+}
+
+.searchInput {
+  width: 100%;
+}
+
+.filtersBtn {
+  display: none;
+  padding: 1.6rem;
+  aspect-ratio: 1;
+  border: 0.05rem solid $secondary2;
+
+  .filtersIcon {
+    width: 2.4rem;
+    height: 2.4rem;
+    aspect-ratio: 1;
+    mask: url(assets/icons/filters.svg);
+    background: $secondary3;
+    transition: 0.15s;
+  }
+
+  &.active .filtersIcon {
+    background: $primary1;
+  }
+}
+
+.filters {
+  display: flex;
+  flex-direction: column;
+  gap: $gapMedium;
+}
+
 .searchBtn {
   margin-top: 2.4rem;
 }
 
 .clearBtn {
   border: 0.05rem solid $secondary2;
+}
+
+@media (max-width: 768px) {
+  .filtersBtn {
+    display: flex;
+  }
+
+  .filters:not(.opened) {
+    display: none;
+  }
 }

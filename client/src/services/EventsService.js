@@ -11,7 +11,17 @@ export default class EventsService {
 
     const query = qs.stringify({
       filters: filters,
-      fields: ['type', 'title', 'description', 'organizer', 'startDate', 'endDate', 'address', 'city'],
+      fields: [
+        'type',
+        'title',
+        'description',
+        'organizer',
+        'startDate',
+        'endDate',
+        'address',
+        'city',
+        'acceptRegistration',
+      ],
       populate: {
         organization: {
           fields: ['name', 'country', 'shortName', 'website'],
