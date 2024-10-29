@@ -65,14 +65,13 @@ export const SearchForm = ({ className, formConfig, formState, setFormState, onS
       <div className={cn(styles.filters, { [styles.opened]: isFiltersOpen })}>
         {formConfig
           .slice(1)
-          .map(({ name, placeholder, options, zIndex, ...props }) =>
+          .map(({ name, placeholder, options, ...props }) =>
             options ? (
               <Dropdown
                 options={options}
-                selectedValue={formState[name]}
+                selectedValue={formState[name] || ''}
                 placeholder={placeholder}
                 onChange={(option) => modifyQuery(name, option)}
-                zIndex={zIndex}
                 key={name}
                 {...props}
               />
@@ -80,7 +79,7 @@ export const SearchForm = ({ className, formConfig, formState, setFormState, onS
               <Input
                 key={name}
                 name={name}
-                inputValue={formState[name]}
+                inputValue={formState[name] || ''}
                 placeholder={placeholder}
                 onChange={(e) => modifyQuery(name, e.target.value)}
                 {...props}

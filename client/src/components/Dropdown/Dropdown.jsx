@@ -1,20 +1,21 @@
-import { FreeMode, Scrollbar, Mousewheel } from 'swiper/modules';
+import { useRef, useState, useEffect, forwardRef } from 'react';
 import { FixedSizeList as List } from 'react-window';
 import AutoSizer from 'react-virtualized-auto-sizer';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { useRef, useState, useEffect, forwardRef } from 'react';
 import cn from 'classnames';
-import 'swiper/css';
-import 'swiper/css/free-mode';
-import 'swiper/css/scrollbar';
 import styles from 'components/Dropdown/Dropdown.scss';
 
 const GAP_SIZE = 4;
 
-export const Dropdown = ({ className, options, placeholder, selectedValue, printable, onChange, zIndex, ...props }) => {
-  const [searchTerm, setSearchTerm] = useState('');
+export const Dropdown = ({ className, options, placeholder, selectedValue, printable, onChange, ...props }) => {
+  const [searchTerm, setSearchTerm] = useState(selectedValue || '');
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef(null);
+
+  useEffect(() => {
+    if (printable && !selectedValue) {
+      setSearchTerm('');
+    }
+  }, [selectedValue]);
 
   useEffect(() => {
     const handleClickOutside = (e) => {
@@ -36,8 +37,8 @@ export const Dropdown = ({ className, options, placeholder, selectedValue, print
 
   const handleSelectOption = (option) => {
     onChange(option);
+    setSearchTerm(option);
     setIsOpen(false);
-    setSearchTerm('');
   };
 
   const handleInputChange = (e) => {
@@ -82,7 +83,7 @@ export const Dropdown = ({ className, options, placeholder, selectedValue, print
               [styles.open]: isOpen,
               [styles.filled]: searchTerm || selectedValue,
             })}
-            value={searchTerm || selectedValue || ''}
+            value={searchTerm || ''}
             onClick={toggleDropdown}
             onChange={handleInputChange}
             placeholder={placeholder || 'Select or type...'}
@@ -116,7 +117,6 @@ export const Dropdown = ({ className, options, placeholder, selectedValue, print
           [styles.open]: isOpen,
           [styles.scrollable]: filteredOptions.length > 11,
         })}
-        style={{ zIndex: 99999 }}
       >
         {filteredOptions.length > 20 ? (
           <AutoSizer>
@@ -151,43 +151,6 @@ export const Dropdown = ({ className, options, placeholder, selectedValue, print
           ))
         )}
       </div>
-      {/* <Swiper
-        className={cn(styles.dropdownList, {
-          [styles.open]: isOpen,
-          [styles.scrollable]: filteredOptions.length > 11,
-        })}
-        direction='vertical'
-        slidesPerView='auto'
-        freeMode={true}
-        scrollbar={{
-          dragClass: styles.thumb,
-          dragSize: 80,
-          verticalClass: styles.scrollbar,
-        }}
-        mousewheel={{ sensitivity: 0.5 }}
-        modules={[FreeMode, Scrollbar, Mousewheel]}
-        id='dropdown-list'
-        aria-labelledby='dropdown-button'
-        style={{ zIndex }}
-      >
-        <SwiperSlide className={styles.optionsList}>
-          {filteredOptions.map((option) => (
-            <button
-              type='button'
-              role='option'
-              className={cn(styles.dropdownItem, {
-                [styles.selectedItem]: option === selectedValue,
-              })}
-              onClick={() => handleSelectOption(option)}
-              aria-selected={option === selectedValue}
-              tabIndex={isOpen && option !== selectedValue ? '0' : '-1'}
-              key={option}
-            >
-              {option}
-            </button>
-          ))}
-        </SwiperSlide>
-      </Swiper> */}
     </div>
   );
 };

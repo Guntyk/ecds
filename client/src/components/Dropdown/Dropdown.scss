@@ -16,7 +16,7 @@
     background: none;
     border: 0.05rem solid $secondary2;
     border-radius: $borderRadius;
-    transition: 0.2s;
+    transition: 0.075s;
 
     &.open {
       border-bottom-left-radius: 0;
@@ -56,7 +56,6 @@
     border: 0.05rem solid $secondary2;
     border-top: 0.1rem solid $primary1;
     border-radius: $borderRadius;
-    transition: 0.4s;
 
     .thumb {
       width: 0.8rem;
@@ -81,6 +80,7 @@
       opacity: 1;
       border-top-left-radius: 0;
       border-top-right-radius: 0;
+      z-index: 1;
 
       .dropdownItem {
         padding-block: 0.8rem;
