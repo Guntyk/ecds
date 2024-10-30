@@ -25,6 +25,7 @@ export const Link = ({
     [styles.button]: buttonStyle,
     [styles.pinkButton]: pinkButtonStyle,
     [styles.active]: active,
+    [styles.default]: noStyle,
   });
 
   return external ? (

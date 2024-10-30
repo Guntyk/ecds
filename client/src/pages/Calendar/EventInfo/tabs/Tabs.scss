@@ -1,0 +1,182 @@
+.information {
+  @include typography(body3);
+
+  letter-spacing: 0;
+}
+
+.line {
+  margin: 3.2rem 0;
+  height: 0.1rem;
+  background: $lightGray;
+}
+
+.informationParagraph {
+  display: flex;
+  flex-direction: column;
+  gap: $gapMedium;
+}
+
+.passageTitle {
+  color: $primary2;
+  font-weight: map-get($fontWeights, 'medium');
+}
+
+.department {
+  @include typography(body4);
+
+  letter-spacing: 0;
+
+  &:not(:last-child) {
+    margin-bottom: 3.2rem;
+  }
+
+  &Header {
+    display: flex;
+    justify-content: space-between;
+    padding: 1.6rem;
+    color: $primary1;
+    background: $background1;
+    border-top-left-radius: $borderRadius;
+    border-top-right-radius: $borderRadius;
+
+    .name {
+      font-weight: map-get($fontWeights, 'medium');
+    }
+
+    .dateTime {
+      display: flex;
+      gap: $gapExtraSmall;
+    }
+  }
+
+  &Totals {
+    display: flex;
+    justify-content: space-between;
+    padding: 1.6rem;
+    font-weight: map-get($fontWeights, 'medium');
+    border: 0.1rem solid $background1;
+    border-bottom-left-radius: $borderRadius;
+    border-bottom-right-radius: $borderRadius;
+  }
+}
+
+.category {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: $gapMedium;
+  padding: 1.6rem;
+  border: 0.1rem solid $background1;
+  border-top: none;
+
+  span {
+    width: 12.2rem;
+
+    &:first-child,
+    &:last-child {
+      font-weight: map-get($fontWeights, 'medium');
+    }
+
+    &:first-child {
+      width: 21rem;
+    }
+
+    &:last-child {
+      width: 4.8rem;
+      text-align: end;
+    }
+  }
+}
+
+.count {
+  color: $primary2;
+}
+
+.totalsHeader {
+  @include typography(body4);
+
+  display: flex;
+  align-items: center;
+  gap: $gapMedium;
+  margin-bottom: 2.4rem;
+  padding: 1.6rem;
+  line-height: 2rem;
+  letter-spacing: 0;
+  border-radius: $borderRadius;
+  background: $background1;
+}
+
+.totals {
+  width: 6.4rem;
+  color: $primary1;
+  line-height: 2.4rem;
+  font-weight: map-get($fontWeights, 'medium');
+}
+
+.stats {
+  display: flex;
+  gap: $gapMedium;
+}
+
+.stat {
+  @include typography(body4);
+
+  display: flex;
+  gap: $gapExtraSmall;
+  line-height: 2rem;
+  white-space: nowrap;
+
+  span:last-child {
+    color: $primary2;
+    font-weight: map-get($fontWeights, 'medium');
+  }
+}
+
+.judge,
+.club {
+  display: flex;
+  align-items: center;
+  gap: $gapMedium;
+}
+
+.judgePhoto,
+.clubLogo {
+  height: 8rem;
+  min-width: 8rem;
+  aspect-ratio: 1;
+  border-radius: 50%;
+}
+
+.judgeInfo,
+.clubInfo {
+  @include typography(body4);
+
+  display: flex;
+  flex-direction: column;
+  gap: $gapExtraSmall;
+  flex-grow: 1;
+  line-height: 2rem;
+  letter-spacing: 0;
+
+  .name {
+    @include typography(body3, medium);
+  }
+}
+
+.judgeCategory {
+  margin-top: -0.4rem;
+}
+
+.address {
+  @include typography(body3);
+
+  display: flex;
+  flex-direction: column;
+  gap: 3.2rem;
+}
+
+.map {
+  aspect-ratio: 4/2;
+  background: $background1;
+  border-radius: $borderRadius;
+}

@@ -1,5 +1,6 @@
-import { v4 as uuidv4 } from 'uuid';
+import { v4 as uuid } from 'uuid';
 import { pathnames } from 'constants/pathnames';
+import { EventInfo } from 'pages/Calendar/EventInfo';
 import { Certification } from 'pages/Certification';
 import { NotFound } from 'pages/Services/NotFound';
 import { Service } from 'pages/Services/Service';
@@ -11,7 +12,6 @@ import { Members } from 'pages/Members';
 import { Users } from 'pages/Users';
 import { News } from 'pages/News';
 import { Main } from 'pages/Main';
-import { EventInfo } from 'pages/Calendar/EventInfo';
 
 const {
   mainPage,
@@ -35,22 +35,21 @@ const subPageComponents = {
 };
 
 export const routes = [
-  { id: uuidv4(), path: mainPage, component: Main },
-  { id: uuidv4(), path: ballroomPage, component: Ballroom },
-  { id: uuidv4(), path: membersPage, component: Members },
-  { id: uuidv4(), path: newsPage, component: News },
-  { id: uuidv4(), path: `${newsPage}/:id`, component: NewsInfo },
-  { id: uuidv4(), path: '/event-info', component: EventInfo },
-
+  { id: uuid(), path: mainPage, component: Main },
+  { id: uuid(), path: ballroomPage, component: Ballroom },
+  { id: uuid(), path: membersPage, component: Members },
+  { id: uuid(), path: newsPage, component: News },
+  { id: uuid(), path: `${newsPage}/:id`, component: NewsInfo },
   ...[calendarPage, certificationPage, usersPage, newsPage].map((subPage) => ({
-    id: uuidv4(),
+    id: uuid(),
     path: `${ballroomPage}${subPage}`,
     component: subPageComponents[subPage] || NotFound,
   })),
+  { id: uuid(), path: `${ballroomPage}${calendarPage}/:id`, component: EventInfo },
   ...[managementPage, documentsPage, contactsPage, logosPage].map((path) => ({
-    id: uuidv4(),
+    id: uuid(),
     path,
     component: AboutUs,
   })),
-  { id: uuidv4(), component: Service },
+  { id: uuid(), component: Service },
 ];

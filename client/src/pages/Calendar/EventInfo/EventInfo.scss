@@ -1,63 +1,74 @@
+.page {
+  padding-block: 12.8rem 12rem;
+}
+
+.navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 4.8rem;
+}
+
 .info {
   display: flex;
-  padding-top: 100px;
-  gap: 32px;
-  // border: 3px solid red;
+  gap: 3.2rem;
 }
 
 .title {
   @include typography(h2);
+
+  margin-top: 0.8rem;
   font-size: 6.4rem;
-  padding-top: 16px;
 }
 
 .cover {
-  border-radius: 14px;
-  width: 384px;
-  height: 543px;
-  object-fit: cover;
+  border-radius: $borderRadiusLarge;
+  width: 38.4rem;
+  height: 54.3rem;
 }
 
-.description {
-  width: 100%;
+.information {
   display: flex;
   flex-direction: column;
-  // border: 3px solid red;
-  font-size: 18px;
+  flex-grow: 1;
 }
 
 .stats {
   display: flex;
   justify-content: space-between;
-  line-height: 24px;
 }
 
 .type {
-  color: #424895;
+  @include typography(body3);
+
+  color: $primary1;
   text-transform: uppercase;
 }
 
 .status {
-  border: 1px solid #96c121;
-  border-radius: 8px;
-  padding: 4px 12px;
-  font-size: 16px;
-}
-.wrapper {
-  //   display: flex;
-  //   justify-content: space-between;
-  //   align-items: center;
-  //   width: 300px;
-  //   margin: 0 auto;
-  padding: 24px 0;
+  @include typography(body4);
+
+  padding: 0.3rem 1.1rem;
+  color: $secondary1;
+  letter-spacing: 0;
+  border-radius: 0.8rem;
+  border: 0.1rem solid $primary3;
+  text-align: center;
+
+  &.open {
+    border-color: $primary2;
+  }
 }
 
 .additionalInfo {
+  @include typography(body3);
+
   display: flex;
   gap: $gapLarge;
+  margin-block: 2.4rem;
   padding: 0.8rem 1.6rem;
   color: $primary1;
-  border-radius: 0.6rem;
+  border-radius: 0.8rem;
   background: #e1e1ee;
 
   span {
@@ -67,274 +78,94 @@
   }
 }
 
-.tournamentInfo {
-  font-size: 18px;
-  padding-bottom: 32px;
+.table tbody {
+  @include typography(body3);
+
   display: flex;
+  flex-direction: column;
+  row-gap: $gapExtraSmall;
+
+  tr {
+    display: flex;
+    align-items: center;
+    gap: $gapExtraSmall;
+  }
+
   td {
-    padding: 0.4rem;
     line-height: 2.8rem;
 
     &:first-child {
-      padding-left: 0;
-      padding-right: 8px;
-      min-width: 12.4rem;
+      min-width: 14rem;
       color: $primary1;
+      letter-spacing: 0;
     }
+
     &:last-child {
       @include typography(body3, medium);
-      padding-right: 0;
-    }
-  }
-
-  tr {
-    &:first-child td {
-      padding-top: 0;
-    }
-    &:last-child td {
-      padding-bottom: 0;
     }
   }
 }
 
 .buttons {
   display: flex;
-  gap: 16px;
+  gap: 1.6rem;
+  margin-block: 3.2rem 7.2rem;
 }
 
-.formBtn {
-  padding: 1.6rem;
-  width: 200px;
-  border: 1.5px solid #7b7fb5;
+.firstBtn {
+  width: 20rem;
+  background-color: $secondary3;
 }
 
-.regBtn {
-  width: 200px;
-  background-color: #7b7fb5;
+.secondBtn {
+  width: 20rem;
+  border: 0.15rem solid $secondary3;
 }
 
-.additionalDescr {
-  width: 100%;
-  padding: 72px 0 120px;
-}
-
-.additionalDescrLinks {
+.tabs {
   display: flex;
-  gap: 8px;
+  gap: 0.8rem;
   align-items: end;
-  // z-index: -2;
+  margin-right: 1.4rem;
   overflow: hidden;
 }
 
-.link {
-  padding: 16px 32.5px 16px;
-  border-radius: 14px 14px 0 0;
-  border: 1px solid #dadbea;
+.tab {
+  @include typography(body4);
+
+  padding: 1.6rem 3.2rem;
+  padding-bottom: 0.8rem;
+  color: $secondary3;
+  line-height: 3.2rem;
+  text-transform: capitalize;
+  border: 0.1rem solid $background2;
+  border-top-left-radius: $borderRadiusLarge;
+  border-top-right-radius: $borderRadiusLarge;
   border-bottom: none;
   transition: 0.3s;
-  transform: translateY(8px);
-  color: #7b7fb5;
-  cursor: pointer;
-  // z-index: -1;
 
-  &:hover {
-    transform: translateY(0px);
-    border: 1px solid #96c121;
-    border-bottom: none;
-    cursor: pointer;
+  @media (hover: hover) {
+    &:hover,
+    &:focus-visible {
+      padding-bottom: 1.6rem;
+      border-color: $primary2;
+    }
   }
+
   &.active {
-    background: #fff;
-    transform: translateY(0px);
-    color: #07070f;
-    &:hover {
-      border: 1px solid #dadbea;
-      border-bottom: none;
-    }
+    padding-bottom: 1.6rem;
+    color: $text1;
+    background: $text2;
+    pointer-events: none;
   }
-}
 
-.inner {
-  background: #fff;
-  border-radius: 0 14px 14px 14px;
-  border: 1px solid #dadbea;
-  padding: 32px;
-  border-top: none;
-}
-
-.line {
-  margin: 3.2rem 0;
-  height: 0.15rem;
-  background: $background2;
-}
-
-.informationPassages {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.passageTitle {
-  color: #96c121;
-}
-
-//categories
-
-.categories {
-  margin-bottom: 32px;
-  &:last-child {
-    margin-bottom: 0;
+  &Inner {
+    max-width: 78.4rem;
+    padding: 3.2rem;
+    border: 0.1rem solid $background2;
+    border-top: none;
+    border-radius: 1.4rem;
+    border-top-left-radius: 0;
+    background: $text2;
   }
-}
-
-.categoryHeader {
-  display: flex;
-  justify-content: space-between;
-  background: #f3f5f7;
-  color: #424895;
-  padding: 16px;
-  border-radius: 12px 12px 0 0;
-}
-
-.dateWrapper {
-  display: flex;
-  gap: 8px;
-}
-
-.category {
-  display: flex;
-  justify-content: space-between;
-  gap: 16px;
-  padding: 16px;
-  border: 1px solid #f3f5f7;
-  border-top: none;
-  span {
-    width: 12.2rem;
-    &:first-child {
-      width: 21rem;
-    }
-    &:last-child {
-      width: 4.8rem;
-    }
-  }
-}
-
-.categoryName {
-  text-align: start;
-}
-
-.count {
-  text-align: end;
-  color: #96c121;
-}
-
-.categoriesTotlas {
-  display: flex;
-  padding: 16px;
-  border: 1px solid #f3f5f7;
-  justify-content: space-between;
-  border-radius: 0 0 12px 12px;
-}
-
-.clubsHeader {
-  background: #f3f5f7;
-  display: flex;
-  padding: 16px;
-  align-items: center;
-  border-radius: 12px;
-}
-
-.totals {
-  color: #424895;
-  font-size: 16px;
-}
-
-.stats,
-.clubStats {
-  display: flex;
-  gap: 16px;
-  font-size: 16px;
-}
-
-.stat {
-  display: flex;
-  gap: 8px;
-}
-.statData {
-  color: #96c121;
-}
-
-.club {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  padding: 24px 0;
-}
-.clubImg {
-  height: 80px;
-  width: 80px;
-  object-fit: cover;
-  border-radius: 50px;
-}
-.clubInfo {
-  width: 311px;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.clubs .line {
-  margin: 0;
-}
-
-.judgesHeader {
-  background: #f3f5f7;
-  display: flex;
-  padding: 16px;
-  align-items: center;
-  border-radius: 12px;
-  font-size: 16px;
-}
-
-.stats {
-  display: flex;
-  gap: 16px;
-  font-size: 16px;
-}
-
-.stat {
-  display: flex;
-  gap: 8px;
-}
-.statData {
-  color: #96c121;
-}
-
-.judge {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  padding: 24px 0;
-}
-.judgeImg {
-  height: 80px;
-  width: 80px;
-  object-fit: cover;
-  border-radius: 50px;
-}
-.judgeInfo {
-  width: 311px;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.judges .line {
-  margin: 0;
-}
-
-.addressWrapper {
-  display: flex;
-  flex-direction: column;
-  gap: 32px;
 }

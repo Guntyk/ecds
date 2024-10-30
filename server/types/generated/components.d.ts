@@ -23,16 +23,6 @@ export interface SocialsLogos extends Schema.Component {
   };
 }
 
-export interface ServicesTag extends Schema.Component {
-  collectionName: 'components_services_tags';
-  info: {
-    displayName: 'Tag';
-  };
-  attributes: {
-    tag: Attribute.String & Attribute.Required;
-  };
-}
-
 export interface ContactsPhone extends Schema.Component {
   collectionName: 'components_contacts_phones';
   info: {
@@ -84,15 +74,25 @@ export interface ContactsAddress extends Schema.Component {
   };
 }
 
+export interface ServicesTag extends Schema.Component {
+  collectionName: 'components_services_tags';
+  info: {
+    displayName: 'Tag';
+  };
+  attributes: {
+    tag: Attribute.String & Attribute.Required;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
       'socials.socials': SocialsSocials;
       'socials.logos': SocialsLogos;
-      'services.tag': ServicesTag;
       'contacts.phone': ContactsPhone;
       'contacts.bank': ContactsBank;
       'contacts.address': ContactsAddress;
+      'services.tag': ServicesTag;
     }
   }
 }
