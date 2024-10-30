@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_services_registrations",
+  "info": {
+    "displayName": "Registration"
+  },
+  "options": {},
+  "attributes": {
+    "accept": {
+      "type": "boolean"
+    },
+    "url": {
+      "type": "string"
+    },
+    "endDate": {
+      "type": "date"
+    }
+  }
+}

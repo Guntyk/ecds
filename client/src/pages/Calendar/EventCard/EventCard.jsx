@@ -11,13 +11,15 @@ import markerIcon from 'assets/icons/marker.svg';
 import styles from 'pages/Calendar/EventCard/EventCard.scss';
 
 export const EventCard = ({
-  event: { id, type, title, description, organization, organizer, startDate, endDate, cover, city, acceptRegistration },
+  event: { id, type, title, description, organization, organizer, startDate, endDate, cover, city, registration },
 }) => {
   const { pathname } = useLocation();
   const { push } = useHistory();
 
   const pathnameParts = pathname.split('/');
   const currentDanceStyleCalendarLink = `/${clearArrayFromNulls(pathnameParts)[0]}${pathnames.calendarPage}`;
+
+  const today = new Date();
 
   return (
     <article className={styles.card} onClick={() => push(`${currentDanceStyleCalendarLink}/${id}`)}>
@@ -31,11 +33,12 @@ export const EventCard = ({
         <section className={styles.info}>
           <div className={styles.infoHeader}>
             <span className={styles.type}>{type}</span>
-            {acceptRegistration !== null && (
-              <span
-                className={cn(styles.registrationStatus, { [styles.open]: acceptRegistration })}
-              >{`Registration is ${acceptRegistration ? 'open' : 'closed'}`}</span>
-            )}
+            {(today <= new Date(registration?.endDate) || today <= new Date(startDate)) &&
+              typeof registration?.accept === 'boolean' && (
+                <span
+                  className={cn(styles.registrationStatus, { [styles.open]: registration?.accept })}
+                >{`Registration is ${registration?.accept ? 'open' : 'closed'}`}</span>
+              )}
           </div>
           <h3 className={styles.title}>{title}</h3>
           <p className={styles.description}>{description}</p>

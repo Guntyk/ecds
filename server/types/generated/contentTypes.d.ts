@@ -1010,12 +1010,16 @@ export interface ApiEventEvent extends Schema.CollectionType {
     organizer: Attribute.String & Attribute.Required;
     startDate: Attribute.Date & Attribute.Required;
     endDate: Attribute.Date;
-    address: Attribute.String;
+    address: Attribute.Component<'services.address'>;
     cover: Attribute.Media<'images'>;
     style: Attribute.Enumeration<['Ballroom', 'Street', 'Caribbean', 'Other']> &
       Attribute.Required;
     city: Attribute.String & Attribute.Required;
-    acceptRegistration: Attribute.Boolean;
+    entryForm: Attribute.Media<'images' | 'files'>;
+    registration: Attribute.Component<'services.registration'>;
+    information: Attribute.Blocks;
+    departments: Attribute.Component<'services.department', true>;
+    slug: Attribute.UID<'api::event.event', 'title'> & Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

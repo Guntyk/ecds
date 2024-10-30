@@ -1,0 +1,25 @@
+{
+  "collectionName": "components_services_departments",
+  "info": {
+    "displayName": "Department",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "startTime": {
+      "type": "datetime",
+      "required": true
+    },
+    "categories": {
+      "displayName": "Category",
+      "type": "component",
+      "repeatable": true,
+      "component": "services.category",
+      "required": true
+    }
+  }
+}

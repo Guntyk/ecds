@@ -50,8 +50,10 @@
       "type": "date"
     },
     "address": {
-      "type": "string",
-      "required": false
+      "displayName": "address",
+      "type": "component",
+      "repeatable": false,
+      "component": "services.address"
     },
     "cover": {
       "type": "media",
@@ -75,8 +77,33 @@
       "type": "string",
       "required": true
     },
-    "acceptRegistration": {
-      "type": "boolean"
+    "entryForm": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files"
+      ]
+    },
+    "registration": {
+      "type": "component",
+      "repeatable": false,
+      "component": "services.registration"
+    },
+    "information": {
+      "type": "blocks"
+    },
+    "departments": {
+      "displayName": "Department",
+      "type": "component",
+      "repeatable": true,
+      "component": "services.department"
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "title",
+      "required": true
     }
   }
 }

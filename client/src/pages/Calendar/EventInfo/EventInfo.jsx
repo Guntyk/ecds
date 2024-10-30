@@ -3,9 +3,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 import cn from 'classnames';
 import { getEvents } from '@redux/features/eventsSlice';
-import { getDanceStyleFromPath } from 'helpers/danceStyleUtils';
+import { formatDateToEUFormat } from 'helpers/formatDateToEUFormat';
 import { clearArrayFromNulls } from 'helpers/clearArrayFromNulls';
-import { formatDateToMMYYYY } from 'helpers/formatDateToMMYYYY';
+import { getDanceStyleFromPath } from 'helpers/danceStyleUtils';
 import { formatDate } from 'helpers/formatDate';
 import { pathnames } from 'constants/pathnames';
 import { ImageComponent } from 'components/Image';
@@ -23,6 +23,7 @@ import markerIcon from 'assets/icons/marker.svg';
 import styles from 'pages/Calendar/EventInfo/EventInfo.scss';
 
 export const EventInfo = () => {
+  const [tabs, setTabs] = useState({});
   const { isLoading, events } = useSelector((state) => state.events);
   const [activeTabIndex, setActiveTabIndex] = useState(0);
   const [currentEvent, setCurrentEvent] = useState(null);
@@ -33,6 +34,7 @@ export const EventInfo = () => {
 
   const pathnameParts = pathname.split('/');
   const currentDanceStyleCalendarLink = `/${clearArrayFromNulls(pathnameParts)[0]}${pathnames.calendarPage}`;
+  const today = new Date();
 
   useEffect(() => {
     const danceStyle = getDanceStyleFromPath(pathname);
@@ -53,12 +55,10 @@ export const EventInfo = () => {
     }
   }, [events, pathname]);
 
-  const tabs = { Information, Categories, Clubs, Judges, Address };
-  const ActiveTab = Object.values(tabs)[activeTabIndex];
-
   const {
     type,
     title,
+    description,
     entryForm,
     organization,
     organizer,
@@ -66,9 +66,25 @@ export const EventInfo = () => {
     endDate,
     cover,
     city,
-    acceptRegistration,
-    registrationEndDate,
+    registration,
+    information,
+    address,
+    departments,
   } = currentEvent || {};
+
+  useEffect(() => {
+    if (description || information) {
+      setTabs((prevTabs) => ({ Information, ...prevTabs }));
+    }
+    if (departments?.length) {
+      setTabs((prevTabs) => ({ ...prevTabs, Categories }));
+    }
+    if (address?.address || address?.mapUrl) {
+      setTabs((prevTabs) => ({ ...prevTabs, Address }));
+    }
+  }, [description, information, address]);
+
+  const ActiveTab = Object.values(tabs)[activeTabIndex];
 
   return currentEvent ? (
     <Container className={styles.page}>
@@ -78,7 +94,7 @@ export const EventInfo = () => {
       </nav>
       <article className={styles.info}>
         <ImageComponent
-          src={cover?.url || 'https://placehold.co/282x390'}
+          src={process.env.REACT_APP_BASE_API_URL + cover?.url || 'https://placehold.co/282x390'}
           alt={cover?.alternativeText || 'cover placeholder'}
           placeholder={cover?.placeholder}
           className={styles.cover}
@@ -86,11 +102,12 @@ export const EventInfo = () => {
         <div className={styles.information}>
           <div className={styles.stats}>
             <span className={styles.type}>{type}</span>
-            {acceptRegistration !== null && (
-              <span className={cn(styles.status, { [styles.open]: acceptRegistration })}>{`Registration is ${
-                acceptRegistration ? 'open' : 'closed'
-              }`}</span>
-            )}
+            {(today <= new Date(registration?.endDate) || today <= new Date(startDate)) &&
+              typeof registration?.accept === 'boolean' && (
+                <span className={cn(styles.status, { [styles.open]: registration?.accept })}>{`Registration is ${
+                  registration?.accept ? 'open' : 'closed'
+                }`}</span>
+              )}
           </div>
           <h2 className={styles.title}>{title}</h2>
           <div className={styles.additionalInfo}>
@@ -105,10 +122,10 @@ export const EventInfo = () => {
           </div>
           <table className={styles.table}>
             <tbody>
-              {registrationEndDate && (
+              {registration?.endDate && (
                 <tr>
                   <td>Registration to</td>
-                  <td>{formatDateToMMYYYY(registrationEndDate)}</td>
+                  <td>{formatDateToEUFormat(registration?.endDate)}</td>
                 </tr>
               )}
               <tr>
@@ -133,25 +150,39 @@ export const EventInfo = () => {
             </tbody>
           </table>
           <div className={styles.buttons}>
-            <Button text='Registration' className={styles.firstBtn} disabled={!acceptRegistration} normalStyle />
-            <Button text='Entry form' className={styles.secondBtn} disabled={!entryForm} ghostStyle />
+            <Button
+              text='Registration'
+              className={styles.firstBtn}
+              onClick={() => window.open(registration?.url)}
+              disabled={!registration?.url}
+              normalStyle
+            />
+            <Button
+              text='Entry form'
+              className={styles.secondBtn}
+              onClick={() => window.open(entryForm?.url)}
+              disabled={!entryForm}
+              ghostStyle
+            />
           </div>
-          <nav className={styles.tabs}>
-            {Object.keys(tabs).map((key, index) => (
-              <Button
-                noStyle
-                onClick={() => setActiveTabIndex(index)}
-                className={cn(styles.tab, { [styles.active]: activeTabIndex === index })}
-                tabIndex={activeTabIndex === index ? -1 : 0}
-                key={key}
-              >
-                {key}
-              </Button>
-            ))}
-          </nav>
-          <div className={styles.tabInner}>
-            <ActiveTab event={currentEvent} />
-          </div>
+          {Object.values(tabs).length && (
+            <>
+              <nav className={styles.tabs}>
+                {Object.keys(tabs).map((key, index) => (
+                  <Button
+                    noStyle
+                    onClick={() => setActiveTabIndex(index)}
+                    className={cn(styles.tab, { [styles.active]: activeTabIndex === index })}
+                    tabIndex={activeTabIndex === index ? -1 : 0}
+                    key={key}
+                  >
+                    {key}
+                  </Button>
+                ))}
+              </nav>
+              <div className={styles.tabInner}>{ActiveTab && <ActiveTab event={currentEvent} />}</div>
+            </>
+          )}
         </div>
       </article>
     </Container>

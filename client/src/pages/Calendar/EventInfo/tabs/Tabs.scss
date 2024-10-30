@@ -2,23 +2,50 @@
   @include typography(body3);
 
   letter-spacing: 0;
+
+  ol,
+  ul {
+    margin-top: 1.6rem;
+    list-style-position: inside;
+
+    ::marker {
+      color: $primary1;
+    }
+  }
+
+  ol {
+    list-style-type: decimal;
+  }
+  ul {
+    list-style-type: disc;
+  }
+
+  strong {
+    font-weight: map-get($fontWeights, 'medium');
+  }
+  em {
+    font-style: italic;
+  }
+  .link {
+    color: $primary1;
+  }
 }
 
-.line {
-  margin: 3.2rem 0;
-  height: 0.1rem;
-  background: $lightGray;
-}
+.passage {
+  &Title {
+    color: $primary2;
+    font-weight: map-get($fontWeights, 'medium');
 
-.informationParagraph {
-  display: flex;
-  flex-direction: column;
-  gap: $gapMedium;
-}
+    &:not(:first-child) {
+      margin-top: 3.2rem;
+      padding-top: 3.2rem;
+      border-top: 0.1rem solid $lightGray;
+    }
+  }
 
-.passageTitle {
-  color: $primary2;
-  font-weight: map-get($fontWeights, 'medium');
+  &Text {
+    margin-top: 1.6rem;
+  }
 }
 
 .department {
@@ -130,6 +157,12 @@
     color: $primary2;
     font-weight: map-get($fontWeights, 'medium');
   }
+}
+
+.line {
+  margin: 3.2rem 0;
+  height: 0.1rem;
+  background: $lightGray;
 }
 
 .judge,
