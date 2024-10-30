@@ -52,6 +52,10 @@
   flex-direction: column;
   width: 100%;
   gap: $gapLarge;
+
+  &.reverse {
+    flex-direction: column-reverse;
+  }
 }
 
 @media (max-width: 768px) {

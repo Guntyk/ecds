@@ -1,5 +1,6 @@
 import { useLocation } from 'react-router-dom';
 import { useState } from 'react';
+import cn from 'classnames';
 import { useOrganizations } from 'hooks/useOrganizations';
 import { useEvents } from 'hooks/useEvents';
 import { TabSelector } from 'components/Button/TabSelector';
@@ -67,7 +68,7 @@ export const Calendar = () => {
               onClear={handleClear}
             />
           </section>
-          <div className={styles.events}>
+          <div className={cn(styles.events, { [styles.reverse]: activeEventTenseIndex === 1 })}>
             {isLoading ? (
               <Loader />
             ) : eventsList.length === 0 ? (
