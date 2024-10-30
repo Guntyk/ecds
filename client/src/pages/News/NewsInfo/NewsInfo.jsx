@@ -4,6 +4,8 @@ import { useEffect, useMemo, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import cn from 'classnames';
 import { getNews, updateViews } from '@redux/features/newsSlice';
+import { isChromeOnDesktop } from 'helpers/isChromeOnDesktop';
+import { generateMediaURL } from 'helpers/generateMediaURL';
 import { formatDate } from 'helpers/formatDate';
 import { pathnames } from 'constants/pathnames';
 import { Notification } from 'components/Notification';
@@ -17,7 +19,6 @@ import { NotFound } from 'pages/Services/NotFound';
 import { TryAgain } from 'pages/Services/TryAgain';
 import shareIcon from 'assets/icons/share.svg';
 import styles from 'pages/News/NewsInfo/NewsInfo.scss';
-import { isChromeOnDesktop } from 'helpers/isChromeOnDesktop';
 
 const useArticles = (news, newsId) => {
   return useMemo(() => {
@@ -99,7 +100,7 @@ export const NewsInfo = () => {
               {media.map(({ id, url, alternativeText, placeholder }) => (
                 <ImageComponent
                   className={styles.image}
-                  src={url}
+                  src={generateMediaURL(url)}
                   alt={alternativeText}
                   placeholder={placeholder}
                   key={id}
@@ -122,7 +123,7 @@ export const NewsInfo = () => {
                 {media.map(({ id, url, alternativeText, placeholder }) => (
                   <ImageComponent
                     className={cn(styles.image, styles.mobile)}
-                    src={url}
+                    src={generateMediaURL(url)}
                     alt={alternativeText}
                     placeholder={placeholder}
                     key={id}

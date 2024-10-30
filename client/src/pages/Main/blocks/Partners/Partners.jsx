@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import useElementOnScreen from 'hooks/useElementOnScreen';
 import { getPartners } from '@redux/features/partnersSlice';
+import { generateMediaURL } from 'helpers/generateMediaURL';
 import { Notification } from 'components/Notification';
 import { ImageComponent } from 'components/Image';
 import { Container } from 'components/Container';
@@ -44,7 +45,7 @@ export const Partners = () => {
                 <li className={styles.partner} key={id}>
                   <ImageComponent
                     className={styles.partnerLogo}
-                    src={url}
+                    src={generateMediaURL(url)}
                     alt={alternativeText}
                     placeholder={placeholder}
                     fit='contain'

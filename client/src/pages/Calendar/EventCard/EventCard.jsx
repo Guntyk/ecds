@@ -1,6 +1,7 @@
 import { useHistory, useLocation } from 'react-router-dom';
 import cn from 'classnames';
 import { clearArrayFromNulls } from 'helpers/clearArrayFromNulls';
+import { generateMediaURL } from 'helpers/generateMediaURL';
 import { formatDate } from 'helpers/formatDate';
 import { pathnames } from 'constants/pathnames';
 import { ImageComponent } from 'components/Image';
@@ -25,7 +26,7 @@ export const EventCard = ({
     <article className={styles.card} onClick={() => push(`${currentDanceStyleCalendarLink}/${slug}`)}>
       <div className={styles.preview}>
         <ImageComponent
-          src={cover?.url || 'https://placehold.co/282x390'}
+          src={generateMediaURL(cover?.url) || 'https://placehold.co/282x390'}
           alt={cover?.alternativeText || 'cover placeholder'}
           placeholder={cover?.placeholder}
           className={styles.cover}

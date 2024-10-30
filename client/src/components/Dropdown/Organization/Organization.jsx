@@ -1,4 +1,5 @@
 import cn from 'classnames';
+import { generateMediaURL } from 'helpers/generateMediaURL';
 import { Arrow } from 'components/Arrow';
 import styles from 'components/Dropdown/Organization/Organization.scss';
 
@@ -22,7 +23,7 @@ export const OrganizationDropdown = ({
         {...(!nonClosable && { onClick: onToggle })}
         {...(nonClosable && { style: { cursor: 'default' } })}
       >
-        <img src={flag.url} alt={country} className={styles.flagIcon} />
+        <img src={generateMediaURL(flag.url)} alt={country} className={styles.flagIcon} />
         <span className={styles.name}>{country}</span>
         {!nonClosable && <Arrow className={styles.dropdownArrow} isOpen={isOpen} expandStyle />}
       </div>

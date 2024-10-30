@@ -9,6 +9,7 @@ import useElementOnScreen from 'hooks/useElementOnScreen';
 import { useScreenWidth } from 'hooks/useScreenWidth';
 import { useNews } from 'hooks/useNews';
 import { getNews } from '@redux/features/newsSlice';
+import { generateMediaURL } from 'helpers/generateMediaURL';
 import { formatDate } from 'helpers/formatDate';
 import { pathnames } from 'constants/pathnames';
 import { Notification } from 'components/Notification';
@@ -100,7 +101,7 @@ export const LastNews = () => {
                     >
                       <ImageComponent
                         className={styles.cover}
-                        src={article.media?.[0].url || 'https://placehold.co/282'}
+                        src={generateMediaURL(article.media?.[0].url) || 'https://placehold.co/282'}
                         alt={article.media?.[0].alt || 'cover placeholder'}
                         placeholder={article.media?.[0].placeholder}
                       />

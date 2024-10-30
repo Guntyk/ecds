@@ -1,4 +1,5 @@
 import { useHistory } from 'react-router-dom';
+import { generateMediaURL } from 'helpers/generateMediaURL';
 import { formatDate } from 'helpers/formatDate';
 import { pathnames } from 'constants/pathnames';
 import { ImageComponent } from 'components/Image';
@@ -37,7 +38,7 @@ export const NewsCard = ({ news: { id, title, description, publicationDate, medi
         aria-label={`Open article: ${title}`}
       >
         <ImageComponent
-          src={media?.[0].url || 'https://placehold.co/282'}
+          src={generateMediaURL(media?.[0].url) || 'https://placehold.co/282'}
           alt={media?.[0].alt || 'Cover placeholder'}
           placeholder={media?.[0].placeholder}
           className={styles.cover}
