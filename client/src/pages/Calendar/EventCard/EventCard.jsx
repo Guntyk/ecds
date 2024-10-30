@@ -11,7 +11,7 @@ import markerIcon from 'assets/icons/marker.svg';
 import styles from 'pages/Calendar/EventCard/EventCard.scss';
 
 export const EventCard = ({
-  event: { id, type, title, description, organization, organizer, startDate, endDate, cover, city, registration },
+  event: { slug, type, title, description, organization, organizer, startDate, endDate, cover, city, registration },
 }) => {
   const { pathname } = useLocation();
   const { push } = useHistory();
@@ -22,7 +22,7 @@ export const EventCard = ({
   const today = new Date();
 
   return (
-    <article className={styles.card} onClick={() => push(`${currentDanceStyleCalendarLink}/${id}`)}>
+    <article className={styles.card} onClick={() => push(`${currentDanceStyleCalendarLink}/${slug}`)}>
       <div className={styles.preview}>
         <ImageComponent
           src={cover?.url || 'https://placehold.co/282x390'}

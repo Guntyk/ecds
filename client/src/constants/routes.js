@@ -45,7 +45,7 @@ export const routes = [
     path: `${ballroomPage}${subPage}`,
     component: subPageComponents[subPage] || NotFound,
   })),
-  { id: uuid(), path: `${ballroomPage}${calendarPage}/:id`, component: EventInfo },
+  { id: uuid(), path: `${ballroomPage}${calendarPage}/:slug`, component: EventInfo },
   ...[managementPage, documentsPage, contactsPage, logosPage].map((path) => ({
     id: uuid(),
     path,

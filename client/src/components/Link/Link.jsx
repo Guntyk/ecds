@@ -15,6 +15,7 @@ export const Link = ({
   arrowSrc,
   pinkButtonStyle,
   buttonStyle,
+  hoverStyle,
   noStyle,
 }) => {
   const linkClass = cn(className, {
@@ -25,7 +26,7 @@ export const Link = ({
     [styles.button]: buttonStyle,
     [styles.pinkButton]: pinkButtonStyle,
     [styles.active]: active,
-    [styles.default]: noStyle,
+    [styles.default]: hoverStyle,
   });
 
   return external ? (

@@ -15,8 +15,6 @@ import { Link } from 'components/Link';
 import { Information } from 'pages/Calendar/EventInfo/tabs/Information';
 import { Categories } from 'pages/Calendar/EventInfo/tabs/Categories';
 import { Address } from 'pages/Calendar/EventInfo/tabs/Address';
-import { Judges } from 'pages/Calendar/EventInfo/tabs/Judges';
-import { Clubs } from 'pages/Calendar/EventInfo/tabs/Clubs';
 import { NotFound } from 'pages/Services/NotFound';
 import calendarIcon from 'assets/icons/calendar.svg';
 import markerIcon from 'assets/icons/marker.svg';
@@ -27,10 +25,10 @@ export const EventInfo = () => {
   const { isLoading, events } = useSelector((state) => state.events);
   const [activeTabIndex, setActiveTabIndex] = useState(0);
   const [currentEvent, setCurrentEvent] = useState(null);
-  const [nextEventID, setNextEventID] = useState(0);
+  const [nextEventSlug, setNextEventSlug] = useState('');
   const { pathname } = useLocation();
   const dispatch = useDispatch();
-  const { id } = useParams();
+  const { slug } = useParams();
 
   const pathnameParts = pathname.split('/');
   const currentDanceStyleCalendarLink = `/${clearArrayFromNulls(pathnameParts)[0]}${pathnames.calendarPage}`;
@@ -44,14 +42,15 @@ export const EventInfo = () => {
   }, []);
 
   useEffect(() => {
+    setCurrentEvent(null);
     if (events.length) {
-      const currentEvent = events.find((event) => event.id === Number(id));
+      const currentEvent = events.find((event) => event.slug === slug);
       setCurrentEvent(currentEvent);
 
       const currentEventIndex = events.indexOf(currentEvent);
       const nextEvent = events[currentEventIndex + 1];
 
-      setNextEventID(nextEvent?.id ?? 0);
+      setNextEventSlug(nextEvent?.slug ?? '');
     }
   }, [events, pathname]);
 
@@ -73,6 +72,9 @@ export const EventInfo = () => {
   } = currentEvent || {};
 
   useEffect(() => {
+    setActiveTabIndex(0);
+    setTabs({});
+
     if (description || information) {
       setTabs((prevTabs) => ({ Information, ...prevTabs }));
     }
@@ -90,11 +92,15 @@ export const EventInfo = () => {
     <Container className={styles.page}>
       <nav className={styles.navigation}>
         <Link content='All events' path={currentDanceStyleCalendarLink} arrowLeft />
-        {nextEventID ? <Link content='Next' path={`${currentDanceStyleCalendarLink}/${nextEventID}`} arrowRight /> : ''}
+        {nextEventSlug ? (
+          <Link content='Next' path={`${currentDanceStyleCalendarLink}/${nextEventSlug}`} arrowRight />
+        ) : (
+          ''
+        )}
       </nav>
       <article className={styles.info}>
         <ImageComponent
-          src={process.env.REACT_APP_BASE_API_URL + cover?.url || 'https://placehold.co/282x390'}
+          src={cover?.url || 'https://placehold.co/282x390'}
           alt={cover?.alternativeText || 'cover placeholder'}
           placeholder={cover?.placeholder}
           className={styles.cover}
@@ -136,6 +142,7 @@ export const EventInfo = () => {
                       content={organization.shortName ?? organization.name}
                       path={`https://${organization.website}`}
                       external
+                      hoverStyle
                       noStyle
                     />
                   ) : (

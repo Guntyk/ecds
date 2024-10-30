@@ -15,7 +15,7 @@ export const Information = ({ event: { description, information } }) => (
         content={information}
         blocks={{
           link: ({ children, url }) => (
-            <Link path={url} external noStyle>
+            <Link className={styles.link} path={url} external hoverStyle noStyle>
               {children}
             </Link>
           ),
