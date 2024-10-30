@@ -6,6 +6,7 @@ import { useEvents } from 'hooks/useEvents';
 import { TabSelector } from 'components/Button/TabSelector';
 import { SearchForm } from 'components/SearchForm';
 import { Container } from 'components/Container';
+import { NoResults } from 'components/NoResults';
 import { Loader } from 'components/Loader';
 import { EventCard } from 'pages/Calendar/EventCard';
 import { TryAgain } from 'pages/Services/TryAgain';
@@ -72,7 +73,7 @@ export const Calendar = () => {
             {isLoading ? (
               <Loader />
             ) : eventsList.length === 0 ? (
-              <p className={styles.text}>No events found</p>
+              <NoResults className={styles.noResults} />
             ) : (
               eventsList.map((event) => <EventCard event={event} key={event.id} />)
             )}

@@ -122,8 +122,14 @@
   .searchBtn {
     display: none;
   }
+}
 
+@media (max-width: 430px) {
   .newsList {
     margin-inline: -1.6rem;
+  }
+
+  .noResults {
+    margin-inline: 1.6rem;
   }
 }
