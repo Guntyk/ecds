@@ -22,7 +22,7 @@ services:
     environment:
       DATABASE_CLIENT: postgres
       DATABASE_HOST: postgres
-      DATABASE_PORT: 5432
+      DATABASE_PORT: 5433
       DATABASE_NAME: strapi_db
       DATABASE_USERNAME: strapi
       DATABASE_PASSWORD: strapi
@@ -47,7 +47,7 @@ services:
       POSTGRES_PASSWORD: strapi
       POSTGRES_DB: strapi_db
     ports:
-      - "5432:5432"
+      - "5433:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
     networks:
