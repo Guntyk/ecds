@@ -22,7 +22,7 @@ export const Tabs = ({ className, event }) => {
     if (departments?.length) {
       setTabs((prevTabs) => ({ ...prevTabs, Categories }));
     }
-    if (address?.address || address?.mapUrl) {
+    if (address) {
       setTabs((prevTabs) => ({ ...prevTabs, Address }));
     }
   }, [event]);
@@ -30,7 +30,7 @@ export const Tabs = ({ className, event }) => {
   const ActiveTab = Object.values(tabs)[activeTabIndex];
 
   return (
-    <div className={className}>
+    <div className={cn(styles.tabsWrapper, className, { [styles.empty]: !Object.values(tabs).length })}>
       <nav className={styles.tabs}>
         {Object.keys(tabs).map((key, index) => (
           <Button

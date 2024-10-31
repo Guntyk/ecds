@@ -1010,7 +1010,6 @@ export interface ApiEventEvent extends Schema.CollectionType {
     organizer: Attribute.String & Attribute.Required;
     startDate: Attribute.Date & Attribute.Required;
     endDate: Attribute.Date;
-    address: Attribute.Component<'services.address'>;
     cover: Attribute.Media<'images'>;
     style: Attribute.Enumeration<['Ballroom', 'Street', 'Caribbean', 'Other']> &
       Attribute.Required;
@@ -1020,6 +1019,7 @@ export interface ApiEventEvent extends Schema.CollectionType {
     information: Attribute.Blocks;
     departments: Attribute.Component<'services.department', true>;
     slug: Attribute.UID<'api::event.event', 'title'> & Attribute.Required;
+    address: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

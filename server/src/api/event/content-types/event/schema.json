@@ -49,12 +49,6 @@
     "endDate": {
       "type": "date"
     },
-    "address": {
-      "displayName": "address",
-      "type": "component",
-      "repeatable": false,
-      "component": "services.address"
-    },
     "cover": {
       "type": "media",
       "multiple": false,
@@ -104,6 +98,9 @@
       "type": "uid",
       "targetField": "title",
       "required": true
+    },
+    "address": {
+      "type": "string"
     }
   }
 }

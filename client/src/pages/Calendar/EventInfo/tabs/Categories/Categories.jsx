@@ -3,8 +3,8 @@ import { formatDateToEUFormat } from 'helpers/formatDateToEUFormat';
 import styles from 'pages/Calendar/EventInfo/tabs/Categories/Categories.scss';
 
 export const Categories = ({ event: { departments } }) =>
-  departments.map(({ name, startTime, categories }) => (
-    <div className={styles.department}>
+  departments.map(({ id, name, startTime, categories }) => (
+    <div className={styles.department} key={id}>
       <div className={styles.departmentHeader}>
         <span className={styles.name}>{name}</span>
         <div className={styles.dateTime}>
@@ -12,8 +12,8 @@ export const Categories = ({ event: { departments } }) =>
         </div>
       </div>
       {categories &&
-        categories.map(({ name, class: danceClass, program, entries }) => (
-          <div className={styles.category}>
+        categories.map(({ id, name, class: danceClass, program, entries }) => (
+          <div className={styles.category} key={id}>
             <span>{name}</span>
             <span>{danceClass}</span>
             <span>{program}</span>

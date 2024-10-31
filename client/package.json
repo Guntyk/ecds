@@ -5,6 +5,7 @@
   "dependencies": {
     "@craco/craco": "^7.1.0",
     "@emailjs/browser": "^4.4.1",
+    "@react-google-maps/api": "^2.20.3",
     "@reduxjs/toolkit": "^2.2.7",
     "@strapi/blocks-react-renderer": "^1.0.1",
     "@testing-library/jest-dom": "^5.17.0",

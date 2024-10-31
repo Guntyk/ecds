@@ -80,18 +80,6 @@ export interface ServicesCategory extends Schema.Component {
   };
 }
 
-export interface ServicesAddress extends Schema.Component {
-  collectionName: 'components_services_addresses';
-  info: {
-    displayName: 'address';
-    description: '';
-  };
-  attributes: {
-    address: Attribute.String;
-    mapUrl: Attribute.String;
-  };
-}
-
 export interface ContactsPhone extends Schema.Component {
   collectionName: 'components_contacts_phones';
   info: {
@@ -152,7 +140,6 @@ declare module '@strapi/types' {
       'services.registration': ServicesRegistration;
       'services.department': ServicesDepartment;
       'services.category': ServicesCategory;
-      'services.address': ServicesAddress;
       'contacts.phone': ContactsPhone;
       'contacts.bank': ContactsBank;
       'contacts.address': ContactsAddress;

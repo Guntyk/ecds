@@ -111,6 +111,7 @@
 
 @media (hover: hover) {
   .default {
+    color: $primary1;
     background: linear-gradient(to bottom, transparent 0%, transparent 90%, $primary1 90%, $primary1 100%) no-repeat
       right / 0% 100%;
     transition: background-size 0.25s;
