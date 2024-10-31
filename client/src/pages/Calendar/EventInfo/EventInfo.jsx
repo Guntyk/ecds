@@ -139,7 +139,7 @@ export const EventInfo = () => {
             <Button
               text='Entry form'
               className={styles.secondBtn}
-              onClick={() => window.open(entryForm?.url)}
+              onClick={() => window.open(generateMediaURL(entryForm?.url))}
               disabled={!entryForm}
               ghostStyle
             />
