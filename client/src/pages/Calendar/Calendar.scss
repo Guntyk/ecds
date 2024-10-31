@@ -55,6 +55,7 @@
 
   &.reverse {
     flex-direction: column-reverse;
+    justify-content: start;
   }
 }
 
