@@ -1,39 +1,49 @@
-import { useDispatch, useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
-import { useEffect } from 'react';
-import { getEvents } from '@redux/features/eventsSlice';
+import { useState } from 'react';
+import cn from 'classnames';
+import { useOrganizations } from 'hooks/useOrganizations';
+import { useEvents } from 'hooks/useEvents';
+import { TabSelector } from 'components/Button/TabSelector';
+import { SearchForm } from 'components/SearchForm';
 import { Container } from 'components/Container';
+import { NoResults } from 'components/NoResults';
 import { Loader } from 'components/Loader';
 import { EventCard } from 'pages/Calendar/EventCard';
 import { TryAgain } from 'pages/Services/TryAgain';
 import styles from 'pages/Calendar/Calendar.scss';
-import { pathnames } from 'constants/pathnames';
 
 export const Calendar = () => {
-  const { isLoading, error, events } = useSelector((state) => state.events);
-  const { ballroomPage, streetDancePage, caribbeanDancePage } = pathnames;
-  const { pathname } = useLocation();
-  const dispatch = useDispatch();
+  const { search } = useLocation();
+  const URLParams = new URLSearchParams(search);
 
-  let danceStyle = '';
+  const initialURLParams = {
+    name: URLParams.get('name'),
+    country: URLParams.get('country'),
+    city: URLParams.get('city'),
+  };
 
-  if (pathname.includes(ballroomPage)) {
-    danceStyle = 'Ballroom';
-  } else if (pathname.includes(streetDancePage)) {
-    danceStyle = 'Street';
-  } else if (pathname.includes(caribbeanDancePage)) {
-    danceStyle = 'Caribbean';
-  }
+  const [searchFormState, setSearchFormState] = useState(initialURLParams || {});
+  const organizations = useOrganizations();
+  const {
+    isLoading,
+    error,
+    eventsList,
+    eventTenses,
+    activeEventTenseIndex,
+    setActiveEventTenseIndex,
+    countryOptions,
+    cityOptions,
+    handleSearch,
+    handleClear,
+  } = useEvents({ organizations, searchFormState, setSearchFormState });
 
-  useEffect(() => {
-    if (danceStyle && !events.length) {
-      dispatch(getEvents({ danceStyle }));
-    }
-  }, [danceStyle]);
+  const formConfig = [
+    { name: 'name', placeholder: 'Enter Search Terms', type: 'search' },
+    { name: 'country', placeholder: 'Country', options: countryOptions, printable: true },
+    { name: 'city', placeholder: 'City', options: cityOptions, printable: true },
+  ];
 
-  if (error) {
-    return <TryAgain />;
-  }
+  if (error) return <TryAgain />;
 
   return (
     <section className={styles.calendar}>
@@ -42,16 +52,34 @@ export const Calendar = () => {
           <h2 className={styles.title}>Calendar</h2>
           <p className={styles.subtitle}>Of competition</p>
         </div>
+        <div className={styles.pageContent}>
+          <section className={styles.navigation}>
+            <TabSelector
+              buttonClassName={styles.tenseBtn}
+              tabs={eventTenses}
+              activeTabIndex={activeEventTenseIndex}
+              setActiveTabIndex={setActiveEventTenseIndex}
+            />
+            <SearchForm
+              className={styles.form}
+              formConfig={formConfig}
+              formState={searchFormState}
+              setFormState={setSearchFormState}
+              onSubmit={handleSearch}
+              onClear={handleClear}
+            />
+          </section>
+          <div className={cn(styles.events, { [styles.reverse]: activeEventTenseIndex === 1 })}>
+            {isLoading ? (
+              <Loader />
+            ) : eventsList.length === 0 ? (
+              <NoResults className={styles.noResults} />
+            ) : (
+              eventsList.map((event) => <EventCard event={event} key={event.id} />)
+            )}
+          </div>
+        </div>
       </Container>
-      <div className={styles.events}>
-        {isLoading ? (
-          <Loader />
-        ) : events.length === 0 ? (
-          <p className={styles.text}>The calendar is temporarily empty</p>
-        ) : (
-          events.map((event) => <EventCard event={event} key={event.id} />)
-        )}
-      </div>
     </section>
   );
 };

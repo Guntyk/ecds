@@ -33,6 +33,53 @@ export interface ServicesTag extends Schema.Component {
   };
 }
 
+export interface ServicesRegistration extends Schema.Component {
+  collectionName: 'components_services_registrations';
+  info: {
+    displayName: 'Registration';
+  };
+  attributes: {
+    accept: Attribute.Boolean;
+    url: Attribute.String;
+    endDate: Attribute.Date;
+  };
+}
+
+export interface ServicesDepartment extends Schema.Component {
+  collectionName: 'components_services_departments';
+  info: {
+    displayName: 'Department';
+    description: '';
+  };
+  attributes: {
+    name: Attribute.String & Attribute.Required;
+    startTime: Attribute.DateTime & Attribute.Required;
+    categories: Attribute.Component<'services.category', true> &
+      Attribute.Required;
+  };
+}
+
+export interface ServicesCategory extends Schema.Component {
+  collectionName: 'components_services_categories';
+  info: {
+    displayName: 'Category';
+  };
+  attributes: {
+    name: Attribute.String & Attribute.Required;
+    class: Attribute.Enumeration<['F', 'E', 'D', 'C', 'B', 'A', 'S', 'Pro']> &
+      Attribute.Required;
+    program: Attribute.Enumeration<['Standart', 'Latin']> & Attribute.Required;
+    entries: Attribute.BigInteger &
+      Attribute.SetMinMax<
+        {
+          min: '0';
+        },
+        string
+      > &
+      Attribute.DefaultTo<'0'>;
+  };
+}
+
 export interface ContactsPhone extends Schema.Component {
   collectionName: 'components_contacts_phones';
   info: {
@@ -90,6 +137,9 @@ declare module '@strapi/types' {
       'socials.socials': SocialsSocials;
       'socials.logos': SocialsLogos;
       'services.tag': ServicesTag;
+      'services.registration': ServicesRegistration;
+      'services.department': ServicesDepartment;
+      'services.category': ServicesCategory;
       'contacts.phone': ContactsPhone;
       'contacts.bank': ContactsBank;
       'contacts.address': ContactsAddress;

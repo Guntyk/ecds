@@ -3,13 +3,14 @@ import { useUsers } from 'hooks/useUsers';
 import { formConfig } from 'pages/Users/formConfig';
 import { activeUsersTypes } from 'constants/usersTypes';
 import { usersList } from 'constants/mockedUsers';
+import { CompactFilters } from 'components/SearchForm/CompactFilters';
 import { TabSelector } from 'components/Button/TabSelector';
 import { Container } from 'components/Container';
+import { NoResults } from 'components/NoResults';
 import { Dropdown } from 'components/Dropdown';
 import { Button } from 'components/Button';
 import { Input } from 'components/Input';
 import { UserCard } from 'pages/Users/UserCard';
-import { FilterMobile } from 'components/FilterMobile/FilterMobile';
 import styles from 'pages/Users/Users.scss';
 
 export const Users = () => {
@@ -62,7 +63,7 @@ export const Users = () => {
                 onClick={clearFilters}
                 ghostStyle
               />
-              <FilterMobile
+              <CompactFilters
                 className={styles.filterMobile}
                 formState={formState}
                 handleFilterChange={handleFilterChange}
@@ -73,11 +74,15 @@ export const Users = () => {
               />
             </form>
           </section>
-          <ul className={styles.users}>
-            {users.map((user) => (
-              <UserCard user={user} key={user.id} />
-            ))}
-          </ul>
+          {users.length ? (
+            <ul className={styles.users}>
+              {users.map((user) => (
+                <UserCard user={user} key={user.id} />
+              ))}
+            </ul>
+          ) : (
+            <NoResults />
+          )}
         </div>
       </div>
     </Container>

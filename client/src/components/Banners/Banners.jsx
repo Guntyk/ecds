@@ -2,6 +2,7 @@ import { EffectFade, Pagination, Navigation, Autoplay } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperCore from 'swiper';
 import cn from 'classnames';
+import { generateMediaURL } from 'helpers/generateMediaURL';
 import { sliderSettings } from 'constants/bannersSliderSettings';
 import { ImageComponent } from 'components/Image';
 import { Arrow } from 'components/Arrow';
@@ -20,7 +21,7 @@ export const Banners = ({ banners, sliderClassName, navigationClassName, ...prop
       {banners.map(({ id, link, image: { alternativeText, url, placeholder } }) => (
         <SwiperSlide className={styles.bannerSlide} key={id}>
           <Link className={styles.banner} path={link} external noStyle>
-            <ImageComponent alt={alternativeText} src={url} placeholder={placeholder} />
+            <ImageComponent alt={alternativeText} src={generateMediaURL(url)} placeholder={placeholder} />
           </Link>
         </SwiperSlide>
       ))}

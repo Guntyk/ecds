@@ -4,4 +4,4 @@ export const formatDateToMMYYYY = (dateString) => {
   const year = date.getFullYear();
 
   return `${month}/${year}`;
-}
+};

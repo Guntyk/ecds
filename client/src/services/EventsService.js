@@ -9,19 +9,47 @@ export default class EventsService {
       filters.style = danceStyle;
     }
 
-    const query = qs.stringify({
-      filters: filters,
-      fields: ['type', 'title', 'description', 'organizer', 'startDate', 'endDate', 'address'],
-      populate: {
-        organization: {
-          fields: ['name', 'shortName', 'website'],
+    const query = qs.stringify(
+      {
+        filters: filters,
+        fields: [
+          'type',
+          'title',
+          'description',
+          'organizer',
+          'startDate',
+          'endDate',
+          'city',
+          'information',
+          'address',
+          'slug',
+        ],
+        populate: {
+          registration: {
+            fields: ['accept', 'url', 'endDate'],
+          },
+          organization: {
+            fields: ['name', 'country', 'shortName', 'website'],
+          },
+          departments: {
+            fields: ['name', 'startTime'],
+            populate: {
+              categories: {
+                fields: ['name', 'class', 'program', 'entries'],
+              },
+            },
+          },
+          cover: {
+            fields: ['alternativeText', 'placeholder', 'url'],
+          },
+          entryForm: {
+            fields: ['url'],
+          },
         },
-        cover: {
-          fields: ['alternativeText', 'placeholder', 'url'],
-        },
+        sort: 'startDate',
       },
-      sort: 'startDate',
-    });
+      { encodeValuesOnly: true }
+    );
 
     const [error, data] = await backendApi.get(`/events?${query}`);
 

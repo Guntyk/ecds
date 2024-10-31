@@ -1,0 +1,262 @@
+.tabsWrapper.empty {
+  display: none;
+}
+
+.tabs {
+  display: flex;
+  gap: 0.8rem;
+  align-items: end;
+  margin-right: 1.4rem;
+  overflow: hidden;
+}
+
+.tab {
+  @include typography(body4);
+
+  padding: 1.6rem 3.2rem;
+  padding-bottom: 0.8rem;
+  color: $secondary3;
+  line-height: 3.2rem;
+  text-transform: capitalize;
+  border: 0.1rem solid $background2;
+  border-top-left-radius: $borderRadiusLarge;
+  border-top-right-radius: $borderRadiusLarge;
+  border-bottom: none;
+  transition: 0.3s;
+
+  @media (hover: hover) {
+    &:hover,
+    &:focus-visible {
+      padding-bottom: 1.6rem;
+      border-color: $primary2;
+    }
+  }
+
+  &.active {
+    padding-bottom: 1.6rem;
+    color: $text1;
+    background: $text2;
+    pointer-events: none;
+  }
+
+  &Inner {
+    max-width: 78.4rem;
+    padding: 3.2rem;
+    border: 0.1rem solid $background2;
+    border-top: none;
+    border-radius: 1.4rem;
+    border-top-left-radius: 0;
+    background: $text2;
+  }
+}
+
+.information {
+  @include typography(body3);
+
+  letter-spacing: 0;
+
+  ol,
+  ul {
+    margin-top: 1.6rem;
+    list-style-position: inside;
+
+    ::marker {
+      color: $primary1;
+    }
+  }
+
+  ol {
+    list-style-type: decimal;
+  }
+  ul {
+    list-style-type: disc;
+  }
+
+  strong {
+    font-weight: map-get($fontWeights, 'medium');
+  }
+  em {
+    font-style: italic;
+  }
+  .link {
+    color: $primary1;
+  }
+}
+
+.passage {
+  &Title {
+    color: $primary2;
+    font-weight: map-get($fontWeights, 'medium');
+
+    &:not(:first-child) {
+      margin-top: 3.2rem;
+      padding-top: 3.2rem;
+      border-top: 0.1rem solid $lightGray;
+    }
+  }
+
+  &Text {
+    margin-top: 1.6rem;
+  }
+}
+
+.totalsHeader {
+  @include typography(body4);
+
+  display: flex;
+  align-items: center;
+  gap: $gapMedium;
+  margin-bottom: 2.4rem;
+  padding: 1.6rem;
+  line-height: 2rem;
+  letter-spacing: 0;
+  border-radius: $borderRadius;
+  background: $background1;
+}
+
+.totals {
+  width: 6.4rem;
+  color: $primary1;
+  line-height: 2.4rem;
+  font-weight: map-get($fontWeights, 'medium');
+}
+
+.stats {
+  display: flex;
+  gap: $gapMedium;
+}
+
+.stat {
+  @include typography(body4);
+
+  display: flex;
+  gap: $gapExtraSmall;
+  line-height: 2rem;
+  white-space: nowrap;
+
+  span:last-child {
+    color: $primary2;
+    font-weight: map-get($fontWeights, 'medium');
+  }
+}
+
+.line {
+  margin: 3.2rem 0;
+  height: 0.1rem;
+  background: $lightGray;
+}
+
+.judge,
+.club {
+  display: flex;
+  align-items: center;
+  gap: $gapMedium;
+}
+
+.judgePhoto,
+.clubLogo {
+  height: 8rem;
+  min-width: 8rem;
+  aspect-ratio: 1;
+  border-radius: 50%;
+}
+
+.judgeInfo,
+.clubInfo {
+  @include typography(body4);
+
+  display: flex;
+  flex-direction: column;
+  gap: $gapExtraSmall;
+  flex-grow: 1;
+  line-height: 2rem;
+  letter-spacing: 0;
+
+  .name {
+    @include typography(body3, medium);
+  }
+}
+
+.judgeCategory {
+  margin-top: -0.4rem;
+}
+
+.address {
+  @include typography(body3);
+
+  display: flex;
+  flex-direction: column;
+  gap: 3.2rem;
+}
+
+.map {
+  aspect-ratio: 4/2;
+  background: $background1;
+  border-radius: $borderRadius;
+  overflow: hidden;
+
+  .loader {
+    display: grid;
+    place-items: center;
+    height: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .tabs {
+    gap: 0.4rem;
+  }
+
+  .tab {
+    padding-inline: 2.4rem;
+
+    &Inner {
+      max-width: 100%;
+      padding: 2.4rem;
+    }
+  }
+
+  .information {
+    font-size: 1.6rem;
+    line-height: 2.2rem;
+  }
+
+  .passage {
+    &Title:not(:first-child) {
+      margin-top: $gapLarge;
+      padding-top: $gapLarge;
+    }
+
+    &Text {
+      margin-top: $gapExtraSmall;
+    }
+  }
+
+  .address {
+    gap: 2.4rem;
+    font-size: 1.6rem;
+    line-height: 2.2rem;
+  }
+}
+
+@media (max-width: 430px) {
+  .tabs {
+    margin-right: 0;
+    overflow: unset;
+    overflow-y: hidden;
+  }
+
+  .tab {
+    padding-inline: 1.6rem;
+
+    &Inner {
+      padding-inline: 1.6rem;
+      border-radius: 0;
+    }
+  }
+
+  .map {
+    height: 32rem;
+    aspect-ratio: unset;
+  }
+}

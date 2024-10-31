@@ -4,6 +4,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { SocialLinks } from 'social-links';
 import { useState } from 'react';
 import cn from 'classnames';
+import { generateMediaURL } from 'helpers/generateMediaURL';
 import { ImageComponent } from 'components/Image';
 import { Button } from 'components/Button';
 import { Arrow } from 'components/Arrow';
@@ -28,7 +29,7 @@ export const PersonCard = ({ person: { name, surname, role, socials, biography, 
         >
           <ImageComponent
             className={styles.photo}
-            src={photo?.url || 'https://placehold.co/234'}
+            src={generateMediaURL(photo?.url) || 'https://placehold.co/234'}
             alt={photo?.alternativeText || 'photo placeholder'}
             placeholder={photo?.placeholder}
           />

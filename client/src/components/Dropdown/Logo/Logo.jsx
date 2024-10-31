@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import cn from 'classnames';
+import { generateMediaURL } from 'helpers/generateMediaURL';
 import { ImageComponent } from 'components/Image';
 import { Button } from 'components/Button';
 import { Arrow } from 'components/Arrow';
@@ -64,7 +65,7 @@ export const LogoDropdown = ({ logo: { name, logos } }) => {
                 <ImageComponent
                   className={styles.logoWrapper}
                   placeholder={coverImg?.placeholder}
-                  src={coverImg?.url}
+                  src={generateMediaURL(coverImg?.url)}
                   alt={coverImg?.alternativeText}
                   fit='contain'
                 />

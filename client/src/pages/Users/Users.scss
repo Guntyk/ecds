@@ -4,6 +4,7 @@
 
   &Content {
     display: flex;
+    align-items: start;
     gap: $gapLarge;
   }
 }

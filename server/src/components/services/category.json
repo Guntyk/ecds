@@ -1,0 +1,40 @@
+{
+  "collectionName": "components_services_categories",
+  "info": {
+    "displayName": "Category"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "class": {
+      "type": "enumeration",
+      "enum": [
+        "F",
+        "E",
+        "D",
+        "C",
+        "B",
+        "A",
+        "S",
+        "Pro"
+      ],
+      "required": true
+    },
+    "program": {
+      "type": "enumeration",
+      "enum": [
+        "Standart",
+        "Latin"
+      ],
+      "required": true
+    },
+    "entries": {
+      "type": "biginteger",
+      "min": "0",
+      "default": "0"
+    }
+  }
+}

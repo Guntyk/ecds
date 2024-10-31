@@ -4,7 +4,7 @@
 
   &Input,
   &Button {
-    @include typography(body4);
+    @include typography(fieldPlaceholder);
 
     display: flex;
     justify-content: space-between;
@@ -13,6 +13,10 @@
     width: 100%;
     padding: 1.5rem;
     text-transform: capitalize;
+    background: none;
+    border: 0.05rem solid $secondary2;
+    border-radius: $borderRadius;
+    transition: 0.075s;
 
     &.open {
       border-bottom-left-radius: 0;
@@ -26,11 +30,18 @@
     &:focus-visible {
       border: 0.05rem solid $primary1;
     }
+
+    &::placeholder {
+      color: $secondary3;
+    }
   }
 
-  &Button {
-    border: 0.05rem solid $secondary2;
-    border-radius: $borderRadius;
+  &Input ~ .arrow {
+    display: block;
+    position: absolute;
+    top: 50%;
+    right: 1.6rem;
+    translate: 0 -50%;
   }
 
   &List {
@@ -45,7 +56,6 @@
     border: 0.05rem solid $secondary2;
     border-top: 0.1rem solid $primary1;
     border-radius: $borderRadius;
-    transition: 0.4s;
 
     .thumb {
       width: 0.8rem;
@@ -58,32 +68,42 @@
       background: none;
     }
 
+    &:not(.scrollable) {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
     &.open {
       padding-block: 0.79rem;
       max-height: 41.2rem;
       opacity: 1;
       border-top-left-radius: 0;
       border-top-right-radius: 0;
+      z-index: 1;
 
       .dropdownItem {
         padding-block: 0.8rem;
       }
 
       &.scrollable {
-        padding-right: 1.6rem;
+        height: 41.2rem;
       }
+    }
+
+    &:has(.hugeList) {
+      padding: 0;
     }
   }
 
   &Item {
-    @include typography(body4);
+    @include typography(fieldPlaceholder);
 
     width: 100%;
     padding-inline: 0.8rem;
     line-height: 2rem;
     border-radius: $borderRadiusSmall;
     cursor: pointer;
-    transition: 0.2s;
     text-align: left;
     text-transform: capitalize;
 
@@ -102,6 +122,10 @@
       pointer-events: none;
     }
   }
+}
+
+.hugeList .dropdownItem {
+  margin-inline: 0.8rem;
 }
 
 .optionsList {

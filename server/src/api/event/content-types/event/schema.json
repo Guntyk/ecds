@@ -20,7 +20,7 @@
         "Open tournament",
         "National championship",
         "Cup",
-        "Championship"
+        "ECDS Championship"
       ],
       "required": true
     },
@@ -49,10 +49,6 @@
     "endDate": {
       "type": "date"
     },
-    "address": {
-      "type": "string",
-      "required": true
-    },
     "cover": {
       "type": "media",
       "multiple": false,
@@ -70,6 +66,41 @@
         "Other"
       ],
       "required": true
+    },
+    "city": {
+      "type": "string",
+      "required": true
+    },
+    "entryForm": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files"
+      ]
+    },
+    "registration": {
+      "type": "component",
+      "repeatable": false,
+      "component": "services.registration"
+    },
+    "information": {
+      "type": "blocks"
+    },
+    "departments": {
+      "displayName": "Department",
+      "type": "component",
+      "repeatable": true,
+      "component": "services.department"
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "title",
+      "required": true
+    },
+    "address": {
+      "type": "string"
     }
   }
 }

@@ -1,0 +1,19 @@
+.noResults {
+  @include typography(body3);
+
+  display: flex;
+  align-items: center;
+  gap: $gapMedium;
+  padding: 2.4rem;
+  border: 0.05rem solid $background2;
+  border-radius: $borderRadiusLarge;
+  background: $text2;
+}
+
+@media (max-width: 768px) {
+  .noResults {
+    padding: 1.6rem;
+    font-size: 1.6rem;
+    line-height: 2.4rem;
+  }
+}

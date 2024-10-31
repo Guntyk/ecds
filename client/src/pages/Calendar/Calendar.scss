@@ -27,19 +27,38 @@
   @include typography(body3);
 }
 
-.events {
+.pageContent {
   display: flex;
-  flex-direction: column;
   gap: $gapLarge;
 }
 
-@media (min-width: 558px) {
-  .events {
-    @include container;
+.navigation {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+  max-width: 28.2rem;
+  width: 100%;
+
+  .tenseBtn {
+    @include typography(button, medium);
+    letter-spacing: 0.02em;
+    padding-block: 1.2rem;
+    color: $primary1;
   }
 }
 
-@media (max-width: 557px) {
+.events {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: $gapLarge;
+
+  &.reverse {
+    flex-direction: column-reverse;
+  }
+}
+
+@media (max-width: 768px) {
   .calendar {
     padding-block: 10.4rem 6.4rem;
   }
@@ -52,7 +71,24 @@
     margin-bottom: 2.4rem;
   }
 
+  .pageContent {
+    flex-direction: column;
+    gap: 3.2rem;
+  }
+
+  .navigation {
+    max-width: unset;
+    gap: 3.2rem;
+  }
+}
+
+@media (max-width: 430px) {
   .events {
-    gap: 1.6rem;
+    width: calc(100% + 1.6rem * 2);
+    margin-inline: -1.6rem;
+  }
+
+  .noResults {
+    margin-inline: 1.6rem;
   }
 }

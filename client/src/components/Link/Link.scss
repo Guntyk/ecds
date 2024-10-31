@@ -42,15 +42,11 @@
         padding: 0 0.6rem;
         outline: none;
 
-        &.toLeft {
-          .arrow {
-            translate: -150% -50%;
-          }
+        &.toLeft .arrow {
+          translate: -150% -50%;
         }
-        &.toRight {
-          .arrow {
-            translate: 150% -50%;
-          }
+        &.toRight .arrow {
+          translate: 150% -50%;
         }
       }
     }
@@ -113,11 +109,25 @@
   }
 }
 
-@media (max-width: 768px) {
-  .link {
-    &.button {
-      width: auto;
-      padding: 0.8rem 1.2rem;
+@media (hover: hover) {
+  .default {
+    color: $primary1;
+    background: linear-gradient(to bottom, transparent 0%, transparent 90%, $primary1 90%, $primary1 100%) no-repeat
+      right / 0% 100%;
+    transition: background-size 0.25s;
+
+    &:focus-visible,
+    &:hover {
+      outline: none;
+      background-size: 100% 100%;
+      background-position-x: left;
     }
+  }
+}
+
+@media (max-width: 768px) {
+  .link.button {
+    width: auto;
+    padding: 0.8rem 1.2rem;
   }
 }

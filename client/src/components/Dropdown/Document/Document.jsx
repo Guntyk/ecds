@@ -1,6 +1,7 @@
 import { BlocksRenderer } from '@strapi/blocks-react-renderer';
 import { useState } from 'react';
 import cn from 'classnames';
+import { generateMediaURL } from 'helpers/generateMediaURL';
 import { Arrow } from 'components/Arrow';
 import { Link } from 'components/Link';
 import dropdownStyles from 'components/Dropdown/General.scss';
@@ -38,7 +39,7 @@ export const DocumentDropdown = ({
             </div>
           )}
           <div className={styles.buttonsWrapper}>
-            <Link className={styles.openBtn} path={url} external>
+            <Link className={styles.openBtn} path={generateMediaURL(url)} external>
               Open in {ext.slice(1).toUpperCase()}
             </Link>
             <Arrow isOpen={true} onClick={() => setIsOpen(false)} expandStyle />

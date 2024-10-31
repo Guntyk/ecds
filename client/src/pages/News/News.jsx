@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { useNews } from 'hooks/useNews';
 import { getNews } from '@redux/features/newsSlice';
 import { Container } from 'components/Container';
+import { NoResults } from 'components/NoResults';
 import { Dropdown } from 'components/Dropdown';
 import { Button } from 'components/Button';
 import { Loader } from 'components/Loader';
@@ -95,7 +96,7 @@ export const News = () => {
         <div className={styles.newsList}>
           {isLoading && <Loader />}
           {!isLoading && news.length === 0 ? (
-            <p className={styles.text}>Nothing found matching your request 😕</p>
+            <NoResults className={styles.noResults} />
           ) : (
             news.map((newsItem) => <NewsCard news={newsItem} key={newsItem.id} />)
           )}
