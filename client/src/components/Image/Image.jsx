@@ -17,8 +17,6 @@ export const ImageComponent = ({ className, src, placeholder, alt, fit = 'cover'
     return () => setIsImageLoaded(false);
   }, [src, handleMainImageLoad]);
 
-  const imageStyle = { objectFit: fit };
-
   return (
     <div className={cn(styles.wrapper, className)}>
       <img
@@ -28,7 +26,7 @@ export const ImageComponent = ({ className, src, placeholder, alt, fit = 'cover'
         })}
         src={isImageLoaded ? src : placeholder}
         loading='lazy'
-        style={imageStyle}
+        style={{ objectFit: fit }}
       />
     </div>
   );
