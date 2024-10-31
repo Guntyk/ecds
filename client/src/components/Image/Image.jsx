@@ -17,10 +17,6 @@ export const ImageComponent = ({ className, src, placeholder, alt, fit = 'cover'
     return () => setIsImageLoaded(false);
   }, [src, handleMainImageLoad]);
 
-  useEffect(() => {
-    console.log(isImageLoaded);
-  }, [isImageLoaded]);
-
   const imageStyle = { objectFit: fit };
 
   return (
