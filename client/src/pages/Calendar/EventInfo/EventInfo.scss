@@ -14,28 +14,10 @@
   gap: 3.2rem;
 }
 
-.title {
-  @include typography(h2);
-
-  margin-top: 0.8rem;
-  font-size: 6.4rem;
-}
-
-.cover {
-  border-radius: $borderRadiusLarge;
-  width: 38.4rem;
-  height: 54.3rem;
-}
-
-.information {
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-}
-
 .stats {
   display: flex;
   justify-content: space-between;
+  align-items: start;
 }
 
 .type {
@@ -58,6 +40,29 @@
   &.open {
     border-color: $primary2;
   }
+}
+
+.title {
+  @include typography(h2);
+
+  margin-top: 0.8rem;
+  font-size: 6.4rem;
+}
+
+.cover {
+  width: 38.4rem;
+  height: 54.3rem;
+  border-radius: $borderRadiusLarge;
+
+  &Mobile {
+    display: none;
+  }
+}
+
+.information {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
 }
 
 .additionalInfo {
@@ -87,7 +92,6 @@
 
   tr {
     display: flex;
-    align-items: center;
     gap: $gapExtraSmall;
   }
 
@@ -102,6 +106,9 @@
 
     &:last-child {
       @include typography(body3, medium);
+
+      display: flex;
+      align-items: center;
     }
   }
 }
@@ -122,50 +129,110 @@
   border: 0.15rem solid $secondary3;
 }
 
-.tabs {
-  display: flex;
-  gap: 0.8rem;
-  align-items: end;
-  margin-right: 1.4rem;
-  overflow: hidden;
+.tabsMobile {
+  display: none;
 }
 
-.tab {
-  @include typography(body4);
+@media (max-width: 768px) {
+  .page {
+    padding-block: 10.4rem 6.4rem;
+  }
 
-  padding: 1.6rem 3.2rem;
-  padding-bottom: 0.8rem;
-  color: $secondary3;
-  line-height: 3.2rem;
-  text-transform: capitalize;
-  border: 0.1rem solid $background2;
-  border-top-left-radius: $borderRadiusLarge;
-  border-top-right-radius: $borderRadiusLarge;
-  border-bottom: none;
-  transition: 0.3s;
+  .navigation {
+    margin-bottom: 4rem;
+  }
 
-  @media (hover: hover) {
-    &:hover,
-    &:focus-visible {
-      padding-bottom: 1.6rem;
-      border-color: $primary2;
+  .info {
+    gap: $gapLarge;
+    margin-bottom: 3.2rem;
+  }
+
+  .type {
+    line-height: 2.4rem;
+  }
+
+  .status {
+    line-height: 1.6rem;
+  }
+
+  .title {
+    margin-top: 1.6rem;
+    font-size: 4rem;
+    line-height: 3.2rem;
+  }
+
+  .cover {
+    width: 24rem;
+    height: min-content;
+    max-height: 33.9rem;
+    img {
+      height: auto;
     }
   }
 
-  &.active {
-    padding-bottom: 1.6rem;
-    color: $text1;
-    background: $text2;
-    pointer-events: none;
+  .additionalInfo {
+    flex-wrap: wrap;
+    gap: $gapMedium;
+    row-gap: $gapExtraSmall;
+    margin-block: 1.6rem;
+    line-height: 2.4rem;
   }
 
-  &Inner {
-    max-width: 78.4rem;
-    padding: 3.2rem;
-    border: 0.1rem solid $background2;
-    border-top: none;
-    border-radius: 1.4rem;
-    border-top-left-radius: 0;
-    background: $text2;
+  .table tbody {
+    td:is(:first-child, :last-child) {
+      font-size: 1.6rem;
+      line-height: 2.2rem;
+    }
+
+    td:first-child {
+      min-width: 12rem;
+    }
+  }
+
+  .buttons {
+    flex-wrap: wrap;
+    gap: $gapExtraSmall;
+    margin-block: 3.2rem 0;
+  }
+
+  .firstBtn,
+  .secondBtn {
+    padding: 1.6rem 0.8rem;
+    width: unset;
+    flex-grow: 1;
+  }
+
+  .tabs {
+    display: none;
+
+    &Mobile {
+      display: block;
+    }
+  }
+}
+
+@media (min-width: 431px) and (max-width: 490px) {
+  .info {
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 430px) {
+  .cover {
+    display: none;
+    width: unset;
+    max-height: unset;
+    &Mobile {
+      display: block;
+      margin-bottom: 2.4rem;
+    }
+  }
+
+  .additionalInfo {
+    margin-bottom: 2.4rem;
+  }
+
+  .tabs {
+    margin-inline: -1.6rem;
   }
 }

@@ -1,3 +1,51 @@
+.tabs {
+  display: flex;
+  gap: 0.8rem;
+  align-items: end;
+  margin-right: 1.4rem;
+  overflow: hidden;
+}
+
+.tab {
+  @include typography(body4);
+
+  padding: 1.6rem 3.2rem;
+  padding-bottom: 0.8rem;
+  color: $secondary3;
+  line-height: 3.2rem;
+  text-transform: capitalize;
+  border: 0.1rem solid $background2;
+  border-top-left-radius: $borderRadiusLarge;
+  border-top-right-radius: $borderRadiusLarge;
+  border-bottom: none;
+  transition: 0.3s;
+
+  @media (hover: hover) {
+    &:hover,
+    &:focus-visible {
+      padding-bottom: 1.6rem;
+      border-color: $primary2;
+    }
+  }
+
+  &.active {
+    padding-bottom: 1.6rem;
+    color: $text1;
+    background: $text2;
+    pointer-events: none;
+  }
+
+  &Inner {
+    max-width: 78.4rem;
+    padding: 3.2rem;
+    border: 0.1rem solid $background2;
+    border-top: none;
+    border-radius: 1.4rem;
+    border-top-left-radius: 0;
+    background: $text2;
+  }
+}
+
 .information {
   @include typography(body3);
 
@@ -46,77 +94,6 @@
   &Text {
     margin-top: 1.6rem;
   }
-}
-
-.department {
-  @include typography(body4);
-
-  letter-spacing: 0;
-
-  &:not(:last-child) {
-    margin-bottom: 3.2rem;
-  }
-
-  &Header {
-    display: flex;
-    justify-content: space-between;
-    padding: 1.6rem;
-    color: $primary1;
-    background: $background1;
-    border-top-left-radius: $borderRadius;
-    border-top-right-radius: $borderRadius;
-
-    .name {
-      font-weight: map-get($fontWeights, 'medium');
-    }
-
-    .dateTime {
-      display: flex;
-      gap: $gapExtraSmall;
-    }
-  }
-
-  &Totals {
-    display: flex;
-    justify-content: space-between;
-    padding: 1.6rem;
-    font-weight: map-get($fontWeights, 'medium');
-    border: 0.1rem solid $background1;
-    border-bottom-left-radius: $borderRadius;
-    border-bottom-right-radius: $borderRadius;
-  }
-}
-
-.category {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: $gapMedium;
-  padding: 1.6rem;
-  border: 0.1rem solid $background1;
-  border-top: none;
-
-  span {
-    width: 12.2rem;
-
-    &:first-child,
-    &:last-child {
-      font-weight: map-get($fontWeights, 'medium');
-    }
-
-    &:first-child {
-      width: 21rem;
-    }
-
-    &:last-child {
-      width: 4.8rem;
-      text-align: end;
-    }
-  }
-}
-
-.count {
-  color: $primary2;
 }
 
 .totalsHeader {
@@ -212,4 +189,63 @@
   aspect-ratio: 4/2;
   background: $background1;
   border-radius: $borderRadius;
+}
+
+@media (max-width: 768px) {
+  .tabs {
+    gap: 0.4rem;
+  }
+
+  .tab {
+    padding-inline: 2.4rem;
+
+    &Inner {
+      max-width: 100%;
+      padding: 2.4rem;
+    }
+  }
+
+  .information {
+    font-size: 1.6rem;
+    line-height: 2.2rem;
+  }
+
+  .passage {
+    &Title:not(:first-child) {
+      margin-top: $gapLarge;
+      padding-top: $gapLarge;
+    }
+
+    &Text {
+      margin-top: $gapExtraSmall;
+    }
+  }
+
+  .address {
+    gap: 2.4rem;
+    font-size: 1.6rem;
+    line-height: 2.2rem;
+  }
+}
+
+@media (max-width: 430px) {
+  .tabs {
+    margin-right: 0;
+    overflow: unset;
+    overflow-y: hidden;
+  }
+
+  .tab {
+    padding-inline: 1.6rem;
+
+    &Inner {
+      padding-inline: 1.6rem;
+      border-radius: 0;
+    }
+  }
+
+  .map {
+    height: 32rem;
+    aspect-ratio: unset;
+  }
 }

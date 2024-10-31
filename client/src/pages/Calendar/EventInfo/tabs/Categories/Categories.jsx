@@ -1,6 +1,6 @@
 import { formatDateTimeToTime } from 'helpers/formatDateTimeToTime';
 import { formatDateToEUFormat } from 'helpers/formatDateToEUFormat';
-import styles from 'pages/Calendar/EventInfo/tabs/Tabs.scss';
+import styles from 'pages/Calendar/EventInfo/tabs/Categories/Categories.scss';
 
 export const Categories = ({ event: { departments } }) =>
   departments.map(({ name, startTime, categories }) => (

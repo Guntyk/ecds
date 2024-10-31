@@ -13,18 +13,14 @@ import { ImageComponent } from 'components/Image';
 import { Container } from 'components/Container';
 import { Button } from 'components/Button';
 import { Link } from 'components/Link';
-import { Information } from 'pages/Calendar/EventInfo/tabs/Information';
-import { Categories } from 'pages/Calendar/EventInfo/tabs/Categories';
-import { Address } from 'pages/Calendar/EventInfo/tabs/Address';
+import { Tabs } from 'pages/Calendar/EventInfo/tabs/Tabs';
 import { NotFound } from 'pages/Services/NotFound';
 import calendarIcon from 'assets/icons/calendar.svg';
 import markerIcon from 'assets/icons/marker.svg';
 import styles from 'pages/Calendar/EventInfo/EventInfo.scss';
 
 export const EventInfo = () => {
-  const [tabs, setTabs] = useState({});
   const { isLoading, events } = useSelector((state) => state.events);
-  const [activeTabIndex, setActiveTabIndex] = useState(0);
   const [currentEvent, setCurrentEvent] = useState(null);
   const [nextEventSlug, setNextEventSlug] = useState('');
   const { pathname } = useLocation();
@@ -55,39 +51,8 @@ export const EventInfo = () => {
     }
   }, [events, pathname]);
 
-  const {
-    type,
-    title,
-    description,
-    entryForm,
-    organization,
-    organizer,
-    startDate,
-    endDate,
-    cover,
-    city,
-    registration,
-    information,
-    address,
-    departments,
-  } = currentEvent || {};
-
-  useEffect(() => {
-    setActiveTabIndex(0);
-    setTabs({});
-
-    if (description || information) {
-      setTabs((prevTabs) => ({ Information, ...prevTabs }));
-    }
-    if (departments?.length) {
-      setTabs((prevTabs) => ({ ...prevTabs, Categories }));
-    }
-    if (address?.address || address?.mapUrl) {
-      setTabs((prevTabs) => ({ ...prevTabs, Address }));
-    }
-  }, [description, information, address]);
-
-  const ActiveTab = Object.values(tabs)[activeTabIndex];
+  const { type, title, entryForm, organization, organizer, startDate, endDate, cover, city, registration } =
+    currentEvent || {};
 
   return currentEvent ? (
     <Container className={styles.page}>
@@ -127,6 +92,12 @@ export const EventInfo = () => {
               {city}, {organization?.country}
             </span>
           </div>
+          <ImageComponent
+            src={generateMediaURL(cover?.url) || 'https://placehold.co/282x390'}
+            alt={cover?.alternativeText || 'cover placeholder'}
+            placeholder={cover?.placeholder}
+            className={cn(styles.cover, styles.coverMobile)}
+          />
           <table className={styles.table}>
             <tbody>
               {registration?.endDate && (
@@ -173,26 +144,10 @@ export const EventInfo = () => {
               ghostStyle
             />
           </div>
-          {Object.values(tabs).length && (
-            <>
-              <nav className={styles.tabs}>
-                {Object.keys(tabs).map((key, index) => (
-                  <Button
-                    noStyle
-                    onClick={() => setActiveTabIndex(index)}
-                    className={cn(styles.tab, { [styles.active]: activeTabIndex === index })}
-                    tabIndex={activeTabIndex === index ? -1 : 0}
-                    key={key}
-                  >
-                    {key}
-                  </Button>
-                ))}
-              </nav>
-              <div className={styles.tabInner}>{ActiveTab && <ActiveTab event={currentEvent} />}</div>
-            </>
-          )}
+          <Tabs className={styles.tabs} event={currentEvent} />
         </div>
       </article>
+      <Tabs className={cn(styles.tabs, styles.tabsMobile)} event={currentEvent} />
     </Container>
   ) : isLoading ? (
     <p>Loading...</p>
