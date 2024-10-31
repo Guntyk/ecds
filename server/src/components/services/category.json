@@ -1,7 +1,8 @@
 {
   "collectionName": "components_services_categories",
   "info": {
-    "displayName": "Category"
+    "displayName": "Category",
+    "description": ""
   },
   "options": {},
   "attributes": {
@@ -35,6 +36,19 @@
       "type": "biginteger",
       "min": "0",
       "default": "0"
+    },
+    "participants": {
+      "type": "enumeration",
+      "enum": [
+        "Couples",
+        "Solo"
+      ],
+      "required": true
+    },
+    "dances": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::dance.dance"
     }
   }
 }

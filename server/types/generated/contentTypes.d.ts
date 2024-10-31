@@ -941,6 +941,39 @@ export interface ApiContentTypeContentType extends Schema.CollectionType {
   };
 }
 
+export interface ApiDanceDance extends Schema.CollectionType {
+  collectionName: 'dances';
+  info: {
+    singularName: 'dance';
+    pluralName: 'dances';
+    displayName: 'Dances';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Attribute.String & Attribute.Required & Attribute.Unique;
+    program: Attribute.Enumeration<['Standart', 'Latin']> & Attribute.Required;
+    shortName: Attribute.String & Attribute.Required;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::dance.dance',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::dance.dance',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiDocumentDocument extends Schema.CollectionType {
   collectionName: 'documents';
   info: {
@@ -1205,6 +1238,7 @@ declare module '@strapi/types' {
       'api::banner.banner': ApiBannerBanner;
       'api::contact.contact': ApiContactContact;
       'api::content-type.content-type': ApiContentTypeContentType;
+      'api::dance.dance': ApiDanceDance;
       'api::document.document': ApiDocumentDocument;
       'api::event.event': ApiEventEvent;
       'api::logo.logo': ApiLogoLogo;

@@ -51,8 +51,13 @@
 
 .cover {
   width: 38.4rem;
-  height: 54.3rem;
+  max-height: 54.3rem;
+  height: min-content;
   border-radius: $borderRadiusLarge;
+
+  img {
+    height: auto;
+  }
 
   &Mobile {
     display: none;
@@ -165,9 +170,6 @@
     width: 24rem;
     height: min-content;
     max-height: 33.9rem;
-    img {
-      height: auto;
-    }
   }
 
   .additionalInfo {

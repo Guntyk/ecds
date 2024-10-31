@@ -53,9 +53,10 @@ export interface ServicesDepartment extends Schema.Component {
   };
   attributes: {
     name: Attribute.String & Attribute.Required;
-    startTime: Attribute.DateTime & Attribute.Required;
+    startTime: Attribute.Time;
     categories: Attribute.Component<'services.category', true> &
       Attribute.Required;
+    startDate: Attribute.Date & Attribute.Required;
   };
 }
 
@@ -63,6 +64,7 @@ export interface ServicesCategory extends Schema.Component {
   collectionName: 'components_services_categories';
   info: {
     displayName: 'Category';
+    description: '';
   };
   attributes: {
     name: Attribute.String & Attribute.Required;
@@ -77,6 +79,13 @@ export interface ServicesCategory extends Schema.Component {
         string
       > &
       Attribute.DefaultTo<'0'>;
+    participants: Attribute.Enumeration<['Couples', 'Solo']> &
+      Attribute.Required;
+    dances: Attribute.Relation<
+      'services.category',
+      'oneToMany',
+      'api::dance.dance'
+    >;
   };
 }
 

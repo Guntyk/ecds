@@ -32,10 +32,15 @@ export default class EventsService {
             fields: ['name', 'country', 'shortName', 'website'],
           },
           departments: {
-            fields: ['name', 'startTime'],
+            fields: ['name', 'startDate', 'startTime'],
             populate: {
               categories: {
-                fields: ['name', 'class', 'program', 'entries'],
+                fields: ['name', 'class', 'program', 'entries', 'participants'],
+                populate: {
+                  dances: {
+                    fields: ['shortName'],
+                  },
+                },
               },
             },
           },

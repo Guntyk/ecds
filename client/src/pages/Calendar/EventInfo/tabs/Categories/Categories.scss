@@ -41,12 +41,11 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: $gapMedium;
   padding: 1.6rem;
   border: 0.1rem solid $background1;
   border-top: none;
 
-  span {
+  & > span {
     width: 12.2rem;
 
     &:first-child,
@@ -55,7 +54,7 @@
     }
 
     &:first-child {
-      width: 21rem;
+      width: 17rem;
     }
 
     &:last-child {
@@ -63,10 +62,29 @@
       text-align: end;
     }
   }
+
+  .participants,
+  .program {
+    width: 8rem;
+  }
+
+  .danceClass {
+    width: 3rem;
+  }
 }
 
 .count {
   color: $primary2;
+}
+
+.group {
+  display: none;
+  flex-direction: column;
+  width: 17rem;
+
+  span:first-child {
+    font-weight: map-get($fontWeights, 'medium');
+  }
 }
 
 @media (max-width: 768px) {
@@ -76,5 +94,21 @@
 
   .category {
     gap: $gapExtraSmall;
+
+    .danceClass {
+      width: 5rem;
+      text-align: center;
+    }
+  }
+
+  .categoryName,
+  .participants,
+  .program,
+  .dances {
+    display: none;
+  }
+
+  .group {
+    display: flex;
   }
 }

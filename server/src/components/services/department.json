@@ -11,14 +11,18 @@
       "required": true
     },
     "startTime": {
-      "type": "datetime",
-      "required": true
+      "type": "time",
+      "required": false
     },
     "categories": {
       "displayName": "Category",
       "type": "component",
       "repeatable": true,
       "component": "services.category",
+      "required": true
+    },
+    "startDate": {
+      "type": "date",
       "required": true
     }
   }
