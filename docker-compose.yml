@@ -41,7 +41,7 @@ services:
       - dev
 
   postgres:
-    image: postgres:latest
+    image: postgres:16
     environment:
       POSTGRES_USER: strapi
       POSTGRES_PASSWORD: strapi
