@@ -37,11 +37,12 @@ export interface ServicesRegistration extends Schema.Component {
   collectionName: 'components_services_registrations';
   info: {
     displayName: 'Registration';
+    description: '';
   };
   attributes: {
-    accept: Attribute.Boolean;
     url: Attribute.String;
     endDate: Attribute.Date;
+    startDate: Attribute.Date;
   };
 }
 

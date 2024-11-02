@@ -26,7 +26,7 @@ export default class EventsService {
         ],
         populate: {
           registration: {
-            fields: ['accept', 'url', 'endDate'],
+            fields: ['url', 'startDate', 'endDate'],
           },
           organization: {
             fields: ['name', 'country', 'shortName', 'website'],

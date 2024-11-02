@@ -20,6 +20,7 @@ import markerIcon from 'assets/icons/marker.svg';
 import styles from 'pages/Calendar/EventInfo/EventInfo.scss';
 
 export const EventInfo = () => {
+  const [registrationStatus, setRegistrationStatus] = useState('hidden');
   const { isLoading, events } = useSelector((state) => state.events);
   const [currentEvent, setCurrentEvent] = useState(null);
   const [nextEventSlug, setNextEventSlug] = useState('');
@@ -29,7 +30,7 @@ export const EventInfo = () => {
 
   const pathnameParts = pathname.split('/');
   const currentDanceStyleCalendarLink = `/${clearArrayFromNulls(pathnameParts)[0]}${pathnames.calendarPage}`;
-  const today = new Date();
+  const today = new Date().setHours(0, 0, 0, 0);
 
   useEffect(() => {
     const danceStyle = getDanceStyleFromPath(pathname);
@@ -48,6 +49,24 @@ export const EventInfo = () => {
       const nextEvent = events[currentEventIndex + 1];
 
       setNextEventSlug(nextEvent?.slug ?? '');
+
+      if (currentEvent) {
+        const { startDate, endDate, registration } = currentEvent;
+        const registrationStart = new Date(registration?.startDate).setHours(0, 0, 0, 0);
+        const registrationEnd = new Date(registration?.endDate).setHours(0, 0, 0, 0);
+        const eventStartDate = new Date(startDate).setHours(0, 0, 0, 0);
+        const eventEndDate = new Date(endDate).setHours(0, 0, 0, 0);
+
+        if (today < registrationStart) {
+          setRegistrationStatus('hidden');
+        } else if (today >= registrationStart && today <= registrationEnd) {
+          setRegistrationStatus('open');
+        } else if (today > registrationEnd && (today <= eventEndDate || today <= eventStartDate)) {
+          setRegistrationStatus('closed');
+        } else {
+          setRegistrationStatus('hidden');
+        }
+      }
     }
   }, [events, pathname]);
 
@@ -58,11 +77,7 @@ export const EventInfo = () => {
     <Container className={styles.page}>
       <nav className={styles.navigation}>
         <Link content='All events' path={currentDanceStyleCalendarLink} arrowLeft />
-        {nextEventSlug ? (
-          <Link content='Next' path={`${currentDanceStyleCalendarLink}/${nextEventSlug}`} arrowRight />
-        ) : (
-          ''
-        )}
+        {nextEventSlug && <Link content='Next' path={`${currentDanceStyleCalendarLink}/${nextEventSlug}`} arrowRight />}
       </nav>
       <article className={styles.info}>
         <ImageComponent
@@ -74,12 +89,11 @@ export const EventInfo = () => {
         <div className={styles.information}>
           <div className={styles.stats}>
             <span className={styles.type}>{type}</span>
-            {(today <= new Date(registration?.endDate) || today <= new Date(startDate)) &&
-              typeof registration?.accept === 'boolean' && (
-                <span className={cn(styles.status, { [styles.open]: registration?.accept })}>{`Registration is ${
-                  registration?.accept ? 'open' : 'closed'
-                }`}</span>
-              )}
+            {registrationStatus !== 'hidden' && (
+              <span className={cn(styles.status, styles[registrationStatus])}>
+                {`Registration is ${registrationStatus}`}
+              </span>
+            )}
           </div>
           <h2 className={styles.title}>{title}</h2>
           <div className={styles.additionalInfo}>
@@ -133,7 +147,7 @@ export const EventInfo = () => {
               text='Registration'
               className={styles.firstBtn}
               onClick={() => window.open(registration?.url)}
-              disabled={!registration?.url}
+              disabled={registrationStatus !== 'open'}
               normalStyle
             />
             <Button

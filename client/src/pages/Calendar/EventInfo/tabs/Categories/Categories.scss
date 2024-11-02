@@ -45,11 +45,16 @@
   border: 0.1rem solid $background1;
   border-top: none;
 
+  &.rounded {
+    border-bottom-left-radius: $borderRadius;
+    border-bottom-right-radius: $borderRadius;
+  }
+
   & > span {
     width: 12.2rem;
 
     &:first-child,
-    &:last-child {
+    &.count {
       font-weight: map-get($fontWeights, 'medium');
     }
 
@@ -58,7 +63,6 @@
     }
 
     &:last-child {
-      width: 4.8rem;
       text-align: end;
     }
   }
@@ -71,8 +75,11 @@
   .danceClass {
     width: 3rem;
   }
-}
 
+  .count {
+    width: 4.8rem;
+  }
+}
 .count {
   color: $primary2;
 }
