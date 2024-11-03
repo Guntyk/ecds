@@ -27,17 +27,14 @@ export const Calendar = () => {
     }
   }, [isVisible, events.length]);
 
-  const nearestEvents =
-    events.length > 3
-      ? events
-          .filter(({ startDate, endDate }) => {
-            const start = new Date(startDate);
-            const end = endDate ? new Date(endDate) : null;
+  const futureEvents = events.filter(({ startDate, endDate }) => {
+    const start = new Date(startDate);
+    const end = endDate ? new Date(endDate) : null;
 
-            return end ? end >= today : start >= today;
-          })
-          .slice(0, 3)
-      : events;
+    return end ? end >= today : start >= today;
+  });
+
+  const nearestEvents = futureEvents.length > 3 ? futureEvents.slice(0, 3) : futureEvents;
 
   return (
     <div ref={containerRef} className={cn(dashboardStyles.block, styles.block)}>
