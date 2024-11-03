@@ -15,6 +15,7 @@ import styles from 'pages/Ballroom/Main/blocks/Dashboard/Calendar/Calendar.scss'
 export const Calendar = () => {
   const { isLoading, error, events } = useSelector((state) => state.events);
   const { calendarPage, ballroomPage } = pathnames;
+  const today = new Date().setHours(0, 0, 0, 0);
   const dispatch = useDispatch();
   const { push } = useHistory();
 
@@ -26,7 +27,17 @@ export const Calendar = () => {
     }
   }, [isVisible, events.length]);
 
-  const nearestEvents = events.length > 3 ? events.slice(0, 3) : events;
+  const nearestEvents =
+    events.length > 3
+      ? events
+          .filter(({ startDate, endDate }) => {
+            const start = new Date(startDate);
+            const end = endDate ? new Date(endDate) : null;
+
+            return end ? end >= today : start >= today;
+          })
+          .slice(0, 3)
+      : events;
 
   return (
     <div ref={containerRef} className={cn(dashboardStyles.block, styles.block)}>
@@ -42,27 +53,21 @@ export const Calendar = () => {
           ) : nearestEvents.length === 0 ? (
             <p className={styles.text}>The calendar is empty for now</p>
           ) : (
-            nearestEvents.map(({ id, title, startDate, endDate, organization, city }) => (
+            nearestEvents.map(({ id, title, startDate, endDate, organization, city, slug }) => (
               <li className={cn(dashboardStyles.item, styles.item)} key={id}>
-                <Link
-                  content={
-                    <>
-                      <div className={styles.info}>
-                        <time dateTime={startDate}>
-                          <span className={styles.calendarIcon} />
-                          {formatDate(startDate, endDate)}
-                        </time>
-                        <address>
-                          <span className={styles.markerIcon} />
-                          {city}, {organization.country}
-                        </address>
-                      </div>
-                      <strong className={styles.titleCalendar}>{title}</strong>
-                    </>
-                  }
-                  path={`${ballroomPage}${calendarPage}/${id}`}
-                  noStyle
-                />
+                <Link path={`${ballroomPage}${calendarPage}/${slug}`} noStyle>
+                  <div className={styles.info}>
+                    <time dateTime={startDate}>
+                      <span className={styles.calendarIcon} />
+                      {formatDate(startDate, endDate)}
+                    </time>
+                    <address>
+                      <span className={styles.markerIcon} />
+                      {city}, {organization.country}
+                    </address>
+                  </div>
+                  <strong className={styles.titleCalendar}>{title}</strong>
+                </Link>
               </li>
             ))
           )
