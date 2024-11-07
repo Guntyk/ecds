@@ -1,6 +1,6 @@
 import { useLocation, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import cn from 'classnames';
 import { getEvents } from '@redux/features/eventsSlice';
 import { formatDateToEUFormat } from 'helpers/formatDateToEUFormat';
@@ -20,6 +20,27 @@ import markerIcon from 'assets/icons/marker.svg';
 import styles from 'pages/Calendar/EventInfo/EventInfo.scss';
 
 export const EventInfo = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const modalRef = useRef();
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (modalRef.current && !modalRef.current.contains(event.target)) {
+        setIsModalOpen(false);
+      }
+    };
+
+    if (isModalOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+    } else {
+      document.removeEventListener('mousedown', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isModalOpen, setIsModalOpen]);
+
   const [registrationStatus, setRegistrationStatus] = useState('hidden');
   const { isLoading, events } = useSelector((state) => state.events);
   const [currentEvent, setCurrentEvent] = useState(null);
@@ -146,7 +167,9 @@ export const EventInfo = () => {
             <Button
               text='Registration'
               className={styles.firstBtn}
-              onClick={() => window.open(registration?.url)}
+              onClick={() =>
+                title === 'ECDS European Championship' ? setIsModalOpen(true) : window.open(registration?.url)
+              }
               disabled={registrationStatus !== 'open'}
               normalStyle
             />
@@ -162,6 +185,40 @@ export const EventInfo = () => {
         </div>
       </article>
       <Tabs className={cn(styles.tabs, styles.tabsMobile)} event={currentEvent} />
+      <div className={cn(styles.overlay, { [styles.active]: isModalOpen })}></div>
+      <div className={cn(styles.modal, { [styles.active]: isModalOpen })} ref={modalRef}>
+        <p>
+          To apply for participation in the European Championship, you must register in the e-phan database. The
+          application must be confirmed by one of the{' '}
+          <Link
+            className={styles.modalLink}
+            path='https://euro-dance.org/members'
+            content='national organizations'
+            hoverStyle
+            noStyle
+            external
+          />
+          .
+        </p>
+        <p>
+          If the dancer is from a country that is not on{' '}
+          <Link path='https://euro-dance.org/members' content='this list' hoverStyle noStyle external />, then his
+          application will be confirmed by the Committee of Independent Dancers of the ECDS.
+        </p>
+        <p>
+          If your club and coach are already registered in e-phan database, you will be able to select them during
+          registration. If not, ask them to do so before your registration.
+        </p>
+        <Button
+          className={styles.modalBtn}
+          text='Continue to registration'
+          onClick={() => {
+            window.open(registration?.url);
+            setIsModalOpen(false);
+          }}
+          normalStyle
+        />
+      </div>
     </Container>
   ) : isLoading ? (
     <p>Loading...</p>

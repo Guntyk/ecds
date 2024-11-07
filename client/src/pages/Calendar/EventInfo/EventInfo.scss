@@ -138,6 +138,64 @@
   display: none;
 }
 
+.modal {
+  @include typography(body3);
+
+  padding: 3.2rem;
+  position: fixed;
+  top: 45%;
+  left: 50%;
+  opacity: 0;
+  max-width: 55rem;
+  width: calc(100% - 3rem);
+  max-height: 95dvh;
+  pointer-events: none;
+  border: 0.1rem solid $lavender;
+  background: $background1;
+  border-radius: $borderRadius;
+  translate: -50% -50%;
+  transition: 0.3s;
+  z-index: 1;
+
+  p:not(:first-child) {
+    margin-top: 0.8rem;
+  }
+
+  &.active {
+    opacity: 1;
+    pointer-events: all;
+  }
+}
+
+.overlay {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: black;
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.3s;
+  z-index: 1;
+
+  &.active {
+    opacity: 0.3;
+    pointer-events: all;
+  }
+}
+
+.modalLink {
+  white-space: nowrap;
+}
+
+.modalBtn {
+  margin-top: 1.6rem;
+  margin-inline: auto;
+  width: 35rem;
+  background-color: $secondary3;
+}
+
 @media (max-width: 768px) {
   .page {
     padding-block: 10.4rem 6.4rem;
@@ -236,5 +294,13 @@
 
   .tabs {
     margin-inline: -1.6rem;
+  }
+
+  .modal {
+    padding: 1.6rem;
+  }
+
+  .modalBtn {
+    width: 100%;
   }
 }
