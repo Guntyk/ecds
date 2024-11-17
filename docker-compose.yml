@@ -54,6 +54,8 @@ services:
       done'
     networks:
       - dev
+    environment:
+      - CERTBOT_CONFIG=/etc/letsencrypt
 
 volumes:
   postgres_data:
