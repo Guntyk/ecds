@@ -1,11 +1,10 @@
-FROM node:alpine as build
+FROM node:16 as build
 
 WORKDIR /app
 
-COPY package.json ./
-RUN npm cache clean --force
-RUN npm install --legacy-peer-deps
-COPY . .
+COPY package.json ./ 
+RUN npm cache clean --force && npm install --legacy-peer-deps
+COPY . . 
 RUN npm run build --verbose
 
 FROM nginx:stable-alpine
