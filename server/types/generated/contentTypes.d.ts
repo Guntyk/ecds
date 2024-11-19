@@ -1053,6 +1053,11 @@ export interface ApiEventEvent extends Schema.CollectionType {
     departments: Attribute.Component<'services.department', true>;
     slug: Attribute.UID<'api::event.event', 'title'> & Attribute.Required;
     address: Attribute.String;
+    judges: Attribute.Relation<
+      'api::event.event',
+      'oneToMany',
+      'api::judge.judge'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1064,6 +1069,40 @@ export interface ApiEventEvent extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::event.event',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiJudgeJudge extends Schema.CollectionType {
+  collectionName: 'judges';
+  info: {
+    singularName: 'judge';
+    pluralName: 'judges';
+    displayName: 'Judges';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    photo: Attribute.Media<'images'>;
+    name: Attribute.String & Attribute.Required;
+    surname: Attribute.String & Attribute.Required;
+    country: Attribute.String & Attribute.Required;
+    city: Attribute.String & Attribute.Required;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::judge.judge',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::judge.judge',
       'oneToOne',
       'admin::user'
     > &
@@ -1241,6 +1280,7 @@ declare module '@strapi/types' {
       'api::dance.dance': ApiDanceDance;
       'api::document.document': ApiDocumentDocument;
       'api::event.event': ApiEventEvent;
+      'api::judge.judge': ApiJudgeJudge;
       'api::logo.logo': ApiLogoLogo;
       'api::manager.manager': ApiManagerManager;
       'api::organization.organization': ApiOrganizationOrganization;

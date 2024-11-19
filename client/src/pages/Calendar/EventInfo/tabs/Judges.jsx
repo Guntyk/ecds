@@ -1,6 +1,8 @@
-import judgePlaceholder from 'assets/icons/judge-photo-placeholder.png';
+import { generateMediaURL } from 'helpers/generateMediaURL';
 import { ImageComponent } from 'components/Image';
+import judgePlaceholder from 'assets/icons/judge-photo-placeholder.png';
 import styles from 'pages/Calendar/EventInfo/tabs/Tabs.scss';
+import React from 'react';
 
 export const Judges = ({ event: { judges } }) => {
   return (
@@ -9,23 +11,30 @@ export const Judges = ({ event: { judges } }) => {
         <span className={styles.totals}>Totals:</span>
         <div className={styles.stat}>
           <span>Judges</span>
-          <span>5</span>
+          <span>{judges.length}</span>
         </div>
       </div>
-      <div className={styles.judge}>
-        <ImageComponent
-          src={judges?.[0]?.photo?.url || judgePlaceholder}
-          alt={judges?.[0]?.photo?.alternativeText || 'Judge photo placeholder'}
-          placeholder={judges?.[0]?.photo?.placeholder}
-          className={styles.judgePhoto}
-        />
-        <div className={styles.judgeInfo}>
-          <h4 className={styles.name}>Club Name some name</h4>
-          <span>Country, City</span>
-          <span className={styles.judgeCategory}>Category</span>
-        </div>
-      </div>
-      <hr className={styles.line} />
+      {judges.map(({ id, photo, name, surname, country, city }, index) => (
+        <React.Fragment key={id}>
+          <div className={styles.judge}>
+            <ImageComponent
+              src={generateMediaURL(photo?.formats?.thumbnail.url) || judgePlaceholder}
+              alt={photo?.alternativeText || 'Judge photo placeholder'}
+              placeholder={photo?.placeholder}
+              className={styles.judgePhoto}
+            />
+            <div className={styles.judgeInfo}>
+              <h4 className={styles.name}>
+                {name} {surname}
+              </h4>
+              <span>
+                {country}, {city}
+              </span>
+            </div>
+          </div>
+          {judges.length > index + 1 && <hr className={styles.line} />}
+        </React.Fragment>
+      ))}
     </>
   );
 };

@@ -101,6 +101,11 @@
     },
     "address": {
       "type": "string"
+    },
+    "judges": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::judge.judge"
     }
   }
 }

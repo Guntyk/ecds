@@ -50,6 +50,14 @@ export default class EventsService {
           entryForm: {
             fields: ['url'],
           },
+          judges: {
+            populate: {
+              photo: {
+                fields: ['alternativeText', 'placeholder', 'formats'],
+              },
+            },
+            fields: ['name', 'surname', 'country', 'city'],
+          },
         },
         sort: 'startDate',
       },

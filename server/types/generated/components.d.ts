@@ -46,6 +46,14 @@ export interface ServicesRegistration extends Schema.Component {
   };
 }
 
+export interface ServicesJudge extends Schema.Component {
+  collectionName: 'components_services_judges';
+  info: {
+    displayName: 'Judge';
+  };
+  attributes: {};
+}
+
 export interface ServicesDepartment extends Schema.Component {
   collectionName: 'components_services_departments';
   info: {
@@ -148,6 +156,7 @@ declare module '@strapi/types' {
       'socials.logos': SocialsLogos;
       'services.tag': ServicesTag;
       'services.registration': ServicesRegistration;
+      'services.judge': ServicesJudge;
       'services.department': ServicesDepartment;
       'services.category': ServicesCategory;
       'contacts.phone': ContactsPhone;
