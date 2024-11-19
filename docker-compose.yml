@@ -39,6 +39,12 @@ services:
       context: ./client
     networks:
       - dev
+    deploy:
+      resources:
+        limits:
+          memory: 2g
+        reservations:
+          memory: 1g
   
   certbot:
     image: certbot/certbot
