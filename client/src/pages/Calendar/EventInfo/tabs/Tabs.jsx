@@ -23,7 +23,7 @@ export const Tabs = ({ className, event }) => {
     if (departments?.length) {
       setTabs((prevTabs) => ({ ...prevTabs, Categories }));
     }
-    if (judges) {
+    if (judges?.length) {
       setTabs((prevTabs) => ({ ...prevTabs, Judges }));
     }
     if (address) {
