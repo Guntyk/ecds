@@ -33,7 +33,7 @@ const transformStatuses = (records) =>
 const transformDancers = (records) =>
   records
     .filter((dancer) => dancer['D Name'] !== null && dancer['D Surname'] !== null)
-    .filter((judge) => judge['Status'])
+    .filter((dancer) => dancer['Status'])
     .map(({ 'D Name': name, 'D Surname': surname, 'Dancer Class': level, Status: status, ...rest }) => ({
       ...rest,
       name: name.trim(),
@@ -42,7 +42,19 @@ const transformDancers = (records) =>
       status: status[0],
     }));
 
-const transformJudges = (records) => records
+const transformCoaches = (records) =>
+  records
+    .filter((coach) => coach['Coach Verify'])
+    .filter((coach) => coach['Status'])
+    .filter((coach) => coach['Coach Name'] !== null && coach['Coach Surname'] !== null)
+    .map(({ 'Coach Name': name, 'Coach Surname': surname, ...rest }) => ({
+      ...rest,
+      name: name.trim(),
+      surname: surname.trim(),
+    }));
+
+const transformJudges = (records) =>
+  records
     .filter((judge) => judge['Judges Verify'])
     .filter((judge) => judge['Status'])
     .map(({ 'Name Surname': fullName, 'Foto Judges': photo, Status: status, ...rest }) => ({
@@ -53,6 +65,15 @@ const transformJudges = (records) => records
       status: status[0],
     }));
 
+const transformClubs = (records) =>
+  records
+    .filter((club) => club['Approve Club'])
+    .filter((club) => club['Club Name'] !== null)
+    .map(({ 'Club Name': name, ...rest }) => ({
+      ...rest,
+      name: name.trim(),
+    }));
+
 const transformDancerClasses = (records) =>
   records.reduce((acc, dancerClass) => {
     acc[dancerClass.id] = dancerClass['Name'];
@@ -60,9 +81,9 @@ const transformDancerClasses = (records) =>
   }, {});
 
 export const getDancers = createAsyncAction('dancers/getDancers', EphanService.getDancers, transformDancers);
-export const getCoaches = createAsyncAction('coaches/getCoaches', EphanService.getCoaches);
+export const getCoaches = createAsyncAction('coaches/getCoaches', EphanService.getCoaches, transformCoaches);
 export const getJudges = createAsyncAction('judges/getJudges', EphanService.getJudges, transformJudges);
-export const getClubs = createAsyncAction('clubs/getClubs', EphanService.getClubs);
+export const getClubs = createAsyncAction('clubs/getClubs', EphanService.getClubs, transformClubs);
 export const getDancerClasses = createAsyncAction(
   'dancerClasses/getDancerClasses',
   EphanService.getDancerClasses,

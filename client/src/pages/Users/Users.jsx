@@ -101,6 +101,7 @@ export const Users = () => {
               />
             </form>
           </section>
+          {error && <p className={styles.error}>{error}</p>}
           {isLoading ? (
             <Loader />
           ) : (

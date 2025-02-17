@@ -14,7 +14,7 @@ export const UserCard = ({ role, user, dancerClasses }) => {
         {user.name} {user.surname}
       </h2>
       {role === 'dancers' && user?.level && (
-        <p className={styles.level}>{dancerClasses[user.level]}</p>
+        <p className={styles.level}>{dancerClasses?.[user.level]}</p>
       )}
     </li>
   );

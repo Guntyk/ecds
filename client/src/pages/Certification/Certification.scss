@@ -28,6 +28,12 @@
   }
 }
 
+.error {
+  @include typography(body4);
+
+  color: $primary3;
+}
+
 .list {
   display: flex;
   flex-wrap: wrap;

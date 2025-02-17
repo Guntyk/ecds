@@ -4,6 +4,7 @@
   align-items: center;
   gap: $gapMedium;
   padding-block: 2.4rem 3.2rem;
+  padding-inline: $gapLarge;
   width: calc(100% / 3 - 1.6rem);
   background: $text2;
   border-radius: $borderRadius;
@@ -11,33 +12,12 @@
 }
 
 .photo {
-  position: relative;
+  @extend %avatar;
+  
   height: 16rem;
-  aspect-ratio: 1;
-  border-radius: 50%;
-  background: $background1;
-  overflow: hidden;
 
   &.placeholder {
-    &::before,
-    &::after {
-      content: '';
-      position: absolute;
-      top: 40%;
-      left: 50%;
-      width: 40%;
-      height: 40%;
-      background: $background2;
-      border-radius: 50%;
-      translate: -50% -50%;
-    }
-
-    &::after {
-      top: 100%;
-      left: 50%;
-      width: 70%;
-      height: 70%;
-    }
+    @extend %avatarPlaceholder;
   }
 }
 

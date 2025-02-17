@@ -21,3 +21,33 @@
   background: none;
   transition: border $transitionDuration, background $transitionDuration;
 }
+
+%avatar {
+  position: relative;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: $background1;
+  overflow: hidden;
+}
+
+%avatarPlaceholder {
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    width: 40%;
+    height: 40%;
+    background: $background2;
+    border-radius: 50%;
+    translate: -50% -50%;
+  }
+
+  &::after {
+    top: 100%;
+    left: 50%;
+    width: 70%;
+    height: 70%;
+  }
+}
