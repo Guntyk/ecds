@@ -2,7 +2,7 @@ import { useLocation, useHistory } from 'react-router-dom';
 import { useState, useEffect, useMemo } from 'react';
 import { initialState } from 'pages/Users/formConfig';
 
-export const useUsers = (usersList, activeUsersTypes) => {
+export const useUsers = (usersList, statuses, activeUsersTypes) => {
   const { search, pathname } = useLocation();
   const { push } = useHistory();
 
@@ -34,14 +34,14 @@ export const useUsers = (usersList, activeUsersTypes) => {
   }, [filters.searchTypeParam, pathname, push]);
 
   useEffect(() => {
-    const filteredUsers = filterUsers([], filters);
+    const activeUsers = usersList.filter((user) => statuses[user?.status] === 'Active');
+    const filteredUsers = filterUsers(activeUsers, filters);
     setUsers(filteredUsers);
-  }, [filters, usersList]);
+  }, [filters, usersList, statuses]);
 
   const filterUsers = (usersList, filters) => {
-    const { searchTypeParam, searchNameParam, searchCountryParam, searchClassParam } = filters;
+    const { searchNameParam, searchCountryParam, searchClassParam } = filters;
     return usersList
-      .filter(({ type }) => !searchTypeParam || type === searchTypeParam)
       .filter(({ name }) => !searchNameParam || name.toLowerCase().includes(searchNameParam.toLowerCase()))
       .filter(({ country }) => !searchCountryParam || country?.toLowerCase().includes(searchCountryParam.toLowerCase()))
       .filter(({ level }) => !searchClassParam || level === searchClassParam.toUpperCase());

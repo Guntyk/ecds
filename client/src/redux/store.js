@@ -5,6 +5,7 @@ import documentsReducer from '@redux/features/documentsSlice';
 import partnersReducer from '@redux/features/partnersSlice';
 import bannersReducer from '@redux/features/bannersSlice';
 import eventsReducer from '@redux/features/eventsSlice';
+import ephanReducer from '@redux/features/ephanSlice';
 import logosReducer from '@redux/features/logosSlice';
 import newsReducer from '@redux/features/newsSlice';
 
@@ -16,6 +17,7 @@ export const store = configureStore({
     partners: partnersReducer,
     banners: bannersReducer,
     events: eventsReducer,
+    ephan: ephanReducer,
     logos: logosReducer,
     news: newsReducer,
   },

@@ -5,16 +5,40 @@
   gap: $gapMedium;
   padding-block: 2.4rem 3.2rem;
   width: calc(100% / 3 - 1.6rem);
-  height: 36.8rem;
   background: $text2;
   border-radius: $borderRadius;
   border: 0.05rem solid $background2;
 }
 
 .photo {
-  width: 16rem;
+  position: relative;
+  height: 16rem;
   aspect-ratio: 1;
   border-radius: 50%;
+  background: $background1;
+  overflow: hidden;
+
+  &.placeholder {
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      top: 40%;
+      left: 50%;
+      width: 40%;
+      height: 40%;
+      background: $background2;
+      border-radius: 50%;
+      translate: -50% -50%;
+    }
+
+    &::after {
+      top: 100%;
+      left: 50%;
+      width: 70%;
+      height: 70%;
+    }
+  }
 }
 
 .cardInfo {
@@ -29,20 +53,19 @@
   @include typography(body1, medium);
 
   text-transform: capitalize;
+  text-align: center;
 }
 
-.class {
+.level {
   @include typography(body4);
 
   text-transform: uppercase;
-  margin-bottom: 3.2rem;
 }
 
 .moreBtn {
   @include typography(buttonSmall);
 
   position: relative;
-  margin-top: auto;
   border-radius: 0;
   overflow: visible;
 

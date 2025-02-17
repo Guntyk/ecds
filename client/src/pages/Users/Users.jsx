@@ -1,22 +1,49 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { useUsers } from 'hooks/useUsers';
+import { getDancers, getJudges, getStatuses, getDancerClasses } from '@redux/features/ephanSlice';
 import { formConfig } from 'pages/Users/formConfig';
 import { activeUsersTypes } from 'constants/usersTypes';
-import { usersList } from 'constants/mockedUsers';
 import { CompactFilters } from 'components/SearchForm/CompactFilters';
 import { TabSelector } from 'components/Button/TabSelector';
 import { Container } from 'components/Container';
 import { NoResults } from 'components/NoResults';
 import { Dropdown } from 'components/Dropdown';
 import { Button } from 'components/Button';
+import { Loader } from 'components/Loader';
 import { Input } from 'components/Input';
 import { UserCard } from 'pages/Users/UserCard';
 import styles from 'pages/Users/Users.scss';
 
 export const Users = () => {
   const [isFilterMobileOpen, setIsFilterMobileOpen] = useState(false);
+  const { dancers, judges, dancerClasses, statuses, isLoading, error } = useSelector((state) => state.ephan);
+  const [usersList, setUsersList] = useState([]);
+  const dispatch = useDispatch();
+
   const { users, formState, activeTypeIndex, setActiveTypeIndex, handleFilterChange, handleSubmit, clearFilters } =
-    useUsers(usersList, activeUsersTypes);
+  useUsers(usersList, statuses, activeUsersTypes);
+
+  const activeTabName = activeUsersTypes[activeTypeIndex]
+
+  useEffect(() => {
+    dispatch(getStatuses());
+  }, []);
+
+  useEffect(() => {
+    if (activeTabName === 'dancers') {
+      dispatch(getDancers());
+      if (!dancerClasses) {
+        dispatch(getDancerClasses());
+      }
+    } else if (activeTabName === 'judges') {
+      dispatch(getJudges());
+    }
+  }, [activeTypeIndex, dispatch]);
+
+  useEffect(() => {
+    setUsersList(activeTabName === 'judges' ? judges : dancers);
+  }, [activeTypeIndex, judges, dancers]);
 
   return (
     <Container>
@@ -74,14 +101,18 @@ export const Users = () => {
               />
             </form>
           </section>
-          {users.length ? (
-            <ul className={styles.users}>
-              {users.map((user) => (
-                <UserCard user={user} key={user.id} />
-              ))}
-            </ul>
+          {isLoading ? (
+            <Loader />
           ) : (
-            <NoResults />
+            users.length ? (
+              <ul className={styles.users}>
+                {users.map((user) => (
+                  <UserCard role={activeTabName} user={user} key={user.id} dancerClasses={dancerClasses} />
+                ))}
+              </ul>
+            ) : (
+              <NoResults />
+            )
           )}
         </div>
       </div>
