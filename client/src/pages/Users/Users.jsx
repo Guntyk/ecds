@@ -4,7 +4,6 @@ import { useUsers } from 'hooks/useUsers';
 import { getDancers, getJudges, getStatuses, getDancerClasses } from '@redux/features/ephanSlice';
 import { formConfig } from 'pages/Users/formConfig';
 import { activeUsersTypes } from 'constants/usersTypes';
-import { CompactFilters } from 'components/SearchForm/CompactFilters';
 import { TabSelector } from 'components/Button/TabSelector';
 import { Container } from 'components/Container';
 import { NoResults } from 'components/NoResults';
@@ -16,7 +15,6 @@ import { UserCard } from 'pages/Users/UserCard';
 import styles from 'pages/Users/Users.scss';
 
 export const Users = () => {
-  const [isFilterMobileOpen, setIsFilterMobileOpen] = useState(false);
   const { dancers, judges, dancerClasses, statuses, isLoading, error } = useSelector((state) => state.ephan);
   const [usersList, setUsersList] = useState([]);
   const dispatch = useDispatch();
@@ -57,7 +55,7 @@ export const Users = () => {
               setActiveTabIndex={setActiveTypeIndex}
             />
             <form
-              className={`${styles.searchForm} ${isFilterMobileOpen ? styles.searchFormWithFilterOpen : ''}`}
+              className={styles.searchForm}
               onSubmit={handleSubmit}
             >
               {formConfig.map(({ name, placeholder, options, zIndex }) =>
@@ -89,15 +87,6 @@ export const Users = () => {
                 type='reset'
                 onClick={clearFilters}
                 ghostStyle
-              />
-              <CompactFilters
-                className={styles.filterMobile}
-                formState={formState}
-                handleFilterChange={handleFilterChange}
-                handleSubmit={handleSubmit}
-                clearFilters={clearFilters}
-                formConfig={formConfig}
-                onOpenChange={setIsFilterMobileOpen}
               />
             </form>
           </section>

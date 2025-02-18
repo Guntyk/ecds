@@ -10,12 +10,12 @@ export const UserCard = ({ role, user, dancerClasses }) => {
       ) : (
         <div className={cn(styles.photo, styles.placeholder)} />
       )}
-      <h2 className={styles.name}>
-        {user.name} {user.surname}
-      </h2>
-      {role === 'dancers' && user?.level && (
-        <p className={styles.level}>{dancerClasses?.[user.level]}</p>
-      )}
+      <div className={styles.cardInfo}>
+        <h2 className={styles.name}>
+          {user.name} {user.surname}
+        </h2>
+        {role === 'dancers' && user?.level && <p className={styles.level}>{dancerClasses?.[user.level]}</p>}
+      </div>
     </li>
   );
 };

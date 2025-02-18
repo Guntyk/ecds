@@ -50,14 +50,14 @@
   display: block;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1440px) {
   .page {
-    padding-bottom: 6.4rem;
-  }
+    padding-block: 10.4rem 6.4rem;
 
-  .pageContent {
-    flex-direction: column;
-    gap: 3.2rem;
+    &Content {
+      flex-direction: column;
+      gap: 3.2rem;
+    }
   }
 
   .title {
@@ -83,12 +83,14 @@
     display: none;
   }
 
-  .searchFormWithFilterOpen {
-    margin-bottom: 22.5rem;
-  }
-
   .users {
     flex-direction: column;
     gap: 1.6rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .navigation {
+    width: 100%;
   }
 }

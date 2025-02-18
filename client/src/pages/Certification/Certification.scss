@@ -41,32 +41,15 @@
   width: 100%;
 }
 
-@media (max-width: 557px) {
+@media (max-width: 1440px) {
   .page {
-    padding-bottom: 6.4rem;
-  }
-  .pageContent {
-    flex-direction: column;
-  }
-  .navigation {
-    .typesList {
-      flex-direction: row;
-      overflow-x: auto;
-      white-space: nowrap;
+    padding-block: 10.4rem 6.4rem;
+
+    &Content {
+      flex-direction: column;
+      margin: 0;
+      gap: 3.2rem;
     }
-  }
-
-  .list {
-    flex-direction: column;
-    gap: 1.6rem;
-  }
-}
-
-@media (max-width: 768px) {
-  .pageContent {
-    flex-direction: column;
-    margin: 0;
-    gap: 3.2rem;
   }
 
   .title {

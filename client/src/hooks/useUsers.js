@@ -1,5 +1,5 @@
 import { useLocation, useHistory } from 'react-router-dom';
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect, useMemo, useRef } from 'react';
 import { initialState } from 'pages/Users/formConfig';
 
 export const useUsers = (usersList, statuses, activeUsersTypes) => {
@@ -23,6 +23,8 @@ export const useUsers = (usersList, statuses, activeUsersTypes) => {
   const [activeTypeIndex, setActiveTypeIndex] = useState(
     activeUsersTypes.findIndex((userType) => userType === filters.searchTypeParam)
   );
+
+  const debounceTimeout = useRef(null);
 
   useEffect(() => {
     if (!filters.searchTypeParam) {
@@ -50,6 +52,15 @@ export const useUsers = (usersList, statuses, activeUsersTypes) => {
   const handleFilterChange = (name, value) => {
     setFormState((prev) => ({ ...prev, [name]: value }));
   };
+
+  useEffect(() => {
+    if (window.innerWidth < 1440) {
+      clearTimeout(debounceTimeout.current);
+      debounceTimeout.current = setTimeout(() => {
+        handleSubmit({ preventDefault: () => {} });
+      }, 300);
+    }
+  }, [formState]);
 
   const handleSubmit = (e) => {
     e.preventDefault();

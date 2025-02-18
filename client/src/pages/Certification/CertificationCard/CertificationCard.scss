@@ -85,26 +85,31 @@
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1440px) {
   .card {
     width: 100%;
     height: 16.8rem;
     padding: 2.4rem 1.6rem;
     flex-direction: row;
+    align-items: flex-start;
   }
 
   .photo {
+    min-width: 12rem;
     width: 12rem;
+    max-width: 12rem;
     height: 12rem;
   }
 
   .cardInfo {
     align-items: baseline;
+    padding-inline: 0;
     gap: 0.8rem;
   }
 
   .name {
     font-size: 1.8rem;
+    text-align: left;
   }
 
   .date {
