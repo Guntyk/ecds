@@ -1,7 +1,7 @@
 import { useHistory, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import { getDancers, getCoaches, getClubs, getStatuses } from '@redux/features/ephanSlice';
+import { getDancers, getCoaches, getClubs, getStatuses, getCountries } from '@redux/features/ephanSlice';
 import { Container } from 'components/Container';
 import { NoResults } from 'components/NoResults';
 import { Loader } from 'components/Loader';
@@ -12,7 +12,7 @@ import styles from 'pages/Certification/Certification.scss';
 const certificationTypes = ['dancers', 'coaches', 'clubs', 'conditions'];
 
 export const Certification = () => {
-  const { dancers, coaches, clubs, statuses, isLoading, error } = useSelector((state) => state.ephan);
+  const { dancers, coaches, clubs, statuses, countries, isLoading, error } = useSelector((state) => state.ephan);
   const { search } = useLocation();
   const { replace } = useHistory();
   const dispatch = useDispatch();
@@ -24,6 +24,7 @@ export const Certification = () => {
       replace(`?type=${certificationTypes[0]}`);
     }
 
+    if (!countries) dispatch(getCountries());
     if (!statuses) dispatch(getStatuses());
     if (searchTypeParam === 'dancers') dispatch(getDancers());
     if (searchTypeParam === 'coaches') dispatch(getCoaches());
@@ -33,9 +34,11 @@ export const Certification = () => {
   const renderCards = () => {
     const data = { dancers, coaches, clubs }[searchTypeParam] || [];
 
-    if (data.length === 0) return <NoResults />;
+    const certificatedData = data.filter(item => item?.certificationDate)
 
-    return data.map((user) => <CertificationCard user={user} key={user.id} />);
+    if (certificatedData.length === 0) return <NoResults />;
+
+    return certificatedData.map((user) => <CertificationCard user={user} countries={countries} key={user.id} />);
   };
 
   return (

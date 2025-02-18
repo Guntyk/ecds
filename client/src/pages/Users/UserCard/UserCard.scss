@@ -36,9 +36,13 @@
   text-align: center;
 }
 
-.level {
-  @include typography(body4);
 
+.level,
+.country {
+  @include typography(body4);
+}
+
+.level {
   text-transform: uppercase;
 }
 

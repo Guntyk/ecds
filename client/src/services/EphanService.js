@@ -61,4 +61,14 @@ export default class EphanService {
 
     return { result: data, error: null };
   }
+
+  static async getCountries() {
+    const [error, data] = await ephanApi.get('/countries');
+
+    if (error) {
+      return { result: null, error: APIErrorsHandlingUtils.handleErrors(error) };
+    }
+
+    return { result: data, error: null };
+  }
 }

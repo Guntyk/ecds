@@ -7,6 +7,7 @@ const initialState = {
   judges: [],
   clubs: [],
   dancerClasses: null,
+  countries: null,
   statuses: null,
   error: null,
   isLoading: false,
@@ -34,49 +35,90 @@ const transformDancers = (records) =>
   records
     .filter((dancer) => dancer['D Name'] !== null && dancer['D Surname'] !== null)
     .filter((dancer) => dancer['Status'])
-    .map(({ 'D Name': name, 'D Surname': surname, 'Dancer Class': level, Status: status, ...rest }) => ({
-      ...rest,
-      name: name.trim(),
-      surname: surname.trim(),
-      level,
-      status: status[0],
-    }));
+    .map(
+      ({
+        'D Name': name,
+        'D Surname': surname,
+        'Dancer Class': level,
+        'D Foto': photo,
+        'Country Nationality': country,
+        Status: status,
+        ...rest
+      }) => ({
+        ...rest,
+        name: name.trim(),
+        surname: surname.trim(),
+        photo,
+        level,
+        country,
+        status: status[0],
+      })
+    );
 
 const transformCoaches = (records) =>
   records
     .filter((coach) => coach['Coach Verify'])
     .filter((coach) => coach['Status'])
     .filter((coach) => coach['Coach Name'] !== null && coach['Coach Surname'] !== null)
-    .map(({ 'Coach Name': name, 'Coach Surname': surname, ...rest }) => ({
-      ...rest,
-      name: name.trim(),
-      surname: surname.trim(),
-    }));
+    .map(
+      ({
+        'Coach Name': name,
+        'Coach Surname': surname,
+        'Country Work': country,
+        'Foto Coach': photo,
+        Status: status,
+        ...rest
+      }) => ({
+        ...rest,
+        name: name.trim(),
+        surname: surname.trim(),
+        status,
+        country,
+        photo,
+      })
+    );
 
 const transformJudges = (records) =>
   records
     .filter((judge) => judge['Judges Verify'])
     .filter((judge) => judge['Status'])
-    .map(({ 'Name Surname': fullName, 'Foto Judges': photo, Status: status, ...rest }) => ({
-      ...rest,
-      name: fullName.split(' ')[0].trim(),
-      surname: fullName.split(' ')[1].trim(),
-      photo,
-      status: status[0],
-    }));
+    .map(
+      ({
+        'Name Surname': fullName,
+        'Foto Judges': photo,
+        'Country Nationality': country,
+        Status: status,
+        ...rest
+      }) => ({
+        ...rest,
+        surname: fullName.split(' ')[0].trim(),
+        name: fullName.split(' ')[1].trim(),
+        photo,
+        status: status[0],
+        country,
+      })
+    );
 
 const transformClubs = (records) =>
   records
     .filter((club) => club['Approve Club'])
     .filter((club) => club['Club Name'] !== null)
-    .map(({ 'Club Name': name, ...rest }) => ({
+    .map(({ 'Club Name': name, 'Logo Club': photo, Country: country, ...rest }) => ({
       ...rest,
       name: name.trim(),
+      photo,
+      country,
     }));
 
 const transformDancerClasses = (records) =>
   records.reduce((acc, dancerClass) => {
     acc[dancerClass.id] = dancerClass['Name'];
+    return acc;
+  }, {});
+
+const transformCountries = (records) =>
+  records.reduce((acc, country) => {
+    acc[country.id] = country['Name'];
     return acc;
   }, {});
 
@@ -90,12 +132,13 @@ export const getDancerClasses = createAsyncAction(
   transformDancerClasses
 );
 export const getStatuses = createAsyncAction('statuses/getStatuses', EphanService.getStatuses, transformStatuses);
+export const getCountries = createAsyncAction('countries/getCountries', EphanService.getCountries, transformCountries);
 
 const ephanSlice = createSlice({
   name: 'ephan',
   initialState,
   extraReducers: (builder) => {
-    const actions = [getDancers, getCoaches, getJudges, getClubs, getDancerClasses, getStatuses];
+    const actions = [getDancers, getCoaches, getJudges, getClubs, getDancerClasses, getStatuses, getCountries];
 
     actions.forEach((action) => {
       builder

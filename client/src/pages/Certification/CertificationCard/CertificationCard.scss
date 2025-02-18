@@ -44,6 +44,10 @@
   gap: $gapExtraSmall;
 }
 
+.country {
+  @include typography(body4);
+}
+
 .moreBtn {
   @include typography(buttonSmall);
 
@@ -110,9 +114,5 @@
   .name {
     font-size: 1.8rem;
     text-align: left;
-  }
-
-  .date {
-    margin-bottom: 2.4rem;
   }
 }

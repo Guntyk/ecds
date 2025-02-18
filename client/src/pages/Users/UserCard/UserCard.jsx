@@ -2,7 +2,7 @@ import cn from 'classnames';
 import { ImageComponent } from 'components/Image';
 import styles from 'pages/Users/UserCard/UserCard.scss';
 
-export const UserCard = ({ role, user, dancerClasses }) => {
+export const UserCard = ({ role, user, countries, dancerClasses }) => {
   return (
     <li className={styles.card}>
       {user?.photo?.url ? (
@@ -15,6 +15,7 @@ export const UserCard = ({ role, user, dancerClasses }) => {
           {user.name} {user.surname}
         </h2>
         {role === 'dancers' && user?.level && <p className={styles.level}>{dancerClasses?.[user.level]}</p>}
+        {user?.country && <p className={styles.country}>{countries?.[user.country]}</p>}
       </div>
     </li>
   );

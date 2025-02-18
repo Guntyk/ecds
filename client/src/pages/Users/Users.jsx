@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useUsers } from 'hooks/useUsers';
-import { getDancers, getJudges, getStatuses, getDancerClasses } from '@redux/features/ephanSlice';
+import { getDancers, getJudges, getStatuses, getDancerClasses, getCountries } from '@redux/features/ephanSlice';
 import { formConfig } from 'pages/Users/formConfig';
 import { activeUsersTypes } from 'constants/usersTypes';
 import { TabSelector } from 'components/Button/TabSelector';
@@ -15,17 +15,18 @@ import { UserCard } from 'pages/Users/UserCard';
 import styles from 'pages/Users/Users.scss';
 
 export const Users = () => {
-  const { dancers, judges, dancerClasses, statuses, isLoading, error } = useSelector((state) => state.ephan);
+  const { dancers, judges, dancerClasses, statuses, countries, isLoading, error } = useSelector((state) => state.ephan);
   const [usersList, setUsersList] = useState([]);
   const dispatch = useDispatch();
 
   const { users, formState, activeTypeIndex, setActiveTypeIndex, handleFilterChange, handleSubmit, clearFilters } =
-  useUsers(usersList, statuses, activeUsersTypes);
+    useUsers(usersList, statuses, activeUsersTypes);
 
-  const activeTabName = activeUsersTypes[activeTypeIndex]
+  const activeTabName = activeUsersTypes[activeTypeIndex];
 
   useEffect(() => {
     dispatch(getStatuses());
+    dispatch(getCountries());
   }, []);
 
   useEffect(() => {
@@ -54,10 +55,7 @@ export const Users = () => {
               activeTabIndex={activeTypeIndex}
               setActiveTabIndex={setActiveTypeIndex}
             />
-            <form
-              className={styles.searchForm}
-              onSubmit={handleSubmit}
-            >
+            <form className={styles.searchForm} onSubmit={handleSubmit}>
               {formConfig.map(({ name, placeholder, options, zIndex }) =>
                 options ? (
                   <Dropdown
@@ -93,16 +91,20 @@ export const Users = () => {
           {error && <p className={styles.error}>{error}</p>}
           {isLoading ? (
             <Loader />
+          ) : users.length ? (
+            <ul className={styles.users}>
+              {users.map((user) => (
+                <UserCard
+                  role={activeTabName}
+                  user={user}
+                  key={user.id}
+                  countries={countries}
+                  dancerClasses={dancerClasses}
+                />
+              ))}
+            </ul>
           ) : (
-            users.length ? (
-              <ul className={styles.users}>
-                {users.map((user) => (
-                  <UserCard role={activeTabName} user={user} key={user.id} dancerClasses={dancerClasses} />
-                ))}
-              </ul>
-            ) : (
-              <NoResults />
-            )
+            <NoResults />
           )}
         </div>
       </div>
