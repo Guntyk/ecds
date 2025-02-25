@@ -2,7 +2,7 @@ import { ImageComponent } from 'components/Image';
 import logoPlaceholder from 'assets/icons/club-logo-placeholder.png';
 import styles from 'pages/Calendar/EventInfo/tabs/Tabs.scss';
 
-export const Clubs = ({ event: { clubs } }) => {
+export const Clubs = ({ data: { clubs } }) => {
   return (
     <>
       <div className={styles.totalsHeader}>

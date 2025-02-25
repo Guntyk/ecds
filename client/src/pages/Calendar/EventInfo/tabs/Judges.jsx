@@ -4,7 +4,7 @@ import judgePlaceholder from 'assets/icons/judge-photo-placeholder.png';
 import styles from 'pages/Calendar/EventInfo/tabs/Tabs.scss';
 import React from 'react';
 
-export const Judges = ({ event: { judges } }) => {
+export const Judges = ({ data: { judges } }) => {
   return (
     <>
       <div className={styles.totalsHeader}>

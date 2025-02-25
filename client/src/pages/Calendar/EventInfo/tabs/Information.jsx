@@ -2,7 +2,7 @@ import { BlocksRenderer } from '@strapi/blocks-react-renderer';
 import { Link } from 'components/Link';
 import styles from 'pages/Calendar/EventInfo/tabs/Tabs.scss';
 
-export const Information = ({ event: { description, information } }) => (
+export const Information = ({ data: { description, information } }) => (
   <div className={styles.information}>
     {description && (
       <>

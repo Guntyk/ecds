@@ -13,7 +13,11 @@ import { ImageComponent } from 'components/Image';
 import { Container } from 'components/Container';
 import { Button } from 'components/Button';
 import { Link } from 'components/Link';
-import { Tabs } from 'pages/Calendar/EventInfo/tabs/Tabs';
+import { Information } from 'pages/Calendar/EventInfo/tabs/Information';
+import { Categories } from 'pages/Calendar/EventInfo/tabs/Categories';
+import { Address } from 'pages/Calendar/EventInfo/tabs/Address';
+import { Judges } from 'pages/Calendar/EventInfo/tabs/Judges';
+import { Tabs } from 'components/Tabs';
 import { NotFound } from 'pages/Services/NotFound';
 import calendarIcon from 'assets/icons/calendar.svg';
 import markerIcon from 'assets/icons/marker.svg';
@@ -21,6 +25,7 @@ import styles from 'pages/Calendar/EventInfo/EventInfo.scss';
 
 export const EventInfo = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [tabs, setTabs] = useState({});
   const modalRef = useRef();
 
   useEffect(() => {
@@ -91,8 +96,38 @@ export const EventInfo = () => {
     }
   }, [events, pathname]);
 
-  const { type, title, entryForm, organization, organizer, startDate, endDate, cover, city, registration } =
-    currentEvent || {};
+  const {
+    type,
+    title,
+    entryForm,
+    organization,
+    organizer,
+    startDate,
+    endDate,
+    cover,
+    city,
+    registration,
+    description,
+    information,
+    departments,
+    judges,
+    address,
+  } = currentEvent || {};
+
+  useEffect(() => {
+    if (description || information) {
+      setTabs((prevTabs) => ({ Information, ...prevTabs }));
+    }
+    if (departments?.length) {
+      setTabs((prevTabs) => ({ ...prevTabs, Categories }));
+    }
+    if (judges?.length) {
+      setTabs((prevTabs) => ({ ...prevTabs, Judges }));
+    }
+    if (address) {
+      setTabs((prevTabs) => ({ ...prevTabs, Address }));
+    }
+  }, [currentEvent]);
 
   return currentEvent ? (
     <Container className={styles.page}>
@@ -181,10 +216,10 @@ export const EventInfo = () => {
               ghostStyle
             />
           </div>
-          <Tabs className={styles.tabs} event={currentEvent} />
+          <Tabs className={styles.tabs} tabs={tabs} setTabs={setTabs} data={currentEvent} />
         </div>
       </article>
-      <Tabs className={cn(styles.tabs, styles.tabsMobile)} event={currentEvent} />
+      <Tabs className={cn(styles.tabs, styles.tabsMobile)} tabs={tabs} setTabs={setTabs} data={currentEvent} />
       <div className={cn(styles.overlay, { [styles.active]: isModalOpen })}></div>
       <div className={cn(styles.modal, { [styles.active]: isModalOpen })} ref={modalRef}>
         <p>

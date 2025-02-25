@@ -6,7 +6,7 @@ import { Link } from 'components/Link';
 import markerIcon from 'assets/icons/map-pin.svg';
 import styles from 'pages/Calendar/EventInfo/tabs/Tabs.scss';
 
-export const Address = ({ event: { address } }) => {
+export const Address = ({ data: { address } }) => {
   const [coordinates, setCoordinates] = useState(null);
 
   useEffect(() => {

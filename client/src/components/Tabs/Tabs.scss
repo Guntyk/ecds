@@ -1,0 +1,84 @@
+.tabsWrapper.empty {
+  display: none;
+}
+
+.tabs {
+  display: flex;
+  gap: 0.8rem;
+  align-items: end;
+  margin-right: 1.4rem;
+  overflow: hidden;
+}
+
+.tab {
+  @include typography(body4);
+
+  padding: 1.6rem 3.2rem;
+  padding-bottom: 0.8rem;
+  color: $secondary3;
+  line-height: 3.2rem;
+  text-transform: capitalize;
+  border: 0.1rem solid $background2;
+  border-top-left-radius: $borderRadiusLarge;
+  border-top-right-radius: $borderRadiusLarge;
+  border-bottom: none;
+  transition: 0.3s;
+
+  @media (hover: hover) {
+    &:hover,
+    &:focus-visible {
+      padding-bottom: 1.6rem;
+      border-color: $primary2;
+    }
+  }
+
+  &.active {
+    padding-bottom: 1.6rem;
+    color: $text1;
+    background: $text2;
+    font-weight: map-get($fontWeights, 'medium');
+    pointer-events: none;
+  }
+
+  &Inner {
+    max-width: 78.4rem;
+    padding: 3.2rem;
+    border: 0.1rem solid $background2;
+    border-top: none;
+    border-radius: 1.4rem;
+    border-top-left-radius: 0;
+    background: $text2;
+  }
+}
+
+@media (max-width: 768px) {
+  .tabs {
+    gap: 0.4rem;
+  }
+
+  .tab {
+    padding-inline: 2.4rem;
+
+    &Inner {
+      max-width: 100%;
+      padding: 2.4rem;
+    }
+  }
+}
+
+@media (max-width: 430px) {
+  .tabs {
+    margin-right: 0;
+    overflow: unset;
+    overflow-y: hidden;
+  }
+
+  .tab {
+    padding-inline: 1.6rem;
+
+    &Inner {
+      padding-inline: 1.6rem;
+      border-radius: 0;
+    }
+  }
+}
