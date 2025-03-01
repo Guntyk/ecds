@@ -1,0 +1,41 @@
+.section {
+  margin-top: 2.2rem;
+}
+
+.title {
+  @include typography(body2, 'medium');
+
+  margin-bottom: $gapSmall;
+  padding-block: $gapLarge;
+  color: $primary1;
+  line-height: 2.4rem;
+  text-align: center;
+  text-transform: uppercase;
+  border: 0.05rem solid $background2;
+  border-radius: $borderRadius;
+  background: $background1;
+}
+
+.membersList {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  position: relative;
+}
+
+@media (max-width: 1440px) {
+  .section {
+    margin-top: $gapMedium;
+  }
+
+  .title {
+    padding-block: $gapMedium;
+    margin-bottom: $gapExtraSmall;
+    line-height: 2.4rem;
+  }
+
+  .membersList {
+    grid-template-columns: auto;
+    gap: $gapExtraSmall;
+  }
+}

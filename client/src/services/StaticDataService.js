@@ -5,7 +5,7 @@ import APIErrorsHandlingUtils from 'utils/APIErrorsHandlingUtils';
 export default class StaticDataService {
   static async getManagement() {
     const query = qs.stringify({
-      fields: ['name', 'surname', 'role', 'biography'],
+      fields: ['name', 'surname', 'role', 'biography', 'subdivision'],
       populate: {
         photo: {
           fields: ['alternativeText', 'placeholder', 'url'],

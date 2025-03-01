@@ -20,73 +20,71 @@ export const PersonCard = ({ person: { name, surname, role, socials, biography, 
   const socialLinks = new SocialLinks();
 
   return (
-    <div className={cn(styles.cardWrapper, { [styles.open]: isOpen })}>
-      <div className={cn(styles.card, { [styles.open]: isOpen })}>
-        <div
-          className={cn(styles.cardInner, {
-            [styles.addMargin]: !socials && isOpen,
-          })}
-        >
-          <ImageComponent
-            className={styles.photo}
-            src={generateMediaURL(photo?.url) || 'https://placehold.co/234'}
-            alt={photo?.alternativeText || 'photo placeholder'}
-            placeholder={photo?.placeholder}
-          />
-          <div className={styles.personInfo}>
-            <p className={styles.name}>
-              <span>{name}</span>
-              <br />
-              <span>{surname}</span>
-            </p>
-            <p className={styles.role}>{role}</p>
-            {socials && isOpen && (
-              <ul className={styles.socials}>
-                {socials.map(({ id, url }) => {
-                  const socialName = socialLinks.detectProfile(url);
+    <div className={cn(styles.card, { [styles.open]: isOpen })}>
+      <div
+        className={cn(styles.cardInner, {
+          [styles.addMargin]: !socials && isOpen,
+        })}
+      >
+        <ImageComponent
+          className={styles.photo}
+          src={generateMediaURL(photo?.url) || 'https://placehold.co/160'}
+          alt={photo?.alternativeText || 'photo placeholder'}
+          placeholder={photo?.placeholder}
+        />
+        <div className={styles.personInfo}>
+          <p className={styles.name}>
+            <span>{name}</span>
+            <br />
+            <span>{surname}</span>
+          </p>
+          <p className={styles.role}>{role}</p>
+          {socials && isOpen && (
+            <ul className={styles.socials}>
+              {socials.map(({ id, url }) => {
+                const socialName = socialLinks.detectProfile(url);
 
-                  if (socialName) {
-                    return (
-                      <li key={id}>
-                        <Link className={cn(styles.social, styles[socialName])} path={url} external />
-                      </li>
-                    );
-                  }
-                })}
-              </ul>
-            )}
-            {!isOpen && (
-              <Button className={styles.moreBtn} text='Read more' onClick={() => setIsOpen(true)} ghostStyle small>
-                Read more <img src={arrowRight} alt='arrow right' />
-              </Button>
-            )}
-          </div>
+                if (socialName) {
+                  return (
+                    <li key={id}>
+                      <Link className={cn(styles.social, styles[socialName])} path={url} external />
+                    </li>
+                  );
+                }
+              })}
+            </ul>
+          )}
+          {!isOpen && (
+            <Button className={styles.moreBtn} text='Read more' onClick={() => setIsOpen(true)} ghostStyle small>
+              Read more <img src={arrowRight} alt='arrow right' />
+            </Button>
+          )}
         </div>
-        {isOpen && (
-          <>
-            <Swiper
-              className={styles.biography}
-              direction={'vertical'}
-              slidesPerView={'auto'}
-              freeMode={true}
-              scrollbar={{
-                dragClass: styles.thumb,
-                dragSize: 80,
-                verticalClass: styles.scrollbar,
-              }}
-              mousewheel={{ sensitivity: 0.5 }}
-              modules={[FreeMode, Scrollbar, Mousewheel]}
-            >
-              {biography && (
-                <SwiperSlide className={styles.text}>
-                  <BlocksRenderer content={biography} />
-                </SwiperSlide>
-              )}
-            </Swiper>
-            <Arrow className={styles.cross} isOpen={true} onClick={() => setIsOpen(false)} logoStyle />
-          </>
-        )}
       </div>
+      {isOpen && (
+        <>
+          <Swiper
+            className={styles.biography}
+            direction={'vertical'}
+            slidesPerView={'auto'}
+            freeMode={true}
+            scrollbar={{
+              dragClass: styles.thumb,
+              dragSize: 80,
+              verticalClass: styles.scrollbar,
+            }}
+            mousewheel={{ sensitivity: 0.5 }}
+            modules={[FreeMode, Scrollbar, Mousewheel]}
+          >
+            {biography && (
+              <SwiperSlide className={styles.text}>
+                <BlocksRenderer content={biography} />
+              </SwiperSlide>
+            )}
+          </Swiper>
+          <Arrow className={styles.cross} isOpen={true} onClick={() => setIsOpen(false)} logoStyle />
+        </>
+      )}
     </div>
   );
 };

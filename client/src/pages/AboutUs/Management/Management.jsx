@@ -4,11 +4,14 @@ import { getManagement } from '@redux/features/managementSlice';
 import { apiErrors } from 'constants/apiErrors';
 import { Notification } from 'components/Notification';
 import { Loader } from 'components/Loader';
-import { PersonCard } from 'pages/AboutUs/Management/PersonCard';
+import { Tabs } from 'components/Tabs';
+import { Committees } from 'pages/AboutUs/Management/tabs/Committees';
+import { Presidium } from 'pages/AboutUs/Management/tabs/Presidium';
 import styles from 'pages/AboutUs/Management/Management.scss';
 
 export const Management = () => {
   const { isLoading, error, management } = useSelector((state) => state.management);
+  const tabs = { Presidium, Committees };
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -18,14 +21,14 @@ export const Management = () => {
   }, []);
 
   return (
-    <div className={styles.management}>
+    <>
       {isLoading ? (
         <Loader />
       ) : management.length === 0 ? (
         <Notification text={apiErrors.error404Message} type='error' />
       ) : (
-        management.length > 0 && management.map((person) => <PersonCard person={person} key={person.id} />)
+        management.length > 0 && <Tabs innerClassName={styles.management} tabs={tabs} data={management} headFontStyle />
       )}
-    </div>
+    </>
   );
 };

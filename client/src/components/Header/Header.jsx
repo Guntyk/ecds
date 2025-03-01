@@ -55,14 +55,14 @@ export const Header = () => {
           <div className={cn(styles.header, { [styles.headerDark]: isPageDark })}>
             <Link to={mainPage} className={styles.logo}>
               <img
-                src={screenWidth > 557 ? logo : isPageDark ? logoSmallDark : logoSmall}
+                src={screenWidth > 1440 ? logo : isPageDark ? logoSmallDark : logoSmall}
                 alt='European Confederation of Dance Sports logo'
               />
-              {screenWidth > 557 && 'European Confederation of Dance Sports'}
+              {screenWidth > 1440 && 'European Confederation of Dance Sports'}
             </Link>
             <nav>
               <ul className={styles.navigation}>
-                {screenWidth > 557 && (
+                {screenWidth > 1440 && (
                   <li>
                     <NavLink
                       className={cn(styles.navigationLink, {
@@ -81,7 +81,7 @@ export const Header = () => {
                 <li>
                   <Button
                     className={styles.navigationLink}
-                    text={screenWidth > 557 ? 'Menu' : <div className={styles.menuIcon} />}
+                    text={screenWidth > 1440 ? 'Menu' : <div className={styles.menuIcon} />}
                     onClick={() => setIsMenuOpen(true)}
                     noStyle
                   />
@@ -89,10 +89,10 @@ export const Header = () => {
               </ul>
             </nav>
           </div>
-          {screenWidth > 557 && <Menu isOpen={isMenuOpen} setIsOpen={setIsMenuOpen} />}
+          {screenWidth > 1440 && <Menu isOpen={isMenuOpen} setIsOpen={setIsMenuOpen} />}
         </Container>
       </header>
-      {screenWidth <= 557 && <Menu isOpen={isMenuOpen} setIsOpen={setIsMenuOpen} />}
+      {screenWidth <= 1440 && <Menu isOpen={isMenuOpen} setIsOpen={setIsMenuOpen} />}
     </>
   );
 };

@@ -3,7 +3,7 @@ import cn from 'classnames';
 import { Button } from 'components/Button';
 import styles from 'components/Tabs/Tabs.scss';
 
-export const Tabs = ({ className, innerClassName, tabs, setTabs, data }) => {
+export const Tabs = ({ className, innerClassName, tabs, setTabs, data, headFontStyle }) => {
   const [activeTabIndex, setActiveTabIndex] = useState(0);
 
   useEffect(() => {
@@ -22,7 +22,7 @@ export const Tabs = ({ className, innerClassName, tabs, setTabs, data }) => {
           <Button
             noStyle
             onClick={() => setActiveTabIndex(index)}
-            className={cn(styles.tab, { [styles.active]: activeTabIndex === index })}
+            className={cn(styles.tab, { [styles.headFont]: headFontStyle, [styles.active]: activeTabIndex === index })}
             tabIndex={activeTabIndex === index ? -1 : 0}
             key={key}
           >
