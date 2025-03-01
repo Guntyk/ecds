@@ -40,11 +40,6 @@
       "type": "component",
       "repeatable": true,
       "component": "socials.socials"
-    },
-    "subdivision": {
-      "type": "string",
-      "required": true,
-      "default": "Management member"
     }
   }
 }
