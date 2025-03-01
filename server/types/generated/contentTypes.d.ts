@@ -1152,9 +1152,6 @@ export interface ApiManagerManager extends Schema.CollectionType {
     role: Attribute.String & Attribute.Required;
     biography: Attribute.Blocks;
     socials: Attribute.Component<'socials.socials', true>;
-    subdivision: Attribute.String &
-      Attribute.Required &
-      Attribute.DefaultTo<'Management member'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
