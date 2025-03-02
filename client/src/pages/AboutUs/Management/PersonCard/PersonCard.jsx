@@ -54,7 +54,7 @@ export const PersonCard = ({ person: { name, surname, role, socials, biography, 
               })}
             </ul>
           )}
-          {biography?.[0]?.children[0]?.text.length > 0 && !isOpen && (
+          {biography && !isOpen && (
             <Button className={styles.moreBtn} text='Read more' onClick={() => setIsOpen(true)} ghostStyle small>
               Read more <img src={arrowRight} alt='arrow right' />
             </Button>
