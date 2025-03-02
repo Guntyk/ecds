@@ -7,7 +7,7 @@ export const Arrow = ({
   angleClassName,
   isOpen,
   expandStyle,
-  logoStyle,
+  crossStyle,
   onClick,
   noStyle,
   ...props
@@ -16,9 +16,9 @@ export const Arrow = ({
     <button
       id={id}
       className={cn(styles.arrowWrapper, className, {
-        [styles.default]: !expandStyle && !logoStyle && !noStyle,
+        [styles.default]: !expandStyle && !crossStyle && !noStyle,
         [styles.expand]: expandStyle,
-        [styles.logo]: logoStyle,
+        [styles.cross]: crossStyle,
         [styles.open]: isOpen,
       })}
       onClick={onClick}

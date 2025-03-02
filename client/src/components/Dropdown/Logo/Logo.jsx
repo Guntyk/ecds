@@ -39,7 +39,7 @@ export const LogoDropdown = ({ logo: { name, logos } }) => {
       >
         <span>{name}</span>
         <div className={styles.multiBtn}>
-          <Arrow isOpen={isOpen} logoStyle onClick={() => setIsOpen(!isOpen)} />
+          <Arrow isOpen={isOpen} onClick={() => setIsOpen(!isOpen)} crossStyle />
         </div>
 
         {isOpen === false && (

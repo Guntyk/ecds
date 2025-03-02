@@ -46,7 +46,7 @@ export const PersonCard = ({ person: { name, surname, role, socials, biography, 
 
                 if (socialName) {
                   return (
-                    <li key={id}>
+                    <li className={styles.socialWrapper} key={id}>
                       <Link className={cn(styles.social, styles[socialName])} path={url} external />
                     </li>
                   );
@@ -54,7 +54,7 @@ export const PersonCard = ({ person: { name, surname, role, socials, biography, 
               })}
             </ul>
           )}
-          {!isOpen && (
+          {biography?.[0]?.children[0]?.text.length > 0 && !isOpen && (
             <Button className={styles.moreBtn} text='Read more' onClick={() => setIsOpen(true)} ghostStyle small>
               Read more <img src={arrowRight} alt='arrow right' />
             </Button>
@@ -62,28 +62,12 @@ export const PersonCard = ({ person: { name, surname, role, socials, biography, 
         </div>
       </div>
       {isOpen && (
-        <>
-          <Swiper
-            className={styles.biography}
-            direction={'vertical'}
-            slidesPerView={'auto'}
-            freeMode={true}
-            scrollbar={{
-              dragClass: styles.thumb,
-              dragSize: 80,
-              verticalClass: styles.scrollbar,
-            }}
-            mousewheel={{ sensitivity: 0.5 }}
-            modules={[FreeMode, Scrollbar, Mousewheel]}
-          >
-            {biography && (
-              <SwiperSlide className={styles.text}>
-                <BlocksRenderer content={biography} />
-              </SwiperSlide>
-            )}
-          </Swiper>
-          <Arrow className={styles.cross} isOpen={true} onClick={() => setIsOpen(false)} logoStyle />
-        </>
+        <div className={styles.biography}>
+          <Arrow className={styles.cross} onClick={() => setIsOpen(false)} isOpen={true} crossStyle />
+          <div className={styles.text}>
+            <BlocksRenderer content={biography} />
+          </div>
+        </div>
       )}
     </div>
   );

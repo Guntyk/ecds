@@ -4,6 +4,7 @@
   flex-grow: 1;
   padding: 2.4rem;
   padding-bottom: 3.2rem;
+  height: 41.2rem;
   background: $text2;
   border: 0.05rem solid $background2;
   border-radius: $borderRadiusLarge;
@@ -11,7 +12,6 @@
   &Inner {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     flex: 1;
     gap: 1.6rem;
@@ -24,7 +24,6 @@
   &.open {
     position: absolute;
     width: 100%;
-    height: 100%;
     left: 0;
     z-index: 1;
 
@@ -35,6 +34,14 @@
     .cross {
       rotate: 90deg;
     }
+  }
+
+  .cross {
+    align-self: flex-end;
+    margin-bottom: $gapMedium;
+    height: 1.8rem;
+    width: 1.8rem;
+    aspect-ratio: 1;
   }
 }
 
@@ -79,7 +86,9 @@
 }
 
 .biography {
-  margin-inline: 2.4rem 1.6rem;
+  display: flex;
+  flex-direction: column;
+  margin-left: 2.4rem;
   width: 100%;
 }
 
@@ -90,16 +99,22 @@
   flex-direction: column;
   gap: 1rem;
   padding-right: 2.4rem;
-  height: auto;
+  max-height: 32.2rem;
+  overflow-x: hidden;
 }
 
 .socials {
   display: flex;
   justify-content: center;
 
+  .socialWrapper {
+    border: 0.05rem solid $background2;
+    border-radius: 0.8rem;
+  }
+
   .social {
     height: 4rem;
-    aspect-ratio: 1/1;
+    aspect-ratio: 1;
     background: $primary1;
     transition: 0.2s;
 
@@ -118,50 +133,21 @@
   }
 }
 
-.thumb {
-  margin-block: 0.4rem;
-  width: 0.8rem;
-  border-radius: 0.4rem;
-  background: $background2;
-}
-
-.scrollbar {
-  display: flex;
-  justify-content: center;
-  min-width: 1.6rem;
-  border-radius: 0.4rem;
-  border: 0.05rem solid $background2;
-  background: none;
-}
-
 @media (max-width: 1440px) {
   .card {
     padding: 2.4rem 1.6rem;
+    height: auto;
 
     &.open {
-      position: relative;
-      width: 100%;
-      height: unset;
-      left: 0;
-      z-index: 1;
-
       display: flex;
       flex-direction: column;
       gap: $gapLarge;
+      position: relative;
       padding-bottom: 3.2rem;
-
-      .photo {
-        border-radius: 50%;
-        background: #ecedf4;
-      }
+      height: unset;
 
       .cross {
-        position: absolute;
-        width: 2rem;
-        height: 1.8rem;
-        right: $gapMedium;
-        bottom: 3.2rem;
-        z-index: 1;
+        margin-bottom: 0;
       }
     }
 
@@ -186,7 +172,8 @@
   }
 
   .text {
-    padding-right: 1.8rem;
+    padding-right: 0;
+    line-height: 2rem;
   }
 
   .name {
@@ -214,12 +201,22 @@
     text-align: left;
   }
 
+  .socials {
+    margin-top: 0.6rem;
+  }
+
   .biography {
+    flex-direction: row-reverse;
+    justify-content: start;
     margin: 0;
   }
 
+  .text {
+    flex-grow: 1;
+  }
+
   .moreBtn {
-    width: 20rem;
+    width: min(100%, 20rem);
     height: 4rem;
     margin-top: $gapExtraSmall;
 
@@ -236,5 +233,9 @@
 
   .moreBtn {
     width: 100%;
+  }
+
+  .name {
+    flex-wrap: wrap;
   }
 }
